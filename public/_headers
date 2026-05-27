@@ -1,0 +1,19 @@
+/*
+  X-DNS-Prefetch-Control: on
+  X-XSS-Protection: 1; mode=block
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+
+/meta/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/banners/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/_next/static/media/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/_next/static/css/*
+  Cache-Control: public, max-age=31536000, immutable

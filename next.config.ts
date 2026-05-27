@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', 'react-icons'],
   },
-  
+
   images: {
     unoptimized: true,
     formats: ['image/webp', 'image/avif'],
@@ -22,73 +22,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  headers: async () => [
-    {
-      source: '/:path*',
-      headers: [
-        {
-          key: 'X-DNS-Prefetch-Control',
-          value: 'on'
-        },
-        {
-          key: 'X-XSS-Protection',
-          value: '1; mode=block'
-        },
-        {
-          key: 'X-Frame-Options',
-          value: 'SAMEORIGIN'  
-        },
-        {
-          key: 'X-Content-Type-Options',
-          value: 'nosniff'
-        },
-        {
-          key: 'Referrer-Policy',
-          value: 'origin-when-cross-origin'
-        },
-        {
-          key: 'Permissions-Policy',
-          value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()'
-        }
-      ]
-    },
-    {
-      source: '/meta/:path*',
-      headers: [
-        {
-          key: 'Cache-Control',
-          value: 'public, max-age=0, must-revalidate',
-        },
-      ],
-    },
-    {
-      source: '/banners/:path*',
-      headers: [
-        {
-          key: 'Cache-Control',
-          value: 'public, max-age=31536000, immutable'
-        }
-      ]
-    },
-    {
-      source: '/_next/static/media/:path*',
-      headers: [
-        {
-          key: 'Cache-Control',
-          value: 'public, max-age=31536000, immutable'
-        }
-      ]
-    },
-    {
-      source: '/_next/static/css/:path*',
-      headers: [
-        {
-          key: 'Cache-Control',
-          value: 'public, max-age=31536000, immutable'
-        }
-      ]
-    }
-  ]
+  // NOTE: headers() is not supported with output: 'export'.
+  // Security & cache headers are handled via the public/_headers file
+  // which Cloudflare Pages reads automatically at deploy time.
 };
 
 export default nextConfig;
