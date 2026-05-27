@@ -1,0 +1,101 @@
+{
+  "showcase": {
+    "header": {
+      "badge": {
+        "text": "WarNodes Panel",
+        "icon": "Zap"
+      },
+      "title": {
+        "text": "Everything You Need to Run Your Server",
+        "accent": "Your Server"
+      },
+      "description": "A complete control panel built for Minecraft — manage files, plugins, mods, players, and more without leaving your browser."
+    },
+    "cards": [
+      {
+        "id": 1,
+        "icon": "Terminal",
+        "title": "Live Console",
+        "description": "Send commands, view live logs, and control server power — all from a responsive in-browser console.",
+        "imageDark": "/showcase/dark/console.png",
+        "imageLight": "/showcase/light/console.png"
+      },
+      {
+        "id": 2,
+        "icon": "FolderOpen",
+        "title": "File Manager",
+        "description": "Browse, edit, upload, and download server files with a clean folder view — no FTP client required.",
+        "imageDark": "/showcase/dark/files.png",
+        "imageLight": "/showcase/light/files.png"
+      },
+      {
+        "id": 3,
+        "icon": "Plug",
+        "title": "Plugin Installer",
+        "description": "Install popular Paper and Spigot plugins in one click from trusted sources, with version matching built in.",
+        "imageDark": "/showcase/dark/plugininstaller.png",
+        "imageLight": "/showcase/light/plugininstaller.png"
+      },
+      {
+        "id": 4,
+        "icon": "Puzzle",
+        "title": "Mod Manager",
+        "description": "Search, pick, and install Forge and Fabric mods without hunting down jar files manually.",
+        "imageDark": "/showcase/dark/mods.png",
+        "imageLight": "/showcase/light/mods.png"
+      },
+      {
+        "id": 5,
+        "icon": "Package",
+        "title": "Modpack Manager",
+        "description": "Deploy full modpacks with dependencies handled automatically — ideal for modded communities.",
+        "imageDark": "/showcase/dark/modpacks.png",
+        "imageLight": "/showcase/light/modpacks.png"
+      },
+      {
+        "id": 6,
+        "icon": "Layers",
+        "title": "Datapack Manager",
+        "description": "Enable, disable, and organize Minecraft datapacks directly from the panel — no manual world editing.",
+        "imageDark": "/showcase/dark/datapacks.png",
+        "imageLight": "/showcase/light/datapacks.png"
+      },
+      {
+        "id": 7,
+        "icon": "RefreshCw",
+        "title": "Version Changer",
+        "description": "Switch Minecraft versions and server software in a few clicks — Paper, Purpur, Forge, and more.",
+        "imageDark": "/showcase/dark/versionchanger.png",
+        "imageLight": "/showcase/light/versionchanger.png"
+      },
+      {
+        "id": 8,
+        "icon": "Upload",
+        "title": "Server Importer",
+        "description": "Migrate worlds, plugins, and configs from another host or a local backup without complex setup.",
+        "imageDark": "/showcase/dark/importer.png",
+        "imageLight": "/showcase/light/importer.png"
+      },
+      {
+        "id": 9,
+        "icon": "Users",
+        "title": "Player Manager",
+        "description": "View online players, manage bans, ops, and whitelists — keep your community under control.",
+        "imageDark": "/showcase/dark/playermanager.png",
+        "imageLight": "/showcase/light/playermanager.png"
+      },
+      {
+        "id": 10,
+        "icon": "Globe",
+        "title": "Subdomains",
+        "description": "Create free subdomains and connect them to your server instantly for easy player access.",
+        "imageDark": "/showcase/dark/subdomains.png",
+        "imageLight": "/showcase/light/subdomains.png"
+      }
+    ],
+    "settings": {
+      "autoAdvanceInterval": 6000,
+      "progressUpdateInterval": 100
+    }
+  }
+}

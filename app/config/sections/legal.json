@@ -1,0 +1,304 @@
+{
+  "termsOfService": {
+    "badge": "WarNodes Legal",
+    "title": "Terms of Service",
+    "intro": "Read through our regulations, agreements, and standard SLA guarantees below.",
+    "lastUpdated": "Dec 11, 2024",
+    "contactEmail": "legal@warnode.cloud",
+    "discordUrl": "https://discord.gg/warnode",
+    "navGroups": [
+      {
+        "label": "Policies",
+        "items": [
+          { "id": "sla", "label": "SLA Guarantee", "icon": "Zap" },
+          { "id": "billing", "label": "Billing & Payments", "icon": "CreditCard" }
+        ]
+      },
+      {
+        "label": "Rules & Guidelines",
+        "items": [
+          { "id": "aup", "label": "Acceptable Use", "icon": "CheckCircle2" },
+          { "id": "data", "label": "Data & Backups", "icon": "Lock" }
+        ]
+      },
+      {
+        "label": "Help",
+        "items": [
+          { "id": "support", "label": "Get Support", "icon": "MessageCircle" }
+        ]
+      }
+    ],
+    "sections": [
+      {
+        "id": "sla",
+        "icon": "Zap",
+        "title": "SLA Guarantee",
+        "tldr": "99.9% uptime guaranteed. If we're down 36+ hours straight, you get 1 free month automatically.",
+        "stats": [
+          { "value": "99.9%", "label": "Uptime Guarantee" },
+          { "value": "36h", "label": "Downtime Threshold" },
+          { "value": "1 Month", "label": "Free Compensation" }
+        ],
+        "listTitle": "What's included",
+        "listItems": [
+          "2Gbps network uplink per node",
+          "Enterprise Layer 4 DDoS protection",
+          "Automatic failover mechanisms",
+          "24/7 infrastructure monitoring"
+        ],
+        "highlight": {
+          "title": "Data Loss Protection",
+          "content": "If you lose data due to our hardware failure, you get a full refund immediately."
+        }
+      },
+      {
+        "id": "billing",
+        "icon": "CreditCard",
+        "title": "Billing & Payments",
+        "tldr": "WarNodes accepts UPI, cards, and PayPal. Services activated within 2 hours. Auto-renewal with 7-day reminder. Cancel anytime, service remains active till period ends.",
+        "subsections": [
+          {
+            "title": "Service Activation",
+            "items": [
+              "Instant activation for most Minecraft & Bot hosting plans",
+              "Within 2 hours for VPS and Web Hosting plans",
+              "Email confirmation sent immediately after activation"
+            ]
+          },
+          {
+            "title": "Payment Methods",
+            "items": [
+              "UPI (GPay, PhonePe, Paytm)",
+              "Credit & Debit Cards",
+              "PayPal (where available)"
+            ]
+          },
+          {
+            "title": "Cancellation Policy",
+            "items": [
+              "Cancel anytime from portal.warnode.cloud",
+              "Service remains active until current billing period ends",
+              "No partial refunds for unused time after first 24 hours",
+              "Data retained for 7 days after expiry for reactivation"
+            ]
+          }
+        ],
+        "faqs": [
+          {
+            "question": "When will I be charged?",
+            "answer": "You're charged immediately on purchase. Renewals happen automatically on your billing date. We send reminders 7 days and 1 day before."
+          },
+          {
+            "question": "How do I cancel?",
+            "answer": "Log into portal.warnode.cloud → Select your service → Click \"Cancel Service\". Your service stays active until current period ends. Cancellation is effective immediately and no further charges will be made."
+          },
+          {
+            "question": "What if payment fails?",
+            "answer": "Payment failed → 24h retry → Suspended after 1 day → 7 days to reactivate → Deleted after 7 days. Reactivate by updating payment within 14 days. After 14 days, data may be deleted."
+          }
+        ],
+        "callout": {
+          "title": "Service Suspension Timeline",
+          "content": "If a payment fails, you get a 24-hour grace period to complete it. After that, your service will be suspended temporarily. You can reactivate your service within 7 days by completing the payment. If not reactivated within this period, the service will be permanently terminated and all data will be deleted. Timeline: Failed payment → 24h grace → Suspended → 7 days recovery → Deleted"
+        }
+      },
+      {
+        "id": "aup",
+        "icon": "CheckCircle2",
+        "title": "Acceptable Use Policy",
+        "tldr": "Use for legitimate purposes. No crypto mining, hacking, or illegal content. Be fair with resources.",
+        "allowedTitle": "Allowed",
+        "allowedItems": [
+          "Minecraft servers (vanilla, modded, networks)",
+          "Discord bots and web applications",
+          "Development and testing environments",
+          "Game servers and legitimate services"
+        ],
+        "prohibitedTitle": "Prohibited",
+        "prohibitedItems": [
+          "Cryptocurrency mining",
+          "DDoS attacks, botnets",
+          "Illegal or malicious content",
+          "IP spoofing, network scanning",
+          "Resource abuse affecting others"
+        ],
+        "highlight": {
+          "title": "Violations",
+          "content": "Violations = immediate termination without refund. Illegal activities reported to authorities."
+        }
+      },
+      {
+        "id": "data",
+        "icon": "Lock",
+        "title": "Data & Backups",
+        "tldr": "Your data is yours. We don't look at it without permission. Make your own backups — we provide tools but responsibility is yours.",
+        "listItems": [
+          "Private content — We never access your files without permission",
+          "Secure servers — Enterprise-grade security on all infrastructure",
+          "Backup tools — Use our panel to create and download backups",
+          "Account deletion — Deleting account removes all your data"
+        ],
+        "highlight": {
+          "title": "Important",
+          "content": "While we provide backup tools, you should maintain your own backups for critical data. Download regularly from your control panel."
+        }
+      },
+      {
+        "id": "support",
+        "icon": "MessageCircle",
+        "title": "Get Support",
+        "tldr": "Discord = fastest response. Tickets for complex issues. We're here to help!",
+        "stats": [
+          { "value": "Instant", "label": "Discord" },
+          { "value": "24h", "label": "Support Tickets" },
+          { "value": "1-2d", "label": "Email" }
+        ],
+        "highlight": {
+          "title": "Need help with these terms?",
+          "content": "Our team is ready to answer any questions."
+        }
+      }
+    ]
+  },
+  "refundPolicy": {
+    "badge": "Fair & Transparent Policy",
+    "title": "Refund Policy",
+    "intro": "Our commitment to providing a high-quality hosting experience. We believe in transparency and fairness when it comes to your investment.",
+    "guarantee": {
+      "badge": "Instant Guarantee",
+      "title": "24-Hour Full Refund Guarantee",
+      "description": "Not satisfied with the performance or interface? No problem. We offer a \"no-questions-asked\" full refund policy for the first 24 hours of your service activation.",
+      "ctaLabel": "Request Now",
+      "ctaLink": "https://portal.warnode.cloud"
+    },
+    "serviceTermsTitle": "Service-Specific Terms",
+    "serviceTerms": [
+      {
+        "icon": "Gamepad2",
+        "title": "Minecraft Hosting",
+        "period": "7-Day Issue-Based",
+        "description": "Coverage for persistent TPS drops, node-side lag, or recurring server crashes."
+      },
+      {
+        "icon": "Terminal",
+        "title": "VPS Hosting",
+        "period": "48-Hour Technical",
+        "description": "Refunds granted for hardware faults or networking issues originating from our DC."
+      },
+      {
+        "icon": "Bot",
+        "title": "Bot Hosting",
+        "period": "3-Day Guarantee",
+        "description": "Eligibility covers API connectivity issues or severe resource throttling."
+      },
+      {
+        "icon": "Globe",
+        "title": "Website Hosting",
+        "period": "3-Day Satisfaction",
+        "description": "Our standard commitment to 99.9% uptime and panel accessibility."
+      }
+    ],
+    "development": {
+      "title": "Development & Setup",
+      "note": "50% Partial Refund — Deduction applies for time and creative effort already expended on the project.",
+      "items": [
+        "Custom Web Development",
+        "Server Development (MC SMP, Network, etc.)",
+        "Panel Installation & Node Setup"
+      ]
+    },
+    "nonRefundableTitle": "Non-Refundable Scenarios",
+    "nonRefundable": [
+      "Illegal Activity — Any service suspended for DDoS, phishing, or copyrighted content hosting.",
+      "Chargebacks — Initiating a dispute through your bank will void any refund eligibility and lead to account termination.",
+      "TOS Violations — Resource abuse, mining scripts, or bypassing system limitations."
+    ],
+    "processing": {
+      "title": "Fast & Secure Payouts",
+      "description": "Once approved, refunds are processed within 7-10 business days. Funds will be returned to the original payment method used during checkout."
+    },
+    "support": {
+      "title": "Still need help?",
+      "description": "Our support team is available 24/7 to discuss your specific case.",
+      "discordLabel": "Contact Support",
+      "discordUrl": "https://discord.gg/warnode",
+      "ticketLabel": "Open a Ticket",
+      "ticketUrl": "https://portal.warnode.cloud"
+    }
+  },
+  "privacyPolicy": {
+    "title": "Privacy Policy",
+    "badge": "Security First",
+    "intro": "At WarNodes, we value your privacy and are committed to being transparent about how we handle your information.",
+    "lastUpdated": "Dec 11, 2024",
+    "companyName": "WarNodes",
+    "websiteUrl": "https://warnode.cloud",
+    "contactEmail": "privacy@warnode.cloud",
+    "quickSummary": [
+      {
+        "icon": "Ban",
+        "title": "No Data Selling",
+        "description": "We never sell your personal information to third parties for advertising."
+      },
+      {
+        "icon": "CreditCard",
+        "title": "Card Security",
+        "description": "Payment details are processed securely; we never store your full card info."
+      },
+      {
+        "icon": "Trash2",
+        "title": "Full Control",
+        "description": "You have the right to request the deletion of your account and data at any time."
+      }
+    ],
+    "whatWeCollect": {
+      "tldr": "We collect your name, email, and payment information to provide our services. Technical information like IP address helps maintain security and performance.",
+      "rows": [
+        { "dataType": "Name", "purpose": "Account identification and billing", "required": "Yes" },
+        { "dataType": "Email", "purpose": "Login, notifications, and support", "required": "Yes" },
+        { "dataType": "Phone", "purpose": "2FA security and urgent alerts", "required": "Yes" },
+        { "dataType": "Billing Address", "purpose": "Tax compliance and fraud prevention", "required": "Yes" },
+        { "dataType": "IP Address", "purpose": "Security logging and geofencing", "required": "Yes" },
+        { "dataType": "Device Info", "purpose": "Optimizing dashboard performance", "required": "Yes" }
+      ]
+    },
+    "howWeUse": {
+      "tldr": "Your information is used only to operate services, process payments, provide support, and keep the platform secure.",
+      "items": [
+        "Fulfilling service requests and orders",
+        "Preventing fraudulent transactions",
+        "Communicating critical system updates",
+        "Improving network infrastructure latency"
+      ]
+    },
+    "security": {
+      "tldr": "We use industry-standard security practices like HTTPS, encrypted passwords, and secure data centers.",
+      "items": [
+        "AES-256 Data Encryption",
+        "SSL/TLS Protected Traffic",
+        "Strict Internal Access Control"
+      ]
+    },
+    "dataSharing": {
+      "tldr": "Your data is only shared with essential service providers like Payment Processors and Data Centers.",
+      "providers": [
+        { "icon": "CreditCard", "name": "Razorpay (Payments)" },
+        { "icon": "Cloud", "name": "OVH (Hosting)" },
+        { "icon": "Mail", "name": "Warnode Mail Network (Email)" },
+        { "icon": "Shield", "name": "Cloudflare + OVH (Security)" }
+      ]
+    },
+    "cookies": {
+      "tldr": "Cookies help maintain login sessions and improve user experience. We use \"essential\" cookies for core functionality and \"analytical\" cookies to understand usage.",
+      "description": "You can control cookie preferences through your browser settings. Essential cookies are required for account login and checkout."
+    },
+    "yourRights": {
+      "rights": [
+        { "icon": "Eye", "label": "Access" },
+        { "icon": "Edit", "label": "Correct" },
+        { "icon": "Download", "label": "Download" },
+        { "icon": "Trash2", "label": "Delete" }
+      ]
+    }
+  }
+}

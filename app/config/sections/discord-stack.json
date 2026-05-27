@@ -1,0 +1,16 @@
+{
+  "technologies": [
+    { "name": "Node.js", "icon": "https://cdn.simpleicons.org/nodedotjs/339933" },
+    { "name": "Python", "icon": "https://cdn.simpleicons.org/python/3776AB" },
+    { "name": "Java", "icon": "https://cdn.simpleicons.org/openjdk/FFFFFF" },
+    { "name": "TypeScript", "icon": "https://cdn.simpleicons.org/typescript/3178C6" },
+    { "name": "Ruby", "icon": "https://cdn.simpleicons.org/ruby/CC342D" },
+    { "name": "Go", "icon": "https://cdn.simpleicons.org/go/00ADD8" },
+    { "name": "Rust", "icon": "https://cdn.simpleicons.org/rust/FFFFFF" },
+    { "name": "C++", "icon": "https://cdn.simpleicons.org/cplusplus/00599C" },
+    { "name": "PHP", "icon": "https://cdn.simpleicons.org/php/777BB4" },
+    { "name": "Lua", "icon": "https://cdn.simpleicons.org/lua/2C2D72" },
+    { "name": "Docker", "icon": "https://cdn.simpleicons.org/docker/2496ED" },
+    { "name": "MySQL", "icon": "https://cdn.simpleicons.org/mysql/4479A1" }
+  ]
+}

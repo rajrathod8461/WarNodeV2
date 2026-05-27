@@ -1,0 +1,336 @@
+{
+  "planTypes": [
+    {
+      "id": "intel",
+      "name": "Intel Xeon",
+      "image": "/cpu/intel.png"
+    },
+    {
+      "id": "amd",
+      "name": "AMD EPYC",
+      "image": "/cpu/ryzen9.png"
+    }
+  ],
+  "locations": [
+    {
+      "id": "mumbai",
+      "name": "Mumbai",
+      "flag": "in",
+      "availablePlanTypes": ["intel", "amd"]
+    },
+    {
+      "id": "hyderabad",
+      "name": "Hyderabad",
+      "flag": "in",
+      "availablePlanTypes": ["intel", "amd"]
+    },
+    {
+      "id": "delhi",
+      "name": "Delhi",
+      "flag": "in",
+      "availablePlanTypes": ["intel", "amd"]
+    },
+    {
+      "id": "singapore",
+      "name": "Singapore",
+      "flag": "sg",
+      "availablePlanTypes": ["intel", "amd"]
+    }
+  ],
+  "games": [
+    {
+      "id": "minecraft",
+      "name": "Minecraft",
+      "description": "Intel Xeon and AMD EPYC Minecraft hosting with unlimited players, WarNodes panel, and instant setup",
+      "icon": "/icons/minecraft-icon.webp",
+      "banner": "/banners/minecraft-banners.webp",
+      "featured": true,
+      "startingAt": "₹59/mo",
+      "primaryColor": "#4CAF50",
+      "plans": {
+        "intel": [
+          {
+            "id": "cow",
+            "name": "COW",
+            "type": "intel",
+            "ram": "2 GB",
+            "cpu": "100% (1 vCPU)",
+            "storage": "10 GB NVMe",
+            "price": 59,
+            "prices": { "INR": 59, "USD": 0.99, "EUR": 0.99 },
+            "orderLink": "https://portal.warnode.cloud/products/intel-minecraft-hosting/cow"
+          },
+          {
+            "id": "pig",
+            "name": "PIG",
+            "type": "intel",
+            "ram": "4 GB",
+            "cpu": "200% (2 vCPU)",
+            "storage": "20 GB NVMe",
+            "price": 119,
+            "prices": { "INR": 119, "USD": 1.99, "EUR": 1.99 },
+            "orderLink": "https://portal.warnode.cloud/products/intel-minecraft-hosting/pig"
+          },
+          {
+            "id": "sheep",
+            "name": "SHEEP",
+            "type": "intel",
+            "ram": "6 GB",
+            "cpu": "300% (3 vCPU)",
+            "storage": "30 GB NVMe",
+            "price": 179,
+            "prices": { "INR": 179, "USD": 2.99, "EUR": 2.99 },
+            "orderLink": "https://portal.warnode.cloud/products/intel-minecraft-hosting/sheep"
+          },
+          {
+            "id": "slime",
+            "name": "SLIME",
+            "type": "intel",
+            "ram": "8 GB",
+            "cpu": "400% (4 vCPU)",
+            "storage": "40 GB NVMe",
+            "price": 239,
+            "prices": { "INR": 239, "USD": 3.99, "EUR": 3.99 },
+            "orderLink": "https://portal.warnode.cloud/products/intel-minecraft-hosting/slime"
+          },
+          {
+            "id": "villager",
+            "name": "VILLAGER",
+            "type": "intel",
+            "ram": "12 GB",
+            "cpu": "600% (6 vCPU)",
+            "storage": "60 GB NVMe",
+            "price": 359,
+            "prices": { "INR": 359, "USD": 4.99, "EUR": 4.99 },
+            "orderLink": "https://portal.warnode.cloud/products/intel-minecraft-hosting/villager"
+          },
+          {
+            "id": "chicken",
+            "name": "CHICKEN",
+            "type": "intel",
+            "ram": "16 GB",
+            "cpu": "800% (8 vCPU)",
+            "storage": "80 GB NVMe",
+            "price": 479,
+            "prices": { "INR": 479, "USD": 5.99, "EUR": 5.99 },
+            "orderLink": "https://portal.warnode.cloud/products/intel-minecraft-hosting/chicken"
+          },
+          {
+            "id": "spider",
+            "name": "SPIDER",
+            "type": "intel",
+            "ram": "24 GB",
+            "cpu": "1000% (10 vCPU)",
+            "storage": "100 GB NVMe",
+            "price": 719,
+            "prices": { "INR": 719, "USD": 7.99, "EUR": 6.99 },
+            "orderLink": "https://portal.warnode.cloud/products/intel-minecraft-hosting/spider"
+          },
+          {
+            "id": "pillager",
+            "name": "PILLAGER",
+            "type": "intel",
+            "ram": "32 GB",
+            "cpu": "1200% (12 vCPU)",
+            "storage": "120 GB NVMe",
+            "price": 959,
+            "prices": { "INR": 959, "USD": 10.99, "EUR": 8.99 },
+            "orderLink": "https://portal.warnode.cloud/products/intel-minecraft-hosting/pillager"
+          },
+          {
+            "id": "blaze",
+            "name": "BLAZE",
+            "type": "intel",
+            "ram": "48 GB",
+            "cpu": "1400% (14 vCPU)",
+            "storage": "150 GB NVMe",
+            "price": 1439,
+            "prices": { "INR": 1439, "USD": 15.99, "EUR": 13.99 },
+            "orderLink": "https://portal.warnode.cloud/products/intel-minecraft-hosting/blaze"
+          }
+        ],
+        "amd": [
+          {
+            "id": "amd-cow",
+            "name": "COW",
+            "type": "amd",
+            "ram": "2 GB",
+            "cpu": "100% (1 vCPU)",
+            "storage": "10 GB NVMe",
+            "price": 79,
+            "prices": { "INR": 79, "USD": 0.99, "EUR": 0.99 },
+            "orderLink": "https://portal.warnode.cloud/products/amd-minecraft-hosting/cow-amd"
+          },
+          {
+            "id": "amd-pig",
+            "name": "PIG",
+            "type": "amd",
+            "ram": "4 GB",
+            "cpu": "200% (2 vCPU)",
+            "storage": "20 GB NVMe",
+            "price": 159,
+            "prices": { "INR": 159, "USD": 1.99, "EUR": 1.99 },
+            "orderLink": "https://portal.warnode.cloud/products/amd-minecraft-hosting/pig-amd"
+          },
+          {
+            "id": "amd-sheep",
+            "name": "SHEEP",
+            "type": "amd",
+            "ram": "6 GB",
+            "cpu": "300% (3 vCPU)",
+            "storage": "30 GB NVMe",
+            "price": 239,
+            "prices": { "INR": 239, "USD": 2.99, "EUR": 2.99 },
+            "orderLink": "https://portal.warnode.cloud/products/amd-minecraft-hosting/sheep-amd"
+          },
+          {
+            "id": "amd-slime",
+            "name": "SLIME",
+            "type": "amd",
+            "ram": "8 GB",
+            "cpu": "400% (4 vCPU)",
+            "storage": "40 GB NVMe",
+            "price": 319,
+            "prices": { "INR": 319, "USD": 3.99, "EUR": 3.99 },
+            "orderLink": "https://portal.warnode.cloud/products/amd-minecraft-hosting/slime-amd"
+          },
+          {
+            "id": "amd-villager",
+            "name": "VILLAGER",
+            "type": "amd",
+            "ram": "12 GB",
+            "cpu": "600% (6 vCPU)",
+            "storage": "60 GB NVMe",
+            "price": 479,
+            "prices": { "INR": 479, "USD": 5.99, "EUR": 4.99 },
+            "orderLink": "https://portal.warnode.cloud/products/amd-minecraft-hosting/villager-amd"
+          },
+          {
+            "id": "amd-chicken",
+            "name": "CHICKEN",
+            "type": "amd",
+            "ram": "16 GB",
+            "cpu": "800% (8 vCPU)",
+            "storage": "80 GB NVMe",
+            "price": 639,
+            "prices": { "INR": 639, "USD": 6.99, "EUR": 5.99 },
+            "orderLink": "https://portal.warnode.cloud/products/amd-minecraft-hosting/chicken-amd"
+          },
+          {
+            "id": "amd-spider",
+            "name": "SPIDER",
+            "type": "amd",
+            "ram": "24 GB",
+            "cpu": "1000% (10 vCPU)",
+            "storage": "100 GB NVMe",
+            "price": 959,
+            "prices": { "INR": 959, "USD": 10.99, "EUR": 8.99 },
+            "orderLink": "https://portal.warnode.cloud/products/amd-minecraft-hosting/spider-amd"
+          },
+          {
+            "id": "amd-pillager",
+            "name": "PILLAGER",
+            "type": "amd",
+            "ram": "32 GB",
+            "cpu": "1200% (12 vCPU)",
+            "storage": "120 GB NVMe",
+            "price": 1279,
+            "prices": { "INR": 1279, "USD": 13.99, "EUR": 11.99 },
+            "orderLink": "https://portal.warnode.cloud/products/amd-minecraft-hosting/pillager-amd"
+          },
+          {
+            "id": "amd-blaze",
+            "name": "BLAZE",
+            "type": "amd",
+            "ram": "48 GB",
+            "cpu": "1400% (14 vCPU)",
+            "storage": "150 GB NVMe",
+            "price": 1919,
+            "prices": { "INR": 1919, "USD": 20.99, "EUR": 17.99 },
+            "orderLink": "https://portal.warnode.cloud/products/amd-minecraft-hosting/blaze-amd"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hytale",
+      "name": "Hytale",
+      "description": "Dedicated Hytale server hosting with instant setup, WarNodes panel, and WarShield DDoS protection",
+      "icon": "/hytale.webp",
+      "banner": "/hytale.jpg",
+      "featured": false,
+      "startingAt": "₹160/mo",
+      "primaryColor": "#2563EB",
+      "plans": {
+        "intel": [
+          {
+            "id": "starter",
+            "name": "Starter",
+            "type": "intel",
+            "ram": "2 GB",
+            "cpu": "100% (1 vCPU)",
+            "storage": "10 GB NVMe",
+            "price": 160,
+            "prices": { "INR": 160, "USD": 1.99, "EUR": 1.99 },
+            "orderLink": "https://warnode.cloud/hytale"
+          },
+          {
+            "id": "adventurer",
+            "name": "Adventurer",
+            "type": "intel",
+            "ram": "4 GB",
+            "cpu": "200% (2 vCPU)",
+            "storage": "20 GB NVMe",
+            "price": 240,
+            "prices": { "INR": 240, "USD": 2.99, "EUR": 2.99 },
+            "orderLink": "https://warnode.cloud/hytale"
+          },
+          {
+            "id": "explorer",
+            "name": "Explorer",
+            "type": "intel",
+            "ram": "6 GB",
+            "cpu": "300% (3 vCPU)",
+            "storage": "30 GB NVMe",
+            "price": 320,
+            "prices": { "INR": 320, "USD": 3.99, "EUR": 3.99 },
+            "orderLink": "https://warnode.cloud/hytale"
+          },
+          {
+            "id": "builder",
+            "name": "Builder",
+            "type": "amd",
+            "ram": "8 GB",
+            "cpu": "400% (4 vCPU)",
+            "storage": "40 GB NVMe",
+            "price": 480,
+            "prices": { "INR": 480, "USD": 5.99, "EUR": 4.99 },
+            "orderLink": "https://warnode.cloud/hytale-amd"
+          },
+          {
+            "id": "kingdom",
+            "name": "Kingdom",
+            "type": "amd",
+            "ram": "12 GB",
+            "cpu": "600% (6 vCPU)",
+            "storage": "60 GB NVMe",
+            "price": 640,
+            "prices": { "INR": 640, "USD": 6.99, "EUR": 5.99 },
+            "orderLink": "https://warnode.cloud/hytale-amd"
+          },
+          {
+            "id": "empire",
+            "name": "Empire",
+            "type": "amd",
+            "ram": "16 GB",
+            "cpu": "800% (8 vCPU)",
+            "storage": "80 GB NVMe",
+            "price": 960,
+            "prices": { "INR": 960, "USD": 10.99, "EUR": 8.99 },
+            "orderLink": "https://warnode.cloud/hytale-amd"
+          }
+        ]
+      }
+    }
+  ]
+}

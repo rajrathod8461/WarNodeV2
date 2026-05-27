@@ -1,0 +1,123 @@
+{
+  "company": {
+    "name": "WarNodes",
+    "tagline": "Next-Gen Infrastructure for Developers and Gamers",
+    "description": "High-performance hosting powered by Gen4 NVMe storage, high-frequency CPUs, and WarShield DDoS protection. Built for developers, gamers, and growing communities.",
+    "websiteUrl": "https://warnode.cloud",
+    "contactEmail": "support@warnode.cloud",
+    "legalEmail": "legal@warnode.cloud"
+  },
+  "links": {
+    "portal": "https://portal.warnode.cloud",
+    "panel": "https://panel.warnode.cloud",
+    "webPanel": "https://web.warnode.cloud",
+    "discord": "https://discord.gg/warnode",
+    "status": "https://status.warnode.cloud",
+    "minecraft": "https://warnode.cloud/minecraft",
+    "minecraftAmd": "https://warnode.cloud/minecraft-amd",
+    "hytale": "https://warnode.cloud/hytale",
+    "hytaleAmd": "https://warnode.cloud/hytale-amd",
+    "vps": "https://warnode.cloud/vps",
+    "vpsIntel": "https://warnode.cloud/vps-intel",
+    "discordBot": "https://warnode.cloud/discord-bot",
+    "webHosting": "https://warnode.cloud/web-hosting",
+    "ddos": "https://warnode.cloud/ddos"
+  },
+  "stats": {
+    "nvmeSpeed": "7.0 GB/s",
+    "ddosProtection": "Tbps+ WarShield",
+    "indiaLatency": "<20ms",
+    "uptime": "99.9%",
+    "users": "500+"
+  },
+  "locations": [
+    {
+      "name": "Mumbai",
+      "region": "India",
+      "locationGroup": "india",
+      "regionGroup": "asia",
+      "flag": "in",
+      "ping": "5–20 ms",
+      "status": "active",
+      "lat": 19.076,
+      "lng": 72.8777
+    },
+    {
+      "name": "Delhi",
+      "region": "India",
+      "locationGroup": "india",
+      "regionGroup": "asia",
+      "flag": "in",
+      "ping": "10–25 ms",
+      "status": "active",
+      "lat": 28.6139,
+      "lng": 77.209
+    },
+    {
+      "name": "Hyderabad",
+      "region": "India",
+      "locationGroup": "india",
+      "regionGroup": "asia",
+      "flag": "in",
+      "ping": "15–30 ms",
+      "status": "active",
+      "lat": 17.385,
+      "lng": 78.4867
+    },
+    {
+      "name": "Kolkata",
+      "region": "India",
+      "locationGroup": "india",
+      "regionGroup": "asia",
+      "flag": "in",
+      "ping": "Coming Soon",
+      "status": "coming_soon",
+      "lat": 22.5726,
+      "lng": 88.3639
+    },
+    {
+      "name": "Singapore",
+      "region": "Singapore",
+      "locationGroup": "global",
+      "regionGroup": "asia",
+      "flag": "sg",
+      "ping": "35–55 ms",
+      "status": "active",
+      "lat": 1.3521,
+      "lng": 103.8198
+    },
+    {
+      "name": "Dubai",
+      "region": "UAE",
+      "locationGroup": "global",
+      "regionGroup": "middle_east",
+      "flag": "ae",
+      "ping": "40–70 ms",
+      "status": "active",
+      "lat": 25.2048,
+      "lng": 55.2708
+    },
+    {
+      "name": "Frankfurt",
+      "region": "Germany",
+      "locationGroup": "global",
+      "regionGroup": "europe",
+      "flag": "de",
+      "ping": "120–160 ms",
+      "status": "active",
+      "lat": 50.1109,
+      "lng": 8.6821
+    },
+    {
+      "name": "Washington DC",
+      "region": "United States",
+      "locationGroup": "global",
+      "regionGroup": "americas",
+      "flag": "us",
+      "ping": "180–220 ms",
+      "status": "active",
+      "lat": 38.9072,
+      "lng": -77.0369
+    }
+  ]
+}

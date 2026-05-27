@@ -1,0 +1,119 @@
+{
+  "planTypes": [
+    {
+      "id": "shared",
+      "name": "Web Hosting",
+      "displayName": "CyberPanel Web Hosting",
+      "image": "/advertisement/intel.png"
+    }
+  ],
+  "plans": {
+    "shared": [
+      {
+        "id": "coal",
+        "name": "Coal",
+        "badge": "Free",
+        "cpu": "1 Website",
+        "cpuDetail": "Sites",
+        "ram": "500 MB",
+        "ramDetail": "SSD Storage",
+        "storage": "1 GB",
+        "storageDetail": "Bandwidth",
+        "bandwidth": "Free Subdomain",
+        "bandwidthDetail": "Included",
+        "uptime": "Basic Panel",
+        "price": "₹0",
+        "prices": { "INR": 0, "USD": 0, "EUR": 0 },
+        "period": "/mo",
+        "orderLink": "https://warnode.cloud/web-hosting"
+      },
+      {
+        "id": "copper",
+        "name": "Copper",
+        "cpu": "1 Website",
+        "cpuDetail": "Sites",
+        "ram": "5 GB",
+        "ramDetail": "SSD Storage",
+        "storage": "Unmetered",
+        "storageDetail": "Bandwidth",
+        "bandwidth": "1 Email",
+        "bandwidthDetail": "Included",
+        "uptime": "Free SSL",
+        "price": "₹30",
+        "prices": { "INR": 30, "USD": 0.99, "EUR": 0.99 },
+        "period": "/mo",
+        "orderLink": "https://warnode.cloud/web-hosting"
+      },
+      {
+        "id": "iron",
+        "name": "Iron",
+        "badge": "Popular",
+        "cpu": "3 Websites",
+        "cpuDetail": "Sites",
+        "ram": "10 GB",
+        "ramDetail": "SSD Storage",
+        "storage": "Unmetered",
+        "storageDetail": "Bandwidth",
+        "bandwidth": "3 Emails",
+        "bandwidthDetail": "Included",
+        "uptime": "Weekly Backup",
+        "price": "₹59",
+        "prices": { "INR": 59, "USD": 1.99, "EUR": 1.99 },
+        "period": "/mo",
+        "orderLink": "https://warnode.cloud/web-hosting"
+      },
+      {
+        "id": "emerald",
+        "name": "Emerald",
+        "badge": "Best Value",
+        "cpu": "5 Websites",
+        "cpuDetail": "Sites",
+        "ram": "15 GB",
+        "ramDetail": "SSD Storage",
+        "storage": "Unmetered",
+        "storageDetail": "Bandwidth",
+        "bandwidth": "5 Emails",
+        "bandwidthDetail": "Included",
+        "uptime": "Free SSL",
+        "price": "₹99",
+        "prices": { "INR": 99, "USD": 2.99, "EUR": 2.99 },
+        "period": "/mo",
+        "orderLink": "https://warnode.cloud/web-hosting"
+      },
+      {
+        "id": "ruby",
+        "name": "Ruby",
+        "cpu": "7 Websites",
+        "cpuDetail": "Sites",
+        "ram": "20 GB",
+        "ramDetail": "SSD Storage",
+        "storage": "Unmetered",
+        "storageDetail": "Bandwidth",
+        "bandwidth": "7 Emails",
+        "bandwidthDetail": "Included",
+        "uptime": "Daily Backup · Free SSL",
+        "price": "₹129",
+        "prices": { "INR": 129, "USD": 3.99, "EUR": 3.99 },
+        "period": "/mo",
+        "orderLink": "https://warnode.cloud/web-hosting"
+      },
+      {
+        "id": "diamond",
+        "name": "Diamond",
+        "cpu": "10 Websites",
+        "cpuDetail": "Sites",
+        "ram": "25 GB",
+        "ramDetail": "SSD Storage",
+        "storage": "Unmetered",
+        "storageDetail": "Bandwidth",
+        "bandwidth": "10 Emails",
+        "bandwidthDetail": "Included",
+        "uptime": "Priority Support",
+        "price": "₹149",
+        "prices": { "INR": 149, "USD": 4.99, "EUR": 4.99 },
+        "period": "/mo",
+        "orderLink": "https://warnode.cloud/web-hosting"
+      }
+    ]
+  }
+}

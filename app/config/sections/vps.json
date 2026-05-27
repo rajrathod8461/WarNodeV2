@@ -1,0 +1,239 @@
+{
+  "planTypes": [
+    {
+      "id": "amd-epyc",
+      "name": "AMD EPYC",
+      "displayName": "AMD EPYC VPS",
+      "image": "/cpu/ryzen9.png"
+    },
+    {
+      "id": "intel-xeon",
+      "name": "Intel Xeon",
+      "displayName": "Intel Xeon VPS",
+      "image": "/cpu/intel.png"
+    }
+  ],
+  "locations": [
+    {
+      "id": "mumbai",
+      "name": "Mumbai",
+      "flag": "in",
+      "displayName": "Mumbai, India",
+      "availableCpus": ["amd-epyc", "intel-xeon"]
+    },
+    {
+      "id": "hyderabad",
+      "name": "Hyderabad",
+      "flag": "in",
+      "displayName": "Hyderabad, India",
+      "availableCpus": ["amd-epyc", "intel-xeon"]
+    },
+    {
+      "id": "delhi",
+      "name": "Delhi",
+      "flag": "in",
+      "displayName": "Delhi, India",
+      "availableCpus": ["amd-epyc", "intel-xeon"]
+    },
+    {
+      "id": "singapore",
+      "name": "Singapore",
+      "flag": "sg",
+      "displayName": "Singapore",
+      "availableCpus": ["amd-epyc"]
+    },
+    {
+      "id": "frankfurt",
+      "name": "Frankfurt",
+      "flag": "de",
+      "displayName": "Frankfurt, Germany",
+      "availableCpus": ["amd-epyc", "intel-xeon"]
+    }
+  ],
+  "plans": {
+    "amd-epyc": [
+      {
+        "id": "WN-VM-1",
+        "name": "WN-VM 1",
+        "badge": "30s",
+        "image": "/cpu/ryzen9.png",
+        "cpu": "1 vCore",
+        "cpuDetail": "AMD EPYC",
+        "ram": "2 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "20 GB",
+        "storageDetail": "Gen4 NVMe SSD",
+        "prices": { "INR": 120, "EUR": 1.49, "USD": 1.99 },
+        "period": "/mo",
+        "orderLink": "https://warnode.cloud/vps"
+      },
+      {
+        "id": "WN-VM-2",
+        "name": "WN-VM 2",
+        "badge": "Popular",
+        "image": "/cpu/ryzen9.png",
+        "cpu": "2 vCores",
+        "cpuDetail": "AMD EPYC",
+        "ram": "4 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "40 GB",
+        "storageDetail": "Gen4 NVMe SSD",
+        "prices": { "INR": 240, "EUR": 2.99, "USD": 3.49 },
+        "period": "/mo",
+        "orderLink": "https://warnode.cloud/vps"
+      },
+      {
+        "id": "WN-VM-3",
+        "name": "WN-VM 3",
+        "badge": "30s",
+        "image": "/cpu/ryzen9.png",
+        "cpu": "2 vCores",
+        "cpuDetail": "AMD EPYC",
+        "ram": "8 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "60 GB",
+        "storageDetail": "Gen4 NVMe SSD",
+        "prices": { "INR": 480, "EUR": 4.99, "USD": 6.99 },
+        "period": "/mo",
+        "orderLink": "https://warnode.cloud/vps"
+      },
+      {
+        "id": "WN-VM-4",
+        "name": "WN-VM 4",
+        "badge": "30s",
+        "image": "/cpu/ryzen9.png",
+        "cpu": "4 vCores",
+        "cpuDetail": "AMD EPYC",
+        "ram": "16 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "80 GB",
+        "storageDetail": "Gen4 NVMe SSD",
+        "prices": { "INR": 960, "EUR": 8.99, "USD": 11.99 },
+        "period": "/mo",
+        "orderLink": "https://warnode.cloud/vps"
+      },
+      {
+        "id": "WN-VM-5",
+        "name": "WN-VM 5",
+        "badge": "Priority",
+        "image": "/cpu/ryzen9.png",
+        "cpu": "8 vCores",
+        "cpuDetail": "AMD EPYC",
+        "ram": "32 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "100 GB",
+        "storageDetail": "Gen4 NVMe SSD",
+        "prices": { "INR": 1920, "EUR": 17.99, "USD": 22.99 },
+        "period": "/mo",
+        "orderLink": "https://warnode.cloud/vps"
+      },
+      {
+        "id": "WN-VM-6",
+        "name": "WN-VM 6",
+        "badge": "Dedicated",
+        "image": "/cpu/ryzen9.png",
+        "cpu": "16 vCores",
+        "cpuDetail": "AMD EPYC",
+        "ram": "64 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "200 GB",
+        "storageDetail": "Gen4 NVMe SSD",
+        "prices": { "INR": 3840, "EUR": 35.99, "USD": 42.99 },
+        "period": "/mo",
+        "orderLink": "https://warnode.cloud/vps"
+      }
+    ],
+    "intel-xeon": [
+      {
+        "id": "WN-VM-i1",
+        "name": "WN-VM i1",
+        "badge": "30s",
+        "image": "/cpu/intel.png",
+        "cpu": "1 vCore",
+        "cpuDetail": "Intel Xeon",
+        "ram": "2 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "20 GB",
+        "storageDetail": "Gen4 NVMe SSD",
+        "prices": { "INR": 90, "EUR": 0.99, "USD": 1.49 },
+        "period": "/mo",
+        "orderLink": "https://warnode.cloud/vps-intel"
+      },
+      {
+        "id": "WN-VM-i2",
+        "name": "WN-VM i2",
+        "badge": "Popular",
+        "image": "/cpu/intel.png",
+        "cpu": "2 vCores",
+        "cpuDetail": "Intel Xeon",
+        "ram": "4 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "40 GB",
+        "storageDetail": "Gen4 NVMe SSD",
+        "prices": { "INR": 180, "EUR": 1.99, "USD": 2.99 },
+        "period": "/mo",
+        "orderLink": "https://warnode.cloud/vps-intel"
+      },
+      {
+        "id": "WN-VM-i3",
+        "name": "WN-VM i3",
+        "badge": "30s",
+        "image": "/cpu/intel.png",
+        "cpu": "2 vCores",
+        "cpuDetail": "Intel Xeon",
+        "ram": "8 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "60 GB",
+        "storageDetail": "Gen4 NVMe SSD",
+        "prices": { "INR": 360, "EUR": 3.99, "USD": 3.99 },
+        "period": "/mo",
+        "orderLink": "https://warnode.cloud/vps-intel"
+      },
+      {
+        "id": "WN-VM-i4",
+        "name": "WN-VM i4",
+        "badge": "30s",
+        "image": "/cpu/intel.png",
+        "cpu": "4 vCores",
+        "cpuDetail": "Intel Xeon",
+        "ram": "16 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "80 GB",
+        "storageDetail": "Gen4 NVMe SSD",
+        "prices": { "INR": 720, "EUR": 6.99, "USD": 7.99 },
+        "period": "/mo",
+        "orderLink": "https://warnode.cloud/vps-intel"
+      },
+      {
+        "id": "WN-VM-i5",
+        "name": "WN-VM i5",
+        "badge": "Priority",
+        "image": "/cpu/intel.png",
+        "cpu": "8 vCores",
+        "cpuDetail": "Intel Xeon",
+        "ram": "32 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "100 GB",
+        "storageDetail": "Gen4 NVMe SSD",
+        "prices": { "INR": 1440, "EUR": 13.99, "USD": 15.99 },
+        "period": "/mo",
+        "orderLink": "https://warnode.cloud/vps-intel"
+      },
+      {
+        "id": "WN-VM-i6",
+        "name": "WN-VM i6",
+        "badge": "Dedicated",
+        "image": "/cpu/intel.png",
+        "cpu": "16 vCores",
+        "cpuDetail": "Intel Xeon",
+        "ram": "64 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "200 GB",
+        "storageDetail": "Gen4 NVMe SSD",
+        "prices": { "INR": 2880, "EUR": 27.99, "USD": 31.99 },
+        "period": "/mo",
+        "orderLink": "https://warnode.cloud/vps-intel"
+      }
+    ]
+  }
+}

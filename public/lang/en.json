@@ -1,0 +1,359 @@
+{
+  "navbar": {
+    "games": "Games",
+    "cloud": "Cloud",
+    "dedicated": "Dedicated",
+    "discord": "Discord Bot",
+    "webhosting": "WebHosting",
+    "warShield": "WarShield",
+    "legal": "Legal",
+    "clientSpace": "CLIENT SPACE",
+    "panels": "Panels",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "termsDescription": "Our service agreement and terms",
+    "privacyDescription": "How we protect your privacy"
+  },
+  "common": {
+    "orderNow": "Order Now",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More",
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "loading": "Loading...",
+    "comingSoon": "Coming Soon",
+    "popular": "Popular",
+    "bestValue": "Best Value",
+    "mostPopular": "Most Popular",
+    "recommended": "Recommended"
+  },
+  "vps": {
+    "title": "VPS Hosting Solutions",
+    "description": "High-performance virtual private servers with full root access, SSD storage, and 24/7 support. Perfect for developers and businesses.",
+    "badge": "Cloud VPS",
+    "location": "Location",
+    "cpuType": "CPU Type",
+    "choosePlan": "Choose Plan",
+    "step1": "1. Location",
+    "step2": "2. CPU Type",
+    "step3": "3. Choose Plan"
+  },
+  "dedicated": {
+    "title": "Dedicated Server Solutions",
+    "description": "Bare metal dedicated servers with enterprise-grade hardware, full control, and maximum performance for demanding applications.",
+    "badge": "Dedicated Servers",
+    "cpuType": "CPU Type",
+    "location": "Location",
+    "choosePlan": "Choose Plan",
+    "step1": "1. CPU Type",
+    "step2": "2. Choose Plan",
+    "noStock": "No Stock Available",
+    "noStockDescription": "We're currently out of stock for all VDS configurations. Please check back later or contact our support team for updates."
+  },
+  "features": {
+    "title": "Advanced Features",
+    "subtitle": "Why developers and gamers choose WarNodes",
+    "badge": "WarShield Protected",
+    "highPerformance": "Gen4 NVMe Storage",
+    "highPerformanceDesc": "Blazing-fast read and write speeds with Gen4 NVMe drives for ultra-low latency and instant load times",
+    "lowLatency": "Ultra-Low India Latency",
+    "lowLatencyDesc": "Under 20ms latency across India with gaming-optimized routing on our global network",
+    "advancedSecurity": "WarShield Protection",
+    "advancedSecurityDesc": "Enterprise DDoS proxy for Minecraft on OVH Game infrastructure with custom WarNodes filters. Multi-layer L3/L4/L7 scrubbing conceals your origin IP, mitigates SYN, UDP, and application-layer floods in real time, and preserves legitimate player traffic across India and Singapore proxy nodes—with 99.9% uptime SLA.",
+    "autoRecovery": "Instant Deployment",
+    "autoRecoveryDesc": "Servers provisioned and ready in under 30 seconds after checkout",
+    "fullControl": "Pterodactyl Panel",
+    "fullControlDesc": "Manage consoles, files, plugins, modpacks, and more from the WarNodes control panel",
+    "resourceScaling": "High-Frequency CPUs",
+    "resourceScalingDesc": "AMD EPYC and Intel Xeon hardware built for demanding workloads",
+    "globalNetwork": "Optimized Global Network",
+    "globalNetworkDesc": "Mumbai, Delhi, Hyderabad, Singapore, Dubai, Frankfurt, and Washington DC locations"
+  },
+  "locations": {
+    "title": "Explore Our",
+    "titleHighlight": "Global Network",
+    "subtitle": "India Locations in Mumbai, Delhi, and Hyderabad—with Kolkata coming soon. Global Locations in Singapore, Dubai, Frankfurt, and Washington DC.",
+    "badge": "Global Infrastructure",
+    "indiaGroup": "India Locations",
+    "globalGroup": "Global Locations"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions about our game server hosting services",
+    "question1": "How do I get started with game server hosting?",
+    "answer1": "Getting started is simple! Choose your game, select a server location, and follow our easy setup wizard. Your server will be up and running in minutes with our instant deployment system.",
+    "question2": "What kind of support do you provide?",
+    "answer2": "We offer 24/7 technical support through live chat and ticket system. Our expert team is always ready to help with server configuration, performance optimization, and any technical issues.",
+    "question3": "Can I modify server settings and configurations?",
+    "answer3": "Yes! You have full control over your server settings through our intuitive control panel. Modify game settings, install mods, and manage your server with ease.",
+    "question4": "What payment methods do you accept?",
+    "answer4": "We accept all major credit cards, PayPal, and cryptocurrency payments. Our billing system is secure and transparent, with no hidden fees.",
+    "question5": "Do you offer DDoS protection?",
+    "answer5": "Yes, all our servers come with enterprise-grade DDoS protection included at no extra cost. Your server will stay online even during attacks."
+  },
+  "footer": {
+    "description": "Next-gen infrastructure for developers and gamers. Gen4 NVMe, WarShield DDoS protection, and ultra-low latency hosting across India and worldwide.",
+    "madeBy": "Made by",
+    "quickLinks": "Quick Links",
+    "legal": "Legal",
+    "contactUs": "Contact Us",
+    "clientArea": "Client Area",
+    "discord": "Discord",
+    "vpsHosting": "VPS Hosting",
+    "dedicatedServerHosting": "Dedicated Server Hosting",
+    "gameServerHosting": "Game Server Hosting",
+    "email": "Email",
+    "phone": "Phone",
+    "gamePanel": "Game Panel",
+    "allRightsReserved": "All rights reserved.",
+    "systemsOperational": "All systems operational",
+    "ddosProtection": "DDoS Protection"
+  },
+  "ddos": {
+    "badge": "WarShield DDoS Protection",
+    "title": "WarShield DDoS Protection",
+    "description": "Enterprise DDoS proxy for Minecraft servers. Built on OVH Game infrastructure with custom filters. Low-latency deployments in India and Singapore.",
+    "vpBuiltTitle": "Built for Minecraft",
+    "vpBuiltDesc": "Enterprise-level protocol filtering designed specifically for high-concurrency server networks.",
+    "vpStealthTitle": "Backend Stealth",
+    "vpStealthDesc": "Fully conceals your origin server IP, neutralizing all direct-to-host intrusion attempts instantly.",
+    "vpPacketTitle": "Packet Inspection",
+    "vpPacketDesc": "Hardware-level deep packet analysis silently drops bot floods while prioritizing legitimate player handshakes.",
+    "vpGameTitle": "Game Optimization",
+    "vpGameDesc": "Latency-neutral filtering algorithms ensure stable ping and a seamless connection experience for players.",
+    "vpPeerTitle": "Tier-1 Peering",
+    "vpPeerDesc": "Strategic network routing across Asian backbone carriers for sub-millisecond data processing speeds.",
+    "secArchTitle": "Security Architecture",
+    "secArchLead": "Deep integration with OVH Game global scrubbing network, layered with our custom filtering rulesets.",
+    "secScrubTitle": "Multi-Layer Scrubbing",
+    "secScrubDesc": "Incoming data is meticulously analyzed through three dedicated scrubbing networks before reaching your server.",
+    "secFloodTitle": "Flood Suppression",
+    "secFloodDesc": "Automated hardware-level offloading mitigates SYN, UDP, and complex application-layer floods in real time.",
+    "secProtoTitle": "Protocol Awareness",
+    "secProtoDesc": "Designed to natively interpret Minecraft structure packets, blocking malformed requests without disrupting legit users.",
+    "secReactTitle": "Sub-Second Reaction",
+    "secReactDesc": "Machine learning-powered anomaly detection activates custom mitigation pathways in milliseconds during peak spikes.",
+    "ctaStayOnline": "Stay online.",
+    "ctaStayProtected": "Stay protected.",
+    "ctaBody": "Protect your gaming community with enterprise-grade infrastructure. Immediate deployment and zero-downtime migration.",
+    "deployNow": "Deploy Now",
+    "step1": "1. Location",
+    "step2": "2. Choose Plan",
+    "choosePlan": "Choose your plan",
+    "popEdge": "Edge PoP",
+    "support": "Support",
+    "comparisonTitle": "Network Capabilities",
+    "feature": "Feature",
+    "ispShield": "ISP Shield",
+    "addonsTitle": "Proxy Add-Ons",
+    "oneTime": "one-time"
+  },
+  "webhosting": {
+    "title": "Web Hosting Solutions",
+    "description": "Professional web hosting with high-performance servers, 99.9% uptime guarantee, and 24/7 support. Perfect for websites, applications, and online businesses.",
+    "badge": "Web Hosting"
+  },
+  "panelShowcase": {
+    "badge": "WarNodes Panel",
+    "title": "Everything You Need for Your Server",
+    "subtitle": "10+ built-in tools — dashboard, console, files, databases, backups, network, schedules, plugins, mods, modpacks, datapacks, players, versions, settings, and more.",
+    "featuresLabel": "Highlighted tools",
+    "featuresCount": "10+"
+  },
+  "discordBanner": {
+    "title": "Join Our Discord",
+    "subtitle": "Connect with our community of gamers and developers",
+    "description": "Get instant support, share experiences, and stay updated with the latest news"
+  },
+  "osSelection": {
+    "badge": "Operating Systems",
+    "title": "Choose your OS",
+    "description": "Select from a wide range of popular operating systems. All images are pre-configured and ready to deploy instantly on your VPS."
+  },
+  "hero": {
+    "titlePrefix": "Host your own",
+    "titleSuffix": "Servers",
+    "description": "High-performance hosting powered by Gen4 NVMe storage, high-frequency CPUs, and enterprise-grade WarShield DDoS protection.",
+    "getStarted": "Get started",
+    "learnMore": "Learn More",
+    "getStartedFree": "Get started for free!",
+    "instantSetup": "Instant Setup",
+    "instantSetupDesc": "Get your server running in under 60 seconds",
+    "ddosProtection": "DDoS Protection",
+    "ddosProtectionDesc": "WarShield Tbps+ DDoS mitigation included",
+    "uptime": "99.9% Uptime",
+    "uptimeDesc": "Reliable hosting with guaranteed availability",
+    "support": "24/7 Support",
+    "supportDesc": "Expert help whenever you need it"
+  },
+  "configHeaders": {
+    "vpsHosting": "VPS Hosting",
+    "buildVps": "Build your VPS",
+    "vpsDescription": "AMD EPYC and Intel Xeon VPS with Gen4 NVMe, 2Gbps network, unmetered bandwidth, and WarShield protection — from ₹180/mo.",
+    "vdsHosting": "VDS Hosting",
+    "buildVds": "Build your VDS",
+    "vdsDescription": "High performance Virtual Dedicated Servers backed with 2Tbps+ DDoS protection, several global anycast locations, latest Ryzen and Intel hardware; all at an affordable price.",
+    "gameServers": "Game Servers",
+    "chooseGameServer": "Choose your Game Server",
+    "gameServersDescription": "Intel Xeon and AMD EPYC Minecraft hosting with unlimited players, WarNodes panel, and instant setup — from ₹59/mo.",
+    "webHosting": "Web Hosting",
+    "webHostingSolutions": "Web Hosting Solutions",
+    "webHostingDescription": "Professional web hosting with high-performance servers, 99.9% uptime guarantee, and 24/7 support. Perfect for websites, applications, and online businesses.",
+    "discordBotHosting": "Discord Bot Hosting",
+    "discordBotTitle": "Discord Bot Hosting",
+    "discordBotDescription": "24/7 multi-language bot hosting — from ₹15/mo"
+  },
+  "discord": {
+    "title": "Discord Bot Hosting",
+    "description": "24/7 multi-language bot hosting — from ₹15/mo",
+    "badge": "24/7 Multi-Language Support",
+    "step1": "1. Plan Type",
+    "step2": "2. Choose Plan",
+    "choosePlan": "Choose Plan",
+    "planSubtitle": "Bot hosting",
+    "stackBadge": "Supported Technologies",
+    "supportedLanguagesTitle": "Supported Languages",
+    "supportedLanguagesTitleHighlight": "& Frameworks"
+  },
+  "pricingSection": {
+    "title": "Simple Pricing",
+    "titleHighlight": "Plans",
+    "titleSuffix": "for Everyone",
+    "description": "Choose the perfect plan for your needs. All plans include our core features with no hidden fees.",
+    "footerText": "Need a custom solution?",
+    "footerLinkText": "Contact our sales team"
+  },
+  "pricingPlans": {
+    "gameServers": {
+      "title": "Minecraft Hosting",
+      "description": "Intel Xeon from ₹35/GB · AMD EPYC from ₹39/GB",
+      "buttonText": "View More",
+      "features": {
+        "instantDeployment": "Instant deployment",
+        "ddosProtection": "DDoS protection",
+        "support247": "24/7 support",
+        "customConfigurations": "Custom configurations",
+        "modSupport": "Mod support"
+      }
+    },
+    "vpsHosting": {
+      "title": "VPS Hosting",
+      "description": "Intel & AMD virtual servers — from ₹45/GB RAM",
+      "buttonText": "Order Now",
+      "features": {
+        "fullRootAccess": "Full root access",
+        "ssdStorage": "SSD storage",
+        "uptime": "99.9% uptime",
+        "multipleOS": "Multiple OS options",
+        "backupIncluded": "Backup included"
+      }
+    },
+    "dedicatedServers": {
+      "title": "Dedicated Servers",
+      "description": "Enterprise-grade dedicated hardware for maximum performance",
+      "buttonText": "Get a Quote",
+      "features": {
+        "bareMetalPerformance": "Bare metal performance",
+        "customHardware": "Custom hardware",
+        "enterpriseSupport": "Enterprise support",
+        "advancedSecurity": "Advanced security",
+        "managedServices": "Managed services"
+      }
+    },
+    "webHosting": {
+      "title": "Web Hosting",
+      "description": "LiteSpeed-powered web hosting with free SSL — free plan available",
+      "buttonText": "Order Now",
+      "features": {
+        "ssdStorage": "SSD storage",
+        "uptime": "99.9% uptime",
+        "support247": "24/7 support",
+        "freeSSL": "Free SSL certificate",
+        "dailyBackups": "Daily backups"
+      }
+    },
+    "discordBot": {
+      "title": "Discord Bot Hosting",
+      "description": "24/7 multi-language bot hosting — from ₹15/mo",
+      "buttonText": "Order Now",
+      "features": {
+        "multiLanguage": "Multi-language support",
+        "instantDeployment": "Instant deployment",
+        "ddosProtection": "DDoS protection",
+        "support247": "24/7 support",
+        "uptime": "99.9% uptime"
+      }
+    },
+    "warShield": {
+      "title": "WarShield",
+      "description": "DDoS proxy for Minecraft — India & Singapore",
+      "buttonText": "View Service",
+      "features": {
+        "tbProtection": "OVH Game protection",
+        "alwaysOnline": "Origin IP concealment",
+        "mitigation": "L3 / L4 / L7 filtering",
+        "ddosProtection": "DDoS protection",
+        "uptime": "99.9% uptime SLA"
+      }
+    },
+    "otherGameHosting": {
+      "title": "Hytale Hosting",
+      "description": "Dedicated Hytale servers with WarNodes panel — from ₹160/mo",
+      "buttonText": "View Plans",
+      "features": {
+        "lowPing": "Low ping worldwide",
+        "stable": "Stable, reliable performance"
+      }
+    }
+  },
+  "gameServerList": {
+    "badge": "Game Servers",
+    "title": "Choose your Game Server",
+    "description": "Select from our wide range of optimized game servers. Each server is configured for maximum performance and comes with DDoS protection.",
+    "step1": "1. Plan Type",
+    "step2": "2. Location", 
+    "step3": "3. Select Software",
+    "step4": "4. Choose Plan",
+    "step1LocationNoCpu": "1. Location",
+    "step2GameNoCpu": "2. Select Software",
+    "step3PlanNoCpu": "3. Choose Plan",
+    "orderNow": "Order Now",
+    "featured": "Featured",
+    "premium": "Premium",
+    "startingAt": "Starting at",
+    "ddosProtection": "DDoS Protection"
+  },
+  "webHostingPricing": {
+    "badge": "Web Hosting Solutions",
+    "title": "Premium Web Hosting",
+    "description": "Fast, reliable, and secure web hosting solutions for your websites and applications.",
+    "step1": "1. Plan Type",
+    "step2": "2. Choose Plan",
+    "orderNow": "Order Now",
+    "webHosting": "Web Hosting"
+  },
+  "webHostingStack": {
+    "badge": "Supported Technologies",
+    "title": "Deploy with your preferred stack",
+    "description": "PHP, Node.js, MySQL, WordPress, cPanel — all supported. Use what you know."
+  },
+  "cookies": {
+    "title": "Cookie Preferences",
+    "subtitle": "Manage your privacy settings",
+    "description": "We use cookies to enhance your browsing experience and remember your preferences. You can choose which cookies to accept.",
+    "acceptAll": "Accept All",
+    "rejectAll": "Reject All",
+    "customize": "Customize Settings",
+    "savePreferences": "Save Preferences",
+    "back": "Back",
+    "openSettings": "Open cookie settings",
+    "necessary": {
+      "title": "Necessary Cookies",
+      "description": "Essential cookies required for basic website functionality. These cannot be disabled."
+    },
+    "preferences": {
+      "title": "Preference Cookies",
+      "description": "Remember your language and theme preferences for a better user experience."
+    }
+  }
+}

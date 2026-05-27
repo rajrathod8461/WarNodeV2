@@ -1,0 +1,130 @@
+{
+  "section": {
+    "title": {
+      "prefix": "Our Hosting",
+      "highlight": "Solutions",
+      "suffix": ""
+    },
+    "description": "Select the perfect infrastructure for your project — pricing from warnode.cloud",
+    "plans": [
+      {
+        "titleKey": "pricingPlans.gameServers.title",
+        "image": "/banners/minecraft-banners.webp",
+        "descriptionKey": "pricingPlans.gameServers.description",
+        "basePrice": 59,
+        "displayPrices": { "INR": "₹59", "USD": "$0.99", "EUR": "€0.99" },
+        "priceSuffix": "/month",
+        "featuresKeys": [
+          "pricingPlans.gameServers.features.instantDeployment",
+          "pricingPlans.gameServers.features.ddosProtection",
+          "pricingPlans.gameServers.features.support247",
+          "pricingPlans.gameServers.features.customConfigurations",
+          "pricingPlans.gameServers.features.modSupport"
+        ],
+        "buttonTextKey": "pricingPlans.gameServers.buttonText",
+        "buttonStyle": "secondary",
+        "popular": false,
+        "link": "/games"
+      },
+      {
+        "titleKey": "pricingPlans.vpsHosting.title",
+        "image": "/vps.png",
+        "descriptionKey": "pricingPlans.vpsHosting.description",
+        "basePrice": 90,
+        "displayPrices": { "INR": "₹90", "USD": "$1.99", "EUR": "€0.99" },
+        "priceSuffix": "/GB RAM",
+        "featuresKeys": [
+          "pricingPlans.vpsHosting.features.fullRootAccess",
+          "pricingPlans.vpsHosting.features.ssdStorage",
+          "pricingPlans.vpsHosting.features.uptime",
+          "pricingPlans.vpsHosting.features.multipleOS",
+          "pricingPlans.vpsHosting.features.backupIncluded"
+        ],
+        "buttonTextKey": "pricingPlans.vpsHosting.buttonText",
+        "buttonStyle": "primary",
+        "popular": true,
+        "link": "/vps?cpu=intel-xeon"
+      },
+      {
+        "titleKey": "pricingPlans.webHosting.title",
+        "image": "/banners/webhosting.png",
+        "descriptionKey": "pricingPlans.webHosting.description",
+        "basePrice": 0,
+        "displayPrices": { "INR": "FREE", "USD": "FREE", "EUR": "FREE" },
+        "priceSuffix": "",
+        "featuresKeys": [
+          "pricingPlans.webHosting.features.ssdStorage",
+          "pricingPlans.webHosting.features.uptime",
+          "pricingPlans.webHosting.features.support247",
+          "pricingPlans.webHosting.features.freeSSL",
+          "pricingPlans.webHosting.features.dailyBackups"
+        ],
+        "buttonTextKey": "pricingPlans.webHosting.buttonText",
+        "buttonStyle": "secondary",
+        "popular": false,
+        "link": "/webhosting"
+      },
+      {
+        "titleKey": "pricingPlans.discordBot.title",
+        "image": "/banners/node.webp",
+        "descriptionKey": "pricingPlans.discordBot.description",
+        "basePrice": 15,
+        "displayPrices": { "INR": "₹15", "USD": "$0.99", "EUR": "€0.99" },
+        "priceSuffix": "/month",
+        "featuresKeys": [
+          "pricingPlans.discordBot.features.multiLanguage",
+          "pricingPlans.discordBot.features.instantDeployment",
+          "pricingPlans.discordBot.features.ddosProtection",
+          "pricingPlans.discordBot.features.support247",
+          "pricingPlans.discordBot.features.uptime"
+        ],
+        "buttonTextKey": "pricingPlans.discordBot.buttonText",
+        "buttonStyle": "secondary",
+        "popular": false,
+        "link": "/discord"
+      },
+      {
+        "titleKey": "pricingPlans.warShield.title",
+        "image": "/ddos.webp",
+        "descriptionKey": "pricingPlans.warShield.description",
+        "basePrice": 299,
+        "displayPrices": { "INR": "₹299", "USD": "$3.99", "EUR": "€2.99" },
+        "priceSuffix": "/month",
+        "featuresKeys": [
+          "pricingPlans.warShield.features.tbProtection",
+          "pricingPlans.warShield.features.alwaysOnline",
+          "pricingPlans.warShield.features.mitigation",
+          "pricingPlans.warShield.features.ddosProtection",
+          "pricingPlans.warShield.features.uptime"
+        ],
+        "buttonTextKey": "pricingPlans.warShield.buttonText",
+        "buttonStyle": "secondary",
+        "popular": false,
+        "link": "/ddos"
+      },
+      {
+        "titleKey": "pricingPlans.otherGameHosting.title",
+        "image": "/hytale.jpg",
+        "descriptionKey": "pricingPlans.otherGameHosting.description",
+        "basePrice": 160,
+        "displayPrices": { "INR": "₹160", "USD": "$1.99", "EUR": "€1.99" },
+        "priceSuffix": "/month",
+        "featuresKeys": [
+          "pricingPlans.otherGameHosting.features.lowPing",
+          "pricingPlans.otherGameHosting.features.stable",
+          "pricingPlans.gameServers.features.instantDeployment",
+          "pricingPlans.gameServers.features.ddosProtection",
+          "pricingPlans.gameServers.features.modSupport"
+        ],
+        "buttonTextKey": "pricingPlans.otherGameHosting.buttonText",
+        "buttonStyle": "secondary",
+        "popular": false,
+        "link": "/games?game=hytale"
+      }
+    ],
+    "footer": {
+      "text": "Need a custom solution?",
+      "linkText": "Contact us on Discord"
+    }
+  }
+}

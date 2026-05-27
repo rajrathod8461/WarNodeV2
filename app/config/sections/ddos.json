@@ -1,0 +1,158 @@
+{
+  "heroImage": "/ddos.webp",
+  "locations": [
+    { "id": "mumbai", "name": "Mumbai", "flag": "in" },
+    { "id": "singapore", "name": "Singapore", "flag": "sg" }
+  ],
+  "plans": [
+    {
+      "id": "starter",
+      "name": "Starter",
+      "price": 299,
+      "prices": { "INR": 299, "USD": 3.49, "EUR": 2.99 },
+      "ram": "2 GB Dedicated RAM",
+      "cpu": "1 vCPU Core",
+      "ports": "2 Proxy Ports",
+      "protection": "OVH Game Protection",
+      "support": "Community",
+      "detailLines": [
+        "2 GB Dedicated RAM",
+        "1 vCPU Core",
+        "2 Proxy Ports",
+        "OVH Game Protection"
+      ],
+      "orderLink": "https://warnode.cloud/ddos"
+    },
+    {
+      "id": "standard",
+      "name": "Standard",
+      "price": 449,
+      "prices": { "INR": 449, "USD": 4.99, "EUR": 4.49 },
+      "ram": "3 GB Dedicated RAM",
+      "cpu": "2 vCPU Cores",
+      "ports": "2 Proxy Ports",
+      "protection": "Advanced OVH Shield",
+      "support": "Standard Ticket",
+      "detailLines": [
+        "3 GB Dedicated RAM",
+        "2 vCPU Cores",
+        "2 Proxy Ports",
+        "Advanced OVH Shield",
+        "Everything in Starter Included"
+      ],
+      "orderLink": "https://warnode.cloud/ddos"
+    },
+    {
+      "id": "advanced",
+      "name": "Advanced",
+      "price": 599,
+      "prices": { "INR": 599, "USD": 6.99, "EUR": 5.99 },
+      "ram": "4 GB Dedicated RAM",
+      "cpu": "2 vCPU Cores",
+      "ports": "3 Proxy Ports",
+      "protection": "TCP + OVH Shield",
+      "support": "Fast Ticket Queue",
+      "detailLines": [
+        "4 GB Dedicated RAM",
+        "2 vCPU Cores",
+        "3 Proxy Ports",
+        "TCP + OVH Shield",
+        "Everything in Standard Included"
+      ],
+      "orderLink": "https://warnode.cloud/ddos"
+    },
+    {
+      "id": "pro-elite",
+      "name": "Pro Elite",
+      "badge": "Popular",
+      "popular": true,
+      "price": 799,
+      "prices": { "INR": 799, "USD": 8.99, "EUR": 7.99 },
+      "ram": "6 GB Dedicated RAM",
+      "cpu": "3 vCPU Cores",
+      "ports": "3 Proxy Ports",
+      "protection": "OVH VAC + TCP Filter",
+      "support": "Priority 24/7",
+      "detailLines": [
+        "6 GB Dedicated RAM",
+        "3 vCPU Cores",
+        "3 Proxy Ports",
+        "OVH VAC + TCP Filter",
+        "Everything in Advanced Included"
+      ],
+      "orderLink": "https://warnode.cloud/ddos"
+    },
+    {
+      "id": "ultra-network",
+      "name": "Ultra Network",
+      "price": 1099,
+      "prices": { "INR": 1099, "USD": 11.99, "EUR": 10.99 },
+      "ram": "8 GB Dedicated RAM",
+      "cpu": "4 vCPU Cores",
+      "ports": "4 Proxy Ports",
+      "protection": "Advanced Firewall + DDoS Filter",
+      "support": "Premium Priority",
+      "detailLines": [
+        "8 GB Dedicated RAM",
+        "4 vCPU Cores",
+        "4 Proxy Ports",
+        "Advanced Firewall + DDoS Filter",
+        "Everything in Pro Elite Included"
+      ],
+      "orderLink": "https://warnode.cloud/ddos"
+    },
+    {
+      "id": "elite-network",
+      "name": "Elite Network",
+      "price": 1399,
+      "prices": { "INR": 1399, "USD": 14.99, "EUR": 13.99 },
+      "ram": "10 GB Dedicated RAM",
+      "cpu": "4 vCPU Cores",
+      "ports": "5 Proxy Ports",
+      "protection": "Custom Firewall + Advanced DDoS Filtering",
+      "support": "VIP Expert",
+      "detailLines": [
+        "10 GB Dedicated RAM",
+        "4 vCPU Cores",
+        "5 Proxy Ports",
+        "Custom Firewall + Advanced DDoS Filtering",
+        "Dedicated IPv4 Included",
+        "Everything in Ultra Network Included"
+      ],
+      "orderLink": "https://warnode.cloud/ddos"
+    }
+  ],
+  "comparison": [
+    {
+      "feature": "Built for Minecraft",
+      "ispShield": "Generic filtering",
+      "warShield": "Minecraft-aware protocol filtering"
+    },
+    {
+      "feature": "Backend Stealth",
+      "ispShield": "Origin may be exposed",
+      "warShield": "Origin IP fully concealed"
+    },
+    {
+      "feature": "Packet Inspection",
+      "ispShield": "Basic signature checks",
+      "warShield": "Hardware-level deep packet inspection"
+    },
+    {
+      "feature": "Multi-Layer Scrubbing",
+      "ispShield": "Single scrub layer",
+      "warShield": "Three dedicated scrubbing layers"
+    },
+    {
+      "feature": "Flood Suppression",
+      "ispShield": "Reactive controls",
+      "warShield": "Auto mitigation for SYN/UDP/L7 floods"
+    }
+  ],
+  "addons": [
+    { "id": "ram", "name": "Extra RAM", "unit": "Per 1 GB / mo", "price": 99 },
+    { "id": "port", "name": "Extra Port", "unit": "Per Port / mo", "price": 99 },
+    { "id": "ip", "name": "Dedicated IP", "unit": "Port 25565 / mo", "price": 299 },
+    { "id": "firewall", "name": "Custom Firewall", "unit": "One-time Setup", "price": 259, "oneTime": true }
+  ]
+}

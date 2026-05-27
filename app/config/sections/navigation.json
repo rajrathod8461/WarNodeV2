@@ -1,0 +1,101 @@
+{
+  "mainNavigation": [
+    {
+      "name": "Games",
+      "href": "/games",
+      "icon": "Gamepad2",
+      "hasDropdown": true,
+      "dropdownType": "games"
+    },
+    {
+      "name": "VPS",
+      "href": "/vps",
+      "icon": "Cloud",
+      "hasDropdown": false
+    },
+    {
+      "name": "Discord Bot",
+      "href": "/discord",
+      "icon": "FaDiscord",
+      "hasDropdown": false
+    },
+    {
+      "name": "Web Hosting",
+      "href": "/webhosting",
+      "icon": "GrServerCluster",
+      "hasDropdown": false
+    },
+    {
+      "name": "WarShield",
+      "href": "/ddos",
+      "icon": "Shield",
+      "hasDropdown": false
+    },
+    {
+      "name": "Legal",
+      "href": "/terms-of-services",
+      "icon": "FileText",
+      "hasDropdown": true,
+      "dropdownType": "legal",
+      "dropdownItems": [
+        {
+          "name": "Terms of Service",
+          "href": "/terms-of-services",
+          "description": "Our service agreement and terms"
+        },
+        {
+          "name": "Privacy Policy",
+          "href": "/privacy-policy",
+          "description": "How we protect your privacy"
+        },
+        {
+          "name": "Refund Policy",
+          "href": "/refund-policy",
+          "description": "Our refund and guarantee terms"
+        }
+      ]
+    }
+  ],
+  "socialLinks": [
+    {
+      "name": "Discord",
+      "href": "https://discord.gg/warnode",
+      "icon": "discord"
+    }
+  ],
+  "clientSpace": {
+    "name": "CLIENT AREA",
+    "href": "https://portal.warnode.cloud",
+    "icon": "User"
+  },
+  "panels": [
+    {
+      "name": "Main Panel",
+      "host": "panel.warnode.cloud",
+      "href": "https://panel.warnode.cloud"
+    },
+    {
+      "name": "Reseller Panel",
+      "host": "manage.warnode.cloud",
+      "href": "https://manage.warnode.cloud/"
+    },
+    {
+      "name": "VPS Panel",
+      "host": "vps.warnode.cloud",
+      "href": "https://vps.warnode.cloud"
+    },
+    {
+      "name": "Web Hosting Panel",
+      "host": "web.warnode.cloud",
+      "href": "https://web.warnode.cloud"
+    }
+  ],
+  "banner": {
+    "show": false,
+    "text": "India's smoothest hosting — Gen4 NVMe & WarShield DDoS protection",
+    "couponCode": "WELCOME",
+    "useThemeColor": true,
+    "backgroundColor": "bg-red-500",
+    "fallbackColor": "bg-red-500"
+  }
+}

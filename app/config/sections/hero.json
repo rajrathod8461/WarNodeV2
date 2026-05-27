@@ -1,0 +1,112 @@
+{
+  "navbar": {
+    "logo": "/meta/Logo.png",
+    "logoVersion": "warnodes-1",
+    "brandName": "War",
+    "brandAccent": "Nodes"
+  },
+  "hero": {
+    "title": {
+      "suffixColor": "white",
+      "gameNameColor": "blue"
+    },
+    "games": [
+      {
+        "id": "minecraft",
+        "name": "Minecraft",
+        "displayName": "Minecraft",
+        "banner": "/banners/minecraft-banners.webp",
+        "color": "#4CAF50",
+        "showSuffix": true,
+        "showInDropdown": true
+      },
+      {
+        "id": "hytale",
+        "name": "Hytale",
+        "displayName": "Hytale",
+        "banner": "/hytale.jpg",
+        "color": "#2563EB",
+        "showSuffix": true,
+        "showInDropdown": true
+      },
+      {
+        "id": "vps",
+        "name": "VPS Hosting",
+        "displayName": "VPS",
+        "banner": "/vps.png",
+        "color": "#EF4444",
+        "showSuffix": true,
+        "showInDropdown": false
+      },
+      {
+        "id": "discord-bot",
+        "name": "Discord Bots",
+        "displayName": "Discord Bots",
+        "banner": "/banners/node.webp",
+        "color": "#5865F2",
+        "showSuffix": true,
+        "showInDropdown": false
+      },
+      {
+        "id": "webhosting",
+        "name": "Web Hosting",
+        "displayName": "Web Hosting",
+        "banner": "/banners/webhosting.png",
+        "color": "#3B82F6",
+        "showSuffix": true,
+        "showInDropdown": false
+      }
+    ],
+    "cycleInterval": 8000,
+    "partners": [
+      {
+        "name": "LiteSpeed",
+        "src": "/advertisement/litespeed.svg",
+        "loading": "lazy",
+        "colored": true
+      },
+      {
+        "name": "Pterodactyl",
+        "src": "/advertisement/pterodactyl.png",
+        "loading": "lazy",
+        "colored": true
+      },
+      {
+        "name": "Intel Xeon",
+        "src": "/advertisement/intel.png",
+        "loading": "lazy",
+        "colored": true
+      },
+      {
+        "name": "OVH",
+        "src": "/advertisement/ovhcloud.png",
+        "loading": "lazy",
+        "colored": true
+      },
+      {
+        "name": "Hetzner",
+        "src": "/advertisement/hetzner.png",
+        "loading": "lazy",
+        "colored": true
+      },
+      {
+        "name": "Datalix",
+        "src": "/advertisement/datalix.png",
+        "loading": "lazy",
+        "colored": true
+      },
+      {
+        "name": "Amd",
+        "src": "/advertisement/amd.svg",
+        "loading": "lazy",
+        "colored": true
+      },
+      {
+        "name": "Keyhelp",
+        "src": "/advertisement/keyhelp.svg",
+        "loading": "lazy",
+        "colored": true
+      }
+    ]
+  }
+}
