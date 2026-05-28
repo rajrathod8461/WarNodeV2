@@ -1,7 +1,7 @@
 {
   "settings": {
     "autoDetection": {
-      "enabled": true,
+      "enabled": false,
       "fallbackLanguage": "en"
     },
     "defaultLanguage": "en"
@@ -20,7 +20,7 @@
       "name": "French",
       "nativeName": "Français",
       "flag": "fr",
-      "enabled": true,
+      "enabled": false,
       "rtl": false
     },
     {
@@ -28,7 +28,7 @@
       "name": "German",
       "nativeName": "Deutsch",
       "flag": "de",
-      "enabled": true,
+      "enabled": false,
       "rtl": false
     },
     {
@@ -36,7 +36,7 @@
       "name": "Arabic",
       "nativeName": "العربية",
       "flag": "sa",
-      "enabled": true,
+      "enabled": false,
       "rtl": false
     },
     {
@@ -44,7 +44,7 @@
       "name": "Turkish",
       "nativeName": "Türkçe",
       "flag": "tr",
-      "enabled": true,
+      "enabled": false,
       "rtl": false
     },
     {
@@ -52,7 +52,7 @@
       "name": "Russian",
       "nativeName": "Русский",
       "flag": "ru",
-      "enabled": true,
+      "enabled": false,
       "rtl": false
     },
     {
@@ -60,7 +60,7 @@
       "name": "Chinese",
       "nativeName": "中文",
       "flag": "cn",
-      "enabled": true,
+      "enabled": false,
       "rtl": false
     },
     {
@@ -68,7 +68,7 @@
       "name": "Japanese",
       "nativeName": "日本語",
       "flag": "jp",
-      "enabled": true,
+      "enabled": false,
       "rtl": false
     },
     {
@@ -76,7 +76,7 @@
       "name": "Hindi",
       "nativeName": "हिन्दी",
       "flag": "in",
-      "enabled": true,
+      "enabled": false,
       "rtl": false
     },
     {
@@ -84,7 +84,7 @@
       "name": "Spanish",
       "nativeName": "Español",
       "flag": "es",
-      "enabled": true,
+      "enabled": false,
       "rtl": false
     },
     {
@@ -92,21 +92,11 @@
       "name": "Portuguese",
       "nativeName": "Português",
       "flag": "pt",
-      "enabled": true,
+      "enabled": false,
       "rtl": false
     }
   ],
   "localeMapping": {
-    "en": ["en", "en-us", "en-gb", "en-au", "en-ca", "en-nz", "en-za", "en-ie"],
-    "fr": ["fr", "fr-fr", "fr-ca", "fr-be", "fr-ch", "fr-lu", "fr-mc"],
-    "de": ["de", "de-de", "de-at", "de-ch", "de-li", "de-lu"],
-    "ar": ["ar", "ar-sa", "ar-ae", "ar-eg", "ar-ma", "ar-dz", "ar-tn", "ar-ly", "ar-sd", "ar-sy", "ar-iq", "ar-jo", "ar-lb", "ar-kw", "ar-om", "ar-qa", "ar-bh", "ar-ye"],
-    "tr": ["tr", "tr-tr", "tr-cy"],
-    "ru": ["ru", "ru-ru", "ru-by", "ru-kz", "ru-kg", "ru-tj", "ru-uz", "ru-md", "ru-am", "ru-ge", "ru-ua", "ru-mn"],
-    "zh": ["zh", "zh-cn", "zh-tw", "zh-hk", "zh-mo", "zh-sg"],
-    "ja": ["ja", "ja-jp"],
-    "hi": ["hi", "hi-in", "hi-np"],
-    "es": ["es", "es-es", "es-mx", "es-ar", "es-co", "es-pe", "es-ve", "es-cl", "es-ec", "es-gt", "es-cu", "es-bo", "es-do", "es-hn", "es-py", "es-sv", "es-ni", "es-cr", "es-pa", "es-uy", "es-pr", "es-us"],
-    "pt": ["pt", "pt-pt", "pt-br", "pt-ao", "pt-mz", "pt-gw", "pt-cv", "pt-st", "pt-tl", "pt-mo"]
+    "en": ["en", "en-us", "en-gb", "en-au", "en-ca", "en-nz", "en-za", "en-ie"]
   }
 }

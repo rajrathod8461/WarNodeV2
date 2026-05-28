@@ -38,36 +38,12 @@ export function useProductStock(orderLink?: string) {
     let cancelled = false
     setState({ status: "loading" })
 
-    const controller = new AbortController()
-    const timeout = window.setTimeout(() => controller.abort(), 6500)
-
-    // Static export me API routes available nahi hote, so browser-side fetch.
-    // Agar CORS/block/fetch fail ho jaye to button block na kare (treat as in stock).
-    fetch(orderLink, {
-      method: "GET",
-      redirect: "follow",
-      signal: controller.signal,
-      cache: "no-store",
-      headers: {
-        "user-agent": "warnodes-site-stock-check/1.0",
-        accept: "text/html,*/*",
-      },
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error("fetch_failed")
-        return res.text()
-      })
-      .then((html) => {
+    fetch(`/api/stock?url=${encodeURIComponent(orderLink)}`, { cache: "no-store" })
+      .then((r) => r.json())
+      .then((data: { inStock?: boolean }) => {
         if (cancelled) return
-        const text = html.toLowerCase()
-        const outOfStock =
-          text.includes("out of stock") ||
-          text.includes("sold out") ||
-          text.includes("currently unavailable") ||
-          text.includes("not available") ||
-          text.includes("unavailable")
-
-        const next: StockState = outOfStock ? { status: "out_of_stock" } : { status: "in_stock" }
+        const next: StockState =
+          data && data.inStock === false ? { status: "out_of_stock" } : { status: "in_stock" }
         cache.set(orderLink, next)
         setState(next)
       })
@@ -77,14 +53,9 @@ export function useProductStock(orderLink?: string) {
         cache.set(orderLink, next)
         setState(next)
       })
-      .finally(() => {
-        window.clearTimeout(timeout)
-      })
 
     return () => {
       cancelled = true
-      controller.abort()
-      window.clearTimeout(timeout)
     }
   }, [eligible, orderLink])
 
@@ -95,4 +66,3 @@ export function useProductStock(orderLink?: string) {
     isChecking: state.status === "loading",
   }
 }
-

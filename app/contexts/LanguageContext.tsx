@@ -23,27 +23,6 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 interface LanguageProviderProps {
   children: ReactNode;
 }
-const detectUserLanguage = (): Language => {
-  if (typeof window === 'undefined') return config.settings.defaultLanguage as Language;
-
-  const browserLang = navigator.language || navigator.languages?.[0] || 'en';
-  const locale = browserLang.toLowerCase();
-
-  for (const [langCode, locales] of Object.entries(config.localeMapping)) {
-    if (locales.some(supportedLocale => 
-      locale === supportedLocale.toLowerCase() || 
-      locale.startsWith(supportedLocale.toLowerCase() + '-')
-    )) {
-      const languageInfo = config.availableLanguages.find(lang => lang.code === langCode);
-      if (languageInfo && languageInfo.enabled) {
-        return langCode as Language;
-      }
-    }
-  }
-
-  return config.settings.defaultLanguage as Language;
-};
-
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
   const [language, setLanguage] = useState<Language>('en');
   const [translations, setTranslations] = useState<Translations>({});
@@ -83,44 +62,20 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
   useEffect(() => {
     const initializeLanguage = async () => {
-      let initialLanguage: Language = config.settings.defaultLanguage as Language;
-      
-      if (typeof window !== 'undefined') {
-        const cookieConsent = localStorage.getItem('cookie-consent');
-        const cookiePreferences = localStorage.getItem('cookie-preferences');
-        
-        let canUseSavedPreferences = false;
-        if (cookieConsent && cookiePreferences) {
-          try {
-            const prefs = JSON.parse(cookiePreferences);
-            canUseSavedPreferences = prefs.preferences === true;
-          } catch {
-            canUseSavedPreferences = false;
-          }
-        }
-        
-        const enabledLanguageCodes = config.availableLanguages
-          .filter(lang => lang.enabled)
-          .map(lang => lang.code);
-        
-        if (canUseSavedPreferences) {
-          const savedLanguage = localStorage.getItem('language') as Language;
-          if (savedLanguage && enabledLanguageCodes.includes(savedLanguage)) {
-            initialLanguage = savedLanguage;
-          }
-        }
-        
-        if (initialLanguage === config.settings.defaultLanguage && config.settings.autoDetection.enabled) {
-          initialLanguage = detectUserLanguage();
-        }
+      const initialLanguage: Language = "en"
+
+      if (typeof window !== "undefined") {
+        document.documentElement.lang = "en"
+        document.documentElement.dir = "ltr"
+        localStorage.setItem("language", "en")
       }
 
-      setLanguage(initialLanguage);
-      await loadTranslations(initialLanguage);
-    };
+      setLanguage(initialLanguage)
+      await loadTranslations(initialLanguage)
+    }
 
-    initializeLanguage();
-  }, []);
+    initializeLanguage()
+  }, [])
 
   const handleSetLanguage = async (lang: Language) => {
     setLanguage(lang);
