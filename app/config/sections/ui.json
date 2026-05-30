@@ -4,9 +4,13 @@
     "loadingDuration": 1000
   },
   "currency": {
-    "apiKey": "e912bbb7db10a10466ec18f0",
     "baseCurrency": "INR",
     "defaultCurrency": "INR",
+    "fixedRates": {
+      "INR": 1,
+      "USD": 0.012,
+      "EUR": 0.011
+    },
     "supportedCurrencies": [
       { "code": "INR", "symbol": "₹", "name": "Indian Rupee" },
       { "code": "EUR", "symbol": "€", "name": "Euro" },

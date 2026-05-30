@@ -5,12 +5,49 @@ import { Server, Cpu, MemoryStick, HardDrive, Wifi, HeartPulse } from "lucide-re
 import { useState } from "react"
 import Image from "next/image"
 import webhostingConfig from "../../config/sections/webhosting.json"
-import type { WebHostingConfig, WebHostingPlanPrices } from "../../types/webhosting"
+import type { WebHostingConfig, WebHostingPlan, WebHostingPlanPrices } from "../../types/webhosting"
+import { useProductStock } from "../../hooks/useProductStock"
 import type { Currency } from "../../types/ui"
 import { CurrencySelector, useCurrency } from "../ui/CurrencySelector"
 import { useLanguage } from "../../contexts/LanguageContext"
 
 const config = webhostingConfig as WebHostingConfig
+
+function WebHostingPlanOrderButton({
+  plan,
+  orderNowText,
+}: {
+  plan: WebHostingPlan
+  orderNowText: string
+}) {
+  const stock = useProductStock(plan.orderLink)
+
+  if (stock.isOutOfStock) {
+    return (
+      <button
+        type="button"
+        disabled
+        className="orbitron-font flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-lg border border-red-500/60 bg-red-600/80 px-6 py-3 font-medium text-white"
+      >
+        Out of stock
+      </button>
+    )
+  }
+
+  return (
+    <a
+      href={plan.orderLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="orbitron-font button-primary text-button-primary flex w-full items-center justify-center gap-2 rounded-lg border border-transparent px-6 py-3 font-medium no-underline transition-colors duration-300 hover:border-[var(--border-secondary)] hover:bg-[var(--hover-gradient)] hover:text-[var(--icon-text-primary)]"
+    >
+      {orderNowText}
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  )
+}
 
 function formatWebHostingPrice(prices: WebHostingPlanPrices, currency: Currency): string {
   const amount = prices[currency.code as keyof WebHostingPlanPrices]
@@ -185,15 +222,7 @@ export default function WebHostingPricingSection() {
                       </span>
                       <span className="ml-1 text-gray-500 dark:text-gray-400">{plan.period}</span>
                     </div>
-                    <a
-                      href={plan.orderLink}
-                      className="orbitron-font w-full button-primary text-button-primary px-6 py-3 rounded-lg font-medium transition-colors duration-300 flex items-center justify-center gap-2 border border-transparent hover:bg-[var(--hover-gradient)] hover:text-[var(--icon-text-primary)] hover:border-[var(--border-secondary)]"
-                    >
-                      {t('webHostingPricing.orderNow')}
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </a>
+                    <WebHostingPlanOrderButton plan={plan} orderNowText={t("webHostingPricing.orderNow")} />
                   </div>
                 </div>
               </motion.div>

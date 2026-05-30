@@ -65,7 +65,7 @@
         "storageDetail": "Gen4 NVMe SSD",
         "prices": { "INR": 120, "EUR": 1.49, "USD": 1.99 },
         "period": "/mo",
-        "orderLink": "https://warnode.cloud/vps"
+        "orderLink": "https://portal.warnode.cloud/products/amd-epyc-vps/wn-vm-1"
       },
       {
         "id": "WN-VM-2",
@@ -80,7 +80,7 @@
         "storageDetail": "Gen4 NVMe SSD",
         "prices": { "INR": 240, "EUR": 2.99, "USD": 3.49 },
         "period": "/mo",
-        "orderLink": "https://warnode.cloud/vps"
+        "orderLink": "https://portal.warnode.cloud/products/amd-epyc-vps/wn-vm-2"
       },
       {
         "id": "WN-VM-3",
@@ -95,7 +95,7 @@
         "storageDetail": "Gen4 NVMe SSD",
         "prices": { "INR": 480, "EUR": 4.99, "USD": 6.99 },
         "period": "/mo",
-        "orderLink": "https://warnode.cloud/vps"
+        "orderLink": "https://portal.warnode.cloud/products/amd-epyc-vps/wn-vm-3"
       },
       {
         "id": "WN-VM-4",
@@ -110,7 +110,7 @@
         "storageDetail": "Gen4 NVMe SSD",
         "prices": { "INR": 960, "EUR": 8.99, "USD": 11.99 },
         "period": "/mo",
-        "orderLink": "https://warnode.cloud/vps"
+        "orderLink": "https://portal.warnode.cloud/products/amd-epyc-vps/wn-vm-4"
       },
       {
         "id": "WN-VM-5",
@@ -125,7 +125,7 @@
         "storageDetail": "Gen4 NVMe SSD",
         "prices": { "INR": 1920, "EUR": 17.99, "USD": 22.99 },
         "period": "/mo",
-        "orderLink": "https://warnode.cloud/vps"
+        "orderLink": "https://portal.warnode.cloud/products/amd-epyc-vps/wn-vm-5"
       },
       {
         "id": "WN-VM-6",
@@ -140,7 +140,7 @@
         "storageDetail": "Gen4 NVMe SSD",
         "prices": { "INR": 3840, "EUR": 35.99, "USD": 42.99 },
         "period": "/mo",
-        "orderLink": "https://warnode.cloud/vps"
+        "orderLink": "https://portal.warnode.cloud/products/amd-epyc-vps/wn-vm-6"
       }
     ],
     "intel-xeon": [
@@ -157,7 +157,7 @@
         "storageDetail": "Gen4 NVMe SSD",
         "prices": { "INR": 90, "EUR": 0.99, "USD": 1.49 },
         "period": "/mo",
-        "orderLink": "https://warnode.cloud/vps-intel"
+        "orderLink": "https://portal.warnode.cloud/products/intel-vps-hosting/wn-vm-i1"
       },
       {
         "id": "WN-VM-i2",
@@ -172,7 +172,7 @@
         "storageDetail": "Gen4 NVMe SSD",
         "prices": { "INR": 180, "EUR": 1.99, "USD": 2.99 },
         "period": "/mo",
-        "orderLink": "https://warnode.cloud/vps-intel"
+        "orderLink": "https://portal.warnode.cloud/products/intel-vps-hosting/wn-vm-i2"
       },
       {
         "id": "WN-VM-i3",
@@ -187,7 +187,7 @@
         "storageDetail": "Gen4 NVMe SSD",
         "prices": { "INR": 360, "EUR": 3.99, "USD": 3.99 },
         "period": "/mo",
-        "orderLink": "https://warnode.cloud/vps-intel"
+        "orderLink": "https://portal.warnode.cloud/products/intel-vps-hosting/wn-vm-i3"
       },
       {
         "id": "WN-VM-i4",
@@ -202,7 +202,7 @@
         "storageDetail": "Gen4 NVMe SSD",
         "prices": { "INR": 720, "EUR": 6.99, "USD": 7.99 },
         "period": "/mo",
-        "orderLink": "https://warnode.cloud/vps-intel"
+        "orderLink": "https://portal.warnode.cloud/products/intel-vps-hosting/wn-vm-i4"
       },
       {
         "id": "WN-VM-i5",
@@ -217,7 +217,7 @@
         "storageDetail": "Gen4 NVMe SSD",
         "prices": { "INR": 1440, "EUR": 13.99, "USD": 15.99 },
         "period": "/mo",
-        "orderLink": "https://warnode.cloud/vps-intel"
+        "orderLink": "https://portal.warnode.cloud/products/intel-vps-hosting/wn-vm-i5"
       },
       {
         "id": "WN-VM-i6",
@@ -232,7 +232,7 @@
         "storageDetail": "Gen4 NVMe SSD",
         "prices": { "INR": 2880, "EUR": 27.99, "USD": 31.99 },
         "period": "/mo",
-        "orderLink": "https://warnode.cloud/vps-intel"
+        "orderLink": "https://portal.warnode.cloud/products/intel-vps-hosting/wn-vm-i6"
       }
     ]
   }

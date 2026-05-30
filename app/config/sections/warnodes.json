@@ -9,6 +9,7 @@
   },
   "links": {
     "portal": "https://portal.warnode.cloud",
+    "tickets": "https://portal.warnode.cloud/tickets/create",
     "panel": "https://panel.warnode.cloud",
     "webPanel": "https://web.warnode.cloud",
     "discord": "https://discord.gg/warnode",

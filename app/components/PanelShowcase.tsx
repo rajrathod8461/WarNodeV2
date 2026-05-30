@@ -55,9 +55,24 @@ export default function PanelShowcase() {
   const [scrollHints, setScrollHints] = useState({ top: false, bottom: true })
   const listRef = useRef<HTMLDivElement>(null)
   const itemRefs = useRef<(HTMLButtonElement | null)[]>([])
+  const skipAutoListScroll = useRef(true)
 
-  const scrollToFeature = useCallback((index: number) => {
-    itemRefs.current[index]?.scrollIntoView({ behavior: "smooth", block: "nearest" })
+  const scrollFeatureInList = useCallback((index: number, behavior: ScrollBehavior = "smooth") => {
+    const list = listRef.current
+    const item = itemRefs.current[index]
+    if (!list || !item) return
+
+    const padding = 4
+    const itemTop = item.offsetTop
+    const itemBottom = itemTop + item.offsetHeight
+    const viewTop = list.scrollTop
+    const viewBottom = viewTop + list.clientHeight
+
+    if (itemTop < viewTop + padding) {
+      list.scrollTo({ top: itemTop - padding, behavior })
+    } else if (itemBottom > viewBottom - padding) {
+      list.scrollTo({ top: itemBottom - list.clientHeight + padding, behavior })
+    }
   }, [])
 
   const updateScrollHints = useCallback(() => {
@@ -100,10 +115,18 @@ export default function PanelShowcase() {
     }
   }, [progress, showcaseCards.length])
 
+  useEffect(() => {
+    if (skipAutoListScroll.current) {
+      skipAutoListScroll.current = false
+      return
+    }
+    scrollFeatureInList(activeCard)
+  }, [activeCard, scrollFeatureInList])
+
   const handleCardClick = (index: number) => {
     setActiveCard(index)
     setProgress(0)
-    scrollToFeature(index)
+    scrollFeatureInList(index)
   }
 
   useEffect(() => {
@@ -190,17 +213,27 @@ export default function PanelShowcase() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: index * 0.04 }}
                       onClick={() => handleCardClick(index)}
-                      className={`relative w-full snap-start text-left transition-all duration-200 rounded-tl-xl rounded-br-xl border ${
+                      className={`relative w-full snap-start text-left transition-all duration-300 rounded-tl-xl rounded-br-xl border hover:border-secondary hover:hover-gradient ${
                         isActive
-                          ? "border-secondary bg-white shadow-md dark:bg-white/[0.08] dark:shadow-black/20"
-                          : "border-transparent bg-transparent hover:border-secondary/50 hover:bg-white/90 dark:hover:bg-white/[0.05]"
+                          ? "border-secondary shadow-md dark:shadow-black/20"
+                          : "border-transparent bg-transparent dark:hover:bg-white/[0.05]"
                       }`}
                     >
                       {isActive && (
-                        <div className="absolute bottom-2 left-0 top-2 w-1 rounded-full button-primary" />
+                        <div
+                          className="pointer-events-none absolute inset-0 overflow-hidden rounded-tl-xl rounded-br-xl"
+                          aria-hidden
+                        >
+                          <motion.div
+                            className="absolute inset-y-0 left-0 hover-gradient"
+                            initial={false}
+                            animate={{ width: `${progress}%` }}
+                            transition={{ duration: 0.1, ease: "linear" }}
+                          />
+                        </div>
                       )}
 
-                      <div className="flex items-center gap-3 py-2.5 pl-3 pr-3 sm:py-3 sm:pl-3.5">
+                      <div className="relative z-[1] flex items-center gap-3 py-2.5 pl-3 pr-3 sm:py-3 sm:pl-3.5">
                         <div
                           className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border transition-colors ${
                             isActive
@@ -208,7 +241,11 @@ export default function PanelShowcase() {
                               : "border-gray-200/80 bg-gray-50 dark:border-white/10 dark:bg-white/[0.04]"
                           }`}
                         >
-                          <Icon className={`h-4 w-4 ${isActive ? "icon-text-primary" : "text-gray-500 dark:text-gray-400"}`} />
+                          <Icon
+                            className={`h-4 w-4 ${
+                              isActive ? "icon-text-primary" : "text-gray-500 dark:text-gray-400"
+                            }`}
+                          />
                         </div>
                         <span
                           className={`text-sm font-semibold leading-tight ${
@@ -218,17 +255,6 @@ export default function PanelShowcase() {
                           {card.title}
                         </span>
                       </div>
-
-                      {isActive && (
-                        <div className="absolute bottom-0 left-1 right-0 h-px overflow-hidden bg-gray-200/50 dark:bg-white/10">
-                          <motion.div
-                            className="h-full button-primary"
-                            initial={{ width: "0%" }}
-                            animate={{ width: `${progress}%` }}
-                            transition={{ duration: 0.1, ease: "linear" }}
-                          />
-                        </div>
-                      )}
                     </motion.button>
                   )
                 })}
@@ -240,7 +266,7 @@ export default function PanelShowcase() {
                   onClick={() => scrollListBy(-120)}
                   disabled={!scrollHints.top}
                   aria-label="Scroll features up"
-                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-transparent text-gray-500 transition-colors hover:border-secondary/60 hover:bg-white hover:text-gray-900 disabled:cursor-not-allowed disabled:opacity-30 dark:hover:bg-white/10 dark:hover:text-white"
+                  className="flex h-8 w-8 items-center justify-center rounded-tl-xl rounded-br-xl border border-transparent text-gray-500 transition-all duration-300 hover:border-secondary hover:hover-gradient hover:text-[var(--icon-text-primary)] disabled:cursor-not-allowed disabled:opacity-30 dark:hover:text-white"
                 >
                   <ChevronUp className="h-4 w-4" />
                 </button>
@@ -250,7 +276,7 @@ export default function PanelShowcase() {
                   onClick={() => scrollListBy(120)}
                   disabled={!scrollHints.bottom}
                   aria-label="Scroll features down"
-                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-transparent text-gray-500 transition-colors hover:border-secondary/60 hover:bg-white hover:text-gray-900 disabled:cursor-not-allowed disabled:opacity-30 dark:hover:bg-white/10 dark:hover:text-white"
+                  className="flex h-8 w-8 items-center justify-center rounded-tl-xl rounded-br-xl border border-transparent text-gray-500 transition-all duration-300 hover:border-secondary hover:hover-gradient hover:text-[var(--icon-text-primary)] disabled:cursor-not-allowed disabled:opacity-30 dark:hover:text-white"
                 >
                   <ChevronDown className="h-4 w-4" />
                 </button>

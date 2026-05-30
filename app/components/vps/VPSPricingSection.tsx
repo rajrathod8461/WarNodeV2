@@ -7,7 +7,8 @@ import type { CSSProperties } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import Image from "next/image"
 import vpsConfig from "../../config/sections/vps.json"
-import type { VPSConfig, VPSPlanPrices } from "../../types/vps"
+import type { VPSConfig, VPSPlan, VPSPlanPrices } from "../../types/vps"
+import { useProductStock } from "../../hooks/useProductStock"
 import type { Currency } from "../../types/ui"
 import { CurrencySelector, useCurrency } from "../ui/CurrencySelector"
 
@@ -22,6 +23,42 @@ import { useLanguage } from "../../contexts/LanguageContext"
 import { CountryFlag } from "../CountryFlag"
 
 const config = vpsConfig as VPSConfig
+
+function VPSPlanOrderButton({
+  plan,
+  orderNowText,
+}: {
+  plan: VPSPlan
+  orderNowText: string
+}) {
+  const stock = useProductStock(plan.orderLink)
+
+  if (stock.isOutOfStock) {
+    return (
+      <button
+        type="button"
+        disabled
+        className="orbitron-font flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-lg border border-red-500/60 bg-red-600/80 px-6 py-2 font-medium text-white sm:w-auto"
+      >
+        Out of stock
+      </button>
+    )
+  }
+
+  return (
+    <a
+      href={plan.orderLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="orbitron-font button-primary text-button-primary flex w-full items-center justify-center gap-2 rounded-lg border border-transparent px-6 py-2 font-medium no-underline transition-colors duration-300 hover:border-[var(--border-secondary)] hover:bg-[var(--hover-gradient)] hover:text-[var(--icon-text-primary)] sm:w-auto"
+    >
+      {orderNowText}
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  )
+}
 
 const CPU_BRAND = {
   intel: {
@@ -340,15 +377,7 @@ export default function VPSPricingSection() {
                       <span className="text-sm text-gray-500 dark:text-gray-400">{plan.period}</span>
                     </div>
                   </div>
-                  <a 
-                    href={plan.orderLink}
-                    className="orbitron-font w-full sm:w-auto button-primary text-button-primary px-6 py-2 rounded-lg font-medium transition-colors duration-300 flex items-center justify-center gap-2 border border-transparent hover:bg-[var(--hover-gradient)] hover:text-[var(--icon-text-primary)] hover:border-[var(--border-secondary)] no-underline"
-                  >
-                    {t('common.orderNow')}
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </a>
+                  <VPSPlanOrderButton plan={plan} orderNowText={t("common.orderNow")} />
                 </div>
               </div>
             </motion.div>

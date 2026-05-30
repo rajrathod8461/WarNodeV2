@@ -7,63 +7,64 @@
   "plans": [
     {
       "id": "starter",
-      "name": "Starter",
+      "name": "Starter Proxy",
       "price": 299,
       "prices": { "INR": 299, "USD": 3.49, "EUR": 2.99 },
       "ram": "2 GB Dedicated RAM",
       "cpu": "1 vCPU Core",
       "ports": "2 Proxy Ports",
       "protection": "OVH Game Protection",
-      "support": "Community",
+      "support": "Community Support",
       "detailLines": [
         "2 GB Dedicated RAM",
         "1 vCPU Core",
         "2 Proxy Ports",
-        "OVH Game Protection"
+        "OVH Game Protection",
+        "Community Support"
       ],
-      "orderLink": "https://warnode.cloud/ddos"
+      "orderLink": "https://portal.warnode.cloud/products/warshield/starter-proxy"
     },
     {
       "id": "standard",
-      "name": "Standard",
+      "name": "Standard Proxy",
       "price": 449,
       "prices": { "INR": 449, "USD": 4.99, "EUR": 4.49 },
       "ram": "3 GB Dedicated RAM",
       "cpu": "2 vCPU Cores",
       "ports": "2 Proxy Ports",
       "protection": "Advanced OVH Shield",
-      "support": "Standard Ticket",
+      "support": "Standard Ticket Support",
       "detailLines": [
         "3 GB Dedicated RAM",
         "2 vCPU Cores",
         "2 Proxy Ports",
         "Advanced OVH Shield",
-        "Everything in Starter Included"
+        "Standard Ticket Support"
       ],
-      "orderLink": "https://warnode.cloud/ddos"
+      "orderLink": "https://portal.warnode.cloud/products/warshield/standard-proxy"
     },
     {
       "id": "advanced",
-      "name": "Advanced",
+      "name": "Advanced Proxy",
       "price": 599,
       "prices": { "INR": 599, "USD": 6.99, "EUR": 5.99 },
       "ram": "4 GB Dedicated RAM",
       "cpu": "2 vCPU Cores",
       "ports": "3 Proxy Ports",
-      "protection": "TCP + OVH Shield",
+      "protection": "Advanced Shield + TCP Protection",
       "support": "Fast Ticket Queue",
       "detailLines": [
         "4 GB Dedicated RAM",
         "2 vCPU Cores",
         "3 Proxy Ports",
-        "TCP + OVH Shield",
-        "Everything in Standard Included"
+        "Advanced Shield + TCP Protection",
+        "Fast Ticket Queue"
       ],
-      "orderLink": "https://warnode.cloud/ddos"
+      "orderLink": "https://portal.warnode.cloud/products/warshield/advanced-proxy"
     },
     {
       "id": "pro-elite",
-      "name": "Pro Elite",
+      "name": "Pro Elite Proxy",
       "badge": "Popular",
       "popular": true,
       "price": 799,
@@ -71,55 +72,54 @@
       "ram": "6 GB Dedicated RAM",
       "cpu": "3 vCPU Cores",
       "ports": "3 Proxy Ports",
-      "protection": "OVH VAC + TCP Filter",
-      "support": "Priority 24/7",
+      "protection": "OVH Game + VAC Filter",
+      "support": "Priority 24/7 Support",
       "detailLines": [
         "6 GB Dedicated RAM",
         "3 vCPU Cores",
         "3 Proxy Ports",
-        "OVH VAC + TCP Filter",
-        "Everything in Advanced Included"
+        "OVH Game + VAC Filter",
+        "Priority 24/7 Support"
       ],
-      "orderLink": "https://warnode.cloud/ddos"
+      "orderLink": "https://portal.warnode.cloud/products/warshield/pro-elite-proxy"
     },
     {
       "id": "ultra-network",
-      "name": "Ultra Network",
+      "name": "Ultra Network Proxy",
       "price": 1099,
       "prices": { "INR": 1099, "USD": 11.99, "EUR": 10.99 },
       "ram": "8 GB Dedicated RAM",
       "cpu": "4 vCPU Cores",
       "ports": "4 Proxy Ports",
-      "protection": "Advanced Firewall + DDoS Filter",
-      "support": "Premium Priority",
+      "protection": "Enhanced Firewall + DDoS Filter",
+      "support": "Premium Priority Support",
       "detailLines": [
         "8 GB Dedicated RAM",
         "4 vCPU Cores",
         "4 Proxy Ports",
-        "Advanced Firewall + DDoS Filter",
-        "Everything in Pro Elite Included"
+        "Enhanced Firewall + DDoS Filter",
+        "Premium Priority Support"
       ],
-      "orderLink": "https://warnode.cloud/ddos"
+      "orderLink": "https://portal.warnode.cloud/products/warshield/ultra-network-proxy"
     },
     {
       "id": "elite-network",
-      "name": "Elite Network",
+      "name": "Elite Network Proxy",
       "price": 1399,
       "prices": { "INR": 1399, "USD": 14.99, "EUR": 13.99 },
       "ram": "10 GB Dedicated RAM",
       "cpu": "4 vCPU Cores",
       "ports": "5 Proxy Ports",
-      "protection": "Custom Firewall + Advanced DDoS Filtering",
-      "support": "VIP Expert",
+      "protection": "Max Shield + Custom Firewall",
+      "support": "VIP Expert Support",
       "detailLines": [
         "10 GB Dedicated RAM",
         "4 vCPU Cores",
         "5 Proxy Ports",
-        "Custom Firewall + Advanced DDoS Filtering",
-        "Dedicated IPv4 Included",
-        "Everything in Ultra Network Included"
+        "Max Shield + Custom Firewall",
+        "VIP Expert Support"
       ],
-      "orderLink": "https://warnode.cloud/ddos"
+      "orderLink": "https://portal.warnode.cloud/products/warshield/elite-network-proxy"
     }
   ],
   "comparison": [

@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server"
 
+const STOCK_CACHE_TTL_MS = 60_000
+const stockCache = new Map<string, { body: { inStock: boolean; confidence: string }; at: number }>()
+
 function isAllowedUrl(raw: string): URL | null {
   try {
     const url = new URL(raw)
@@ -14,13 +17,12 @@ function isAllowedUrl(raw: string): URL | null {
 
 function inferOutOfStock(html: string): boolean {
   const text = html.toLowerCase()
-  return (
-    text.includes("out of stock") ||
-    text.includes("sold out") ||
-    text.includes("currently unavailable") ||
-    text.includes("not available") ||
-    text.includes("unavailable")
-  )
+  if (/\bout of stock\b/.test(text)) return true
+  if (/\bsold out\b/.test(text)) return true
+  if (/\bcurrently unavailable\b/.test(text)) return true
+  if (/\bproduct unavailable\b/.test(text)) return true
+  if (/\bthis product is unavailable\b/.test(text)) return true
+  return false
 }
 
 export async function GET(req: Request) {
@@ -34,6 +36,12 @@ export async function GET(req: Request) {
   const url = isAllowedUrl(rawUrl)
   if (!url) {
     return NextResponse.json({ error: "URL not allowed" }, { status: 400 })
+  }
+
+  const cacheKey = url.toString()
+  const cached = stockCache.get(cacheKey)
+  if (cached && Date.now() - cached.at < STOCK_CACHE_TTL_MS) {
+    return NextResponse.json(cached.body)
   }
 
   const controller = new AbortController()
@@ -52,18 +60,24 @@ export async function GET(req: Request) {
     })
 
     if (!res.ok) {
-      return NextResponse.json({ inStock: true, confidence: "unknown" })
+      const body = { inStock: true, confidence: "unknown" }
+      stockCache.set(cacheKey, { body, at: Date.now() })
+      return NextResponse.json(body)
     }
 
     const html = await res.text()
     const outOfStock = inferOutOfStock(html)
 
-    return NextResponse.json({
+    const body = {
       inStock: !outOfStock,
       confidence: "html",
-    })
+    }
+    stockCache.set(cacheKey, { body, at: Date.now() })
+    return NextResponse.json(body)
   } catch {
-    return NextResponse.json({ inStock: true, confidence: "unknown" })
+    const body = { inStock: true, confidence: "unknown" }
+    stockCache.set(cacheKey, { body, at: Date.now() })
+    return NextResponse.json(body)
   } finally {
     clearTimeout(timeout)
   }

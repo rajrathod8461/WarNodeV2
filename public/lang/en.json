@@ -81,15 +81,15 @@
     "title": "Frequently Asked Questions",
     "subtitle": "Find answers to common questions about our game server hosting services",
     "question1": "How do I get started with game server hosting?",
-    "answer1": "Getting started is simple! Choose your game, select a server location, and follow our easy setup wizard. Your server will be up and running in minutes with our instant deployment system.",
+    "answer1": "Getting started is simple! Choose your game, select a plan, and complete your order. Your server will be deployed automatically and ready to use within minutes.",
     "question2": "What kind of support do you provide?",
-    "answer2": "We offer 24/7 technical support through live chat and ticket system. Our expert team is always ready to help with server configuration, performance optimization, and any technical issues.",
+    "answer2": "We offer support through tickets and Discord. Whether you need help with setup, troubleshooting, or server management, our team is ready to assist you.",
     "question3": "Can I modify server settings and configurations?",
-    "answer3": "Yes! You have full control over your server settings through our intuitive control panel. Modify game settings, install mods, and manage your server with ease.",
+    "answer3": "Yes! You have full control over your server. Install mods, upload files, edit configurations, manage databases, and customize your server to fit your needs.",
     "question4": "What payment methods do you accept?",
-    "answer4": "We accept all major credit cards, PayPal, and cryptocurrency payments. Our billing system is secure and transparent, with no hidden fees.",
+    "answer4": "We accept UPI, Credit Cards, Debit Cards, Net Banking, Digital Wallets, and selected Cryptocurrency payments for a convenient checkout experience.",
     "question5": "Do you offer DDoS protection?",
-    "answer5": "Yes, all our servers come with enterprise-grade DDoS protection included at no extra cost. Your server will stay online even during attacks."
+    "answer5": "Yes! All servers include advanced WarShield DDoS Protection to help keep your services secure, stable, and online against malicious attacks and unwanted traffic. 🛡️⚡"
   },
   "footer": {
     "description": "Next-gen infrastructure for developers and gamers. Gen4 NVMe, WarShield DDoS protection, and ultra-low latency hosting across India and worldwide.",
@@ -107,7 +107,8 @@
     "gamePanel": "Game Panel",
     "allRightsReserved": "All rights reserved.",
     "systemsOperational": "All systems operational",
-    "ddosProtection": "DDoS Protection"
+    "ddosProtection": "DDoS Protection",
+    "openTicket": "Open Ticket"
   },
   "ddos": {
     "badge": "WarShield DDoS Protection",
@@ -142,9 +143,12 @@
     "choosePlan": "Choose your plan",
     "popEdge": "Edge PoP",
     "support": "Support",
+    "comparisonBadge": "Network Shield",
     "comparisonTitle": "Network Capabilities",
+    "comparisonDesc": "See how WarShield stacks up against standard ISP-level filtering for game servers.",
     "feature": "Feature",
     "ispShield": "ISP Shield",
+    "addonsBadge": "Proxy Extras",
     "addonsTitle": "Proxy Add-Ons",
     "oneTime": "one-time"
   },

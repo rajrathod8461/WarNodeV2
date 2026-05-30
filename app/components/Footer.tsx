@@ -22,6 +22,7 @@ export default function Footer() {
 
   const quickLinks = [
     { name: t('footer.clientArea'), href: links.portal },
+    { name: t('footer.openTicket'), href: links.tickets, external: true },
     { name: t('footer.discord'), href: links.discord },
     { name: t('footer.vpsHosting'), href: "/vps" },
     { name: t('footer.gameServerHosting'), href: "/games" },

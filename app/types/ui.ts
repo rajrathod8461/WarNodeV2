@@ -10,9 +10,9 @@ export interface UIConfig {
     loadingDuration: number;
   };
   currency: {
-    apiKey: string;
     baseCurrency: string;
     defaultCurrency: string;
+    fixedRates: Record<string, number>;
     supportedCurrencies: Currency[];
   };
   christmasTheme?: {

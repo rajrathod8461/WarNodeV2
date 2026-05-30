@@ -20,6 +20,7 @@ import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import { AccordionSection } from "../components/legal/AccordionSection"
 import legalConfig from "../config/sections/legal.json"
+import warnodesConfig from "../config/sections/warnodes.json"
 import type { TermsOfServiceConfig, TermsSection } from "../types/legal"
 
 const terms = legalConfig.termsOfService as TermsOfServiceConfig
@@ -195,15 +196,26 @@ function TermsSectionContent({ section }: { section: TermsSection }) {
       )}
 
       {section.id === "support" && (
-        <a
-          href={terms.discordUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-6 inline-flex items-center gap-2 rounded-lg border border-secondary button-primary px-6 py-3 text-sm font-medium text-button-primary transition-colors hover:border-secondary hover:hover-gradient"
-        >
-          <MessageCircle className="h-4 w-4" />
-          Join Discord
-        </a>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <a
+            href={warnodesConfig.links.tickets}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg border border-secondary button-primary px-6 py-3 text-sm font-medium text-button-primary transition-colors hover:border-secondary hover:hover-gradient"
+          >
+            <MessageCircle className="h-4 w-4" />
+            Open a Ticket
+          </a>
+          <a
+            href={terms.discordUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg border border-secondary bg-white/70 px-6 py-3 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 dark:bg-white/5 dark:text-gray-200 dark:hover:bg-white/10"
+          >
+            <MessageCircle className="h-4 w-4" />
+            Join Discord
+          </a>
+        </div>
       )}
     </>
   )

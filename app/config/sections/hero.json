@@ -79,7 +79,7 @@
       },
       {
         "name": "OVH",
-        "src": "/advertisement/ovhcloud.png",
+        "src": "/advertisement/ovh.png",
         "loading": "lazy",
         "colored": true
       },
@@ -96,14 +96,32 @@
         "colored": true
       },
       {
-        "name": "Amd",
-        "src": "/advertisement/amd.svg",
+        "name": "AMD",
+        "src": "/advertisement/amd.png",
         "loading": "lazy",
         "colored": true
       },
       {
         "name": "Keyhelp",
         "src": "/advertisement/keyhelp.svg",
+        "loading": "lazy",
+        "colored": true
+      },
+      {
+        "name": "Paymenter",
+        "src": "/advertisement/paymenter.svg",
+        "loading": "lazy",
+        "colored": true
+      },
+      {
+        "name": "Hestia",
+        "src": "/advertisement/heista.png",
+        "loading": "lazy",
+        "colored": true
+      },
+      {
+        "name": "AWS",
+        "src": "/advertisement/aws.png",
         "loading": "lazy",
         "colored": true
       }

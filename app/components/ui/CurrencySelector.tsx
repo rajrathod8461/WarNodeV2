@@ -160,10 +160,10 @@ export function CurrencySelector({
 interface UseCurrencyReturn {
   selectedCurrency: Currency;
   setSelectedCurrency: (currency: Currency) => void;
-  exchangeRates: Record<string, number>;
   convertPrice: (price: string) => string;
-  isLoading: boolean;
 }
+
+const FIXED_RATES = config.currency.fixedRates
 
 export function useCurrency(): UseCurrencyReturn {
   const defaultCurrency = config.currency.supportedCurrencies.find(
@@ -171,56 +171,15 @@ export function useCurrency(): UseCurrencyReturn {
   ) || config.currency.supportedCurrencies[0];
 
   const [selectedCurrency, setSelectedCurrency] = useState<Currency>(defaultCurrency);
-  const [exchangeRates, setExchangeRates] = useState<Record<string, number>>({});
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchExchangeRates = async () => {
-      try {
-        setIsLoading(true);
-        const response = await fetch(
-          `https://v6.exchangerate-api.com/v6/${config.currency.apiKey}/latest/${config.currency.baseCurrency}`
-        );
-        const data = await response.json();
-
-        if (data.result === "success") {
-          setExchangeRates(data.conversion_rates);
-          localStorage.setItem(
-            "exchangeRates",
-            JSON.stringify({
-              rates: data.conversion_rates,
-              timestamp: Date.now(),
-            })
-          );
-        }
-      } catch (error) {
-        console.error("Failed to fetch exchange rates:", error);
-        const stored = localStorage.getItem("exchangeRates");
-        if (stored) {
-          const { rates, timestamp } = JSON.parse(stored);
-          const dayInMs = 24 * 60 * 60 * 1000;
-
-          if (Date.now() - timestamp < dayInMs) {
-            setExchangeRates(rates);
-          }
-        }
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchExchangeRates();
-  }, []);
 
   const convertPrice = (price: string): string => {
-    
-    const numericPrice = parseFloat(price.replace(/[£$€¥₹C\$A\$]/g, ''));
-    
+    const numericPrice = parseFloat(price.replace(/[£$€¥₹C\$A\$]/g, ""));
+
     if (isNaN(numericPrice)) {
       return `${selectedCurrency.symbol}0.00`;
     }
 
-    const wholeAmount = selectedCurrency.code === "JPY" || selectedCurrency.code === "INR";
+    const wholeAmount = selectedCurrency.code === "INR";
 
     if (selectedCurrency.code === config.currency.baseCurrency) {
       if (wholeAmount) {
@@ -228,15 +187,16 @@ export function useCurrency(): UseCurrencyReturn {
       }
       return `${selectedCurrency.symbol}${numericPrice.toFixed(2)}`;
     }
-    
-    if (!exchangeRates[selectedCurrency.code]) {
+
+    const rate = FIXED_RATES[selectedCurrency.code];
+    if (!rate) {
       if (wholeAmount) {
         return `${selectedCurrency.symbol}${Math.round(numericPrice)}`;
       }
       return `${selectedCurrency.symbol}${numericPrice.toFixed(2)}`;
     }
 
-    const convertedPrice = numericPrice * exchangeRates[selectedCurrency.code];
+    const convertedPrice = numericPrice * rate;
 
     if (wholeAmount) {
       return `${selectedCurrency.symbol}${Math.round(convertedPrice)}`;
@@ -248,8 +208,6 @@ export function useCurrency(): UseCurrencyReturn {
   return {
     selectedCurrency,
     setSelectedCurrency,
-    exchangeRates,
     convertPrice,
-    isLoading,
   };
 }

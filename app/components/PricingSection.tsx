@@ -179,7 +179,7 @@ export default function PricingSection() {
           <p className="orbitron-font text-gray-600 dark:text-gray-400">
             {t("pricingSection.footerText")}{" "}
             <a
-              href={warnodesConfig.links.discord}
+              href={warnodesConfig.links.tickets}
               target="_blank"
               rel="noopener noreferrer"
               className="icon-text-primary hover:text-icon-text-primary/80 underline-offset-2 hover:underline"

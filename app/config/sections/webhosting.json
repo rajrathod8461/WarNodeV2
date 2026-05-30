@@ -25,7 +25,7 @@
         "price": "₹0",
         "prices": { "INR": 0, "USD": 0, "EUR": 0 },
         "period": "/mo",
-        "orderLink": "https://warnode.cloud/web-hosting"
+        "orderLink": "https://portal.warnode.cloud/products/web-hosting/coal"
       },
       {
         "id": "copper",
@@ -42,7 +42,7 @@
         "price": "₹30",
         "prices": { "INR": 30, "USD": 0.99, "EUR": 0.99 },
         "period": "/mo",
-        "orderLink": "https://warnode.cloud/web-hosting"
+        "orderLink": "https://portal.warnode.cloud/products/web-hosting/copper"
       },
       {
         "id": "iron",
@@ -60,7 +60,7 @@
         "price": "₹59",
         "prices": { "INR": 59, "USD": 1.99, "EUR": 1.99 },
         "period": "/mo",
-        "orderLink": "https://warnode.cloud/web-hosting"
+        "orderLink": "https://portal.warnode.cloud/products/web-hosting/iron"
       },
       {
         "id": "emerald",
@@ -78,7 +78,7 @@
         "price": "₹99",
         "prices": { "INR": 99, "USD": 2.99, "EUR": 2.99 },
         "period": "/mo",
-        "orderLink": "https://warnode.cloud/web-hosting"
+        "orderLink": "https://portal.warnode.cloud/products/web-hosting/emerald"
       },
       {
         "id": "ruby",
@@ -95,7 +95,7 @@
         "price": "₹129",
         "prices": { "INR": 129, "USD": 3.99, "EUR": 3.99 },
         "period": "/mo",
-        "orderLink": "https://warnode.cloud/web-hosting"
+        "orderLink": "https://portal.warnode.cloud/products/web-hosting/ruby"
       },
       {
         "id": "diamond",
@@ -112,7 +112,7 @@
         "price": "₹149",
         "prices": { "INR": 149, "USD": 4.99, "EUR": 4.99 },
         "period": "/mo",
-        "orderLink": "https://warnode.cloud/web-hosting"
+        "orderLink": "https://portal.warnode.cloud/products/web-hosting/diamond"
       }
     ]
   }

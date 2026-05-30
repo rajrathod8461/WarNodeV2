@@ -21,6 +21,8 @@ export interface HeroPartner {
   loading: "lazy" | "eager";
   /** PNG/color logos — skip dark-mode invert filter */
   colored?: boolean;
+  /** White-on-dark PNG — show on dark tile in light mode */
+  darkTile?: boolean;
 }
 
 export interface HeroConfig {

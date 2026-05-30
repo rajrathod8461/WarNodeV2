@@ -223,7 +223,7 @@
       "discordLabel": "Contact Support",
       "discordUrl": "https://discord.gg/warnode",
       "ticketLabel": "Open a Ticket",
-      "ticketUrl": "https://portal.warnode.cloud"
+      "ticketUrl": "https://portal.warnode.cloud/tickets/create"
     }
   },
   "privacyPolicy": {

@@ -5,7 +5,8 @@ import { Cpu, MemoryStick, HardDrive, Wifi, HeartPulse } from "lucide-react"
 import { useState } from "react"
 import Image from "next/image"
 import discordConfig from "../../config/sections/discord.json"
-import type { DiscordConfig, DiscordPlanPrices } from "../../types/discord"
+import type { DiscordConfig, DiscordPlan, DiscordPlanPrices } from "../../types/discord"
+import { useProductStock } from "../../hooks/useProductStock"
 import type { Currency } from "../../types/ui"
 import { CurrencySelector, useCurrency } from "../ui/CurrencySelector"
 import { useLanguage } from "../../contexts/LanguageContext"
@@ -17,6 +18,43 @@ function formatDiscordPrice(prices: DiscordPlanPrices, currency: Currency): stri
 }
 
 const config = discordConfig as DiscordConfig
+
+function DiscordPlanOrderButton({
+  plan,
+  orderNowText,
+}: {
+  plan: DiscordPlan
+  orderNowText: string
+}) {
+  const stock = useProductStock(plan.orderLink)
+
+  if (stock.isOutOfStock) {
+    return (
+      <button
+        type="button"
+        disabled
+        className="orbitron-font flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-lg border border-red-500/60 bg-red-600/80 px-6 py-3 font-medium text-white"
+      >
+        Out of stock
+      </button>
+    )
+  }
+
+  return (
+    <a
+      href={plan.orderLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="orbitron-font button-primary text-button-primary flex w-full items-center justify-center gap-2 rounded-lg border border-transparent px-6 py-3 font-medium no-underline transition-colors duration-300 hover:border-[var(--border-secondary)] hover:bg-[var(--hover-gradient)] hover:text-[var(--icon-text-primary)]"
+    >
+      {orderNowText}
+      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  )
+}
+
 const DISCORD_LOGO = config.discordLogo ?? "/icons/Discord-Symbol-Blurple.svg"
 const HERO_BANNER = config.heroBanner ?? "/banners/discordbanner.avif"
 const showPlanTypeStep = config.planTypes.length > 1
@@ -201,15 +239,7 @@ export default function DiscordPricingSection() {
                       </span>
                       <span className="ml-1 text-gray-500 dark:text-gray-400">{plan.period}</span>
                     </motion.div>
-                    <a
-                      href={plan.orderLink}
-                      className="orbitron-font button-primary text-button-primary flex w-full items-center justify-center gap-2 rounded-lg border border-transparent px-6 py-3 font-medium transition-colors duration-300 hover:border-[var(--border-secondary)] hover:bg-[var(--hover-gradient)] hover:text-[var(--icon-text-primary)]"
-                    >
-                      {t("common.orderNow")}
-                      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </a>
+                    <DiscordPlanOrderButton plan={plan} orderNowText={t("common.orderNow")} />
                   </motion.div>
                 </motion.div>
               </motion.div>

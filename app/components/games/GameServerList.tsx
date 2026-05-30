@@ -68,29 +68,31 @@ function GamePlanOrderButton({
 }) {
   const stock = useProductStock(plan.orderLink)
 
+  if (stock.isOutOfStock) {
+    return (
+      <button
+        type="button"
+        disabled
+        className="orbitron-font shrink-0 cursor-not-allowed rounded-tl-xl rounded-br-xl border-2 border-red-500/60 bg-red-600/80 px-4 py-2 text-xs font-semibold text-white sm:text-sm"
+      >
+        Out of stock
+      </button>
+    )
+  }
+
   return (
-    <button
-      type="button"
-      disabled={stock.isOutOfStock}
-      onClick={() => {
-        if (stock.isOutOfStock) return
-        window.open(plan.orderLink, "_blank", "noopener,noreferrer")
+    <a
+      href={plan.orderLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="orbitron-font shrink-0 rounded-tl-xl rounded-br-xl border-2 px-4 py-2 text-xs font-semibold text-white no-underline transition-all duration-300 hover:text-white sm:text-sm"
+      style={{
+        borderColor: planBrand.primary,
+        backgroundColor: planBrand.primary,
       }}
-      className={`orbitron-font shrink-0 rounded-tl-xl rounded-br-xl border-2 px-4 py-2 text-xs font-semibold text-white transition-all duration-300 hover:text-white disabled:cursor-not-allowed sm:text-sm ${
-        stock.isOutOfStock ? "border-red-500/60 bg-red-600/80" : ""
-      }`}
-      style={
-        stock.isOutOfStock
-          ? undefined
-          : {
-              borderColor: planBrand.primary,
-              backgroundColor: planBrand.primary,
-            }
-      }
-      aria-disabled={stock.isOutOfStock}
     >
-      {stock.isOutOfStock ? "Out of stock" : orderNowText}
-    </button>
+      {orderNowText}
+    </a>
   )
 }
 
