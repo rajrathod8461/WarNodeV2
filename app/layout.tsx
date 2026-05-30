@@ -204,7 +204,7 @@ export default function RootLayout({
                 ]
               },
               "sameAs": [
-                "https://discord.gg/warnode",
+                "https://dcd.gg/warnode",
                 "https://www.youtube.com/@war-node",
                 "https://www.instagram.com/war_nodes"
               ],
@@ -213,7 +213,7 @@ export default function RootLayout({
                 "contactType": "customer service",
                 "availableLanguage": "English",
                 "serviceType": "Technical Support",
-                "url": "https://discord.gg/warnode"
+                "url": "https://dcd.gg/warnode"
               },
               "termsOfService": "https://warnode.cloud/terms",
               "privacyPolicy": "https://warnode.cloud/policy"
