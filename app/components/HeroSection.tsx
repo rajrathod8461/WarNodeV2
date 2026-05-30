@@ -1,8 +1,7 @@
 "use client"
 
 import { useState, useEffect, useCallback, useRef } from "react"
-import { motion, AnimatePresence, useAnimation } from "framer-motion"
-import Link from "next/link"
+import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
 import heroConfig from "../config/sections/hero.json"
 import type { HeroConfig } from "../types/hero"
@@ -20,46 +19,51 @@ const generateBlurDataURL = () => {
 export default function HeroSection() {
   const { t } = useLanguage();
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0)
-  const [imagesLoaded, setImagesLoaded] = useState(new Set<number>())
-  const [preloadedImages, setPreloadedImages] = useState(new Set<number>())
-  const controls = useAnimation()
+  const [imagesLoaded, setImagesLoaded] = useState(() => new Set([0]))
+  const preloadedRef = useRef(new Set<number>([0]))
   const preloadTimeoutRef = useRef<NodeJS.Timeout | null>(null)
-  const preloadImage = useCallback((index: number) => {
-    if (preloadedImages.has(index)) return;
 
-    const img = new window.Image();
+  const preloadImage = useCallback((index: number) => {
+    if (preloadedRef.current.has(index)) return
+
+    const img = new window.Image()
     img.onload = () => {
-      setPreloadedImages(prev => new Set([...prev, index]));
-      setImagesLoaded(prev => new Set([...prev, index]));
-    };
-    img.src = config.hero.games[index]?.banner;
-  }, [preloadedImages]);
-  const preloadNextImages = useCallback((currentIndex: number) => {
-    const nextIndex = (currentIndex + 1) % config.hero.games.length;
-    const nextNextIndex = (currentIndex + 2) % config.hero.games.length;
-    preloadImage(nextIndex);
-    preloadTimeoutRef.current = setTimeout(() => {
-      preloadImage(nextNextIndex);
-    }, 1000);
-  }, [preloadImage]);
+      preloadedRef.current.add(index)
+      setImagesLoaded((prev) => new Set([...prev, index]))
+    }
+    img.src = config.hero.games[index]?.banner
+  }, [])
+
+  const preloadNextImages = useCallback(
+    (currentIndex: number) => {
+      const nextIndex = (currentIndex + 1) % config.hero.games.length
+      const nextNextIndex = (currentIndex + 2) % config.hero.games.length
+      preloadImage(nextIndex)
+      preloadTimeoutRef.current = setTimeout(() => {
+        preloadImage(nextNextIndex)
+      }, 1000)
+    },
+    [preloadImage],
+  )
+
   useEffect(() => {
-    let interval: NodeJS.Timeout | null = null;
-    preloadImage(0);
-    preloadImage(1);
-    setTimeout(() => preloadImage(2), 500);
-    setImagesLoaded(new Set([0]));
-    interval = setInterval(() => {
+    preloadImage(0)
+    preloadImage(1)
+    const initialPreload = setTimeout(() => preloadImage(2), 500)
+
+    const interval = setInterval(() => {
       setCurrentBannerIndex((prev) => {
-        const next = (prev + 1) % config.hero.games.length;
-        preloadNextImages(next);
-        return next;
-      });
-    }, config.hero.cycleInterval);
+        const next = (prev + 1) % config.hero.games.length
+        preloadNextImages(next)
+        return next
+      })
+    }, config.hero.cycleInterval)
 
     return () => {
-      if (interval) clearInterval(interval);
-      if (preloadTimeoutRef.current) clearTimeout(preloadTimeoutRef.current);
-    };
+      clearInterval(interval)
+      clearTimeout(initialPreload)
+      if (preloadTimeoutRef.current) clearTimeout(preloadTimeoutRef.current)
+    }
   }, [preloadImage, preloadNextImages])
 
   const currentGame = config.hero.games[currentBannerIndex] || config.hero.games[0]

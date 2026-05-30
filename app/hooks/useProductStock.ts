@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, useSyncExternalStore } from "react"
+import { useEffect, useMemo, useSyncExternalStore } from "react"
 
 type StockState =
   | { status: "idle" | "loading" }
@@ -6,11 +6,17 @@ type StockState =
   | { status: "out_of_stock" }
   | { status: "error" }
 
+const STOCK_IDLE: StockState = { status: "idle" }
+const STOCK_LOADING: StockState = { status: "loading" }
+
 const CACHE_TTL_MS = 5 * 60 * 1000
+const QUEUE_DELAY_MS = 100
 
 const cache = new Map<string, { state: StockState; at: number }>()
 const inflight = new Map<string, Promise<StockState>>()
 const listeners = new Set<() => void>()
+const pendingQueue: string[] = []
+let queueRunning = false
 
 function notify() {
   listeners.forEach((l) => l())
@@ -63,17 +69,40 @@ async function fetchStock(orderLink: string): Promise<StockState> {
   return promise
 }
 
+async function drainQueue() {
+  if (queueRunning) return
+  queueRunning = true
+
+  while (pendingQueue.length > 0) {
+    const orderLink = pendingQueue.shift()!
+    if (getCached(orderLink) || inflight.has(orderLink)) continue
+    await fetchStock(orderLink)
+    if (pendingQueue.length > 0) {
+      await new Promise((resolve) => setTimeout(resolve, QUEUE_DELAY_MS))
+    }
+  }
+
+  queueRunning = false
+}
+
+function scheduleStockFetch(orderLink: string) {
+  if (getCached(orderLink) || inflight.has(orderLink) || pendingQueue.includes(orderLink)) {
+    return
+  }
+  pendingQueue.push(orderLink)
+  void drainQueue()
+}
+
 function subscribe(listener: () => void) {
   listeners.add(listener)
   return () => listeners.delete(listener)
 }
 
 function getSnapshot(orderLink: string, eligible: boolean): StockState {
-  if (!eligible) return { status: "idle" }
+  if (!eligible) return STOCK_IDLE
   const cached = getCached(orderLink)
   if (cached) return cached
-  if (inflight.has(orderLink)) return { status: "loading" }
-  return { status: "loading" }
+  return STOCK_LOADING
 }
 
 export function useProductStock(orderLink?: string) {
@@ -89,7 +118,7 @@ export function useProductStock(orderLink?: string) {
   useEffect(() => {
     if (!eligible || !orderLink) return
     if (getCached(orderLink)) return
-    void fetchStock(orderLink)
+    scheduleStockFetch(orderLink)
   }, [eligible, orderLink])
 
   return {

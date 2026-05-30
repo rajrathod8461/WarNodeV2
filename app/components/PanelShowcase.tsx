@@ -103,17 +103,16 @@ export default function PanelShowcase() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setProgress((prev) => (prev >= 100 ? 100 : prev + 2))
+      setProgress((prev) => {
+        if (prev >= 100) {
+          setActiveCard((current) => (current + 1) % showcaseCards.length)
+          return 0
+        }
+        return prev + 2
+      })
     }, TICK_MS)
     return () => clearInterval(timer)
-  }, [])
-
-  useEffect(() => {
-    if (progress >= 100) {
-      setActiveCard((current) => (current + 1) % showcaseCards.length)
-      setProgress(0)
-    }
-  }, [progress, showcaseCards.length])
+  }, [showcaseCards.length])
 
   useEffect(() => {
     if (skipAutoListScroll.current) {

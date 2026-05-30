@@ -20,28 +20,74 @@ interface ThemeSwitcherConfig {
 
 const config = uiConfig.themeSwitcher as ThemeSwitcherConfig
 
+function applyThemeColor(colorName: string) {
+  const color = config.availableColors.find(c => c.name === colorName)
+  if (!color) return
+
+  const root = document.documentElement
+  root.style.setProperty('--icon-primary', color.value)
+  root.style.setProperty('--button-primary', color.value)
+  root.style.setProperty('--text-secondary', color.value)
+  root.style.setProperty('--icon-text-primary', color.value)
+
+  const rgb = color.value.match(/\d+/g)
+  if (rgb && rgb.length >= 3) {
+    const r = parseInt(rgb[0])
+    const g = parseInt(rgb[1])
+    const b = parseInt(rgb[2])
+    root.style.setProperty('--hover-gradient', `radial-gradient(50% 50% at 50% 100%, rgba(${r}, ${g}, ${b}, 0.25) 0%, transparent 100%)`)
+    root.style.setProperty('--border-secondary', `rgba(${r}, ${g}, ${b}, 0.3)`)
+    root.style.setProperty('--card-primary', `rgba(${r}, ${g}, ${b}, 0.301)`)
+
+    const isDark = root.classList.contains('dark')
+    if (isDark) {
+      root.style.setProperty('--globe-marker-color-r', (r / 255).toString())
+      root.style.setProperty('--globe-marker-color-g', (g / 255).toString())
+      root.style.setProperty('--globe-marker-color-b', (b / 255).toString())
+
+      root.style.setProperty('--globe-base-color-r', (r / 255).toString())
+      root.style.setProperty('--globe-base-color-g', (g / 255).toString())
+      root.style.setProperty('--globe-base-color-b', (b / 255).toString())
+      root.style.setProperty('--globe-glow-color-r', ((r / 255) * 0.3).toString())
+      root.style.setProperty('--globe-glow-color-g', ((g / 255) * 0.3).toString())
+      root.style.setProperty('--globe-glow-color-b', ((b / 255) * 0.3).toString())
+    } else {
+      root.style.setProperty('--globe-base-color-r', '1.0')
+      root.style.setProperty('--globe-base-color-g', '1.0')
+      root.style.setProperty('--globe-base-color-b', '1.0')
+
+      root.style.setProperty('--globe-marker-color-r', (r / 255).toString())
+      root.style.setProperty('--globe-marker-color-g', (g / 255).toString())
+      root.style.setProperty('--globe-marker-color-b', (b / 255).toString())
+
+      root.style.setProperty('--globe-glow-color-r', '1.0')
+      root.style.setProperty('--globe-glow-color-g', '1.0')
+      root.style.setProperty('--globe-glow-color-b', '1.0')
+    }
+  }
+
+  localStorage.setItem('theme-color', colorName)
+  window.dispatchEvent(new CustomEvent('themeColorChange', { detail: colorName }))
+}
+
 export default function ThemeSwitcher() {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedColor, setSelectedColor] = useState(config.defaultColor)
-  const _themeswitch = [
-    "ed81a6ecacfe792662b9f3bd82bfa5fe",
-  ]
+
   useEffect(() => {
     const savedColor = localStorage.getItem('theme-color')
     if (savedColor && config.availableColors.find(c => c.name === savedColor)) {
       setSelectedColor(savedColor)
-      applyTheme(savedColor)
+      applyThemeColor(savedColor)
     } else {
-      applyTheme(config.defaultColor)
+      applyThemeColor(config.defaultColor)
     }
 
-    // Listen for theme mode changes (dark/light toggle)
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.attributeName === 'class') {
-          // Re-apply current theme color when dark/light mode changes
           const currentColor = localStorage.getItem('theme-color') || config.defaultColor
-          applyTheme(currentColor)
+          applyThemeColor(currentColor)
         }
       })
     })
@@ -54,59 +100,9 @@ export default function ThemeSwitcher() {
     return () => observer.disconnect()
   }, [])
 
-  const applyTheme = (colorName: string) => {
-    const color = config.availableColors.find(c => c.name === colorName)
-    if (!color) return
-
-    const root = document.documentElement
-    root.style.setProperty('--icon-primary', color.value)
-    root.style.setProperty('--button-primary', color.value)
-    root.style.setProperty('--text-secondary', color.value)
-    root.style.setProperty('--icon-text-primary', color.value)
-
-    const rgb = color.value.match(/\d+/g)
-    if (rgb && rgb.length >= 3) {
-      const r = parseInt(rgb[0])
-      const g = parseInt(rgb[1])
-      const b = parseInt(rgb[2])
-      root.style.setProperty('--hover-gradient', `radial-gradient(50% 50% at 50% 100%, rgba(${r}, ${g}, ${b}, 0.25) 0%, transparent 100%)`)
-      root.style.setProperty('--border-secondary', `rgba(${r}, ${g}, ${b}, 0.3)`)
-      root.style.setProperty('--card-primary', `rgba(${r}, ${g}, ${b}, 0.301)`)
-
-      const isDark = root.classList.contains('dark')
-      if (isDark) {
-        root.style.setProperty('--globe-marker-color-r', (r / 255).toString())
-        root.style.setProperty('--globe-marker-color-g', (g / 255).toString())
-        root.style.setProperty('--globe-marker-color-b', (b / 255).toString())
-
-        root.style.setProperty('--globe-base-color-r', (r / 255).toString())
-        root.style.setProperty('--globe-base-color-g', (g / 255).toString())
-        root.style.setProperty('--globe-base-color-b', (b / 255).toString())
-        root.style.setProperty('--globe-glow-color-r', ((r / 255) * 0.3).toString())
-        root.style.setProperty('--globe-glow-color-g', ((g / 255) * 0.3).toString())
-        root.style.setProperty('--globe-glow-color-b', ((b / 255) * 0.3).toString())
-      } else {
-        root.style.setProperty('--globe-base-color-r', '1.0')
-        root.style.setProperty('--globe-base-color-g', '1.0')
-        root.style.setProperty('--globe-base-color-b', '1.0')
-
-        root.style.setProperty('--globe-marker-color-r', (r / 255).toString())
-        root.style.setProperty('--globe-marker-color-g', (g / 255).toString())
-        root.style.setProperty('--globe-marker-color-b', (b / 255).toString())
-
-        root.style.setProperty('--globe-glow-color-r', '1.0')
-        root.style.setProperty('--globe-glow-color-g', '1.0')
-        root.style.setProperty('--globe-glow-color-b', '1.0')
-      }
-    }
-
-    localStorage.setItem('theme-color', colorName)
-    window.dispatchEvent(new CustomEvent('themeColorChange', { detail: colorName }))
-  }
-
   const handleColorChange = (colorName: string) => {
     setSelectedColor(colorName)
-    applyTheme(colorName)
+    applyThemeColor(colorName)
     setIsOpen(false)
   }
 
@@ -209,4 +205,4 @@ export default function ThemeSwitcher() {
       </AnimatePresence>
     </>
   )
-} 
+}

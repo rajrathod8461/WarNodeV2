@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
@@ -172,7 +172,7 @@ export function useCurrency(): UseCurrencyReturn {
 
   const [selectedCurrency, setSelectedCurrency] = useState<Currency>(defaultCurrency);
 
-  const convertPrice = (price: string): string => {
+  const convertPrice = useCallback((price: string): string => {
     const numericPrice = parseFloat(price.replace(/[£$€¥₹C\$A\$]/g, ""));
 
     if (isNaN(numericPrice)) {
@@ -203,7 +203,7 @@ export function useCurrency(): UseCurrencyReturn {
     }
 
     return `${selectedCurrency.symbol}${convertedPrice.toFixed(2)}`;
-  };
+  }, [selectedCurrency]);
 
   return {
     selectedCurrency,

@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { NavigationConfig, NavigationItem, DropdownItem } from '../types/navigation';
 import { usePathname } from 'next/navigation';
 import { useTheme } from "next-themes"
@@ -28,7 +29,7 @@ import {
 } from 'lucide-react';
 import { FaDiscord } from "react-icons/fa6";
 import { GrServerCluster } from "react-icons/gr";
-import Confetti from 'react-confetti';
+const Confetti = dynamic(() => import('react-confetti'), { ssr: false });
 import { motion, AnimatePresence } from 'framer-motion';
 import navigationConfig from '../config/sections/navigation.json';
 import heroConfig from '../config/sections/hero.json';
@@ -85,13 +86,13 @@ const SocialIcons: { [key: string]: React.FC } = {
 };
 
 
-const ThemeToggle = React.memo((): React.ReactElement => {
+const ThemeToggle = React.memo(function ThemeToggle(): React.ReactElement {
   const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  )
 
   const handleThemeToggle = useCallback(() => {
     setTheme(theme === "light" ? "dark" : "light")

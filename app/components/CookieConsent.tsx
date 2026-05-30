@@ -1,14 +1,29 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Cookie, X, Settings, Check } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { useTheme } from 'next-themes';
 
 interface CookiePreferences {
   necessary: boolean;
   preferences: boolean;
+}
+
+function readInitialVisibility(): boolean {
+  if (typeof window === 'undefined') return false;
+  return !localStorage.getItem('cookie-consent');
+}
+
+function readInitialPreferences(): CookiePreferences {
+  if (typeof window === 'undefined') return { necessary: true, preferences: false };
+  const savedPreferences = localStorage.getItem('cookie-preferences');
+  if (!savedPreferences) return { necessary: true, preferences: false };
+  try {
+    return JSON.parse(savedPreferences) as CookiePreferences;
+  } catch {
+    return { necessary: true, preferences: false };
+  }
 }
 
 export const areCookiesAccepted = (): boolean => {
@@ -28,26 +43,10 @@ export const areCookiesAccepted = (): boolean => {
 
 export default function CookieConsent() {
   const { t } = useLanguage();
-  const { theme } = useTheme();
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(readInitialVisibility);
   const [showPopup, setShowPopup] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [cookiePreferences, setCookiePreferences] = useState<CookiePreferences>({
-    necessary: true,
-    preferences: false,
-  });
-
-  useEffect(() => {
-    const hasConsent = localStorage.getItem('cookie-consent');
-    if (!hasConsent) {
-      setIsVisible(true);
-    }
-
-    const savedPreferences = localStorage.getItem('cookie-preferences');
-    if (savedPreferences) {
-      setCookiePreferences(JSON.parse(savedPreferences));
-    }
-  }, []);
+  const [cookiePreferences, setCookiePreferences] = useState<CookiePreferences>(readInitialPreferences);
 
   const handleAcceptAll = () => {
     const allAccepted = {

@@ -1,13 +1,22 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  ReactNode,
+} from 'react';
 import languageConfig from '../config/sections/language.json';
 import type { LanguageConfig, Language } from '../types/language';
+import enTranslations from '../../public/lang/en.json';
 
 const config = languageConfig as LanguageConfig;
 
 interface Translations {
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 interface LanguageContextType {
@@ -20,126 +29,119 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+function canUsePreferenceCookies(): boolean {
+  if (typeof window === 'undefined') return false;
+  const cookieConsent = localStorage.getItem('cookie-consent');
+  const cookiePreferences = localStorage.getItem('cookie-preferences');
+  if (!cookieConsent || !cookiePreferences) return false;
+  try {
+    const prefs = JSON.parse(cookiePreferences) as { preferences?: boolean };
+    return prefs.preferences === true;
+  } catch {
+    return false;
+  }
+}
+
+function getStoredLanguage(): Language {
+  if (typeof window === 'undefined') return 'en';
+  if (!canUsePreferenceCookies()) return 'en';
+  const saved = localStorage.getItem('language') as Language | null;
+  if (saved && config.availableLanguages.some((l) => l.code === saved)) {
+    return saved;
+  }
+  return 'en';
+}
+
+function applyDocumentLanguage(lang: Language) {
+  if (typeof window === 'undefined') return;
+  document.documentElement.lang = lang;
+  const languageInfo = config.availableLanguages.find((l) => l.code === lang);
+  document.documentElement.dir = languageInfo?.rtl ? 'rtl' : 'ltr';
+}
+
 interface LanguageProviderProps {
   children: ReactNode;
 }
+
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
   const [language, setLanguage] = useState<Language>('en');
-  const [translations, setTranslations] = useState<Translations>({});
-  const [isLoading, setIsLoading] = useState(true);
+  const [translations, setTranslations] = useState<Translations>(enTranslations as Translations);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const loadTranslations = async (lang: Language) => {
+  const loadTranslations = useCallback(async (lang: Language) => {
+    if (lang === 'en') {
+      setTranslations(enTranslations as Translations);
+      setIsLoading(false);
+      return;
+    }
+
     setIsLoading(true);
     try {
       const response = await fetch(`/lang/${lang}.json`);
       if (!response.ok) {
         throw new Error(`Failed to load ${lang} translations`);
       }
-      const data = await response.json();
+      const data = (await response.json()) as Translations;
       setTranslations(data);
     } catch (error) {
       console.error(`Failed to load translations for ${lang}:`, error);
-      
-      if (lang !== 'en') {
-        try {
-          const fallbackResponse = await fetch('/lang/en.json');
-          if (fallbackResponse.ok) {
-            const fallbackData = await fallbackResponse.json();
-            setTranslations(fallbackData);
-            console.warn(`Loaded English translations as fallback for ${lang}`);
-          }
-        } catch (fallbackError) {
-          console.error('Failed to load fallback translations:', fallbackError);
-          setTranslations({});
-        }
-      } else {
-        setTranslations({});
-      }
+      setTranslations(enTranslations as Translations);
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
-    const initializeLanguage = async () => {
-      const initialLanguage: Language = "en"
+    const initialLanguage = getStoredLanguage();
+    setLanguage(initialLanguage);
+    applyDocumentLanguage(initialLanguage);
+    void loadTranslations(initialLanguage);
+  }, [loadTranslations]);
 
-      if (typeof window !== "undefined") {
-        document.documentElement.lang = "en"
-        document.documentElement.dir = "ltr"
-        localStorage.setItem("language", "en")
-      }
+  const handleSetLanguage = useCallback(
+    async (lang: Language) => {
+      setLanguage(lang);
+      applyDocumentLanguage(lang);
 
-      setLanguage(initialLanguage)
-      await loadTranslations(initialLanguage)
-    }
-
-    initializeLanguage()
-  }, [])
-
-  const handleSetLanguage = async (lang: Language) => {
-    setLanguage(lang);
-    if (typeof window !== 'undefined') {
-      const cookieConsent = localStorage.getItem('cookie-consent');
-      const cookiePreferences = localStorage.getItem('cookie-preferences');
-      
-      let canSavePreferences = false;
-      if (cookieConsent && cookiePreferences) {
-        try {
-          const prefs = JSON.parse(cookiePreferences);
-          canSavePreferences = prefs.preferences === true;
-        } catch {
-          canSavePreferences = false;
-        }
-      }
-      
-      if (canSavePreferences) {
+      if (typeof window !== 'undefined' && canUsePreferenceCookies()) {
         localStorage.setItem('language', lang);
       }
-      document.documentElement.lang = lang;
-      const languageInfo = config.availableLanguages.find(l => l.code === lang);
-      document.documentElement.dir = languageInfo?.rtl ? 'rtl' : 'ltr';
-    }
-    
-    await loadTranslations(lang);
-  };
 
-  const t = (key: string): string => {
-    if (isLoading || Object.keys(translations).length === 0) {
-      return '';
-    }
-
-    const keys = key.split('.');
-    let value: any = translations;
-    
-    for (const k of keys) {
-      if (value && typeof value === 'object' && k in value) {
-        value = value[k];
-      } else {
-        return key;
-      }
-    }
-    
-    return typeof value === 'string' ? value : key;
-  };
-
-  return (
-    <LanguageContext.Provider
-      value={{
-        language,
-        setLanguage: handleSetLanguage,
-        translations,
-        t,
-        isLoading,
-      }}
-    >
-      {!isLoading && Object.keys(translations).length > 0 ? children : (
-        <div className="flex items-center justify-center min-h-screen">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
-        </div>
-      )}
-    </LanguageContext.Provider>
+      await loadTranslations(lang);
+    },
+    [loadTranslations],
   );
+
+  const t = useCallback(
+    (key: string): string => {
+      const keys = key.split('.');
+      let value: unknown = translations;
+
+      for (const k of keys) {
+        if (value && typeof value === 'object' && k in (value as Record<string, unknown>)) {
+          value = (value as Record<string, unknown>)[k];
+        } else {
+          return key;
+        }
+      }
+
+      return typeof value === 'string' ? value : key;
+    },
+    [translations],
+  );
+
+  const value = useMemo(
+    () => ({
+      language,
+      setLanguage: handleSetLanguage,
+      translations,
+      t,
+      isLoading,
+    }),
+    [language, handleSetLanguage, translations, t, isLoading],
+  );
+
+  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 };
 
 export const useLanguage = (): LanguageContextType => {

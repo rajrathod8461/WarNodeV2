@@ -16,6 +16,7 @@ import { useLanguage } from "../../contexts/LanguageContext"
 import { CountryFlag } from "../CountryFlag"
 import { useProductStock } from "../../hooks/useProductStock"
 const config = gamesConfig as GamesConfig
+const PLAN_TYPE_IDS = config.planTypes.map((t) => t.id)
 
 const CPU_BRAND = {
   intel: {
@@ -103,8 +104,7 @@ export default function GameServerList() {
   const { t } = useLanguage()
   const [selectedGame, setSelectedGame] = useState<string>(config.games[0]?.id || "")
   const [selectedLocation, setSelectedLocation] = useState<string>(config.locations[0]?.id || "")
-  const planTypeIds = config.planTypes.map((t) => t.id)
-  const [selectedPlanType, setSelectedPlanType] = useState(planTypeIds[0] || "intel")
+  const [selectedPlanType, setSelectedPlanType] = useState(PLAN_TYPE_IDS[0] || "intel")
 
   useEffect(() => {
     const game = searchParams.get("game")
@@ -117,10 +117,10 @@ export default function GameServerList() {
     if (location && config.locations.some((l) => l.id === location)) {
       setSelectedLocation(location)
     }
-    if (plan && planTypeIds.includes(plan)) {
+    if (plan && PLAN_TYPE_IDS.includes(plan)) {
       setSelectedPlanType(plan)
     }
-  }, [searchParams, planTypeIds])
+  }, [searchParams])
 
   useEffect(() => {
     const params = new URLSearchParams()
