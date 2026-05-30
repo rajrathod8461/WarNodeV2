@@ -1,0 +1,17 @@
+{
+  "badge": "Support Center",
+  "title": "Contact Us",
+  "intro": "Have questions or need help? We're here for you. Reach out through any of the channels below.",
+  "supportEmail": "support@warnode.in",
+  "helpDocsUrl": "https://portal.warnode.cloud/knowledgebase",
+  "address": {
+    "company": "WarNodes India",
+    "city": "Washim, Maharashtra",
+    "country": "India - 444405",
+    "note": "Headquarters Location: Washim, Maharashtra"
+  },
+  "cta": {
+    "title": "Need a faster response?",
+    "description": "Join our official Discord server. Our support ticket system and community managers are available to resolve issues in real-time."
+  }
+}

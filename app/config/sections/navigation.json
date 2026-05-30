@@ -15,13 +15,13 @@
     },
     {
       "name": "Discord Bot",
-      "href": "/discord",
+      "href": "/discord-bot",
       "icon": "FaDiscord",
       "hasDropdown": false
     },
     {
       "name": "Web Hosting",
-      "href": "/webhosting",
+      "href": "/web-hosting",
       "icon": "GrServerCluster",
       "hasDropdown": false
     },
@@ -33,24 +33,24 @@
     },
     {
       "name": "Legal",
-      "href": "/terms-of-services",
+      "href": "/terms",
       "icon": "FileText",
       "hasDropdown": true,
       "dropdownType": "legal",
       "dropdownItems": [
         {
           "name": "Terms of Service",
-          "href": "/terms-of-services",
+          "href": "/terms",
           "description": "Our service agreement and terms"
         },
         {
           "name": "Privacy Policy",
-          "href": "/privacy-policy",
+          "href": "/policy",
           "description": "How we protect your privacy"
         },
         {
           "name": "Refund Policy",
-          "href": "/refund-policy",
+          "href": "/refund",
           "description": "Our refund and guarantee terms"
         }
       ]
@@ -61,6 +61,16 @@
       "name": "Discord",
       "href": "https://discord.gg/warnode",
       "icon": "discord"
+    },
+    {
+      "name": "YouTube",
+      "href": "https://www.youtube.com/@war-node",
+      "icon": "youtube"
+    },
+    {
+      "name": "Instagram",
+      "href": "https://www.instagram.com/war_nodes?igsh=dmx6OWJlanJiNjU5",
+      "icon": "instagram"
     }
   ],
   "clientSpace": {

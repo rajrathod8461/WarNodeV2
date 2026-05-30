@@ -4,7 +4,7 @@
     "tagline": "Next-Gen Infrastructure for Developers and Gamers",
     "description": "High-performance hosting powered by Gen4 NVMe storage, high-frequency CPUs, and WarShield DDoS protection. Built for developers, gamers, and growing communities.",
     "websiteUrl": "https://warnode.cloud",
-    "contactEmail": "support@warnode.cloud",
+    "contactEmail": "support@warnode.in",
     "legalEmail": "legal@warnode.cloud"
   },
   "links": {
@@ -23,6 +23,11 @@
     "discordBot": "https://warnode.cloud/discord-bot",
     "webHosting": "https://warnode.cloud/web-hosting",
     "ddos": "https://warnode.cloud/ddos"
+  },
+  "social": {
+    "discord": "https://discord.gg/warnode",
+    "youtube": "https://www.youtube.com/@war-node",
+    "instagram": "https://www.instagram.com/war_nodes?igsh=dmx6OWJlanJiNjU5"
   },
   "stats": {
     "nvmeSpeed": "7.0 GB/s",

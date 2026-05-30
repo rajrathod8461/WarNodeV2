@@ -5,6 +5,16 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["lucide-react", "react-icons", "framer-motion"],
   },
 
+  async redirects() {
+    return [
+      { source: "/terms-of-services", destination: "/terms", permanent: true },
+      { source: "/privacy-policy", destination: "/policy", permanent: true },
+      { source: "/refund-policy", destination: "/refund", permanent: true },
+      { source: "/webhosting", destination: "/web-hosting", permanent: true },
+      { source: "/discord", destination: "/discord-bot", permanent: true },
+    ]
+  },
+
   images: {
     formats: ["image/webp", "image/avif"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],

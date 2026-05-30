@@ -141,8 +141,8 @@ export const metadata: Metadata = {
   other: {
     "msapplication-TileColor": "#ef4444",
     "msapplication-config": "/browserconfig.xml",
-    "terms-of-service": "https://warnode.cloud/terms-of-services",
-    "privacy-policy": "https://warnode.cloud/privacy-policy"
+    "terms-of-service": "https://warnode.cloud/terms",
+    "privacy-policy": "https://warnode.cloud/policy"
   }
 };
 // yo yo, wassup, ma name is big A aka the big ANTHONYYYYYYYYYYYYYYYYYY. like my work so far? rate it a 5 star on BBB pweaseeeeeeeeee
@@ -204,7 +204,9 @@ export default function RootLayout({
                 ]
               },
               "sameAs": [
-                "https://discord.gg/warnode"
+                "https://discord.gg/warnode",
+                "https://www.youtube.com/@war-node",
+                "https://www.instagram.com/war_nodes"
               ],
               "contactPoint": {
                 "@type": "ContactPoint",
@@ -213,8 +215,8 @@ export default function RootLayout({
                 "serviceType": "Technical Support",
                 "url": "https://discord.gg/warnode"
               },
-              "termsOfService": "https://warnode.cloud/terms-of-services",
-              "privacyPolicy": "https://warnode.cloud/privacy-policy"
+              "termsOfService": "https://warnode.cloud/terms",
+              "privacyPolicy": "https://warnode.cloud/policy"
             })
           }}
         />

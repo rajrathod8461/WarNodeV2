@@ -62,7 +62,7 @@
         "buttonTextKey": "pricingPlans.webHosting.buttonText",
         "buttonStyle": "secondary",
         "popular": false,
-        "link": "/webhosting"
+        "link": "/web-hosting"
       },
       {
         "titleKey": "pricingPlans.discordBot.title",
@@ -81,7 +81,7 @@
         "buttonTextKey": "pricingPlans.discordBot.buttonText",
         "buttonStyle": "secondary",
         "popular": false,
-        "link": "/discord"
+        "link": "/discord-bot"
       },
       {
         "titleKey": "pricingPlans.warShield.title",
