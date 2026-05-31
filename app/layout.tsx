@@ -8,6 +8,7 @@ import CookieConsent from "./components/CookieConsent";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 import ChristmasSnowfall from "./components/ChristmasSnowfall";
 import { Analytics } from "@vercel/analytics/next"
+import { siteMetadata } from "./lib/site-metadata"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,61 +45,51 @@ export const viewport: Viewport = {
   initialScale: 1,
   colorScheme: "dark light",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#1e40af" },
-    { media: "(prefers-color-scheme: dark)", color: "#1e3a8a" }
+    { media: "(prefers-color-scheme: light)", color: siteMetadata.themeColor },
+    { media: "(prefers-color-scheme: dark)", color: siteMetadata.themeColor }
   ],
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteMetadata.url),
   title: {
-    default: "WarNodes - Minecraft, VPS & Bot Hosting India",
-    template: "%s | WarNodes"
+    default: siteMetadata.title,
+    template: `%s | ${siteMetadata.name}`,
   },
-  description: "WarNodes offers Gen4 NVMe Minecraft hosting, AMD & Intel VPS, Discord bot hosting, and web hosting with WarShield DDoS protection and ultra-low India latency.",
+  description: siteMetadata.description,
   keywords: [
-    "game hosting",
-    "minecraft hosting",
-    "discord bot hosting",
-    "VPS hosting",
-    "dedicated servers",
-    "cloud servers",
-    "gaming servers",
     "WarNodes",
     "WarNodes hosting",
-    "India game hosting",
-    "low latency hosting",
-    "DDoS protection",
-    "24/7 support",
-    "custom server hosting",
-    "modded game hosting",
-    "server rental"
+    "minecraft hosting India",
+    "VPS hosting India",
+    "discord bot hosting",
+    "web hosting India",
+    "game server hosting",
+    "Gen4 NVMe hosting",
+    "WarShield DDoS protection",
+    "low latency hosting India",
+    "Pterodactyl hosting",
+    "cloud hosting",
+    "developer hosting",
   ],
-  authors: [{ name: "WarNodes" }],
-  creator: "WarNodes",
-  publisher: "WarNodes",
+  authors: [{ name: siteMetadata.name }],
+  creator: siteMetadata.name,
+  publisher: siteMetadata.name,
   category: "Game Hosting & Server Solutions",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://warnode.cloud",
-    siteName: "WarNodes - Developer & Game Hosting",
-    title: "WarNodes - Next-Gen Infrastructure for Developers and Gamers",
-    description: "High-performance hosting powered by Gen4 NVMe, WarShield DDoS protection, and ultra-low latency across India and global locations.",
-    images: [
-      {
-        url: "https://warnode.cloud/meta/Logo.png",
-        width: 1200,
-        height: 630,
-        alt: "WarNodes Hosting",
-        type: "image/png"
-      }
-    ]
+    url: siteMetadata.url,
+    siteName: siteMetadata.siteName,
+    title: siteMetadata.ogTitle,
+    description: siteMetadata.ogDescription,
+    images: [siteMetadata.ogImage],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "WarNodes - Minecraft, VPS & Bot Hosting",
-    description: "India's smoothest hosting — Gen4 NVMe, WarShield protection, instant deployment.",
-    images: ["https://warnode.cloud/meta/Logo.png"]
+    card: "summary",
+    title: siteMetadata.ogTitle,
+    description: siteMetadata.ogDescription,
+    images: [siteMetadata.logoUrl],
   },
   robots: {
     index: true,
@@ -120,30 +111,28 @@ export const metadata: Metadata = {
     google: "vzsKvhNUgAPlCbf1annB0Sl-bttSFos87mhOyQSU2aY", 
   },
 
-  applicationName: "WarNodes",
+  applicationName: siteMetadata.name,
   referrer: "origin-when-cross-origin",
 
   manifest: "/manifest.json",
   icons: {
     icon: [
-      { url: "/meta/Logo.png", sizes: "32x32", type: "image/png" },
-      { url: "/meta/Logo.png", sizes: "16x16", type: "image/png" }
+      { url: siteMetadata.logoPath, sizes: "32x32", type: "image/png" },
+      { url: siteMetadata.logoPath, sizes: "16x16", type: "image/png" },
     ],
-    apple: [
-      { url: "/meta/Logo.png", sizes: "180x180", type: "image/png" }
-    ],
-    shortcut: "/meta/Logo.png"
+    apple: [{ url: siteMetadata.logoPath, sizes: "180x180", type: "image/png" }],
+    shortcut: siteMetadata.logoPath,
   },
 
   alternates: {
-    canonical: "https://warnode.cloud"
+    canonical: siteMetadata.url,
   },
   other: {
-    "msapplication-TileColor": "#ef4444",
+    "msapplication-TileColor": siteMetadata.themeColor,
     "msapplication-config": "/browserconfig.xml",
-    "terms-of-service": "https://warnode.cloud/terms",
-    "privacy-policy": "https://warnode.cloud/policy"
-  }
+    "terms-of-service": `${siteMetadata.url}/terms`,
+    "privacy-policy": `${siteMetadata.url}/policy`,
+  },
 };
 // yo yo, wassup, ma name is big A aka the big ANTHONYYYYYYYYYYYYYYYYYY. like my work so far? rate it a 5 star on BBB pweaseeeeeeeeee
 export default function RootLayout({
@@ -167,10 +156,10 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "WarNodes",
-              "url": "https://warnode.cloud",
-              "logo": "https://warnode.cloud/meta/Logo.png",
-              "description": "Next-gen infrastructure for developers and gamers — Minecraft, VPS, bot, and web hosting",
+              "name": siteMetadata.name,
+              "url": siteMetadata.url,
+              "logo": siteMetadata.logoUrl,
+              "description": siteMetadata.description,
               "serviceType": ["Game Server Hosting", "VPS Hosting", "Dedicated Servers", "Cloud Infrastructure"],
               "areaServed": "Worldwide",
               "hasOfferCatalog": {
@@ -215,8 +204,8 @@ export default function RootLayout({
                 "serviceType": "Technical Support",
                 "url": "https://dcd.gg/warnode"
               },
-              "termsOfService": "https://warnode.cloud/terms",
-              "privacyPolicy": "https://warnode.cloud/policy"
+              "termsOfService": `${siteMetadata.url}/terms`,
+              "privacyPolicy": `${siteMetadata.url}/policy`
             })
           }}
         />

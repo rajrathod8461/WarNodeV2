@@ -1,0 +1,73 @@
+{
+  "members": [
+    {
+      "id": "raj",
+      "icon": "crown",
+      "avatar": "/team/raj.png",
+      "name": "Raj Rathod",
+      "role": "Founder & Technical Lead",
+      "handle": null,
+      "bio": "Raj is the founder of WarNodes and leads all technical operations across the platform. He is responsible for designing, managing, and improving the entire hosting infrastructure to ensure high performance, stability, and security for all customers.",
+      "responsibilities": [
+        { "icon": "code", "label": "Backend development and system architecture" },
+        { "icon": "server", "label": "Server deployment and infrastructure management" },
+        { "icon": "layers", "label": "VPS, game server, proxy, and web hosting setup" },
+        { "icon": "network", "label": "Network configuration and optimization" },
+        { "icon": "shield", "label": "DDoS protection implementation and security management" },
+        { "icon": "panel", "label": "Control panel integration and customization" },
+        { "icon": "database", "label": "Database management and optimization" },
+        { "icon": "workflow", "label": "Automation systems and service provisioning" },
+        { "icon": "activity", "label": "Performance monitoring and troubleshooting" },
+        { "icon": "trending", "label": "Infrastructure scaling and future technology planning" },
+        { "icon": "flask", "label": "Technical research and development" },
+        { "icon": "badge", "label": "Uptime, reliability, and service quality management" }
+      ]
+    },
+    {
+      "id": "sarthak",
+      "icon": "megaphone",
+      "avatar": "/team/sarthak.png",
+      "name": "Sarthak Tiwari",
+      "role": "Community Manager, Marketing Lead & Administrator",
+      "handle": "ssg_sarthak",
+      "bio": "Sarthak manages the WarNodes community and ensures customers receive timely assistance. He plays a key role in customer relations, marketing activities, support operations, and maintaining a positive experience across all platforms.",
+      "responsibilities": [
+        { "icon": "ticket", "label": "Customer ticket support and issue coordination" },
+        { "icon": "users", "label": "Community management and engagement" },
+        { "icon": "message", "label": "Discord server administration and moderation" },
+        { "icon": "heart", "label": "Customer Support Management and Ticket Resolution" },
+        { "icon": "share", "label": "Social media management and content promotion" },
+        { "icon": "megaphone", "label": "Marketing campaigns and brand awareness" },
+        { "icon": "handshake", "label": "Partnership and collaboration coordination" },
+        { "icon": "calendar", "label": "Community events, announcements, and giveaways" },
+        { "icon": "feedback", "label": "User feedback collection and reporting" },
+        { "icon": "headphones", "label": "Support team assistance and communication" },
+        { "icon": "userplus", "label": "New customer onboarding and guidance" },
+        { "icon": "sparkles", "label": "Maintaining a professional and active community environment" }
+      ]
+    },
+    {
+      "id": "shubh",
+      "icon": "briefcase",
+      "avatar": "/team/shubh.png",
+      "name": "Shubh Gupta",
+      "role": "Chief Executive Officer (CEO) & Finance Manager",
+      "handle": "pyrox",
+      "bio": "Shubh oversees the business and financial side of WarNodes. He is responsible for ensuring sustainable growth, efficient financial management, and strategic planning while supporting the long-term vision of the company.",
+      "responsibilities": [
+        { "icon": "wallet", "label": "Financial planning and budget management" },
+        { "icon": "chart", "label": "Revenue tracking and financial analysis" },
+        { "icon": "tags", "label": "Pricing strategy and service profitability" },
+        { "icon": "building", "label": "Business operations oversight" },
+        { "icon": "target", "label": "Strategic planning and company growth initiatives" },
+        { "icon": "coins", "label": "Investment and resource allocation decisions" },
+        { "icon": "receipt", "label": "Expense management and financial reporting" },
+        { "icon": "shieldalert", "label": "Risk assessment and business continuity planning" },
+        { "icon": "truck", "label": "Vendor and service provider coordination" },
+        { "icon": "gavel", "label": "Executive decision-making and leadership support" },
+        { "icon": "rocket", "label": "Long-term business development and expansion planning" },
+        { "icon": "scale", "label": "Maintaining financial stability and operational efficiency" }
+      ]
+    }
+  ]
+}

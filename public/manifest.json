@@ -1,11 +1,11 @@
 {
-  "name": "WarNodes - Game & VPS Hosting",
+  "name": "WarNodes || India's Smoothest Hosting Experience",
   "short_name": "WarNodes",
-  "description": "Next-gen infrastructure for developers and gamers — Minecraft, VPS, bot, and web hosting.",
+  "description": "Next-gen infrastructure for developers and gamers — Gen4 NVMe Minecraft hosting, VPS, Discord bot & web hosting with WarShield DDoS protection.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0b0f",
-  "theme_color": "#ef4444",
+  "theme_color": "#137fec",
   "icons": [
     {
       "src": "/meta/Logo.png",

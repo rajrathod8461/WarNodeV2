@@ -69,6 +69,14 @@
     "globalNetwork": "Optimized Global Network",
     "globalNetworkDesc": "Mumbai, Delhi, Hyderabad, Singapore, Dubai, Frankfurt, and Washington DC locations"
   },
+  "team": {
+    "badge": "Leadership",
+    "title": "Meet the",
+    "titleHighlight": "WarNodes Team",
+    "subtitle": "The people behind India's smoothest hosting experience — building infrastructure, supporting customers, and growing the platform.",
+    "responsibilities": "Responsibilities",
+    "founderBadge": "Founder"
+  },
   "locations": {
     "title": "Explore Our",
     "titleHighlight": "Global Network",
@@ -114,7 +122,8 @@
     "company": "Company",
     "support": "Support",
     "networkStatus": "Network Status",
-    "discordSupport": "Discord Support"
+    "discordSupport": "Discord Support",
+    "ourTeam": "Our Team"
   },
   "contact": {
     "badge": "Support Center",

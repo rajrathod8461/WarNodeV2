@@ -81,6 +81,7 @@ export default function Footer() {
   ]
 
   const companyLinks: FooterLink[] = [
+    { name: t("footer.ourTeam"), href: "/team" },
     { name: t("footer.clientArea"), href: links.portal, external: true },
     { name: t("footer.networkStatus"), href: links.status, external: true },
   ]
