@@ -22,7 +22,8 @@
     "vpsIntel": "https://warnode.cloud/vps-intel",
     "discordBot": "https://warnode.cloud/discord-bot",
     "webHosting": "https://warnode.cloud/web-hosting",
-    "ddos": "https://warnode.cloud/ddos"
+    "ddos": "https://warnode.cloud/ddos",
+    "updates": "https://updates.warnode.cloud"
   },
   "social": {
     "discord": "https://dcd.gg/warnode",

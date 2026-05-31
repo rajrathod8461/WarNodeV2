@@ -12,6 +12,8 @@ const nextConfig: NextConfig = {
       { source: "/refund-policy", destination: "/refund", permanent: true },
       { source: "/webhosting", destination: "/web-hosting", permanent: true },
       { source: "/discord", destination: "/discord-bot", permanent: true },
+      { source: "/updates", destination: "https://updates.warnode.cloud", permanent: false },
+      { source: "/announcements", destination: "https://updates.warnode.cloud", permanent: false },
     ]
   },
 
