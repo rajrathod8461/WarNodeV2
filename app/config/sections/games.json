@@ -22,7 +22,7 @@
       "id": "hyderabad",
       "name": "Hyderabad",
       "flag": "in",
-      "availablePlanTypes": ["intel", "amd"]
+      "availablePlanTypes": ["intel"]
     },
     {
       "id": "delhi",

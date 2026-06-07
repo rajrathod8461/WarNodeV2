@@ -59,18 +59,6 @@ function formatFixedGamePrice(
   return `${currency.symbol}${amount.toFixed(2)}`
 }
 
-function formatStartingPrice(game: Game, planType: string, isHytale: boolean, currency: Currency): string {
-  const plans = isHytale ? game.plans.intel || [] : game.plans[planType as keyof typeof game.plans] || []
-  if (!plans.length) return game.startingAt ?? ""
-  const cheapest = plans.reduce((min, p) => {
-    const amount = p.prices?.[currency.code as keyof NonNullable<GamePlan["prices"]>] ?? p.price
-    const minAmount = min.prices?.[currency.code as keyof NonNullable<GamePlan["prices"]>] ?? min.price
-    return amount < minAmount ? p : min
-  })
-  if (cheapest.prices) return `${formatFixedGamePrice(cheapest.prices, currency)}/mo`
-  return `${currency.symbol}${Math.round(cheapest.price)}/mo`
-}
-
 function GamePlanOrderButton({
   plan,
   planBrand,
@@ -222,27 +210,6 @@ export default function GameServerList() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-gray-50/40 to-transparent dark:from-[#0a0b0f] dark:via-[#0a0b0f]/60 dark:to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-gray-50 via-gray-50/80 to-gray-50/40 dark:from-[#0a0b0f] dark:via-[#0a0b0f]/95 dark:to-[#0a0b0f]/60" />
-        {currentGame && (
-          <div className="pointer-events-none absolute right-4 top-24 z-[2] sm:right-8 sm:top-28">
-            <div
-              className="rounded-tl-xl rounded-br-xl border px-3 py-2 shadow-lg backdrop-blur-md"
-              style={{
-                borderColor: activeCpuBrand.border,
-                backgroundColor: `${activeCpuBrand.primary}22`,
-              }}
-            >
-              <p className="text-[10px] font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                {t("gameServerList.startingAt")}
-              </p>
-              <p
-                className="orbitron-font text-lg font-bold leading-tight sm:text-xl"
-                style={{ color: activeCpuBrand.primary }}
-              >
-                {formatStartingPrice(currentGame, selectedPlanType, isHytaleLayout, selectedCurrency)}
-              </p>
-            </div>
-          </div>
-        )}
       </div>
 
       <div className="relative z-10 mt-16 max-w-7xl mx-auto">
@@ -427,19 +394,6 @@ export default function GameServerList() {
                           )}
                         </div>
                         <p className="text-xs opacity-80 line-clamp-2">{game.description}</p>
-                        {!isHytaleLayout && (
-                          <p
-                            className="mt-1 text-xs font-semibold"
-                            style={{ color: activeCpuBrand.primary }}
-                          >
-                            {formatStartingPrice(
-                              game,
-                              selectedPlanType,
-                              game.id === "hytale",
-                              selectedCurrency
-                            )}
-                          </p>
-                        )}
                       </div>
                     </div>
                   </button>
