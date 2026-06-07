@@ -28,7 +28,7 @@
       "id": "delhi",
       "name": "Delhi",
       "flag": "in",
-      "availablePlanTypes": ["intel", "amd"]
+      "availablePlanTypes": ["amd"]
     },
     {
       "id": "singapore",

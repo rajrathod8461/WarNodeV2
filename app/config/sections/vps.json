@@ -33,7 +33,7 @@
       "name": "Delhi",
       "flag": "in",
       "displayName": "Delhi, India",
-      "availableCpus": ["amd-epyc", "intel-xeon"]
+      "availableCpus": ["amd-epyc"]
     },
     {
       "id": "singapore",

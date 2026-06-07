@@ -217,6 +217,7 @@
     "getStarted": "Get started",
     "learnMore": "Learn More",
     "getStartedFree": "Get started for free!",
+    "getStartedFreeLink": "/web-hosting",
     "instantSetup": "Instant Setup",
     "instantSetupDesc": "Get your server running in under 60 seconds",
     "ddosProtection": "DDoS Protection",
@@ -361,7 +362,9 @@
     "featured": "Featured",
     "premium": "Premium",
     "startingAt": "Starting at",
-    "ddosProtection": "DDoS Protection"
+    "ddosProtection": "DDoS Protection",
+    "moreLocations": "Need more locations?",
+    "contactUs": "Contact us"
   },
   "webHostingPricing": {
     "badge": "Web Hosting Solutions",

@@ -89,6 +89,16 @@ export default function VPSPricingSection() {
   const availableCPUs = currentLocation?.availableCpus || []
   const currentPlans = config.plans[selectedCPU] || config.plans[config.planTypes[0].id]
 
+  const visibleLocations = config.locations.filter((loc) => loc.availableCpus.includes(selectedCPU))
+  const visibleCPUs = config.planTypes.filter((cpu) => availableCPUs.includes(cpu.id))
+
+  useEffect(() => {
+    const compatible = config.locations.filter((loc) => loc.availableCpus.includes(selectedCPU))
+    if (compatible.length && !compatible.some((loc) => loc.id === selectedLocation)) {
+      setSelectedLocation(compatible[0].id)
+    }
+  }, [selectedCPU, selectedLocation])
+
   const activeCpuBrand = selectedCPU === "amd-epyc" ? CPU_BRAND.amd : CPU_BRAND.intel
   const accentStyle = {
     ["--icon-primary" as any]: activeCpuBrand.primary,
@@ -242,28 +252,23 @@ export default function VPSPricingSection() {
             <div className="flex flex-col items-left">
               <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3.5">{t('vps.step1')}</h3>
               <div className="flex flex-wrap gap-2">
-                {config.locations.map((location) => {
-                  const hasAvailableCpus = location.availableCpus.length > 0
+                {visibleLocations.map((location) => {
                   const isSelected = selectedLocation === location.id
                   
                   return (
                     <button
                       key={location.id}
                       onClick={() => handleLocationSelection(location.id)}
-                      disabled={!hasAvailableCpus}
                       className={`flex items-center gap-3 px-4 py-3 rounded-tl-2xl rounded-br-2xl font-medium transition-all duration-300 ${
                         isSelected
                           ? "button-primary border-primary text-button-primary shadow-lg"
-                          : hasAvailableCpus
-                          ? "bg-gray-200 dark:bg-gray-800/20 border border-secondary text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700/30 hover:border-secondary"
-                          : "bg-gray-100 dark:bg-gray-800/10 border button-primary text-gray-400 dark:text-gray-500 cursor-not-allowed opacity-50"
+                          : "bg-gray-200 dark:bg-gray-800/20 border border-secondary text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700/30 hover:border-secondary"
                       }`}
                     >
                       <CountryFlag
                         code={location.flag}
                         alt={`${location.name} flag`}
                         size="sm"
-                        className={!hasAvailableCpus ? "opacity-50" : ""}
                       />
                       <span className="text-sm font-medium">{location.displayName}</span>
                     </button>
@@ -275,8 +280,7 @@ export default function VPSPricingSection() {
             <div className="flex flex-col items-left">
               <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">{t('vps.step2')}</h3>
               <div className="flex flex-wrap gap-2">
-                {config.planTypes.map((cpu) => {
-                  const isAvailable = availableCPUs.includes(cpu.id)
+                {visibleCPUs.map((cpu) => {
                   const isSelected = selectedCPU === cpu.id
                   const isAMD = cpu.id === "amd-epyc"
                   
@@ -284,15 +288,12 @@ export default function VPSPricingSection() {
                     <button
                       key={cpu.id}
                       onClick={() => handleCPUSelection(cpu.id)}
-                      disabled={!isAvailable}
                       className={`flex items-center gap-3 px-4 py-2.5 rounded-tl-2xl rounded-br-2xl font-medium transition-all duration-300 ${
                         isSelected
                           ? isAMD
                             ? "border border-orange-400/60 bg-orange-500/15 text-orange-700 shadow-lg dark:border-orange-300/30 dark:bg-orange-500/10 dark:text-orange-300"
                             : "button-primary border-primary text-button-primary shadow-lg"
-                          : isAvailable
-                          ? "bg-gray-200 dark:bg-gray-800/20 border border-secondary text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700/30 hover:border-secondary"
-                          : "bg-gray-100 dark:bg-gray-800/10 border border-secondary text-gray-400 dark:text-gray-500 cursor-not-allowed opacity-50"
+                          : "bg-gray-200 dark:bg-gray-800/20 border border-secondary text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700/30 hover:border-secondary"
                       }`}
                     >
                       <Image
@@ -300,7 +301,7 @@ export default function VPSPricingSection() {
                         alt={cpu.name}
                         width={24}
                         height={24}
-                        className={`rounded-md object-contain ${!isAvailable ? 'opacity-50' : ''}`}
+                        className="rounded-md object-contain"
                       />
                       <span className="text-sm font-semibold">{cpu.displayName}</span>
                     </button>

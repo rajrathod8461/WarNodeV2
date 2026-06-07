@@ -392,6 +392,10 @@ export default function HeroSection() {
                   variants={itemVariants}
                   className="flex items-center gap-3 -mt-6 ml-4"
                 >
+                  <a
+                    href="/web-hosting"
+                    className="group inline-flex items-center gap-3 no-underline transition-opacity hover:opacity-90"
+                  >
                   <motion.svg
                     fill="currentColor"
                     className="w-6 h-6 icon-primary"
@@ -415,13 +419,14 @@ export default function HeroSection() {
                     </g>
                   </motion.svg>
                   <motion.span
-                    className="text-gray-600 -mb-4 dark:text-gray-300 text-sm"
+                    className="text-gray-600 -mb-4 dark:text-gray-300 text-sm group-hover:icon-text-primary transition-colors"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 1.2, duration: 0.6 }}
                   >
                     {t('hero.getStartedFree')}
                   </motion.span>
+                  </a>
                 </motion.div>
               </motion.div>
               <motion.div
