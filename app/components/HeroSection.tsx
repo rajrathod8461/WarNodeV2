@@ -9,7 +9,6 @@ import uiConfig from "../config/sections/ui.json"
 
 const config = heroConfig as HeroConfig;
 import { ArrowRight, Server, Shield, Clock, Users } from "lucide-react"
-import { FiExternalLink } from 'react-icons/fi';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const generateBlurDataURL = () => {
@@ -377,11 +376,11 @@ export default function HeroSection() {
                     whileTap="tap"
                   >
                     <a
-                      href="https://portal.warnode.cloud"
+                      href="#features"
                       className="hidden sm:inline-flex text-gray-700 dark:text-white hover:bg-transparent hover:shadow-none px-8 py-3 rounded-lg orbitron-font text-md transition-all duration-300 items-center gap-2 no-underline"
                     >
                       {t('hero.learnMore')}
-                      <FiExternalLink className="w-4 h-4" />
+                      <ArrowRight className="w-4 h-4" />
                     </a>
 
                   </motion.div>

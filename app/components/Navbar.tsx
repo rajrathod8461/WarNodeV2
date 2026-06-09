@@ -26,6 +26,7 @@ import {
   FileText,
   Shield,
   Check,
+  LayoutGrid,
 } from 'lucide-react';
 import { FaDiscord } from "react-icons/fa6";
 import { GrServerCluster } from "react-icons/gr";
@@ -380,6 +381,57 @@ const Navbar: React.FC = () => {
     );
   }, [pathname, renderDropdown, getTranslatedNavName]);
 
+  const mobileSplitRowClass = useCallback((isActive: boolean, side: 'left' | 'right') => {
+    const base = isActive
+      ? 'card-primary text-icon-text-primary border border-secondary'
+      : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 border border-gray-200 dark:border-gray-700';
+
+    if (side === 'left') return `${base} border-r-0 rounded-l-lg`;
+    return `${base} border-l-0 rounded-r-lg`;
+  }, []);
+
+  const renderMobileSplitNavRow = useCallback((
+    key: string,
+    label: string,
+    icon: React.ElementType | null,
+    isActive: boolean,
+    isOpen: boolean,
+    href?: string,
+  ) => (
+    <div className="mb-3 flex">
+      {href ? (
+        <Link
+          href={href}
+          className={`flex flex-1 items-center space-x-3 px-3 py-3 transition-colors ${mobileSplitRowClass(isActive, 'left')}`}
+          onClick={closeMobileMenu}
+          prefetch={true}
+        >
+          {icon && React.createElement(icon, { className: 'h-5 w-5' })}
+          <span className="font-medium">{label}</span>
+        </Link>
+      ) : (
+        <div className={`flex flex-1 items-center space-x-3 px-3 py-3 ${mobileSplitRowClass(isActive, 'left')}`}>
+          {icon && React.createElement(icon, { className: 'h-5 w-5' })}
+          <span className="font-medium">{label}</span>
+        </div>
+      )}
+      <button
+        type="button"
+        onClick={() => toggleMobileDropdown(key)}
+        aria-expanded={isOpen}
+        aria-label={`Toggle ${label} menu`}
+        className={`px-3 py-3 transition-all duration-200 ${mobileSplitRowClass(isActive, 'right')}`}
+      >
+        <motion.div
+          animate={{ rotate: isOpen ? 90 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <ChevronRight className="h-4 w-4" />
+        </motion.div>
+      </button>
+    </div>
+  ), [closeMobileMenu, mobileSplitRowClass, toggleMobileDropdown]);
+
   const renderMobileNavigationItem = useCallback((item: NavigationItem) => {
     const IconComponent = item.icon ? getIcon(item.icon) : null;
     const translatedName = getTranslatedNavName(item.name);
@@ -389,36 +441,8 @@ const Navbar: React.FC = () => {
       const isDropdownOpen = mobileDropdownStates[item.name] || false;
 
       return (
-        <div key={item.name} className="mb-3">
-          <div className="flex">
-            <Link
-              href={item.href}
-              className={`flex items-center space-x-3 flex-1 px-3 py-3 rounded-l-lg transition-colors ${isActive
-                ? 'card-primary text-icon-text-primary border border-secondary border-r-0'
-                : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 border border-gray-200 dark:border-gray-700 border-r-0'
-                }`}
-              onClick={closeMobileMenu}
-              prefetch={true}
-            >
-              {IconComponent && <IconComponent className="w-5 h-5" />}
-              <span className="font-medium">{translatedName}</span>
-            </Link>
-            <button
-              onClick={() => toggleMobileDropdown(item.name)}
-              className={`px-3 py-3 rounded-r-lg transition-all duration-200 ${isActive
-                ? 'card-primary text-icon-text-primary border border-secondary border-l-0'
-                : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 border border-gray-200 dark:border-gray-700 border-l-0'
-                }`}
-              aria-label={`Toggle ${item.name} dropdown`}
-            >
-              <motion.div
-                animate={{ rotate: isDropdownOpen ? 90 : 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <ChevronRight className="w-4 h-4" />
-              </motion.div>
-            </button>
-          </div>
+        <div key={item.name}>
+          {renderMobileSplitNavRow(item.name, translatedName, IconComponent, isActive, isDropdownOpen, item.href)}
           <AnimatePresence>
             {isDropdownOpen && (
               <motion.div
@@ -426,35 +450,38 @@ const Navbar: React.FC = () => {
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="mt-2 pl-2 overflow-hidden"
+                className="mb-3 ml-2 overflow-hidden"
               >
-                <div className="max-h-[35vh] overflow-y-auto">
-                  <div className="grid grid-cols-2 gap-2">
-                    {filteredGames.map((game: any) => (
-                      <Link
-                        key={game.name}
-                        href={`/games?game=${game.id}`}
-                        className="relative block aspect-[16/10] rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-secondary transition-colors group"
-                        onClick={closeMobileMenu}
-                        aria-label={`View ${game.displayName} server options`}
-                        prefetch={true}
-                      >
+                <div className="max-h-[40vh] space-y-1 overflow-y-auto rounded-lg border border-gray-200 bg-gray-50/80 p-2 dark:border-gray-700 dark:bg-gray-800/30">
+                  {filteredGames.map((game: any) => (
+                    <Link
+                      key={game.name}
+                      href={`/games?game=${game.id}`}
+                      className="flex items-center gap-3 rounded-md px-3 py-2.5 text-sm text-gray-700 transition-colors hover:bg-white hover:text-icon-text-primary dark:text-gray-200 dark:hover:bg-gray-800/50"
+                      onClick={closeMobileMenu}
+                      aria-label={`View ${game.displayName} server options`}
+                      prefetch={true}
+                    >
+                      <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-md border border-gray-200 dark:border-gray-600">
                         <Image
-                          src={game.banner}
-                          alt={`${game.displayName} banner`}
+                          src={game.icon || game.banner}
+                          alt={game.displayName}
                           fill
-                          sizes="(max-width: 640px) 180px, 180px"
+                          sizes="36px"
                           className="object-cover"
                           quality={75}
                           loading="lazy"
                         />
-                        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
-                        <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 to-transparent">
-                          <h3 className="text-white text-xs font-semibold truncate">{game.displayName}</h3>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate font-medium">{game.displayName}</p>
+                        <p className="truncate text-xs text-gray-500 dark:text-gray-400">
+                          {game.name} hosting
+                        </p>
+                      </div>
+                      <ChevronRight className="h-4 w-4 shrink-0 opacity-50" />
+                    </Link>
+                  ))}
                 </div>
               </motion.div>
             )}
@@ -464,40 +491,12 @@ const Navbar: React.FC = () => {
     }
 
     if (item.hasDropdown && item.dropdownType === 'legal' && item.dropdownItems) {
-      const isActive = pathname === item.href;
+      const isActive = item.dropdownItems.some((dropdownItem) => pathname === dropdownItem.href);
       const isDropdownOpen = mobileDropdownStates[item.name] || false;
 
       return (
-        <div key={item.name} className="mb-3">
-          <div className="flex">
-            <Link
-              href={item.href}
-              className={`flex items-center space-x-3 flex-1 px-3 py-3 rounded-l-lg transition-colors ${isActive
-                ? 'card-primary text-icon-text-primary border border-secondary border-r-0'
-                : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 border border-gray-200 dark:border-gray-700 border-r-0'
-                }`}
-              onClick={closeMobileMenu}
-              prefetch={true}
-            >
-              {IconComponent && <IconComponent className="w-5 h-5" />}
-              <span className="font-medium">{translatedName}</span>
-            </Link>
-            <button
-              onClick={() => toggleMobileDropdown(item.name)}
-              className={`px-3 py-3 rounded-r-lg transition-all duration-200 ${isActive
-                ? 'card-primary text-icon-text-primary border border-secondary border-l-0'
-                : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 border border-gray-200 dark:border-gray-700 border-l-0'
-                }`}
-              aria-label={`Toggle ${item.name} dropdown`}
-            >
-              <motion.div
-                animate={{ rotate: isDropdownOpen ? 90 : 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <ChevronRight className="w-4 h-4" />
-              </motion.div>
-            </button>
-          </div>
+        <div key={item.name}>
+          {renderMobileSplitNavRow(item.name, translatedName, IconComponent, isActive, isDropdownOpen)}
           <AnimatePresence>
             {isDropdownOpen && (
               <motion.div
@@ -505,25 +504,32 @@ const Navbar: React.FC = () => {
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="mt-2 ml-6 space-y-1 overflow-hidden"
+                className="mb-3 ml-2 overflow-hidden"
               >
-                {item.dropdownItems.map((dropdownItem: any) => {
-                  const translatedName = dropdownItem.name === 'Terms of Service' ? t('navbar.termsOfService') :
-                    dropdownItem.name === 'Privacy Policy' ? t('navbar.privacyPolicy') :
-                      dropdownItem.name;
+                <div className="space-y-1 rounded-lg border border-gray-200 bg-gray-50/80 p-2 dark:border-gray-700 dark:bg-gray-800/30">
+                  {item.dropdownItems.map((dropdownItem: DropdownItem) => {
+                    const itemLabel = dropdownItem.name === 'Terms of Service' ? t('navbar.termsOfService') :
+                      dropdownItem.name === 'Privacy Policy' ? t('navbar.privacyPolicy') :
+                        dropdownItem.name;
+                    const itemActive = pathname === dropdownItem.href;
 
-                  return (
-                    <Link
-                      key={dropdownItem.name}
-                      href={dropdownItem.href}
-                      className="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-icon-text-primary hover:bg-gray-50 dark:hover:bg-gray-800/30 rounded-md transition-colors"
-                      onClick={closeMobileMenu}
-                      prefetch={true}
-                    >
-                      {translatedName}
-                    </Link>
-                  );
-                })}
+                    return (
+                      <Link
+                        key={dropdownItem.name}
+                        href={dropdownItem.href}
+                        className={`block rounded-md px-3 py-2.5 text-sm transition-colors ${
+                          itemActive
+                            ? 'bg-white font-medium text-icon-text-primary dark:bg-gray-800/50'
+                            : 'text-gray-600 hover:bg-white hover:text-icon-text-primary dark:text-gray-400 dark:hover:bg-gray-800/50'
+                        }`}
+                        onClick={closeMobileMenu}
+                        prefetch={true}
+                      >
+                        {itemLabel}
+                      </Link>
+                    );
+                  })}
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -550,7 +556,7 @@ const Navbar: React.FC = () => {
         <ChevronRight className="w-4 h-4" />
       </Link>
     );
-  }, [pathname, closeMobileMenu, filteredGames, mobileDropdownStates, toggleMobileDropdown]);
+  }, [pathname, closeMobileMenu, filteredGames, mobileDropdownStates, renderMobileSplitNavRow, getTranslatedNavName, t]);
 
   return (
     <div style={{ overflowX: 'hidden', position: 'relative' }}>
@@ -861,16 +867,46 @@ const Navbar: React.FC = () => {
                   transition={{ delay: 0.2 }}
                 >
                   <motion.div
-                    className="mb-3 py-2"
+                    className="mb-3"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ delay: 0.2 }}
                   >
-                    <span className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {t("navbar.panels")}
-                    </span>
-                    <PanelsSelector variant="full" />
+                    {renderMobileSplitNavRow(
+                      'panels',
+                      t('navbar.panels'),
+                      LayoutGrid,
+                      false,
+                      mobileDropdownStates.panels || false,
+                    )}
+                    <AnimatePresence>
+                      {mobileDropdownStates.panels && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="mb-3 ml-2 overflow-hidden"
+                        >
+                          <div className="space-y-1 rounded-lg border border-gray-200 bg-gray-50/80 p-2 dark:border-gray-700 dark:bg-gray-800/30">
+                            {(config.panels ?? []).map((panel) => (
+                              <a
+                                key={panel.href}
+                                href={panel.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block rounded-md px-3 py-2.5 transition-colors hover:bg-white dark:hover:bg-gray-800/50"
+                                onClick={closeMobileMenu}
+                              >
+                                <p className="text-sm font-medium text-gray-900 dark:text-white">{panel.name}</p>
+                                <p className="text-xs text-gray-500 dark:text-gray-400">{panel.host}</p>
+                              </a>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </motion.div>
 
                   <motion.div

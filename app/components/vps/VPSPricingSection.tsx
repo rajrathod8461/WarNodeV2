@@ -33,6 +33,18 @@ function VPSPlanOrderButton({
 }) {
   const stock = useProductStock(plan.orderLink)
 
+  if (stock.eligible && stock.isChecking) {
+    return (
+      <button
+        type="button"
+        disabled
+        className="orbitron-font flex w-full cursor-wait items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/10 px-6 py-2 font-medium text-gray-300 sm:w-auto"
+      >
+        Checking…
+      </button>
+    )
+  }
+
   if (stock.isOutOfStock) {
     return (
       <button
@@ -75,6 +87,9 @@ const CPU_BRAND = {
   },
 } as const
 
+const UNAVAILABLE_OPTION_CLASS =
+  "cursor-not-allowed border border-dashed border-gray-300/90 bg-gray-100/70 text-gray-500 opacity-50 dark:border-gray-600/60 dark:bg-gray-800/20 dark:text-gray-500"
+
 export default function VPSPricingSection() {
   const router = useRouter()
   const { selectedCurrency, setSelectedCurrency } = useCurrency()
@@ -89,16 +104,6 @@ export default function VPSPricingSection() {
   const availableCPUs = currentLocation?.availableCpus || []
   const currentPlans = config.plans[selectedCPU] || config.plans[config.planTypes[0].id]
 
-  const visibleLocations = config.locations.filter((loc) => loc.availableCpus.includes(selectedCPU))
-  const visibleCPUs = config.planTypes.filter((cpu) => availableCPUs.includes(cpu.id))
-
-  useEffect(() => {
-    const compatible = config.locations.filter((loc) => loc.availableCpus.includes(selectedCPU))
-    if (compatible.length && !compatible.some((loc) => loc.id === selectedLocation)) {
-      setSelectedLocation(compatible[0].id)
-    }
-  }, [selectedCPU, selectedLocation])
-
   const activeCpuBrand = selectedCPU === "amd-epyc" ? CPU_BRAND.amd : CPU_BRAND.intel
   const accentStyle = {
     ["--icon-primary" as any]: activeCpuBrand.primary,
@@ -109,26 +114,16 @@ export default function VPSPricingSection() {
     ["--hover-gradient" as any]: `radial-gradient(50% 50% at 50% 100%, ${activeCpuBrand.glow} 0%, transparent 100%)`,
   } as CSSProperties
   const handleCPUSelection = (cpuId: string) => {
+    if (!availableCPUs.includes(cpuId)) return
     setSelectedCPU(cpuId)
     setCurrentPage(1)
-    const currentLoc = config.locations.find(loc => loc.id === selectedLocation)
-    if (currentLoc && !currentLoc.availableCpus.includes(cpuId)) {
-      const compatibleLocation = config.locations.find(loc => loc.availableCpus.includes(cpuId))
-      if (compatibleLocation) {
-        setSelectedLocation(compatibleLocation.id)
-      }
-    }
   }
 
   const handleLocationSelection = (locationId: string) => {
+    const newLocation = config.locations.find((loc) => loc.id === locationId)
+    if (!newLocation || !newLocation.availableCpus.includes(selectedCPU)) return
     setSelectedLocation(locationId)
-    const newLocation = config.locations.find(loc => loc.id === locationId)
-    if (newLocation && !newLocation.availableCpus.includes(selectedCPU)) {
-      if (newLocation.availableCpus.length > 0) {
-        setSelectedCPU(newLocation.availableCpus[0])
-        setCurrentPage(1)
-      }
-    }
+    setCurrentPage(1)
   }
   const totalPages = Math.ceil(currentPlans.length / plansPerPage)
   const startIndex = (currentPage - 1) * plansPerPage
@@ -252,23 +247,31 @@ export default function VPSPricingSection() {
             <div className="flex flex-col items-left">
               <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3.5">{t('vps.step1')}</h3>
               <div className="flex flex-wrap gap-2">
-                {visibleLocations.map((location) => {
-                  const isSelected = selectedLocation === location.id
-                  
+                {config.locations.map((location) => {
+                  const isAvailable = location.availableCpus.includes(selectedCPU)
+                  const isSelected = selectedLocation === location.id && isAvailable
+
                   return (
                     <button
                       key={location.id}
+                      type="button"
                       onClick={() => handleLocationSelection(location.id)}
+                      disabled={!isAvailable}
+                      aria-disabled={!isAvailable}
+                      title={!isAvailable ? "Not available for the selected CPU" : undefined}
                       className={`flex items-center gap-3 px-4 py-3 rounded-tl-2xl rounded-br-2xl font-medium transition-all duration-300 ${
                         isSelected
                           ? "button-primary border-primary text-button-primary shadow-lg"
-                          : "bg-gray-200 dark:bg-gray-800/20 border border-secondary text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700/30 hover:border-secondary"
+                          : isAvailable
+                            ? "bg-gray-200 dark:bg-gray-800/20 border border-secondary text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700/30 hover:border-secondary"
+                            : UNAVAILABLE_OPTION_CLASS
                       }`}
                     >
                       <CountryFlag
                         code={location.flag}
                         alt={`${location.name} flag`}
                         size="sm"
+                        className={!isAvailable ? "opacity-50" : ""}
                       />
                       <span className="text-sm font-medium">{location.displayName}</span>
                     </button>
@@ -280,20 +283,27 @@ export default function VPSPricingSection() {
             <div className="flex flex-col items-left">
               <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">{t('vps.step2')}</h3>
               <div className="flex flex-wrap gap-2">
-                {visibleCPUs.map((cpu) => {
-                  const isSelected = selectedCPU === cpu.id
+                {config.planTypes.map((cpu) => {
+                  const isAvailable = availableCPUs.includes(cpu.id)
+                  const isSelected = selectedCPU === cpu.id && isAvailable
                   const isAMD = cpu.id === "amd-epyc"
-                  
+
                   return (
                     <button
                       key={cpu.id}
+                      type="button"
                       onClick={() => handleCPUSelection(cpu.id)}
+                      disabled={!isAvailable}
+                      aria-disabled={!isAvailable}
+                      title={!isAvailable ? "Not available at the selected location" : undefined}
                       className={`flex items-center gap-3 px-4 py-2.5 rounded-tl-2xl rounded-br-2xl font-medium transition-all duration-300 ${
                         isSelected
                           ? isAMD
                             ? "border border-orange-400/60 bg-orange-500/15 text-orange-700 shadow-lg dark:border-orange-300/30 dark:bg-orange-500/10 dark:text-orange-300"
                             : "button-primary border-primary text-button-primary shadow-lg"
-                          : "bg-gray-200 dark:bg-gray-800/20 border border-secondary text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700/30 hover:border-secondary"
+                          : isAvailable
+                            ? "bg-gray-200 dark:bg-gray-800/20 border border-secondary text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700/30 hover:border-secondary"
+                            : UNAVAILABLE_OPTION_CLASS
                       }`}
                     >
                       <Image
@@ -301,7 +311,7 @@ export default function VPSPricingSection() {
                         alt={cpu.name}
                         width={24}
                         height={24}
-                        className="rounded-md object-contain"
+                        className={`rounded-md object-contain ${!isAvailable ? "opacity-50" : ""}`}
                       />
                       <span className="text-sm font-semibold">{cpu.displayName}</span>
                     </button>

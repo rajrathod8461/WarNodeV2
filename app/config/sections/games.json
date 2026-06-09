@@ -272,7 +272,7 @@
             "storage": "10 GB NVMe",
             "price": 160,
             "prices": { "INR": 160, "USD": 1.99, "EUR": 1.99 },
-            "orderLink": "https://warnode.cloud/hytale"
+            "orderLink": "https://portal.warnode.cloud/products/hytale-server-hosting/hytale-starter"
           },
           {
             "id": "adventurer",
@@ -283,7 +283,7 @@
             "storage": "20 GB NVMe",
             "price": 240,
             "prices": { "INR": 240, "USD": 2.99, "EUR": 2.99 },
-            "orderLink": "https://warnode.cloud/hytale"
+            "orderLink": "https://portal.warnode.cloud/products/hytale-server-hosting/hytale-adventurer"
           },
           {
             "id": "explorer",
@@ -294,7 +294,7 @@
             "storage": "30 GB NVMe",
             "price": 320,
             "prices": { "INR": 320, "USD": 3.99, "EUR": 3.99 },
-            "orderLink": "https://warnode.cloud/hytale"
+            "orderLink": "https://portal.warnode.cloud/products/hytale-server-hosting/hytale-explorer"
           },
           {
             "id": "builder",
@@ -305,7 +305,7 @@
             "storage": "40 GB NVMe",
             "price": 480,
             "prices": { "INR": 480, "USD": 5.99, "EUR": 4.99 },
-            "orderLink": "https://warnode.cloud/hytale-amd"
+            "orderLink": "https://portal.warnode.cloud/products/hytale-server-hosting/hytale-builder"
           },
           {
             "id": "kingdom",
@@ -316,7 +316,7 @@
             "storage": "60 GB NVMe",
             "price": 640,
             "prices": { "INR": 640, "USD": 6.99, "EUR": 5.99 },
-            "orderLink": "https://warnode.cloud/hytale-amd"
+            "orderLink": "https://portal.warnode.cloud/products/hytale-server-hosting/hytale-kingdom"
           },
           {
             "id": "empire",
@@ -327,7 +327,7 @@
             "storage": "80 GB NVMe",
             "price": 960,
             "prices": { "INR": 960, "USD": 10.99, "EUR": 8.99 },
-            "orderLink": "https://warnode.cloud/hytale-amd"
+            "orderLink": "https://portal.warnode.cloud/products/hytale-server-hosting/hytale-empire"
           }
         ]
       }

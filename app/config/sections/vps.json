@@ -40,7 +40,7 @@
       "name": "Singapore",
       "flag": "sg",
       "displayName": "Singapore",
-      "availableCpus": ["amd-epyc"]
+      "availableCpus": ["amd-epyc", "intel-xeon"]
     },
     {
       "id": "frankfurt",

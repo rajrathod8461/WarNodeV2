@@ -19,6 +19,7 @@ function inferOutOfStock(html: string): boolean {
   const text = html.toLowerCase()
   if (/\bout of stock\b/.test(text)) return true
   if (/\bsold out\b/.test(text)) return true
+  if (/\bnot in stock\b/.test(text)) return true
   if (/\bcurrently unavailable\b/.test(text)) return true
   if (/\bproduct unavailable\b/.test(text)) return true
   if (/\bthis product is unavailable\b/.test(text)) return true

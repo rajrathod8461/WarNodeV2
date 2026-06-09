@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Cookie, X, Settings, Check } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -10,21 +10,7 @@ interface CookiePreferences {
   preferences: boolean;
 }
 
-function readInitialVisibility(): boolean {
-  if (typeof window === 'undefined') return false;
-  return !localStorage.getItem('cookie-consent');
-}
-
-function readInitialPreferences(): CookiePreferences {
-  if (typeof window === 'undefined') return { necessary: true, preferences: false };
-  const savedPreferences = localStorage.getItem('cookie-preferences');
-  if (!savedPreferences) return { necessary: true, preferences: false };
-  try {
-    return JSON.parse(savedPreferences) as CookiePreferences;
-  } catch {
-    return { necessary: true, preferences: false };
-  }
-}
+const DEFAULT_PREFERENCES: CookiePreferences = { necessary: true, preferences: false };
 
 export const areCookiesAccepted = (): boolean => {
   if (typeof window === 'undefined') return false;
@@ -43,10 +29,23 @@ export const areCookiesAccepted = (): boolean => {
 
 export default function CookieConsent() {
   const { t } = useLanguage();
-  const [isVisible, setIsVisible] = useState(readInitialVisibility);
+  const [isVisible, setIsVisible] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [cookiePreferences, setCookiePreferences] = useState<CookiePreferences>(readInitialPreferences);
+  const [cookiePreferences, setCookiePreferences] = useState<CookiePreferences>(DEFAULT_PREFERENCES);
+
+  useEffect(() => {
+    setIsVisible(!localStorage.getItem('cookie-consent'));
+
+    const savedPreferences = localStorage.getItem('cookie-preferences');
+    if (!savedPreferences) return;
+
+    try {
+      setCookiePreferences(JSON.parse(savedPreferences) as CookiePreferences);
+    } catch {
+      setCookiePreferences(DEFAULT_PREFERENCES);
+    }
+  }, []);
 
   const handleAcceptAll = () => {
     const allAccepted = {

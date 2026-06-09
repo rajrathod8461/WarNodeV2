@@ -5,7 +5,6 @@ import { ThemeProvider } from "./components/theme-provider";
 import { LayoutWrapper } from "./components/layout-wrapper";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import CookieConsent from "./components/CookieConsent";
-import ThemeSwitcher from "./components/ThemeSwitcher";
 import ChristmasSnowfall from "./components/ChristmasSnowfall";
 import { Analytics } from "@vercel/analytics/next"
 import { siteMetadata } from "./lib/site-metadata"
@@ -222,7 +221,6 @@ export default function RootLayout({
               <Analytics />
             </LayoutWrapper>
             <CookieConsent />
-            <ThemeSwitcher />
           </LanguageProvider>
         </ThemeProvider>
       </body>

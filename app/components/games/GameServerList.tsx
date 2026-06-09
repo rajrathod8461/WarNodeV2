@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { motion } from "framer-motion"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import Image from "next/image"
 import { Shield, Cpu, HardDrive, MemoryStick, ArrowRight } from "lucide-react"
@@ -70,6 +70,18 @@ function GamePlanOrderButton({
 }) {
   const stock = useProductStock(plan.orderLink)
 
+  if (stock.eligible && stock.isChecking) {
+    return (
+      <button
+        type="button"
+        disabled
+        className="orbitron-font shrink-0 cursor-wait rounded-tl-xl rounded-br-xl border-2 border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold text-gray-300 sm:text-sm"
+      >
+        Checking…
+      </button>
+    )
+  }
+
   if (stock.isOutOfStock) {
     return (
       <button
@@ -106,21 +118,55 @@ export default function GameServerList() {
   const [selectedGame, setSelectedGame] = useState<string>(config.games[0]?.id || "")
   const [selectedLocation, setSelectedLocation] = useState<string>(config.locations[0]?.id || "")
   const [selectedPlanType, setSelectedPlanType] = useState(PLAN_TYPE_IDS[0] || "intel")
+  const initializedFromUrlRef = useRef(false)
 
   useEffect(() => {
-    const game = searchParams.get("game")
-    const location = searchParams.get("location")
-    const plan = searchParams.get("plan")
+    if (initializedFromUrlRef.current) return
+    initializedFromUrlRef.current = true
 
-    if (game && config.games.some((g: Game) => g.id === game)) {
-      setSelectedGame(game)
+    const requestedGame = searchParams.get("game")
+    const requestedLocation = searchParams.get("location")
+    const requestedPlan = searchParams.get("plan")
+
+    let nextGame =
+      requestedGame && config.games.some((g: Game) => g.id === requestedGame)
+        ? requestedGame
+        : config.games[0]?.id || ""
+
+    let nextPlan =
+      requestedPlan && PLAN_TYPE_IDS.includes(requestedPlan)
+        ? requestedPlan
+        : PLAN_TYPE_IDS[0] || "intel"
+
+    let nextLocation =
+      requestedLocation && config.locations.some((l) => l.id === requestedLocation)
+        ? requestedLocation
+        : config.locations[0]?.id || ""
+
+    const gameIsHytale = config.games.find((g) => g.id === nextGame)?.id === "hytale"
+
+    if (!gameIsHytale) {
+      const locationConfig = config.locations.find((loc) => loc.id === nextLocation)
+      if (locationConfig && !locationConfig.availablePlanTypes.includes(nextPlan)) {
+        const fallbackLocation = config.locations.find((loc) =>
+          loc.availablePlanTypes.includes(nextPlan)
+        )
+        if (fallbackLocation) {
+          nextLocation = fallbackLocation.id
+        } else if (locationConfig.availablePlanTypes.length > 0) {
+          nextPlan = locationConfig.availablePlanTypes[0]
+        }
+      }
+
+      const resolvedLocation = config.locations.find((loc) => loc.id === nextLocation)
+      if (resolvedLocation && !resolvedLocation.availablePlanTypes.includes(nextPlan)) {
+        nextPlan = resolvedLocation.availablePlanTypes[0] ?? nextPlan
+      }
     }
-    if (location && config.locations.some((l) => l.id === location)) {
-      setSelectedLocation(location)
-    }
-    if (plan && PLAN_TYPE_IDS.includes(plan)) {
-      setSelectedPlanType(plan)
-    }
+
+    setSelectedGame(nextGame)
+    setSelectedLocation(nextLocation)
+    setSelectedPlanType(nextPlan)
   }, [searchParams])
 
   useEffect(() => {
@@ -140,41 +186,16 @@ export default function GameServerList() {
   const availablePlanTypes = currentLocation?.availablePlanTypes || []
   const isHytaleLayout = currentGame?.id === "hytale"
 
-  useEffect(() => {
-    if (isHytaleLayout) return
-    const compatible = config.locations.filter((loc) => loc.availablePlanTypes.includes(selectedPlanType))
-    if (compatible.length && !compatible.some((loc) => loc.id === selectedLocation)) {
-      setSelectedLocation(compatible[0].id)
-    }
-  }, [selectedPlanType, selectedLocation, isHytaleLayout])
-
   const handlePlanTypeSelection = (planType: string) => {
+    if (!availablePlanTypes.includes(planType)) return
     setSelectedPlanType(planType)
-    const currentLoc = config.locations.find((loc) => loc.id === selectedLocation)
-    if (currentLoc && !currentLoc.availablePlanTypes.includes(planType)) {
-      const compatibleLocation = config.locations.find((loc) => loc.availablePlanTypes.includes(planType))
-      if (compatibleLocation) {
-        setSelectedLocation(compatibleLocation.id)
-      }
-    }
   }
 
-  const visibleLocations = config.locations.filter((loc) =>
-    isHytaleLayout ? loc.availablePlanTypes.length > 0 : loc.availablePlanTypes.includes(selectedPlanType)
-  )
-
-  const visiblePlanTypes = config.planTypes.filter((type) =>
-    availablePlanTypes.includes(type.id)
-  )
-
   const handleLocationSelection = (locationId: string) => {
-    setSelectedLocation(locationId)
     const newLocation = config.locations.find((loc) => loc.id === locationId)
-    if (newLocation && !newLocation.availablePlanTypes.includes(selectedPlanType)) {
-      if (newLocation.availablePlanTypes.length > 0) {
-        setSelectedPlanType(newLocation.availablePlanTypes[0])
-      }
-    }
+    if (!newLocation) return
+    if (!isHytaleLayout && !newLocation.availablePlanTypes.includes(selectedPlanType)) return
+    setSelectedLocation(locationId)
   }
 
   if (!currentGame || !currentLocation) {
@@ -252,14 +273,17 @@ export default function GameServerList() {
               <div className="flex flex-col items-left">
                 <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">{t('gameServerList.step1')}</h3>
                 <div className="flex flex-wrap gap-2">
-                  {visiblePlanTypes.map((type) => {
+                  {config.planTypes.map((type) => {
                     const isSelected = selectedPlanType === type.id
+                    const isAvailable = availablePlanTypes.includes(type.id)
                     const brand = getCpuBrand(type.id)
 
                     return (
                       <button
                         key={type.id}
+                        type="button"
                         onClick={() => handlePlanTypeSelection(type.id)}
+                        disabled={!isAvailable}
                         style={
                           isSelected
                             ? {
@@ -268,16 +292,24 @@ export default function GameServerList() {
                                 color: brand.primary,
                                 boxShadow: `0 4px 16px ${brand.glow}`,
                               }
-                            : { borderColor: brand.border }
+                            : isAvailable
+                              ? { borderColor: brand.border }
+                              : undefined
                         }
-                        className={`flex items-center gap-3 px-6 py-2.5 rounded-tl-xl rounded-br-xl font-medium transition-all duration-300 backdrop-blur-sm border bg-white/80 dark:bg-gray-800/40 text-gray-700 dark:text-gray-300 hover:brightness-105 shadow-md`}
+                        className={`flex items-center gap-3 px-6 py-2.5 rounded-tl-xl rounded-br-xl font-medium transition-all duration-300 backdrop-blur-sm border shadow-md ${
+                          isSelected
+                            ? "bg-white/80 dark:bg-gray-800/40"
+                            : isAvailable
+                              ? "bg-white/80 dark:bg-gray-800/40 text-gray-700 dark:text-gray-300 hover:brightness-105"
+                              : "cursor-not-allowed border-gray-200/60 bg-gray-100/60 text-gray-400 opacity-40 dark:border-gray-700/40 dark:bg-gray-800/10 dark:text-gray-500"
+                        }`}
                       >
                         <Image
                           src={type.image || "/placeholder.svg"}
                           alt={type.name}
                           width={32}
                           height={32}
-                          className="rounded-md object-contain"
+                          className={`rounded-md object-contain ${!isAvailable ? "opacity-50" : ""}`}
                         />
                         <span className="text-sm font-semibold">{type.name}</span>
                       </button>
@@ -292,13 +324,17 @@ export default function GameServerList() {
                 {isHytaleLayout ? t("gameServerList.step1LocationNoCpu") : t("gameServerList.step2")}
               </h3>
               <div className="flex flex-wrap items-center gap-2">
-                {visibleLocations.map((location: GameLocation) => {
+                {config.locations.map((location: GameLocation) => {
                   const isSelected = selectedLocation === location.id
+                  const isAvailable =
+                    isHytaleLayout || location.availablePlanTypes.includes(selectedPlanType)
 
                   return (
                     <button
                       key={location.id}
+                      type="button"
                       onClick={() => handleLocationSelection(location.id)}
+                      disabled={!isAvailable}
                       style={
                         isSelected
                           ? {
@@ -311,13 +347,16 @@ export default function GameServerList() {
                       className={`flex items-center gap-3 px-4 py-3 rounded-tl-xl rounded-br-xl font-medium transition-all duration-300 backdrop-blur-sm border ${
                         isSelected
                           ? "shadow-lg"
-                          : "bg-white/80 dark:bg-gray-800/40 border-gray-200 dark:border-gray-600/40 text-gray-700 dark:text-gray-300 hover:border-[var(--accent-border)]"
+                          : isAvailable
+                            ? "bg-white/80 dark:bg-gray-800/40 border-gray-200 dark:border-gray-600/40 text-gray-700 dark:text-gray-300 hover:border-[var(--accent-border)]"
+                            : "cursor-not-allowed border-gray-200/60 bg-gray-100/60 text-gray-400 opacity-40 dark:border-gray-700/40 dark:bg-gray-800/10 dark:text-gray-500"
                       }`}
                     >
                       <CountryFlag
                         code={location.flag}
                         alt={`${location.name} flag`}
                         size="sm"
+                        className={!isAvailable ? "opacity-50" : ""}
                       />
                       <span className="text-sm font-medium">{location.name}</span>
                     </button>
