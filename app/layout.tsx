@@ -8,6 +8,7 @@ import CookieConsent from "./components/CookieConsent";
 import ChristmasSnowfall from "./components/ChristmasSnowfall";
 import { Analytics } from "@vercel/analytics/next"
 import { siteMetadata } from "./lib/site-metadata"
+import { serviceListSchema } from "./lib/seo"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -154,57 +155,48 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": siteMetadata.name,
-              "url": siteMetadata.url,
-              "logo": siteMetadata.logoUrl,
-              "description": siteMetadata.description,
-              "serviceType": ["Game Server Hosting", "VPS Hosting", "Dedicated Servers", "Cloud Infrastructure"],
-              "areaServed": "Worldwide",
-              "hasOfferCatalog": {
-                "@type": "OfferCatalog",
-                "name": "Gaming & Server Solutions",
-                "itemListElement": [
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Game Server Hosting",
-                      "description": "High-performance game servers with DDoS protection"
-                    }
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  "@id": `${siteMetadata.url}/#website`,
+                  "url": siteMetadata.url,
+                  "name": siteMetadata.name,
+                  "description": siteMetadata.description,
+                  "publisher": { "@id": `${siteMetadata.url}/#organization` },
+                },
+                {
+                  "@type": "Organization",
+                  "@id": `${siteMetadata.url}/#organization`,
+                  "name": siteMetadata.name,
+                  "url": siteMetadata.url,
+                  "logo": siteMetadata.logoUrl,
+                  "description": siteMetadata.description,
+                  "areaServed": "IN",
+                  "sameAs": [
+                    "https://dcd.gg/warnode",
+                    "https://www.youtube.com/@war-node",
+                    "https://www.instagram.com/war_nodes",
+                  ],
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "contactType": "customer service",
+                    "availableLanguage": "English",
+                    "url": `${siteMetadata.url}/contact`,
                   },
-                  {
-                    "@type": "Offer", 
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "VPS Hosting",
-                      "description": "Virtual private servers with full root access"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service", 
-                      "name": "Dedicated Servers",
-                      "description": "Bare metal servers for maximum performance"
-                    }
-                  }
-                ]
-              },
-              "sameAs": [
-                "https://dcd.gg/warnode",
-                "https://www.youtube.com/@war-node",
-                "https://www.instagram.com/war_nodes"
+                  "termsOfService": `${siteMetadata.url}/terms`,
+                  "privacyPolicy": `${siteMetadata.url}/policy`,
+                },
+                {
+                  "@type": "ItemList",
+                  "name": "WarNodes Hosting Services",
+                  "itemListElement": serviceListSchema.map((service, index) => ({
+                    "@type": "ListItem",
+                    "position": index + 1,
+                    "name": service.name,
+                    "url": service.url,
+                  })),
+                },
               ],
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "contactType": "customer service",
-                "availableLanguage": "English",
-                "serviceType": "Technical Support",
-                "url": "https://dcd.gg/warnode"
-              },
-              "termsOfService": `${siteMetadata.url}/terms`,
-              "privacyPolicy": `${siteMetadata.url}/policy`
             })
           }}
         />

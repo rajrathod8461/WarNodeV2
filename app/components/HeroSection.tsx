@@ -273,7 +273,7 @@ export default function HeroSection() {
                   className="mb-8"
                 >
                   <motion.h1
-                    className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight orbitron-font"
+                    className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 leading-tight orbitron-font"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{
@@ -283,34 +283,30 @@ export default function HeroSection() {
                       delay: 0.3,
                     }}
                   >
-                    <motion.span
-                      initial={{ opacity: 0, x: -30 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
-                    >
-                      {t('hero.titlePrefix')}
-                    </motion.span>
+                    <span className="block">WarNodes</span>
+                    <span className="block text-secondary">{t("hero.title")}</span>
+                  </motion.h1>
+                  <motion.h2
+                    className="mb-6 text-2xl sm:text-3xl font-semibold text-gray-800 dark:text-gray-200 orbitron-font"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.45, duration: 0.6 }}
+                  >
+                    <span>{t("hero.titlePrefix")} </span>
                     <AnimatePresence mode="wait">
                       <motion.span
                         key={currentGame.displayName}
-                        initial={{ opacity: 0, y: 30, rotateX: 90 }}
-                        animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                        exit={{ opacity: 0, y: -30, rotateX: -90 }}
-                        transition={{
-                          duration: 1,
-                          ease: [0.25, 0.46, 0.45, 0.94],
-                          rotateX: { duration: 0.8 }
-                        }}
-                        className="block text-secondary"
-                        style={{ perspective: "1000px" }}
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -16 }}
+                        transition={{ duration: 0.5 }}
+                        className="text-secondary"
                       >
                         {currentGame.displayName}
-                        {currentGame.showSuffix && (
-                          <span className="text-gray-900 dark:text-white"> {t('hero.titleSuffix')}</span>
-                        )}
+                        {currentGame.showSuffix ? ` ${t("hero.titleSuffix")}` : ""}
                       </motion.span>
                     </AnimatePresence>
-                  </motion.h1>
+                  </motion.h2>
                   <motion.p
                     className="text-md sm:text-xl text-gray-600 dark:text-gray-300 leading-relaxed"
                     initial={{ opacity: 0, y: 30 }}
@@ -323,6 +319,25 @@ export default function HeroSection() {
                     }}
                   >
                     {t('hero.description')}
+                  </motion.p>
+                  <motion.p
+                    className="mt-4 max-w-2xl text-sm leading-relaxed text-gray-500 dark:text-gray-400"
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8, duration: 0.5 }}
+                  >
+                    {t("hero.seoIntro")}{" "}
+                    <a href="/vps" className="text-icon-text-primary hover:underline">VPS Hosting</a>
+                    {" · "}
+                    <a href="/web-hosting" className="text-icon-text-primary hover:underline">Web Hosting</a>
+                    {" · "}
+                    <a href="/games?game=minecraft" className="text-icon-text-primary hover:underline">Minecraft Hosting</a>
+                    {" · "}
+                    <a href="/games" className="text-icon-text-primary hover:underline">Game Servers</a>
+                    {" · "}
+                    <a href="/discord-bot" className="text-icon-text-primary hover:underline">Discord Bot Hosting</a>
+                    {" · "}
+                    <a href="/ddos" className="text-icon-text-primary hover:underline">WarShield Protection</a>
                   </motion.p>
                 </motion.div>
 

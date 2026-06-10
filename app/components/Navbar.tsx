@@ -9,7 +9,6 @@ import { usePathname } from 'next/navigation';
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from '../contexts/LanguageContext'
-import PanelsSelector from './PanelsSelector'
 import {
   Cloud,
   Server,
@@ -26,7 +25,6 @@ import {
   FileText,
   Shield,
   Check,
-  LayoutGrid,
 } from 'lucide-react';
 import { FaDiscord } from "react-icons/fa6";
 import { GrServerCluster } from "react-icons/gr";
@@ -240,12 +238,12 @@ const Navbar: React.FC = () => {
                 key={game.name}
                 href={`/games?game=${game.id}`}
                 className="relative block aspect-[4/3] rounded-lg border border-secondary overflow-hidden  group"
-                aria-label={`View ${game.displayName} server options`}
+                aria-label={`${game.displayName} game server hosting`}
                 prefetch={true}
               >
                 <Image
                   src={game.banner}
-                  alt={`${game.displayName} banner`}
+                  alt={`${game.displayName} game server hosting`}
                   fill
                   sizes="(max-width: 640px) 300px, (max-width: 768px) 200px, 250px"
                   className="object-cover"
@@ -459,7 +457,7 @@ const Navbar: React.FC = () => {
                       href={`/games?game=${game.id}`}
                       className="flex items-center gap-3 rounded-md px-3 py-2.5 text-sm text-gray-700 transition-colors hover:bg-white hover:text-icon-text-primary dark:text-gray-200 dark:hover:bg-gray-800/50"
                       onClick={closeMobileMenu}
-                      aria-label={`View ${game.displayName} server options`}
+                      aria-label={`${game.displayName} game server hosting`}
                       prefetch={true}
                     >
                       <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-md border border-gray-200 dark:border-gray-600">
@@ -754,17 +752,17 @@ const Navbar: React.FC = () => {
 
             <div className="hidden md:flex md:items-center md:space-x-4 ml-auto overflow-visible">
               <ThemeToggle />
-              <PanelsSelector />
 
               <div className="relative">
-                <Link
+                <a
                   href={config.clientSpace.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hidden sm:flex items-center space-x-2 button-primary text-button-primary border border-transparent px-3 sm:px-4 py-2 rounded-lg orbitron-font text-xs sm:text-sm font-medium transition-all duration-300 hover:bg-[var(--hover-gradient)] hover:text-[var(--icon-text-primary)] hover:border-[var(--border-secondary)]"
-                  prefetch={true}
                 >
                   {config.clientSpace.icon && getIcon(config.clientSpace.icon) && React.createElement(getIcon(config.clientSpace.icon), { className: "w-4 h-4" })}
                   <span>{t('navbar.clientSpace')}</span>
-                </Link>
+                </a>
                 {uiConfig.christmasTheme.enabled && (
                   <>
                     <Image
@@ -795,7 +793,7 @@ const Navbar: React.FC = () => {
                 aria-controls="mobile-menu"
                 aria-label="Toggle navigation menu"
               >
-                <span className="sr-only">Open main menu</span>
+                <span className="sr-only">Menu</span>
                 <motion.div
                   animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
                   transition={{ duration: 0.2 }}
@@ -867,49 +865,6 @@ const Navbar: React.FC = () => {
                   transition={{ delay: 0.2 }}
                 >
                   <motion.div
-                    className="mb-3"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ delay: 0.2 }}
-                  >
-                    {renderMobileSplitNavRow(
-                      'panels',
-                      t('navbar.panels'),
-                      LayoutGrid,
-                      false,
-                      mobileDropdownStates.panels || false,
-                    )}
-                    <AnimatePresence>
-                      {mobileDropdownStates.panels && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                          className="mb-3 ml-2 overflow-hidden"
-                        >
-                          <div className="space-y-1 rounded-lg border border-gray-200 bg-gray-50/80 p-2 dark:border-gray-700 dark:bg-gray-800/30">
-                            {(config.panels ?? []).map((panel) => (
-                              <a
-                                key={panel.href}
-                                href={panel.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block rounded-md px-3 py-2.5 transition-colors hover:bg-white dark:hover:bg-gray-800/50"
-                                onClick={closeMobileMenu}
-                              >
-                                <p className="text-sm font-medium text-gray-900 dark:text-white">{panel.name}</p>
-                                <p className="text-xs text-gray-500 dark:text-gray-400">{panel.host}</p>
-                              </a>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
-
-                  <motion.div
                     className="flex items-center justify-between py-2 mb-3"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -927,15 +882,16 @@ const Navbar: React.FC = () => {
                     transition={{ delay: 0.4 }}
                     className="relative"
                   >
-                    <Link
+                    <a
                       href={config.clientSpace.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center justify-center space-x-2 button-primary text-button-primary border border-transparent px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 w-full shadow-sm hover:shadow-md hover:bg-[var(--hover-gradient)] hover:text-[var(--icon-text-primary)] hover:border-[var(--border-secondary)]"
                       onClick={closeMobileMenu}
-                      prefetch={true}
                     >
                       {config.clientSpace.icon && getIcon(config.clientSpace.icon) && React.createElement(getIcon(config.clientSpace.icon), { className: "w-4 h-4" })}
                       <span>{t('navbar.clientSpace')}</span>
-                    </Link>
+                    </a>
                     {uiConfig.christmasTheme.enabled && (
                       <>
                         <Image

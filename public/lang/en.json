@@ -7,7 +7,7 @@
     "webhosting": "WebHosting",
     "warShield": "WarShield",
     "legal": "Legal",
-    "clientSpace": "CLIENT SPACE",
+    "clientSpace": "Client Area",
     "panels": "Panels",
     "termsOfService": "Terms of Service",
     "privacyPolicy": "Privacy Policy",
@@ -124,7 +124,10 @@
     "networkStatus": "Network Status",
     "discordSupport": "Discord Support",
     "ourTeam": "Our Team",
-    "updates": "Updates & Announcements"
+    "updates": "Updates & Announcements",
+    "minecraftHosting": "Minecraft Hosting",
+    "controlPanels": "Control Panels",
+    "knowledgebase": "Knowledgebase"
   },
   "contact": {
     "badge": "Support Center",
@@ -211,9 +214,11 @@
     "description": "Select from a wide range of popular operating systems. All images are pre-configured and ready to deploy instantly on your VPS."
   },
   "hero": {
+    "title": "India's Smoothest Hosting Experience",
     "titlePrefix": "Host your own",
     "titleSuffix": "Servers",
     "description": "High-performance hosting powered by Gen4 NVMe storage, high-frequency CPUs, and enterprise-grade WarShield DDoS protection.",
+    "seoIntro": "WarNodes delivers VPS Hosting, Web Hosting, Minecraft Hosting, Game Server Hosting, Discord Bot Hosting and WarShield DDoS Protection for developers, businesses and gamers across India.",
     "getStarted": "Get started",
     "learnMore": "Learn More",
     "getStartedFree": "Get started for free!",

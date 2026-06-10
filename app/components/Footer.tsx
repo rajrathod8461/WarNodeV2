@@ -8,6 +8,7 @@ import { FaDiscord, FaYoutube, FaInstagram } from "react-icons/fa6"
 import DiscordBanner from "./DiscordBanner"
 import { useLanguage } from "../contexts/LanguageContext"
 import warnodesConfig from "../config/sections/warnodes.json"
+import navigationConfig from "../config/sections/navigation.json"
 import heroConfig from "../config/sections/hero.json"
 import type { HeroConfig } from "../types/hero"
 import { withLogoVersion } from "../lib/logo"
@@ -18,6 +19,7 @@ type FooterLink = {
   name: string
   href: string
   external?: boolean
+  nofollow?: boolean
 }
 
 function FooterLinkList({ links }: { links: FooterLink[] }) {
@@ -28,7 +30,13 @@ function FooterLinkList({ links }: { links: FooterLink[] }) {
           <a
             href={link.href}
             target={link.external ? "_blank" : undefined}
-            rel={link.external ? "noopener noreferrer" : undefined}
+            rel={
+              link.external || link.nofollow
+                ? [link.external ? "noopener noreferrer" : "", link.nofollow ? "nofollow" : ""]
+                    .filter(Boolean)
+                    .join(" ") || undefined
+                : undefined
+            }
             className="inline-flex items-center gap-1 text-sm text-gray-600 transition-colors hover:text-icon-primary dark:text-gray-400"
           >
             {link.name}
@@ -73,25 +81,34 @@ export default function Footer() {
   )
 
   const hostingLinks: FooterLink[] = [
-    { name: t("footer.gameServerHosting"), href: "/games" },
     { name: t("footer.vpsHosting"), href: "/vps" },
     { name: "Web Hosting", href: "/web-hosting" },
+    { name: t("footer.minecraftHosting"), href: "/games?game=minecraft" },
+    { name: t("footer.gameServerHosting"), href: "/games" },
     { name: "Discord Bot Hosting", href: "/discord-bot" },
     { name: t("footer.ddosProtection"), href: "/ddos" },
   ]
 
   const companyLinks: FooterLink[] = [
     { name: t("footer.ourTeam"), href: "/team" },
-    { name: t("footer.updates"), href: links.updates, external: true },
     { name: t("footer.clientArea"), href: links.portal, external: true },
+    { name: t("footer.updates"), href: links.updates, external: true },
     { name: t("footer.networkStatus"), href: links.status, external: true },
   ]
 
   const supportLinks: FooterLink[] = [
     { name: t("footer.contactPage"), href: "/contact" },
+    { name: t("footer.knowledgebase"), href: `${links.portal}/knowledgebase`, external: true },
     { name: t("footer.openTicket"), href: links.tickets, external: true },
     { name: t("footer.discordSupport"), href: links.discord, external: true },
   ]
+
+  const panelLinks: FooterLink[] = (navigationConfig.panels ?? []).map((panel) => ({
+    name: panel.name,
+    href: panel.href,
+    external: true,
+    nofollow: true,
+  }))
 
   const legalLinks: FooterLink[] = [
     { name: t("navbar.termsOfService"), href: "/terms" },
@@ -113,7 +130,7 @@ export default function Footer() {
 
       <footer className="relative z-10 border-t border-gray-200 bg-gray-100 pt-8 dark:border-white/10 dark:bg-[#0a0b0f]">
         <motion.div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-          <motion.div className="mt-24 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 xl:gap-8">
+          <motion.div className="mt-24 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7 xl:gap-8">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -170,6 +187,10 @@ export default function Footer() {
 
             <FooterColumn title={t("footer.support")} delay={0.16}>
               <FooterLinkList links={supportLinks} />
+            </FooterColumn>
+
+            <FooterColumn title={t("footer.controlPanels")} delay={0.18}>
+              <FooterLinkList links={panelLinks} />
             </FooterColumn>
 
             <FooterColumn title={t("footer.legal")} delay={0.2}>
