@@ -24,7 +24,7 @@
         "id": "hytale",
         "name": "Hytale",
         "displayName": "Hytale",
-        "banner": "/hytale.jpg",
+        "banner": "/banners/hytale.webp",
         "color": "#2563EB",
         "showSuffix": true,
         "showInDropdown": true
@@ -33,7 +33,7 @@
         "id": "vps",
         "name": "VPS Hosting",
         "displayName": "VPS",
-        "banner": "/vps.png",
+        "banner": "/banners/vps.webp",
         "color": "#EF4444",
         "showSuffix": true,
         "showInDropdown": false
@@ -42,7 +42,7 @@
         "id": "discord-bot",
         "name": "Discord Bots",
         "displayName": "Discord Bots",
-        "banner": "/banners/node.webp",
+        "banner": "/banners/discord.webp",
         "color": "#5865F2",
         "showSuffix": true,
         "showInDropdown": false
@@ -51,7 +51,7 @@
         "id": "webhosting",
         "name": "Web Hosting",
         "displayName": "Web Hosting",
-        "banner": "/banners/webhosting.png",
+        "banner": "/banners/webhost.webp",
         "color": "#3B82F6",
         "showSuffix": true,
         "showInDropdown": false

@@ -257,7 +257,7 @@
       "name": "Hytale",
       "description": "Dedicated Hytale server hosting with instant setup, WarNodes panel, and WarShield DDoS protection",
       "icon": "/hytale.webp",
-      "banner": "/hytale.jpg",
+      "banner": "/banners/hytale.webp",
       "featured": false,
       "startingAt": "₹160/mo",
       "primaryColor": "#2563EB",

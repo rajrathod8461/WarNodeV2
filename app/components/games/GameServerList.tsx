@@ -41,7 +41,7 @@ function getCpuBrand(planTypeId: string) {
 function getPlanIcon(plan: GamePlan, game?: Game): string {
   if (plan.image) return encodeURI(plan.image)
   if (game?.id === "hytale") {
-    return encodeURI(game.icon || game.banner || "/hytale.webp")
+    return encodeURI(game.icon || game.banner || "/banners/hytale.webp")
   }
   const mob = plan.id.replace(/^amd-/, "")
   if (plan.type === "amd") {

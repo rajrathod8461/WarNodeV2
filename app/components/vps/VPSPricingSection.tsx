@@ -190,7 +190,7 @@ export default function VPSPricingSection() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-30"
           style={{
-            backgroundImage: `url('/vps/vps-hero-2.webp')`,
+            backgroundImage: `url('/banners/vps.webp')`,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-gray-50/40 to-transparent dark:from-[#0a0b0f] dark:via-[#0a0b0f]/60 dark:to-transparent" />

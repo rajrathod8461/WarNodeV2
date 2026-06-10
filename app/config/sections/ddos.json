@@ -1,5 +1,5 @@
 {
-  "heroImage": "/ddos.webp",
+  "heroImage": "/banners/warshield.webp",
   "locations": [
     { "id": "mumbai", "name": "Mumbai", "flag": "in" },
     { "id": "singapore", "name": "Singapore", "flag": "sg" }

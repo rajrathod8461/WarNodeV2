@@ -61,7 +61,7 @@ export default function RefundPolicyPage() {
         <div className="absolute inset-0">
           <motion.div
             className="absolute inset-0 bg-cover bg-center opacity-20"
-            style={{ backgroundImage: "url('/vps/vps-hero-2.webp')" }}
+            style={{ backgroundImage: "url('/banners/vps.webp')" }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-gray-50/90 to-gray-50 dark:from-[#0a0b0f] dark:via-[#0a0b0f]/90 dark:to-[#0a0b0f]" />
         </div>

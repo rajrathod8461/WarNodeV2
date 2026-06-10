@@ -56,7 +56,7 @@ function DiscordPlanOrderButton({
 }
 
 const DISCORD_LOGO = config.discordLogo ?? "/icons/Discord-Symbol-Blurple.svg"
-const HERO_BANNER = config.heroBanner ?? "/banners/discordbanner.avif"
+const HERO_BANNER = config.heroBanner ?? "/banners/discord.webp"
 const showPlanTypeStep = config.planTypes.length > 1
 
 export default function DiscordPricingSection() {
