@@ -134,7 +134,6 @@ const Navbar: React.FC = () => {
   const [windowDimensions, setWindowDimensions] = useState({ width: 0, height: 0 });
   const [mobileDropdownStates, setMobileDropdownStates] = useState<{ [key: string]: boolean }>({});
   const pathname = usePathname();
-  const { theme } = useTheme();
   const { t } = useLanguage();
 
   useEffect(() => {

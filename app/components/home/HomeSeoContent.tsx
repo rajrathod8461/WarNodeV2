@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { siteMetadata } from "../../lib/site-metadata"
 
 const DISCORD_URL = "https://dcd.gg/warnode"
@@ -25,43 +24,43 @@ export default function HomeSeoContent() {
       <nav aria-label="WarNodes services">
         <ul>
           <li>
-            <Link href="/vps">VPS Hosting</Link>
+            <a href="/vps">VPS Hosting</a>
           </li>
           <li>
-            <Link href="/web-hosting">Web Hosting</Link>
+            <a href="/web-hosting">Web Hosting</a>
           </li>
           <li>
-            <Link href="/games">Game Server Hosting</Link>
+            <a href="/games">Game Server Hosting</a>
           </li>
           <li>
-            <Link href="/games?game=minecraft">Minecraft Hosting</Link>
+            <a href="/games?game=minecraft">Minecraft Hosting</a>
           </li>
           <li>
-            <Link href="/games?game=hytale">Hytale Hosting</Link>
+            <a href="/games?game=hytale">Hytale Hosting</a>
           </li>
           <li>
-            <Link href="/discord-bot">Discord Bot Hosting</Link>
+            <a href="/discord-bot">Discord Bot Hosting</a>
           </li>
           <li>
-            <Link href="/ddos">WarShield DDoS Protection</Link>
+            <a href="/ddos">WarShield DDoS Protection</a>
           </li>
           <li>
-            <Link href="/dedicated">Dedicated Servers</Link>
+            <a href="/dedicated">Dedicated Servers</a>
           </li>
           <li>
-            <Link href="/contact">Contact</Link>
+            <a href="/contact">Contact</a>
           </li>
           <li>
-            <Link href="/team">Our Team</Link>
+            <a href="/team">Our Team</a>
           </li>
           <li>
-            <Link href="/terms">Terms of Service</Link>
+            <a href="/terms">Terms of Service</a>
           </li>
           <li>
-            <Link href="/policy">Privacy Policy</Link>
+            <a href="/policy">Privacy Policy</a>
           </li>
           <li>
-            <Link href="/refund">Refund Policy</Link>
+            <a href="/refund">Refund Policy</a>
           </li>
         </ul>
       </nav>

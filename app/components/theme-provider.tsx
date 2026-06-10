@@ -2,13 +2,10 @@
 
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import type { ThemeProviderProps } from 'next-themes';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  const [mounted, setMounted] = useState(false);
-
   useEffect(() => {
-    setMounted(true);
     const originalSetItem = localStorage.setItem;
     const originalGetItem = localStorage.getItem;
     const originalRemoveItem = localStorage.removeItem;
@@ -16,9 +13,9 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
     const checkCookiePreferences = () => {
       const cookieConsent = localStorage.getItem('cookie-consent');
       const cookiePreferences = localStorage.getItem('cookie-preferences');
-      
+
       if (!cookieConsent || !cookiePreferences) return false;
-      
+
       try {
         const prefs = JSON.parse(cookiePreferences);
         return prefs.preferences === true;
@@ -27,7 +24,7 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
       }
     };
 
-    localStorage.setItem = function(key: string, value: string) {
+    localStorage.setItem = function (key: string, value: string) {
       if (key === 'theme') {
         if (checkCookiePreferences()) {
           originalSetItem.call(this, key, value);
@@ -37,7 +34,7 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
       originalSetItem.call(this, key, value);
     };
 
-    localStorage.getItem = function(key: string) {
+    localStorage.getItem = function (key: string) {
       if (key === 'theme') {
         if (checkCookiePreferences()) {
           return originalGetItem.call(this, key);
@@ -47,7 +44,7 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
       return originalGetItem.call(this, key);
     };
 
-    localStorage.removeItem = function(key: string) {
+    localStorage.removeItem = function (key: string) {
       if (key === 'theme') {
         if (checkCookiePreferences()) {
           originalRemoveItem.call(this, key);
@@ -64,13 +61,5 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
     };
   }, []);
 
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
-  return (
-    <NextThemesProvider {...props}>
-      {children}
-    </NextThemesProvider>
-  );
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
 }
