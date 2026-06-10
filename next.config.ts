@@ -7,6 +7,12 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.warnode.cloud" }],
+        destination: "https://warnode.cloud/:path*",
+        permanent: true,
+      },
       { source: "/terms-of-services", destination: "/terms", permanent: true },
       { source: "/privacy-policy", destination: "/policy", permanent: true },
       { source: "/refund-policy", destination: "/refund", permanent: true },

@@ -1,7 +1,7 @@
 const SITE_URL = "https://warnode.cloud"
 
 const PROFESSIONAL_DESCRIPTION =
-  "Premium VPS Hosting, Web Hosting, Discord Bot Hosting, Minecraft Hosting and Game Servers powered by NVMe infrastructure and protected by WarShield DDoS Protection. Built for developers, businesses and gamers across India."
+  "VPS, web and game server hosting in India. NVMe servers, Minecraft and Discord bots, WarShield DDoS protection for gamers and developers."
 
 export const siteMetadata = {
   url: SITE_URL,

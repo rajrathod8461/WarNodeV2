@@ -272,7 +272,7 @@ export default function HeroSection() {
                   variants={itemVariants}
                   className="mb-8"
                 >
-                  <motion.h1
+                  <motion.h2
                     className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight orbitron-font"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -310,7 +310,7 @@ export default function HeroSection() {
                         )}
                       </motion.span>
                     </AnimatePresence>
-                  </motion.h1>
+                  </motion.h2>
                   <motion.p
                     className="text-md sm:text-xl text-gray-600 dark:text-gray-300 leading-relaxed"
                     initial={{ opacity: 0, y: 30 }}

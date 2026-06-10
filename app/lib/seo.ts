@@ -10,8 +10,7 @@ type PageSeo = {
 export const pageSeo = {
   home: {
     title: siteMetadata.title,
-    description:
-      "Premium VPS Hosting, Web Hosting, Discord Bot Hosting, Minecraft Hosting and Game Servers powered by NVMe infrastructure and protected by WarShield DDoS Protection. Built for developers, businesses and gamers across India.",
+    description: siteMetadata.description,
     path: "/",
   },
   vps: {
