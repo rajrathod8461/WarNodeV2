@@ -1,3 +1,5 @@
+import Link from "next/link"
+import { homeFaqs, internalServiceLinks } from "../../lib/seo"
 import { siteMetadata } from "../../lib/site-metadata"
 
 const DISCORD_URL = "https://dcd.gg/warnode"
@@ -23,44 +25,22 @@ export default function HomeSeoContent() {
 
       <nav aria-label="WarNodes services">
         <ul>
+          {internalServiceLinks.map((link) => (
+            <li key={link.href}>
+              <Link href={link.href}>{link.label}</Link>
+            </li>
+          ))}
           <li>
-            <a href="/vps">VPS Hosting</a>
+            <Link href="/team">Our Team</Link>
           </li>
           <li>
-            <a href="/web-hosting">Web Hosting</a>
+            <Link href="/terms">Terms of Service</Link>
           </li>
           <li>
-            <a href="/games">Game Server Hosting</a>
+            <Link href="/policy">Privacy Policy</Link>
           </li>
           <li>
-            <a href="/games?game=minecraft">Minecraft Hosting</a>
-          </li>
-          <li>
-            <a href="/games?game=hytale">Hytale Hosting</a>
-          </li>
-          <li>
-            <a href="/discord-bot">Discord Bot Hosting</a>
-          </li>
-          <li>
-            <a href="/ddos">WarShield DDoS Protection</a>
-          </li>
-          <li>
-            <a href="/dedicated">Dedicated Servers</a>
-          </li>
-          <li>
-            <a href="/contact">Contact</a>
-          </li>
-          <li>
-            <a href="/team">Our Team</a>
-          </li>
-          <li>
-            <a href="/terms">Terms of Service</a>
-          </li>
-          <li>
-            <a href="/policy">Privacy Policy</a>
-          </li>
-          <li>
-            <a href="/refund">Refund Policy</a>
+            <Link href="/refund">Refund Policy</Link>
           </li>
         </ul>
       </nav>
@@ -73,6 +53,14 @@ export default function HomeSeoContent() {
         low-latency routes across India. Web hosting plans include free SSL, daily backups, and
         one-click app installs.
       </p>
+
+      <h2>Frequently asked questions</h2>
+      {homeFaqs.map((faq) => (
+        <div key={faq.question}>
+          <h3>{faq.question}</h3>
+          <p>{faq.answer}</p>
+        </div>
+      ))}
 
       <h2>Support and community</h2>
       <p>
