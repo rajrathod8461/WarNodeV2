@@ -37,7 +37,7 @@ function FooterLinkList({ links }: { links: FooterLink[] }) {
                     .join(" ") || undefined
                 : undefined
             }
-            className="inline-flex items-center gap-1 text-sm text-gray-600 transition-colors hover:text-icon-primary dark:text-gray-400"
+            className="inline-flex cursor-pointer items-center gap-1 text-sm text-white/45 transition-colors hover:text-[#137fec]"
           >
             {link.name}
             {link.external && <ExternalLink className="h-3 w-3 shrink-0 opacity-70" />}
@@ -64,7 +64,7 @@ function FooterColumn({
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.5, delay }}
     >
-      <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-900 dark:text-white">
+      <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-white">
         {title}
       </h3>
       {children}
@@ -94,6 +94,7 @@ export default function Footer() {
     { name: t("footer.clientArea"), href: links.portal, external: true },
     { name: t("footer.updates"), href: links.updates, external: true },
     { name: t("footer.networkStatus"), href: links.status, external: true },
+    { name: "Backup Status", href: "/backup-status" },
   ]
 
   const supportLinks: FooterLink[] = [
@@ -128,7 +129,7 @@ export default function Footer() {
         <DiscordBanner />
       </motion.div>
 
-      <footer className="relative z-10 border-t border-gray-200 bg-gray-100 pt-8 dark:border-white/10 dark:bg-[#0a0b0f]">
+      <footer className="relative z-10 border-t border-white/[0.08] bg-[#030408] pt-8">
         <motion.div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <motion.div className="mt-24 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7 xl:gap-8">
             <motion.div
@@ -147,15 +148,15 @@ export default function Footer() {
                   className="h-12 w-auto object-contain"
                   unoptimized
                 />
-                <span className="orbitron-font text-xl font-bold text-gray-900 dark:text-white">
+                <span className="orbitron-font text-xl font-bold text-white">
                   {heroSettings.navbar.brandName}
-                  <span className="icon-text-primary">{heroSettings.navbar.brandAccent}</span>
+                  <span className="text-[#137fec]">{heroSettings.navbar.brandAccent}</span>
                 </span>
               </div>
-              <p className="mb-5 max-w-sm text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+              <p className="mb-5 max-w-sm text-sm leading-relaxed text-white/45">
                 {t("footer.description")}
               </p>
-              <p className="mb-3 text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-500">
+              <p className="mb-3 text-xs font-medium uppercase tracking-wide text-white/30">
                 Follow us
               </p>
               <div className="mb-5 flex items-center gap-2.5">
@@ -168,7 +169,7 @@ export default function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={socialLink.name}
-                      className="flex h-9 w-9 items-center justify-center rounded-tl-lg rounded-br-lg border border-gray-200/50 bg-white/70 text-gray-600 transition-colors hover:border-secondary hover:text-icon-primary dark:border-white/10 dark:bg-white/5 dark:text-gray-400 dark:hover:text-icon-primary"
+                      className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/50 transition-colors hover:border-[#137fec]/40 hover:text-[#137fec]"
                     >
                       <Icon className="h-4 w-4" />
                     </a>
@@ -203,16 +204,16 @@ export default function Footer() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.25 }}
-            className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-gray-200 pt-8 dark:border-white/10 sm:flex-row"
+            className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/[0.08] pt-8 sm:flex-row"
           >
-            <p className="text-center text-sm text-gray-500 dark:text-gray-500 sm:text-left">
+            <p className="text-center text-sm text-white/35 sm:text-left">
               © {new Date().getFullYear()} {company.name}. {t("footer.allRightsReserved")}
             </p>
             <a
               href={links.status}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-gray-500 transition-colors hover:text-icon-primary dark:text-gray-500"
+              className="inline-flex cursor-pointer items-center gap-2 text-sm text-white/35 transition-colors hover:text-[#137fec]"
             >
               <span className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
               {t("footer.systemsOperational")}

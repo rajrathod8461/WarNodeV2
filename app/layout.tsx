@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Orbitron, Quicksand } from "next/font/google";
+import { Geist_Mono, Orbitron, Plus_Jakarta_Sans, Quicksand } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/theme-provider";
 import { LayoutWrapper } from "./components/layout-wrapper";
@@ -10,13 +10,14 @@ import { Analytics } from "@vercel/analytics/next"
 import { siteMetadata } from "./lib/site-metadata"
 import { serviceListSchema } from "./lib/seo"
 
-const geistSans = Geist({
+const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-geist-sans",
   subsets: ["latin"],
   display: "swap",
   preload: true,
+  weight: ["400", "500", "600", "700", "800"],
 });
-// hi there
+
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -39,7 +40,7 @@ const quicksand = Quicksand({
   display: "swap",
   preload: false,
 });
-// hello again
+
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -202,7 +203,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${orbitron.variable} ${quicksand.variable} antialiased min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white transition-colors duration-300`}
+        className={`${plusJakarta.variable} ${geistMono.variable} ${orbitron.variable} ${quicksand.variable} antialiased min-h-screen bg-white dark:bg-[#05060a] text-gray-900 dark:text-white font-sans transition-colors duration-300`}
         suppressHydrationWarning
       >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>

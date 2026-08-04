@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WarNodes — Backup Status</title>
+<meta name="theme-color" content="#137fec">
+<link rel="icon" type="image/png" href="https://warnode.cloud/meta/Logo.png?v=warnodes-1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #05060a;
+    --panel: rgba(8, 11, 20, 0.65);
+    --panel-2: rgba(255, 255, 255, 0.05);
+    --line: rgba(255, 255, 255, 0.08);
+    --text: #fbfbfb;
+    --muted: #9ca3af;
+    --ok: #10b981;
+    --ok-dim: rgba(16, 185, 129, 0.15);
+    --bad: #ef4444;
+    --bad-dim: rgba(239, 68, 68, 0.15);
+    --accent: #3b82f6;
+    --accent-2: #22d3ee;
+  }
+  *{ box-sizing: border-box; }
+  html,body{
+    margin:0; padding:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    min-height: 100vh;
+  }
+  body::before{
+    content:"";
+    position:fixed; top:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    z-index: 10;
+  }
+  body{
+    background-color: var(--bg);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 20% -10%, rgba(59, 130, 246, 0.15), transparent 55%),
+      radial-gradient(ellipse 60% 40% at 85% 10%, rgba(34, 211, 238, 0.1), transparent 50%),
+      radial-gradient(ellipse 50% 60% at 50% 100%, rgba(59, 130, 246, 0.1), transparent 55%);
+    background-attachment: fixed;
+  }
+  .wrap{ max-width: 880px; margin: 0 auto; padding: 56px 24px 80px; position: relative; z-index: 1; }
+
+  header{ display:flex; align-items:center; justify-content:space-between; margin-bottom: 40px; flex-wrap: wrap; gap: 16px; }
+  .brand{ display:flex; align-items:center; gap: 12px; text-decoration:none; }
+  .brand-mark{
+    height: 32px; width: auto; flex-shrink:0;
+    display:flex; align-items:center;
+  }
+  .brand-mark img{ height: 100%; width: auto; display:block; }
+  .brand-name{ font-family: 'Orbitron', sans-serif; font-weight:700; font-size: 19px; letter-spacing: 0.5px; color: var(--text); }
+  .brand-sub{ font-family:'JetBrains Mono',monospace; font-size:11px; color: var(--muted); letter-spacing: 0.5px; text-transform: uppercase; }
+
+  .live-pill{
+    display:flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono',monospace; font-size:12px; color: var(--muted);
+    border:1px solid var(--line); padding: 7px 12px; border-radius: 999px;
+    background: var(--panel);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  }
+  .live-dot{
+    width:7px; height:7px; border-radius:50%; background: var(--ok);
+    box-shadow: 0 0 0 0 rgba(16,185,129,0.6);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%{ box-shadow: 0 0 0 0 rgba(16,185,129,0.5); }
+    70%{ box-shadow: 0 0 0 8px rgba(16,185,129,0); }
+    100%{ box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+  }
+
+  .hero{
+    background: var(--panel);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 36px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 24px 60px -28px rgba(0, 0, 0, 0.65);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+    pointer-events:none;
+  }
+  .hero-label{
+    font-family:'JetBrains Mono',monospace; font-size: 11px; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+    position: relative; z-index: 2;
+  }
+  .hero-number{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 64px; font-weight: 700; line-height: 1; letter-spacing: -1.5px;
+    display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;
+    position: relative; z-index: 2;
+  }
+  .hero-number span.total{ font-size: 28px; color: var(--muted); font-weight:500; }
+  .hero-status{
+    margin-top:14px; font-size: 14px; color: var(--muted);
+    position: relative; z-index: 2;
+  }
+  .hero-status b{ color: var(--text); font-weight:600; }
+
+  .bar{
+    margin-top: 22px; height: 6px; border-radius: 4px; overflow:hidden;
+    background: var(--panel-2); display:flex;
+    position: relative; z-index: 2;
+  }
+  .bar-fill{ background: linear-gradient(90deg, var(--accent), var(--ok)); height:100%; transition: width 0.6s ease; box-shadow: 0 0 10px rgba(59,130,246,0.5); }
+  .bar-fill.warn{ background: linear-gradient(90deg, var(--bad), #f43f5e); box-shadow: 0 0 10px rgba(239,68,68,0.5); }
+
+  .list-label{
+    font-family:'JetBrains Mono',monospace; font-size: 11px; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--muted); margin: 8px 4px 12px;
+  }
+
+  .grid{ display:grid; grid-template-columns: 1fr; gap: 10px; }
+
+  .card{
+    background: var(--panel);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px 18px;
+    display:flex; align-items:center; justify-content:space-between;
+    gap: 12px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .card:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+    transform: translateY(-2px);
+  }
+  .card-left{ display:flex; align-items:center; gap: 12px; min-width:0; }
+  .dot{ width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+  .dot.ok{ background: var(--ok); box-shadow: 0 0 8px rgba(16,185,129,0.5); }
+  .dot.bad{ background: var(--bad); box-shadow: 0 0 8px rgba(239,68,68,0.5); }
+  .node-name{ font-weight:600; font-size: 14.5px; white-space:normal; word-break: break-word; }
+  .node-time{
+    font-family:'JetBrains Mono',monospace; font-size: 12px; color: var(--muted);
+    flex-shrink:0;
+  }
+  .badge{
+    font-family:'JetBrains Mono',monospace; font-size: 10px; letter-spacing:0.5px;
+    padding: 3px 8px; border-radius: 5px; text-transform: uppercase; flex-shrink:0;
+  }
+  .badge.ok{ background: var(--ok-dim); color: var(--ok); border: 1px solid rgba(16,185,129,0.2); }
+  .badge.bad{ background: var(--bad-dim); color: var(--bad); border: 1px solid rgba(239,68,68,0.2); }
+
+  .empty, .error{
+    text-align:center; padding: 60px 20px; color: var(--muted);
+    font-family:'JetBrains Mono',monospace; font-size: 13px;
+  }
+  .error{ color: var(--bad); }
+
+  footer{
+    margin-top: 40px; text-align:center;
+    font-family:'JetBrains Mono',monospace; font-size: 11px; color: var(--muted);
+  }
+  .footer-brand{ margin-top: 8px; }
+  .footer-brand a{ color: var(--accent); text-decoration: none; transition: color 0.2s ease; }
+  .footer-brand a:hover{ color: var(--accent-2); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="https://warnode.cloud" target="_blank" rel="noopener">
+        <div class="brand-mark">
+          <img src="https://warnode.cloud/meta/Logo.png?v=warnodes-1" alt="WarNodes"
+               onerror="this.onerror=null; this.replaceWith(Object.assign(document.createElement('span'),{textContent:'WarNodes',style:'font-weight:700;font-size:17px;color:var(--accent)'}));">
+        </div>
+        <div>
+          <div class="brand-name">WarNodes</div>
+          <div class="brand-sub">Backup Status</div>
+        </div>
+      </a>
+      <div class="live-pill"><span class="live-dot"></span> LIVE</div>
+    </header>
+
+    <div class="hero">
+      <div class="hero-label">Backup Health</div>
+      <div class="hero-number" id="heroNumber">— <span class="total">/ —</span></div>
+      <div class="hero-status" id="heroStatus">Loading backup status…</div>
+      <div class="bar"><div class="bar-fill" id="barFill" style="width:0%"></div></div>
+    </div>
+
+    <div class="list-label">Nodes — Last Backup</div>
+    <div class="grid" id="nodeGrid"></div>
+
+    <div id="emptyState" class="empty" style="display:none;">No backup data reporting yet.</div>
+    <div id="errorState" class="error" style="display:none;"></div>
+
+    <footer>
+      <div id="footerNote">Backup status updates automatically every 60s</div>
+      <div class="footer-brand">Powered by <a href="https://warnode.cloud" target="_blank" rel="noopener">WarNodes</a></div>
+    </footer>
+  </div>
+
+<script>
+  // ==== CONFIGURE THIS ====
+  const STATUS_JSON_URL = "https://api.warnode.in/status.json";
+  const MAX_AGE_HOURS = 9; // must match MAX_AGE_HOURS in /root/.warnodes-fleet/config
+  const REFRESH_MS = 60000;
+  // =========================
+
+  function timeAgo(epochSeconds){
+    const diff = Math.max(0, Math.floor(Date.now() / 1000) - epochSeconds);
+    if (diff < 60) return "just now";
+    const m = Math.floor(diff / 60);
+    if (m < 60) return m + "m ago";
+    const h = Math.floor(m / 60);
+    if (h < 24) return h + "h ago";
+    const d = Math.floor(h / 24);
+    return d + "d ago";
+  }
+
+  function render(data){
+    const nodes = data.nodes || [];
+    const total = nodes.length;
+    const healthy = nodes.filter(n => {
+      const ageH = (Date.now()/1000 - n.last_seen) / 3600;
+      return n.status === "ok" && ageH < MAX_AGE_HOURS;
+    }).length;
+
+    document.getElementById("heroNumber").innerHTML =
+      healthy + ' <span class="total">/ ' + total + '</span>';
+
+    const allHealthy = healthy === total && total > 0;
+    document.getElementById("heroStatus").innerHTML = allHealthy
+      ? "All nodes <b>backed up</b> on schedule"
+      : (total - healthy) + " node(s) — backup overdue";
+
+    const pct = total > 0 ? (healthy / total) * 100 : 0;
+    const fill = document.getElementById("barFill");
+    fill.style.width = pct + "%";
+    fill.className = "bar-fill" + (allHealthy ? "" : " warn");
+
+    const grid = document.getElementById("nodeGrid");
+    const empty = document.getElementById("emptyState");
+    grid.innerHTML = "";
+
+    if (total === 0){
+      empty.style.display = "block";
+      return;
+    }
+    empty.style.display = "none";
+
+    nodes
+      .slice()
+      .sort((a,b) => a.node.localeCompare(b.node))
+      .forEach(n => {
+        const ageH = (Date.now()/1000 - n.last_seen) / 3600;
+        const ok = n.status === "ok" && ageH < MAX_AGE_HOURS;
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <div class="card-left">
+            <span class="dot ${ok ? 'ok' : 'bad'}"></span>
+            <span class="node-name">${escapeHtml(n.node)}</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span class="node-time">backed up ${timeAgo(n.last_seen)}</span>
+            <span class="badge ${ok ? 'ok' : 'bad'}">${ok ? 'Up to date' : 'Overdue'}</span>
+          </div>`;
+        grid.appendChild(card);
+      });
+  }
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, c => ({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+    }[c]));
+  }
+
+  async function load(){
+    // If this page is served over HTTPS but the status URL is plain HTTP,
+    // the browser will silently block the request (mixed content) — catch
+    // that case up front with a clear message instead of a vague error.
+    if (window.location.protocol === "https:" && STATUS_JSON_URL.startsWith("http://")) {
+      const el = document.getElementById("errorState");
+      el.style.display = "block";
+      el.innerHTML = "This page is on HTTPS but STATUS_JSON_URL is plain HTTP — browsers block that.<br>" +
+        "Put the status endpoint behind HTTPS (Cloudflare proxy / reverse proxy + Let's Encrypt) and update STATUS_JSON_URL.";
+      return;
+    }
+    try{
+      const res = await fetch(STATUS_JSON_URL + "?t=" + Date.now(), { cache: "no-store" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const data = await res.json();
+      lastData = data;
+      lastFetchTime = Date.now();
+      document.getElementById("errorState").style.display = "none";
+      render(data);
+    }catch(err){
+      const el = document.getElementById("errorState");
+      el.style.display = "block";
+      el.textContent = "Couldn't load status (" + err.message + "). Check STATUS_JSON_URL and that the endpoint is reachable.";
+    }
+  }
+
+  let lastData = null;
+  let lastFetchTime = null;
+
+  function tickFooter(){
+    if (!lastFetchTime) return;
+    const secsAgo = Math.floor((Date.now() - lastFetchTime) / 1000);
+    const untilNext = Math.max(0, Math.round(REFRESH_MS / 1000) - secsAgo);
+    const agoText = secsAgo < 1 ? "just now" : secsAgo + "s ago";
+    document.getElementById("footerNote").textContent =
+      "Updated " + agoText + " · next refresh in " + untilNext + "s";
+    // also keep the per-card "Xm ago" labels fresh, using the data we
+    // already have — no extra network call needed
+    if (lastData) render(lastData);
+  }
+
+  load();
+  setInterval(load, REFRESH_MS);
+  setInterval(tickFooter, 1000);
+</script>
+</body>
+</html>

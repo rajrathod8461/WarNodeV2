@@ -22,6 +22,8 @@ import {
 import showcaseConfig from "@/app/config/sections/showcase.json"
 import { useLanguage } from "../contexts/LanguageContext"
 import uiConfig from "@/app/config/sections/ui.json"
+import { SectionHeader } from "./premium/ui/SectionHeader"
+import { ScrollReveal } from "./premium/ui/ScrollReveal"
 
 interface ShowcaseCard {
   id: number
@@ -141,54 +143,45 @@ export default function PanelShowcase() {
   }, [updateScrollHints, showcaseCards.length])
 
   const active = showcaseCards[activeCard]
+  const ActiveIcon = active.icon
 
   return (
-    <div className="bg-gray-50 dark:bg-[#0a0b0f] relative py-12 sm:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <div className="absolute top-20 -left-32 w-64 h-64 icon-text-primary rounded-full blur-3xl opacity-40" />
-      <div className="absolute bottom-20 -right-32 w-72 h-72 icon-text-primary rounded-full blur-3xl opacity-40" />
+    <section className="relative overflow-hidden py-24 md:py-32">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(19,127,236,0.1),transparent_55%)]" />
 
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-left mb-8 sm:mb-10"
-        >
-          <div className="inline-flex items-center gap-2 card-primary px-4 py-2 rounded-tl-2xl rounded-br-2xl mb-4 border border-secondary">
-            <span className="icon-text-primary orbitron-font text-sm">{t("panelShowcase.badge")}</span>
-          </div>
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeader
+          eyebrow={t("panelShowcase.badge")}
+          title={
+            <>
+              {t("panelShowcase.title").split(" ").slice(0, -2).join(" ")}{" "}
+              <span className="text-[#137fec]">
+                {t("panelShowcase.title").split(" ").slice(-2).join(" ")}
+              </span>
+            </>
+          }
+          description={t("panelShowcase.subtitle")}
+        />
 
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3 orbitron-font sm:mb-4">
-            {t("panelShowcase.title").split(" ").slice(0, -2).join(" ")}{" "}
-            <span className="icon-text-primary">{t("panelShowcase.title").split(" ").slice(-2).join(" ")}</span>
-          </h2>
-          <p className="text-sm text-gray-600 dark:text-gray-300 max-w-2xl">{t("panelShowcase.subtitle")}</p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-[minmax(0,340px)_1fr] gap-5 lg:gap-6 lg:items-stretch">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            className="flex flex-col min-h-0"
-          >
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,340px)_1fr] lg:items-stretch lg:gap-6">
+          <ScrollReveal className="flex min-h-0 flex-col">
             <div className="mb-3 flex items-center justify-between gap-2 px-1">
-              <p className="text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              <p className="text-xs font-medium uppercase tracking-wider text-white/40">
                 {t("panelShowcase.featuresLabel")}
               </p>
-              <span className="orbitron-font rounded-tl-lg rounded-br-lg border border-secondary/50 bg-white/60 px-2.5 py-0.5 text-xs font-bold icon-text-primary dark:bg-white/5">
+              <span className="rounded-full border border-[#137fec]/30 bg-[#137fec]/10 px-2.5 py-0.5 text-xs font-semibold text-[#137fec]">
                 {t("panelShowcase.featuresCount")}
               </span>
             </div>
 
-            <div className="relative overflow-hidden rounded-tl-2xl rounded-br-2xl border border-gray-200/80 bg-white/70 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.04]">
+            <div className="premium-glass relative overflow-hidden rounded-2xl">
               <div
-                className={`pointer-events-none absolute inset-x-0 top-0 z-10 h-10 bg-gradient-to-b from-white via-white/80 to-transparent transition-opacity duration-300 dark:from-[#0a0b0f] dark:via-[#0a0b0f]/80 ${
+                className={`pointer-events-none absolute inset-x-0 top-0 z-10 h-10 bg-gradient-to-b from-[#080b14] via-[#080b14]/80 to-transparent transition-opacity duration-300 ${
                   scrollHints.top ? "opacity-100" : "opacity-0"
                 }`}
               />
               <div
-                className={`pointer-events-none absolute inset-x-0 bottom-11 z-10 h-10 bg-gradient-to-t from-white via-white/80 to-transparent transition-opacity duration-300 dark:from-[#0a0b0f] dark:via-[#0a0b0f]/80 ${
+                className={`pointer-events-none absolute inset-x-0 bottom-11 z-10 h-10 bg-gradient-to-t from-[#080b14] via-[#080b14]/80 to-transparent transition-opacity duration-300 ${
                   scrollHints.bottom ? "opacity-100" : "opacity-0"
                 }`}
               />
@@ -212,10 +205,10 @@ export default function PanelShowcase() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: index * 0.04 }}
                       onClick={() => handleCardClick(index)}
-                      className={`relative w-full snap-start text-left transition-all duration-300 rounded-tl-xl rounded-br-xl border hover:border-secondary hover:hover-gradient ${
+                      className={`relative w-full snap-start rounded-xl border text-left transition-all duration-300 ${
                         isActive
-                          ? "border-secondary shadow-md dark:shadow-black/20"
-                          : "border-transparent bg-transparent dark:hover:bg-white/[0.05]"
+                          ? "border-[#137fec]/35 bg-[#137fec]/10 shadow-[0_8px_32px_-12px_rgba(19,127,236,0.35)]"
+                          : "border-transparent hover:border-white/10 hover:bg-white/[0.04]"
                       }`}
                     >
                       {isActive && (
@@ -236,19 +229,19 @@ export default function PanelShowcase() {
                         <div
                           className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border transition-colors ${
                             isActive
-                              ? "border-secondary bg-white dark:bg-white/10"
-                              : "border-gray-200/80 bg-gray-50 dark:border-white/10 dark:bg-white/[0.04]"
+                              ? "border-[#137fec]/30 bg-[#137fec]/15"
+                              : "border-white/10 bg-white/[0.04]"
                           }`}
                         >
                           <Icon
                             className={`h-4 w-4 ${
-                              isActive ? "icon-text-primary" : "text-gray-500 dark:text-gray-400"
+                              isActive ? "text-[#137fec]" : "text-white/40"
                             }`}
                           />
                         </div>
                         <span
                           className={`text-sm font-semibold leading-tight ${
-                            isActive ? "text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-400"
+                            isActive ? "text-white" : "text-white/45"
                           }`}
                         >
                           {card.title}
@@ -259,38 +252,33 @@ export default function PanelShowcase() {
                 })}
               </div>
 
-              <div className="flex items-center justify-between gap-2 border-t border-gray-200/80 px-2 py-1.5 dark:border-white/10">
+              <div className="flex items-center justify-between gap-2 border-t border-white/[0.08] px-2 py-1.5">
                 <button
                   type="button"
                   onClick={() => scrollListBy(-120)}
                   disabled={!scrollHints.top}
                   aria-label="Scroll features up"
-                  className="flex h-8 w-8 items-center justify-center rounded-tl-xl rounded-br-xl border border-transparent text-gray-500 transition-all duration-300 hover:border-secondary hover:hover-gradient hover:text-[var(--icon-text-primary)] disabled:cursor-not-allowed disabled:opacity-30 dark:hover:text-white"
+                  className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-transparent text-white/50 transition-all duration-300 hover:border-white/10 hover:bg-white/[0.05] hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
                 >
                   <ChevronUp className="h-4 w-4" />
                 </button>
-                <span className="text-[10px] text-gray-400 dark:text-gray-500">Scroll for more</span>
+                <span className="text-[10px] text-white/35">Scroll for more</span>
                 <button
                   type="button"
                   onClick={() => scrollListBy(120)}
                   disabled={!scrollHints.bottom}
                   aria-label="Scroll features down"
-                  className="flex h-8 w-8 items-center justify-center rounded-tl-xl rounded-br-xl border border-transparent text-gray-500 transition-all duration-300 hover:border-secondary hover:hover-gradient hover:text-[var(--icon-text-primary)] disabled:cursor-not-allowed disabled:opacity-30 dark:hover:text-white"
+                  className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-transparent text-white/50 transition-all duration-300 hover:border-white/10 hover:bg-white/[0.05] hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
                 >
                   <ChevronDown className="h-4 w-4" />
                 </button>
               </div>
             </div>
-          </motion.div>
+          </ScrollReveal>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="relative flex min-h-[280px] sm:min-h-[360px]"
-          >
-            <div className="relative flex w-full flex-col overflow-hidden rounded-tl-2xl rounded-br-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/[0.03] shadow-lg">
-              <div className="relative flex-1 min-h-[220px] sm:min-h-[300px] lg:min-h-[340px] bg-gray-100 dark:bg-[#0d0f14]">
+          <ScrollReveal delay={0.12} className="relative flex min-h-[280px] sm:min-h-[360px]">
+            <div className="premium-glass relative flex w-full flex-col overflow-hidden rounded-2xl">
+              <div className="relative min-h-[220px] flex-1 bg-[#0d0f14] sm:min-h-[300px] lg:min-h-[340px]">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeCard}
@@ -326,7 +314,7 @@ export default function PanelShowcase() {
                 </AnimatePresence>
               </div>
 
-              <div className="border-t border-gray-200 dark:border-white/10 px-4 py-4 sm:px-5 sm:py-5 bg-white dark:bg-[#0a0b0f]/80">
+              <div className="border-t border-white/[0.08] bg-[#080b14]/80 px-4 py-4 sm:px-5 sm:py-5">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeCard}
@@ -335,13 +323,13 @@ export default function PanelShowcase() {
                     exit={{ opacity: 0, y: -6 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="flex items-center gap-2 mb-2">
-                      <active.icon className="h-4 w-4 icon-text-primary shrink-0" />
-                      <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
+                    <div className="mb-2 flex items-center gap-2">
+                      <ActiveIcon className="h-4 w-4 shrink-0 text-[#137fec]" />
+                      <h3 className="text-base font-semibold text-white sm:text-lg">
                         {active.title}
                       </h3>
                     </div>
-                    <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">{active.description}</p>
+                    <p className="text-sm leading-relaxed text-white/45">{active.description}</p>
                   </motion.div>
                 </AnimatePresence>
               </div>
@@ -365,9 +353,9 @@ export default function PanelShowcase() {
                 </>
               )}
             </div>
-          </motion.div>
+          </ScrollReveal>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

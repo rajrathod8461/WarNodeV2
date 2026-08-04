@@ -70,6 +70,11 @@ const iconMap: { [key: string]: React.ElementType } = {
 
 const getIcon = (iconName: string) => iconMap[iconName];
 
+function renderNavIcon(Icon: React.ElementType | null | undefined, className: string) {
+  if (!Icon) return null
+  return React.createElement(Icon, { className })
+}
+
 
 const ThemeToggle = React.memo(function ThemeToggle(): React.ReactElement {
   const { theme, setTheme } = useTheme()
@@ -134,6 +139,7 @@ const Navbar: React.FC = () => {
   const [windowDimensions, setWindowDimensions] = useState({ width: 0, height: 0 });
   const [mobileDropdownStates, setMobileDropdownStates] = useState<{ [key: string]: boolean }>({});
   const pathname = usePathname();
+  const { theme } = useTheme();
   const { t } = useLanguage();
 
   useEffect(() => {
@@ -334,7 +340,7 @@ const Navbar: React.FC = () => {
             ${isActive ? 'text-icon-text-primary dark:text-icon-text-primary after:scale-x-100 hover-gradient' : ''}`}
             prefetch={true}
           >
-            {IconComponent && <IconComponent className="w-4 h-4" />}
+            {renderNavIcon(IconComponent, "w-4 h-4")}
             <span>{translatedName}</span>
           </Link>
           {renderDropdown(item)}
@@ -371,7 +377,7 @@ const Navbar: React.FC = () => {
         ${isActive ? 'text-icon-text-primary dark:text-icon-text-primary after:scale-x-100 hover-gradient' : ''}`}
           prefetch={true}
         >
-          {IconComponent && <IconComponent className="w-4 h-4" />}
+          {renderNavIcon(IconComponent, "w-4 h-4")}
           <span>{translatedName}</span>
         </Link>
       </div>
@@ -547,7 +553,7 @@ const Navbar: React.FC = () => {
         prefetch={true}
       >
         <div className="flex items-center space-x-3">
-          {IconComponent && <IconComponent className="w-5 h-5" />}
+          {renderNavIcon(IconComponent, "w-5 h-5")}
           <span className="font-medium">{translatedName}</span>
         </div>
         <ChevronRight className="w-4 h-4" />
@@ -716,7 +722,11 @@ const Navbar: React.FC = () => {
       )}
 
 
-      <nav className={`fixed -mt-1 left-0 right-0 z-50 overflow-visible bg-white/90 dark:bg-[#10121b]/20 backdrop-blur-xs border-b border-gray-200/60 dark:border-[#272a32]/10 transition-all duration-300 ${isScrolled ? 'top-0' : (showBanner ? 'top-[52px]' : 'top-0')}`}>
+      <nav className={`fixed -mt-1 left-0 right-0 z-50 overflow-visible border-b transition-all duration-500 ${
+        isScrolled
+          ? 'bg-white/80 dark:bg-[#05060a]/75 backdrop-blur-2xl border-gray-200/70 dark:border-white/[0.08] shadow-[0_8px_40px_-16px_rgba(0,0,0,0.5)]'
+          : 'bg-white/70 dark:bg-transparent backdrop-blur-md border-transparent dark:border-white/[0.04]'
+      } ${isScrolled ? 'top-0' : (showBanner ? 'top-[52px]' : 'top-0')}`}>
         <div className="px-4 sm:px-0 max-w-7xl mx-auto">
           <div className="flex items-center">
 

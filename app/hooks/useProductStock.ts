@@ -112,7 +112,7 @@ export function useProductStock(orderLink?: string) {
   const state = useSyncExternalStore(
     subscribe,
     () => getSnapshot(key, eligible),
-    () => STOCK_IDLE,
+    () => getSnapshot(key, eligible),
   )
 
   useEffect(() => {

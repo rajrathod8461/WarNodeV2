@@ -1,8 +1,5 @@
 "use client"
 
-import { motion, useScroll, useInView } from "framer-motion"
-import { useRef } from "react"
-import Image from "next/image"
 import {
   Cpu,
   Shield,
@@ -11,14 +8,17 @@ import {
   Cloud,
   Rocket,
   HardDrive,
+  type LucideIcon,
 } from "lucide-react"
 import { useLanguage } from "../contexts/LanguageContext"
-import uiConfig from "../config/sections/ui.json"
+import { SectionHeader } from "./premium/ui/SectionHeader"
+import { ScrollReveal } from "./premium/ui/ScrollReveal"
+import { TiltCard } from "./premium/ui/TiltCard"
 
 interface Feature {
-  icon: React.ElementType;
-  title: string;
-  description: string;
+  icon: LucideIcon
+  title: string
+  description: string
 }
 
 export default function FeaturesSection() {
@@ -27,151 +27,92 @@ export default function FeaturesSection() {
   const features: Feature[] = [
     {
       icon: HardDrive,
-      title: t('features.highPerformance'),
-      description: t('features.highPerformanceDesc')
+      title: t("features.highPerformance"),
+      description: t("features.highPerformanceDesc"),
     },
     {
       icon: Zap,
-      title: t('features.lowLatency'),
-      description: t('features.lowLatencyDesc')
+      title: t("features.lowLatency"),
+      description: t("features.lowLatencyDesc"),
     },
     {
       icon: Shield,
-      title: t('features.advancedSecurity'),
-      description: t('features.advancedSecurityDesc')
+      title: t("features.advancedSecurity"),
+      description: t("features.advancedSecurityDesc"),
     },
     {
       icon: Rocket,
-      title: t('features.autoRecovery'),
-      description: t('features.autoRecoveryDesc')
+      title: t("features.autoRecovery"),
+      description: t("features.autoRecoveryDesc"),
     },
     {
       icon: Settings,
-      title: t('features.fullControl'),
-      description: t('features.fullControlDesc')
+      title: t("features.fullControl"),
+      description: t("features.fullControlDesc"),
     },
     {
       icon: Cpu,
-      title: t('features.resourceScaling'),
-      description: t('features.resourceScalingDesc')
+      title: t("features.resourceScaling"),
+      description: t("features.resourceScalingDesc"),
     },
     {
       icon: Cloud,
-      title: t('features.globalNetwork'),
-      description: t('features.globalNetworkDesc')
-    }
+      title: t("features.globalNetwork"),
+      description: t("features.globalNetworkDesc"),
+    },
   ]
 
-  const FeaturedCard = ({ feature, index }: { feature: Feature; index: number }) => {
-    const ref = useRef(null)
-    const isInView = useInView(ref, { once: true, margin: "-100px" })
-    const Icon = feature.icon;
-    return (
-      <motion.div
-        ref={ref}
-        initial={{ opacity: 0, y: 50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-        transition={{ duration: 0.6, delay: index * 0.2 }}
-        className="hover-gradient backdrop-blur-sm border border-secondary rounded-md hover:border-secondary group transition-all duration-300 relative col-span-1 md:col-span-2"
-      >
-        <div className="flex justify-between items-start">
-          <div className="flex-1 p-4 sm:p-6">
-            <h3 className="text-base sm:text-lg font-semibold orbitron-font text-icon-primary mb-1 sm:mb-2 group-hover:text-icon-text-primary transition-colors">{feature.title}</h3>
-            <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm leading-relaxed max-w-xl">{feature.description}</p>
-          </div>
-          <div className="w-10 h-10 sm:w-12 sm:h-12 border-l border-b border-primary rounded-tr-lg flex items-center justify-center flex-shrink-0">
-            <Icon className="w-5 h-5 sm:w-6 sm:h-6 icon-primary" />
-          </div>
-        </div>
-        {uiConfig.christmasTheme.enabled && (
-          <>
-            <Image
-              src="/christmas/leaf-up.png"
-              alt="Christmas decoration"
-              width={80}
-              height={80}
-              className="absolute -top-6 -left-6 pointer-events-none"
-            />
-            <Image
-              src="/christmas/leaf-down.png"
-              alt="Christmas decoration"
-              width={80}
-              height={80}
-              className="absolute -bottom-6 -right-6 pointer-events-none"
-            />
-          </>
-        )}
-      </motion.div>
-    );
-  };
-
-  const FeatureCard = ({ feature, index }: { feature: Feature; index: number }) => {
-    const ref = useRef(null)
-    const isInView = useInView(ref, { once: true, margin: "-100px" })
-    const Icon = feature.icon;
-    return (
-      <motion.div
-        ref={ref}
-        key={feature.title}
-        initial={{ opacity: 0, y: 50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-        transition={{ duration: 0.6, delay: index * 0.2 }}
-        className="bg-white/20 dark:bg-white/5 backdrop-blur-sm border border-primary rounded-md hover:border-secondary hover:hover-gradient group transition-all duration-300 relative"
-      >
-        <div className="flex justify-between items-start">
-          <div className="flex-1 p-4 sm:p-6">
-            <h3 className="text-base sm:text-lg font-semibold orbitron-font text-gray-900 dark:text-white mb-1 sm:mb-2 group-hover:text-icon-text-primary transition-colors">{feature.title}</h3>
-            <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm">{feature.description}</p>
-          </div>
-          <div className="w-10 h-10 sm:w-12 sm:h-12 border-l border-b border-primary rounded-tr-lg flex items-center justify-center flex-shrink-0">
-            <Icon className="w-5 h-5 sm:w-6 sm:h-6 icon-primary" />
-          </div>
-        </div>
-      </motion.div>
-    );
-  };
+  const featured = features[0]
+  const FeaturedIcon = featured.icon
+  const rest = features.slice(1)
 
   return (
-    <div id="features" className="bg-gray-50 dark:bg-[#0a0b0f] relative py-8 sm:py-8 px-4 sm:px-6 lg:px-8 overflow-hidden scroll-mt-24">
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-gray-50/90 to-gray-50 dark:from-[#0a0b0f] dark:via-[#0a0b0f]/90 dark:to-[#0a0b0f] z-0" />
+    <section className="relative overflow-hidden py-24 md:py-32">
+      <div className="pointer-events-none absolute inset-0 premium-grid opacity-25" />
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeader
+          eyebrow="Platform"
+          title={
+            <>
+              Built for speed.{" "}
+              <span className="text-white/40">Hardened for scale.</span>
+            </>
+          }
+          description={t("features.subtitle")}
+        />
 
-      <div className="absolute top-20 -left-32 w-64 h-64 blob-primary rounded-full blur-3xl z-[2]" />
-      <div className="absolute top-40 -right-32 w-72 h-72 blob-primary rounded-full blur-3xl" />
-      <div className="absolute bottom-32 -right-24 w-56 h-56 blob-secondary rounded-full blur-3xl" />
-      <div className="relative pt-12 z-10 max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-left mb-16"
-        >
-          <div className="inline-flex items-center gap-2 card-primary px-4 py-2 rounded-tl-2xl rounded-br-2xl mb-4">
-            <span className="icon-text-primary text-sm">{t('features.badge')}</span>
+        <div className="grid gap-5 lg:grid-cols-12">
+          <ScrollReveal className="lg:col-span-5">
+            <TiltCard className="h-full min-h-[280px] bg-gradient-to-br from-[#137fec]/20 via-[#080b14] to-[#080b14] p-8" intensity={6} popular>
+              <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/15 bg-white/10">
+                <FeaturedIcon className="h-7 w-7 text-white" />
+              </div>
+              <h3 className="text-2xl font-semibold tracking-tight text-white">{featured.title}</h3>
+              <p className="mt-4 text-base leading-relaxed text-white/55">{featured.description}</p>
+              <div className="mt-8 inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-white/60">
+                WarShield Protected
+              </div>
+            </TiltCard>
+          </ScrollReveal>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:col-span-7">
+            {rest.map((feature, index) => {
+              const Icon = feature.icon
+              return (
+                <ScrollReveal key={feature.title} delay={0.05 * index}>
+                  <TiltCard className="h-full bg-[#080b14]/80 p-6 backdrop-blur-xl" intensity={8}>
+                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-[#137fec]/10">
+                      <Icon className="h-5 w-5 text-[#137fec]" />
+                    </div>
+                    <h3 className="text-base font-semibold text-white">{feature.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-white/45">{feature.description}</p>
+                  </TiltCard>
+                </ScrollReveal>
+              )
+            })}
           </div>
-
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 orbitron-font">
-            {t('features.title').split(' ').slice(0, -1).join(' ')} <span className="icon-text-primary">{t('features.title').split(' ').slice(-1)[0]}</span>
-          </h2>
-          <p className="text-sm text-gray-600 dark:text-gray-300">
-            {t('features.subtitle')}
-          </p>
-        </motion.div>
-
-        <div className="flex flex-col gap-3 sm:gap-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-            <FeatureCard feature={features[0]} index={0} />
-            <FeatureCard feature={features[1]} index={1} />
-            <FeaturedCard feature={features[2]} index={2} />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-            {features.slice(3, 7).map((feature, index) => (
-              <FeatureCard key={feature.title} feature={feature} index={index} />
-            ))}
-          </div>
-
         </div>
       </div>
-    </div>
+    </section>
   )
 }

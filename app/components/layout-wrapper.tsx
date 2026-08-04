@@ -8,20 +8,19 @@ const config = uiConfig as UIConfig;
 
 function LoadingScreen() {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-50 dark:bg-[#0a0b0f] transition-colors duration-300">
-      <div className="flex flex-col items-center gap-4">
-        <div className="relative">
-          <div className="w-12 h-12 border-2 border-gray-200 dark:border-gray-800 rounded-full animate-spin border-t-icon-primary"></div>
-          <div className="absolute inset-2 w-8 h-8 border-2 border-gray-100 dark:border-gray-700 rounded-full animate-spin border-t-icon-primary animate-reverse opacity-70"></div>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#05060a]">
+      <div className="flex flex-col items-center gap-5">
+        <div className="relative h-14 w-14">
+          <div className="absolute inset-0 rounded-full border border-white/10" />
+          <div className="absolute inset-0 animate-spin rounded-full border-2 border-transparent border-t-[#137fec]" />
+          <div className="absolute inset-2 rounded-full bg-[#137fec]/10 blur-md" />
         </div>
-        <div className="flex items-center gap-2">
-          <span className="text-lg text-gray-900 dark:text-white orbitron-font">
-            WarNodes
-          </span>
-        </div>
+        <span className="orbitron-font text-lg tracking-wide text-white">
+          War<span className="text-[#137fec]">Nodes</span>
+        </span>
       </div>
     </div>
-  );
+  )
 }
 
 export function LayoutWrapper({

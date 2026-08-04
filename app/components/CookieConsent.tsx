@@ -29,14 +29,12 @@ export const areCookiesAccepted = (): boolean => {
 
 export default function CookieConsent() {
   const { t } = useLanguage();
-  const [mounted, setMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [cookiePreferences, setCookiePreferences] = useState<CookiePreferences>(DEFAULT_PREFERENCES);
 
   useEffect(() => {
-    setMounted(true);
     setIsVisible(!localStorage.getItem('cookie-consent'));
 
     const savedPreferences = localStorage.getItem('cookie-preferences');
@@ -48,10 +46,6 @@ export default function CookieConsent() {
       setCookiePreferences(DEFAULT_PREFERENCES);
     }
   }, []);
-
-  if (!mounted) {
-    return null;
-  }
 
   const handleAcceptAll = () => {
     const allAccepted = {
