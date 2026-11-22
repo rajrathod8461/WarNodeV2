@@ -33,6 +33,30 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# Antigravity & Agent temporary files
+.agents/
+skills-lock.json
+
+# Scratch & extracted files
+extracted_nova_panel.js
+nova_panel_chunk.js
+nova_panel_full.js
+nova_panel_readable.js
+status-pagee.html
+launch-flow-browser.bat
+scratch_*.py
+scratch/
+
+# Test / Scratch scripts
+scripts/
+
+# Docs and test images
+*.docx
+*.doc
+public/test-*
+public/test-*.png
+public/test-*.jpg
+
 # vercel
 .vercel
 

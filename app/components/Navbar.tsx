@@ -20,11 +20,19 @@ import {
   Menu,
   X,
   ChevronRight,
+  ChevronDown,
   Moon,
   Sun,
   FileText,
   Shield,
   Check,
+  Database,
+  Mail,
+  HardDrive,
+  Archive,
+  ShieldCheck,
+  LayoutGrid,
+  PhoneCall,
 } from 'lucide-react';
 import { FaDiscord } from "react-icons/fa6";
 import { GrServerCluster } from "react-icons/gr";
@@ -33,6 +41,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import navigationConfig from '../config/sections/navigation.json';
 import heroConfig from '../config/sections/hero.json';
 import discordConfig from '../config/sections/discord.json';
+import gamesConfig from '../config/sections/games.json';
 import type { HeroConfig } from '../types/hero';
 import type { DiscordConfig } from '../types/discord';
 import { withLogoVersion } from '../lib/logo';
@@ -59,11 +68,19 @@ const iconMap: { [key: string]: React.ElementType } = {
   User,
   FileText,
   Shield,
+  Database,
   Menu,
   X,
   ChevronRight,
+  ChevronDown,
   Moon,
   Sun,
+  Mail,
+  HardDrive,
+  Archive,
+  ShieldCheck,
+  LayoutGrid,
+  PhoneCall,
   FaDiscord,
   GrServerCluster,
 };
@@ -133,8 +150,20 @@ const Navbar: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [windowDimensions, setWindowDimensions] = useState({ width: 0, height: 0 });
   const [mobileDropdownStates, setMobileDropdownStates] = useState<{ [key: string]: boolean }>({});
+  const [activeDesktopDropdown, setActiveDesktopDropdown] = useState<string | null>(null);
   const pathname = usePathname();
   const { t } = useLanguage();
+
+  useEffect(() => {
+    const handleDocumentClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.desktop-dropdown-container')) {
+        setActiveDesktopDropdown(null);
+      }
+    };
+    document.addEventListener('click', handleDocumentClick);
+    return () => document.removeEventListener('click', handleDocumentClick);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -172,6 +201,10 @@ const Navbar: React.FC = () => {
       [itemName]: !prev[itemName]
     }));
   }, []);
+  const gamesList = useMemo(() =>
+    (gamesConfig as any).games || [],
+    []
+  );
   const filteredGames = useMemo(() =>
     heroSettings.hero.games.filter((game: any) => game.showInDropdown),
     [heroSettings.hero.games]
@@ -230,35 +263,114 @@ const Navbar: React.FC = () => {
   const renderDropdown = useCallback((item: NavigationItem) => {
     if (item.dropdownType === 'games') {
       return (
-        <div className="absolute top-full left-0 rounded-b-xl -mt-0.5 w-[300px] sm:w-[400px] md:w-[500px] bg-white dark:bg-black/90 backdrop-blur-sm border-t-2 border-top-nav -mt-[2px]  shadow-lg opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200 z-10 p-3 sm:p-4">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3  sm:gap-4">
-            {filteredGames.map((game: any) => (
+        <div
+          className={`absolute top-full left-0 rounded-2xl w-[600px] sm:w-[680px] lg:w-[740px] bg-white/95 dark:bg-[#0c0d14]/95 backdrop-blur-xl border border-gray-200/80 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-200 z-50 p-4 ${
+            activeDesktopDropdown === item.name
+              ? 'opacity-100 pointer-events-auto translate-y-0'
+              : 'opacity-0 pointer-events-none -translate-y-1 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0'
+          }`}
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {gamesList.map((game: any) => (
               <Link
-                key={game.name}
-                href={`/games?game=${game.id}`}
-                className="relative block aspect-[4/3] rounded-lg border border-secondary overflow-hidden  group"
-                aria-label={`${game.displayName} game server hosting`}
+                key={game.id}
+                href={`/games?game=${game.id}&location=mumbai&plan=intel`}
+                className="relative flex items-center justify-between p-3.5 rounded-xl border border-gray-200/80 dark:border-white/10 overflow-hidden group/card hover:border-blue-500/60 dark:hover:border-blue-400/60 hover:shadow-[0_0_24px_rgba(59,130,246,0.22)] transition-all duration-300 min-h-[96px] bg-gray-50 dark:bg-black/30"
+                aria-label={`${game.name} game server hosting`}
                 prefetch={true}
               >
+                {/* Background Banner with zoom on hover */}
                 <Image
                   src={game.banner}
-                  alt={`${game.displayName} game server hosting`}
+                  alt={game.name}
                   fill
-                  sizes="(max-width: 640px) 300px, (max-width: 768px) 200px, 250px"
-                  className="object-cover"
-                  quality={75}
+                  sizes="260px"
+                  className="object-cover transition-transform duration-500 group-hover/card:scale-105 opacity-30 dark:opacity-25"
+                  quality={80}
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-black/50 transition-colors duration-300 group-hover:bg-black/30" />
-                <div className="absolute top-2 right-2 text-white/70 transition-colors duration-300 group-hover:text-white">
-                  <ChevronRight className="w-5 h-5" />
+
+                {/* Dark Gradient overlay so text is 100% crisp & readable */}
+                <div className="absolute inset-0 bg-gradient-to-r from-gray-950/95 via-gray-950/85 to-gray-950/60 dark:from-[#0c0d14]/95 dark:via-[#0c0d14]/85 dark:to-[#0c0d14]/65 transition-colors duration-300 group-hover/card:opacity-90" />
+
+                {/* Left side: Game Name & 2-line Description */}
+                <div className="relative z-10 min-w-0 flex-1 pr-2.5">
+                  <h4 className="text-white font-bold text-sm sm:text-base leading-tight group-hover/card:text-blue-400 transition-colors orbitron-font truncate">
+                    {game.name}
+                  </h4>
+                  <p className="text-gray-300 text-xs line-clamp-2 mt-1 leading-snug">
+                    {game.description}
+                  </p>
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
-                  <h3 className="text-white text-lg font-semibold mb-1">{game.displayName}</h3>
-                  <p className="text-white/80 text-sm line-clamp-2">Host your own {game.name} server</p>
+
+                {/* Right side: Square Game Icon badge */}
+                <div className="relative z-10 w-11 h-11 shrink-0 rounded-lg overflow-hidden border border-white/15 bg-black/40 p-1 shadow-md flex items-center justify-center group-hover/card:border-blue-400/50 transition-colors">
+                  <Image
+                    src={game.icon || "/icons/cs2-icon.webp"}
+                    alt={game.name}
+                    fill
+                    className="object-contain p-0.5"
+                    sizes="44px"
+                  />
                 </div>
               </Link>
             ))}
+          </div>
+
+          {/* Premium High-End Footer Bar inside Dropdown */}
+          <div className="mt-4 pt-3.5 border-t border-gray-200/80 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 px-1">
+            <div className="flex items-center flex-wrap gap-2 text-[11px] sm:text-xs">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 dark:bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-medium border border-emerald-500/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Instant Server Setup</span>
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-500/10 dark:bg-blue-500/15 text-blue-600 dark:text-blue-400 font-medium border border-blue-500/20">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>DDoS Protection Included</span>
+              </span>
+            </div>
+
+            <Link
+              href="/games"
+              className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs shadow-md shadow-blue-500/20 transition-all duration-200 group/btn shrink-0"
+            >
+              <span className="orbitron-font">Explore All Games</span>
+              <ChevronRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover/btn:translate-x-0.5" />
+            </Link>
+          </div>
+        </div>
+      );
+    }
+
+    if (item.dropdownType === 'more' && item.dropdownItems) {
+      return (
+        <div className={`absolute rounded-b-xl top-full left-1/2 -translate-x-1/2 w-[520px] bg-white/95 dark:bg-black/90 backdrop-blur-md border-t-2 border-top-nav -mt-[2px] shadow-2xl transition-all duration-200 z-10 p-4 ${activeDesktopDropdown === item.name ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto'}`}>
+          <div className="grid grid-cols-2 gap-2">
+            {item.dropdownItems.map((dropdownItem) => {
+              const IconComp = dropdownItem.icon ? getIcon(dropdownItem.icon) : null;
+              return (
+                <Link
+                  key={dropdownItem.name}
+                  href={dropdownItem.href}
+                  className="flex items-start gap-3 p-3 rounded-lg hover:border-secondary border-primary border hover:hover-gradient transition-all duration-200 group/item"
+                  prefetch={true}
+                >
+                  {IconComp && (
+                    <IconComp className="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover/item:text-icon-text-primary transition-colors flex-shrink-0 mt-0.5" />
+                  )}
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-sm font-semibold text-gray-900 dark:text-white group-hover/item:text-icon-text-primary transition-colors mb-1 truncate">
+                      {dropdownItem.name}
+                    </h3>
+                    {dropdownItem.description && (
+                      <p className="text-xs text-gray-600 dark:text-gray-300 line-clamp-1">
+                        {dropdownItem.description}
+                      </p>
+                    )}
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       );
@@ -266,7 +378,7 @@ const Navbar: React.FC = () => {
 
     if (item.dropdownType === 'legal' && item.dropdownItems) {
       return (
-        <div className="absolute rounded-b-xl top-full left-0  w-[280px] bg-white dark:bg-black/90 border-t-2 border-top-nav -mt-[2px]  shadow-lg opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200 z-10 p-4">
+        <div className={`absolute rounded-b-xl top-full left-0 w-[280px] bg-white/95 dark:bg-black/90 backdrop-blur-md border-t-2 border-top-nav -mt-[2px] shadow-lg transition-all duration-200 z-10 p-4 ${activeDesktopDropdown === item.name ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto'}`}>
           <div className="space-y-2">
             {item.dropdownItems.map((dropdownItem) => {
               const translatedName = dropdownItem.name === 'Terms of Service' ? t('navbar.termsOfService') :
@@ -280,7 +392,7 @@ const Navbar: React.FC = () => {
                 <Link
                   key={dropdownItem.name}
                   href={dropdownItem.href}
-                  className="block p-3 rounded-lg hover:border-secondary border-primary border hover:hover-gradient transition-colors"
+                  className="block p-3 rounded-lg hover:border-secondary border-primary border hover:hover-gradient transition-all duration-200"
                   prefetch={true}
                 >
                   <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
@@ -300,7 +412,7 @@ const Navbar: React.FC = () => {
     }
 
     return null;
-  }, [filteredGames]);
+  }, [filteredGames, activeDesktopDropdown, t]);
 
   const getTranslatedNavName = useCallback((itemName: string) => {
     const navKey = itemName.toLowerCase().replace(/\s+/g, '');
@@ -310,8 +422,14 @@ const Navbar: React.FC = () => {
       case 'dedicated': return t('navbar.dedicated');
       case 'discordbot': return t('navbar.discord');
       case 'webhosting': return t('navbar.webhosting');
+      case 'vpshosting': return 'VPS Hosting';
+      case 'database':
+      case 'databasehosting': return t('navbar.database');
       case 'warshield': return t('navbar.warShield');
       case 'legal': return t('navbar.legal');
+      case 'more': return 'More';
+      case 'contactus':
+      case 'contact': return 'Contact Us';
       default: return itemName;
     }
   }, [t]);
@@ -325,17 +443,32 @@ const Navbar: React.FC = () => {
 
     if (item.hasDropdown) {
       return (
-        <div key={item.name} className="relative group">
+        <div key={item.name} className="relative group desktop-dropdown-container">
           <Link
             href={item.href}
-            className={`px-4 py-6 text-xs font-medium relative text-gray-700 dark:text-slate-200 hover:text-icon-text-primary dark:hover:text-icon-text-primary transition-colors flex items-center space-x-2 
+            onClick={(e) => {
+              const isTouchDevice = (typeof window !== 'undefined') && (('ontouchstart' in window) || (navigator.maxTouchPoints > 0));
+              if (isTouchDevice) {
+                if (activeDesktopDropdown !== item.name) {
+                  e.preventDefault();
+                  setActiveDesktopDropdown(item.name);
+                } else if (item.href === '#') {
+                  e.preventDefault();
+                  setActiveDesktopDropdown(null);
+                }
+              } else if (item.href === '#') {
+                e.preventDefault();
+              }
+            }}
+            className={`px-4 py-6 text-sm font-medium relative text-gray-700 dark:text-slate-200 hover:text-icon-text-primary dark:hover:text-icon-text-primary transition-colors flex items-center gap-1.5
             after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-button-bg dark:after:bg-button-bg after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-center
             hover:hover-gradient
             ${isActive ? 'text-icon-text-primary dark:text-icon-text-primary after:scale-x-100 hover-gradient' : ''}`}
             prefetch={true}
           >
-            {IconComponent && <IconComponent className="w-4 h-4" />}
+            {IconComponent && <IconComponent className="w-4 h-4 flex-shrink-0" />}
             <span>{translatedName}</span>
+            <ChevronDown className="w-3.5 h-3.5 flex-shrink-0 opacity-60 transition-transform duration-200 group-hover:rotate-180" />
           </Link>
           {renderDropdown(item)}
         </div>
@@ -365,13 +498,13 @@ const Navbar: React.FC = () => {
         )}
         <Link
           href={item.href}
-          className={`px-4 py-6 text-sm font-medium relative text-gray-700 dark:text-slate-200 hover:text-icon-text-primary dark:hover:text-icon-text-primary transition-colors flex items-center space-x-2 
+          className={`px-4 py-6 text-sm font-medium relative text-gray-700 dark:text-slate-200 hover:text-icon-text-primary dark:hover:text-icon-text-primary transition-colors flex items-center gap-1.5
         after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-button-bg dark:after:bg-button-bg after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-center
         hover:hover-gradient
         ${isActive ? 'text-icon-text-primary dark:text-icon-text-primary after:scale-x-100 hover-gradient' : ''}`}
           prefetch={true}
         >
-          {IconComponent && <IconComponent className="w-4 h-4" />}
+          {IconComponent && <IconComponent className="w-4 h-4 flex-shrink-0" />}
           <span>{translatedName}</span>
         </Link>
       </div>
@@ -449,36 +582,87 @@ const Navbar: React.FC = () => {
                 transition={{ duration: 0.3, ease: "easeInOut" }}
                 className="mb-3 ml-2 overflow-hidden"
               >
-                <div className="max-h-[40vh] space-y-1 overflow-y-auto rounded-lg border border-gray-200 bg-gray-50/80 p-2 dark:border-gray-700 dark:bg-gray-800/30">
-                  {filteredGames.map((game: any) => (
+                <div className="max-h-[50vh] space-y-2 overflow-y-auto rounded-xl border border-gray-200 bg-gray-50/80 p-2 dark:border-gray-700 dark:bg-gray-900/60">
+                  {gamesList.map((game: any) => (
                     <Link
-                      key={game.name}
-                      href={`/games?game=${game.id}`}
-                      className="flex items-center gap-3 rounded-md px-3 py-2.5 text-sm text-gray-700 transition-colors hover:bg-white hover:text-icon-text-primary dark:text-gray-200 dark:hover:bg-gray-800/50"
+                      key={game.id}
+                      href={`/games?game=${game.id}&location=mumbai&plan=intel`}
+                      className="relative flex items-center justify-between p-2.5 rounded-lg border border-gray-200 dark:border-white/10 overflow-hidden text-sm text-gray-700 dark:text-gray-200 transition-colors bg-white/70 dark:bg-black/40 hover:text-icon-text-primary"
                       onClick={closeMobileMenu}
-                      aria-label={`${game.displayName} game server hosting`}
+                      aria-label={`${game.name} game server hosting`}
                       prefetch={true}
                     >
-                      <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-md border border-gray-200 dark:border-gray-600">
+                      <div className="min-w-0 flex-1 pr-2">
+                        <p className="truncate font-semibold text-gray-900 dark:text-white">{game.name}</p>
+                        <p className="truncate text-xs text-gray-500 dark:text-gray-400">
+                          {game.description}
+                        </p>
+                      </div>
+                      <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-md border border-gray-200 dark:border-gray-600 bg-black/20 p-0.5">
                         <Image
-                          src={game.icon || game.banner}
-                          alt={game.displayName}
+                          src={game.icon || "/icons/cs2-icon.webp"}
+                          alt={game.name}
                           fill
                           sizes="36px"
-                          className="object-cover"
+                          className="object-contain p-0.5"
                           quality={75}
                           loading="lazy"
                         />
                       </div>
-                      <div className="min-w-0 flex-1">
-                        <p className="truncate font-medium">{game.displayName}</p>
-                        <p className="truncate text-xs text-gray-500 dark:text-gray-400">
-                          {game.name} hosting
-                        </p>
-                      </div>
-                      <ChevronRight className="h-4 w-4 shrink-0 opacity-50" />
                     </Link>
                   ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      );
+    }
+
+    if (item.hasDropdown && item.dropdownType === 'more' && item.dropdownItems) {
+      const isActive = item.dropdownItems.some((di) => pathname === di.href);
+      const isDropdownOpen = mobileDropdownStates[item.name] || false;
+
+      return (
+        <div key={item.name}>
+          {renderMobileSplitNavRow(item.name, translatedName, IconComponent, isActive, isDropdownOpen)}
+          <AnimatePresence>
+            {isDropdownOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="mb-3 ml-2 overflow-hidden"
+              >
+                <div className="space-y-1 rounded-lg border border-gray-200 bg-gray-50/80 p-2 dark:border-gray-700 dark:bg-gray-800/30">
+                  {item.dropdownItems.map((dropdownItem: DropdownItem) => {
+                    const DdIcon = dropdownItem.icon ? getIcon(dropdownItem.icon) : null;
+                    const itemActive = pathname === dropdownItem.href;
+                    return (
+                      <Link
+                        key={dropdownItem.name}
+                        href={dropdownItem.href}
+                        className={`flex items-center gap-3 rounded-md px-3 py-2.5 text-sm transition-colors ${
+                          itemActive
+                            ? 'bg-white font-medium text-icon-text-primary dark:bg-gray-800/50'
+                            : 'text-gray-600 hover:bg-white hover:text-icon-text-primary dark:text-gray-400 dark:hover:bg-gray-800/50'
+                        }`}
+                        onClick={closeMobileMenu}
+                        prefetch={true}
+                      >
+                        {DdIcon && <DdIcon className="h-4 w-4 text-gray-500 dark:text-gray-400 flex-shrink-0" />}
+                        <div className="min-w-0 flex-1">
+                          <p className="truncate font-medium">{dropdownItem.name}</p>
+                          {dropdownItem.description && (
+                            <p className="truncate text-xs text-gray-500 dark:text-gray-400">
+                              {dropdownItem.description}
+                            </p>
+                          )}
+                        </div>
+                      </Link>
+                    );
+                  })}
                 </div>
               </motion.div>
             )}
@@ -744,7 +928,7 @@ const Navbar: React.FC = () => {
             </div>
 
 
-            <div className="hidden md:flex md:items-center overflow-visible">
+            <div className="hidden md:flex md:items-center overflow-visible gap-0.5">
               {config.mainNavigation.map((item) => renderNavigationItem(item))}
             </div>
 
@@ -812,7 +996,7 @@ const Navbar: React.FC = () => {
 
         <AnimatePresence>
           {isMobileMenuOpen && (
-            <motion.div
+              <motion.div
               id="mobile-menu"
               className="md:hidden bg-white dark:bg-[#10121b] border-t border-gray-200 dark:border-gray-700 overflow-hidden"
               initial={{ height: 0, opacity: 0 }}

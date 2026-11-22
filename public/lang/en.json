@@ -5,6 +5,7 @@
     "dedicated": "Dedicated",
     "discord": "Discord Bot",
     "webhosting": "WebHosting",
+    "database": "Database Hosting",
     "warShield": "WarShield",
     "legal": "Legal",
     "clientSpace": "Client Area",
@@ -52,12 +53,12 @@
   },
   "features": {
     "title": "Advanced Features",
-    "subtitle": "Why developers and gamers choose WarNodes",
-    "badge": "WarShield Protected",
-    "highPerformance": "Gen4 NVMe Storage",
-    "highPerformanceDesc": "Blazing-fast read and write speeds with Gen4 NVMe drives for ultra-low latency and instant load times",
-    "lowLatency": "Ultra-Low India Latency",
-    "lowLatencyDesc": "Under 20ms latency across India with gaming-optimized routing on our global network",
+    "subtitle": "Everything you need for professional game server hosting",
+    "badge": "We Won't Disappoint",
+    "highPerformance": "High Performance",
+    "highPerformanceDesc": "Powered by latest generation processors for performance",
+    "lowLatency": "Low Latency",
+    "lowLatencyDesc": "Optimized network infrastructure for minimal lag and delay",
     "advancedSecurity": "WarShield Protection",
     "advancedSecurityDesc": "Enterprise DDoS proxy for Minecraft on OVH Game infrastructure with custom WarNodes filters. Multi-layer L3/L4/L7 scrubbing conceals your origin IP, mitigates SYN, UDP, and application-layer floods in real time, and preserves legitimate player traffic across India and Singapore proxy nodes—with 99.9% uptime SLA.",
     "autoRecovery": "Instant Deployment",
@@ -66,8 +67,19 @@
     "fullControlDesc": "Manage consoles, files, plugins, modpacks, and more from the WarNodes control panel",
     "resourceScaling": "High-Frequency CPUs",
     "resourceScalingDesc": "AMD EPYC and Intel Xeon hardware built for demanding workloads",
-    "globalNetwork": "Optimized Global Network",
-    "globalNetworkDesc": "Mumbai, Delhi, Hyderabad, Singapore, Dubai, Frankfurt, and Washington DC locations"
+    "globalNetwork": "Global Network",
+    "globalNetworkDesc": "Worldwide server locations for optimal connectivity",
+    "statLocations": "Locations",
+    "statContinents": "Continents",
+    "statUptime": "Uptime",
+    "ddosProtection": "DDoS Protection",
+    "ddosProtectionDesc": "Enterprise-grade mitigation absorbs attacks in real time while your players stay connected",
+    "ddosBlocked": "Blocked Traffic",
+    "ddosClean": "Clean Traffic",
+    "supportTitle": "24/7 Support",
+    "supportDesc": "Real humans on live chat, day and night",
+    "supportChat1": "Hey, my server is lagging badly, can you take a look?",
+    "supportChat2": "On it! I found a CPU spike and moved you to a faster node."
   },
   "team": {
     "badge": "Leadership",
@@ -240,13 +252,28 @@
     "vdsDescription": "High performance Virtual Dedicated Servers backed with 2Tbps+ DDoS protection, several global anycast locations, latest Ryzen and Intel hardware; all at an affordable price.",
     "gameServers": "Game Servers",
     "chooseGameServer": "Choose your Game Server",
-    "gameServersDescription": "Intel Xeon and AMD EPYC Minecraft hosting with unlimited players, WarNodes panel, and instant setup — from ₹59/mo.",
+    "gameServersDescription": "High-performance AMD EPYC & Intel Xeon game server hosting for Minecraft, Rust, Palworld, FiveM, CS2 & Hytale with WarShield DDoS protection — from ₹59/mo.",
     "webHosting": "Web Hosting",
     "webHostingSolutions": "Web Hosting Solutions",
     "webHostingDescription": "Professional web hosting with high-performance servers, 99.9% uptime guarantee, and 24/7 support. Perfect for websites, applications, and online businesses.",
     "discordBotHosting": "Discord Bot Hosting",
     "discordBotTitle": "Discord Bot Hosting",
-    "discordBotDescription": "24/7 multi-language bot hosting — from ₹15/mo"
+    "discordBotDescription": "24/7 multi-language bot hosting — from ₹15/mo",
+    "databaseHosting": "Database Hosting",
+    "databaseHostingTitle": "Database Hosting Solutions",
+    "databaseHostingDescription": "High-performance managed & standalone database hosting with Gen4 NVMe — from ₹39/mo"
+  },
+  "database": {
+    "title": "Database Hosting Solutions",
+    "description": "High-performance managed & standalone database hosting with Gen4 NVMe — from ₹39/mo",
+    "badge": "Managed & Standalone DBs",
+    "step1": "1. Plan Type",
+    "step2": "2. Choose Plan",
+    "choosePlan": "Choose Plan",
+    "planSubtitle": "Database hosting",
+    "stackBadge": "Supported Databases",
+    "supportedDatabasesTitle": "Supported Database",
+    "supportedDatabasesTitleHighlight": "Engines & Queues"
   },
   "discord": {
     "title": "Discord Bot Hosting",
@@ -329,6 +356,18 @@
         "uptime": "99.9% uptime"
       }
     },
+    "databaseHosting": {
+      "title": "Database Hosting",
+      "description": "Gen4 NVMe database instances — from ₹39/mo",
+      "buttonText": "Order Now",
+      "features": {
+        "nvmeSpeed": "Gen4 NVMe storage",
+        "instantDeployment": "Instant deployment",
+        "automatedBackups": "Automated backups",
+        "ddosProtection": "WarShield DDoS protection",
+        "uptime": "99.9% uptime"
+      }
+    },
     "warShield": {
       "title": "WarShield",
       "description": "DDoS proxy for Minecraft — India & Singapore",
@@ -349,14 +388,90 @@
         "lowPing": "Low ping worldwide",
         "stable": "Stable, reliable performance"
       }
+    },
+    "cs2Hosting": {
+      "title": "Counter-Strike 2",
+      "description": "High-tickrate CS2 servers with WarShield DDoS protection — from ₹199/mo",
+      "buttonText": "View Plans",
+      "features": {
+        "highTickrate": "Sub-Tick & 128-tick optimized",
+        "lowPing": "Ultra-low ping India & Asia",
+        "modPlugins": "Metamod & SourceMod support"
+      }
+    },
+    "rustHosting": {
+      "title": "Rust Hosting",
+      "description": "High-performance Rust servers with instant wipe support & Oxide mods — from ₹399/mo",
+      "buttonText": "View Plans",
+      "features": {
+        "instantWipe": "Instant wipe & schedule automation",
+        "oxideSupport": "uMod & Oxide plugin support",
+        "highTickrate": "High tickrate & smooth FPS"
+      }
+    },
+    "palworldHosting": {
+      "title": "Palworld Hosting",
+      "description": "Dedicated multiplayer Palworld servers with auto-backups & low ping — from ₹299/mo",
+      "buttonText": "View Plans",
+      "features": {
+        "autoSaves": "Automated world save intervals",
+        "palBackups": "One-click Pal & world backups",
+        "lowPing": "Ultra-low latency Indian servers"
+      }
+    },
+    "fivemHosting": {
+      "title": "FiveM Hosting",
+      "description": "GTA V FiveM roleplay servers with txAdmin & one-click artifacts — from ₹149/mo",
+      "buttonText": "View Plans",
+      "features": {
+        "txAdmin": "txAdmin web interface included",
+        "oneClickArtifacts": "One-click server artifact updater",
+        "customResources": "Full SQL & custom resources access"
+      }
+    },
+    "emailHosting": {
+      "title": "Email Hosting",
+      "description": "Professional business email hosting with custom domains & webmail",
+      "buttonText": "Deploy Email",
+      "features": {
+        "customDomain": "Custom domain mailboxes",
+        "webmail": "Roundcube webmail & mobile access",
+        "spamFilter": "Spam & virus protection",
+        "imapSmtp": "IMAP, POP3 & SMTP support",
+        "uptime": "99.9% uptime SLA"
+      }
+    },
+    "cloudStorage": {
+      "title": "Cloud Storage",
+      "description": "Scalable cloud storage solutions powered by Gen4 NVMe",
+      "buttonText": "Get Storage",
+      "features": {
+        "nvmeSpeed": "Gen4 NVMe speeds (7.0 GB/s)",
+        "autoSnapshots": "Automated daily backups",
+        "redundancy": "RAID-10 redundancy",
+        "zeroEgress": "Zero egress transfer fees",
+        "durability": "99.99% data durability"
+      }
+    },
+    "s3Storage": {
+      "title": "S3 Object Storage",
+      "description": "S3-compatible object storage for apps, media & disaster recovery",
+      "buttonText": "Deploy S3 Bucket",
+      "features": {
+        "s3Api": "100% AWS S3 API compatible",
+        "bucketPolicies": "Custom bucket & lifecycle policies",
+        "encryption": "Enterprise AES-256 encryption",
+        "cdnReady": "CDN & custom domain ready",
+        "durability": "High availability storage"
+      }
     }
   },
   "gameServerList": {
     "badge": "Game Servers",
     "title": "Choose your Game Server",
-    "description": "Select from our wide range of optimized game servers. Each server is configured for maximum performance and comes with DDoS protection.",
+    "description": "High-performance game server hosting for Minecraft, Rust, Palworld, FiveM, CS2 & Hytale. Powered by Gen4 NVMe, high-frequency CPUs, and enterprise WarShield DDoS protection.",
     "step1": "1. Plan Type",
-    "step2": "2. Location", 
+    "step2": "2. Location",
     "step3": "3. Select Software",
     "step4": "4. Choose Plan",
     "step1LocationNoCpu": "1. Location",

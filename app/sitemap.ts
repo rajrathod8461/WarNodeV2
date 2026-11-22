@@ -6,6 +6,7 @@ const routes: { path: string; priority: number; changeFrequency: MetadataRoute.S
   { path: "/vps", priority: 0.9, changeFrequency: "weekly" },
   { path: "/games", priority: 0.9, changeFrequency: "weekly" },
   { path: "/web-hosting", priority: 0.9, changeFrequency: "weekly" },
+  { path: "/database-hosting", priority: 0.9, changeFrequency: "weekly" },
   { path: "/discord-bot", priority: 0.9, changeFrequency: "weekly" },
   { path: "/ddos", priority: 0.9, changeFrequency: "weekly" },
   { path: "/contact", priority: 0.8, changeFrequency: "monthly" },

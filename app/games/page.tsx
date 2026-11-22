@@ -1,6 +1,7 @@
 import GameServerListWrapper from '../components/games/GameServerListWrapper';
 import FeaturesSection from "../components/FeaturesSection"
 import LocationsSection from "../components/LocationsSection"
+import WallOfLove from "../components/WallOfLove"
 import FAQSection from "../components/FAQSection"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar";
@@ -12,9 +13,10 @@ export default function GamesPage() {
       <Navbar />
       <GameServerListWrapper />
       <FeaturesSection />
-      <LocationsSection />
-      <FAQSection />
       <PanelShowcase />
+      <LocationsSection />
+      <WallOfLove />
+      <FAQSection />
       <Footer />
     </div>
   );

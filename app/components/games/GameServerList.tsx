@@ -6,7 +6,15 @@ import { motion } from "framer-motion"
 import { useState, useEffect, useRef } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import Image from "next/image"
-import { Shield, Cpu, HardDrive, MemoryStick, ArrowRight } from "lucide-react"
+import {
+  Shield,
+  Cpu,
+  HardDrive,
+  MemoryStick,
+  ArrowRight,
+  Users,
+  Star,
+} from "lucide-react"
 import Link from "next/link"
 import gamesConfig from "../../config/sections/games.json"
 import uiConfig from "../../config/sections/ui.json"
@@ -43,6 +51,21 @@ function getPlanIcon(plan: GamePlan, game?: Game): string {
   if (game?.id === "hytale") {
     return encodeURI(game.icon || game.banner || "/banners/hytale.webp")
   }
+  if (game?.id === "cs2") {
+    if (plan.type === "intel") {
+      return encodeURI("/banners/cs2intel.png")
+    }
+    return encodeURI("/banners/counter_strike_2card.png")
+  }
+  if (game?.id === "rust") {
+    return encodeURI(game.icon || "/icons/rust-icon.webp")
+  }
+  if (game?.id === "palworld") {
+    return encodeURI(game.icon || "/icons/logo (2).png")
+  }
+  if (game?.id === "fivem") {
+    return encodeURI(game.icon || "/icons/824336.jpg")
+  }
   const mob = plan.id.replace(/^amd-/, "")
   if (plan.type === "amd") {
     return encodeURI(`/pricing/mc icons/amd mc icons/${mob} amd.png`)
@@ -65,7 +88,12 @@ function GamePlanOrderButton({
   orderNowText,
 }: {
   plan: GamePlan
-  planBrand: (typeof CPU_BRAND)[keyof typeof CPU_BRAND]
+  planBrand: {
+    primary: string
+    glow?: string
+    border?: string
+    surface?: string
+  }
   orderNowText: string
 }) {
   const stock = useProductStock(plan.orderLink)
@@ -75,7 +103,7 @@ function GamePlanOrderButton({
       <button
         type="button"
         disabled
-        className="orbitron-font shrink-0 cursor-wait rounded-tl-xl rounded-br-xl border-2 border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold text-gray-300 sm:text-sm"
+        className="orbitron-font shrink-0 cursor-wait rounded-lg border border-white/20 bg-white/10 px-5 py-2.5 text-xs font-bold text-gray-300"
       >
         Checking…
       </button>
@@ -87,7 +115,7 @@ function GamePlanOrderButton({
       <button
         type="button"
         disabled
-        className="orbitron-font shrink-0 cursor-not-allowed rounded-tl-xl rounded-br-xl border-2 border-red-500/60 bg-red-600/80 px-4 py-2 text-xs font-semibold text-white sm:text-sm"
+        className="orbitron-font shrink-0 cursor-not-allowed rounded-lg border border-red-500/60 bg-red-600/80 px-5 py-2.5 text-xs font-bold text-white"
       >
         Out of stock
       </button>
@@ -99,7 +127,7 @@ function GamePlanOrderButton({
       href={plan.orderLink}
       target="_blank"
       rel="noopener noreferrer"
-      className="orbitron-font shrink-0 rounded-tl-xl rounded-br-xl border-2 px-4 py-2 text-xs font-semibold text-white no-underline transition-all duration-300 hover:text-white sm:text-sm"
+      className="orbitron-font shrink-0 rounded-lg border px-5 py-2.5 text-xs sm:text-sm font-bold text-white no-underline transition-all duration-200 hover:opacity-90 shadow-sm hover:shadow-md active:scale-95"
       style={{
         borderColor: planBrand.primary,
         backgroundColor: planBrand.primary,
@@ -115,87 +143,66 @@ export default function GameServerList() {
   const searchParams = useSearchParams()
   const { selectedCurrency, setSelectedCurrency, convertPrice } = useCurrency()
   const { t } = useLanguage()
-  const [selectedGame, setSelectedGame] = useState<string>(config.games[0]?.id || "")
-  const [selectedLocation, setSelectedLocation] = useState<string>(config.locations[0]?.id || "")
-  const [selectedPlanType, setSelectedPlanType] = useState(PLAN_TYPE_IDS[0] || "intel")
-  const initializedFromUrlRef = useRef(false)
+  const requestedGame = searchParams.get("game")
+  const requestedLocation = searchParams.get("location")
+  const requestedPlan = searchParams.get("plan")
 
-  useEffect(() => {
-    if (initializedFromUrlRef.current) return
-    initializedFromUrlRef.current = true
+  const selectedGame =
+    requestedGame && config.games.some((g: Game) => g.id === requestedGame)
+      ? requestedGame
+      : config.games[0]?.id || "minecraft"
 
-    const requestedGame = searchParams.get("game")
-    const requestedLocation = searchParams.get("location")
-    const requestedPlan = searchParams.get("plan")
+  const gameIsHytale = config.games.find((g) => g.id === selectedGame)?.id === "hytale"
 
-    let nextGame =
-      requestedGame && config.games.some((g: Game) => g.id === requestedGame)
-        ? requestedGame
-        : config.games[0]?.id || ""
+  const rawLocation =
+    requestedLocation && config.locations.some((l) => l.id === requestedLocation)
+      ? requestedLocation
+      : config.locations[0]?.id || "mumbai"
 
-    let nextPlan =
-      requestedPlan && PLAN_TYPE_IDS.includes(requestedPlan)
-        ? requestedPlan
-        : PLAN_TYPE_IDS[0] || "intel"
+  const rawPlan =
+    requestedPlan && PLAN_TYPE_IDS.includes(requestedPlan)
+      ? requestedPlan
+      : PLAN_TYPE_IDS[0] || "intel"
 
-    let nextLocation =
-      requestedLocation && config.locations.some((l) => l.id === requestedLocation)
-        ? requestedLocation
-        : config.locations[0]?.id || ""
+  let selectedPlanType = rawPlan
+  let selectedLocation = rawLocation
 
-    const gameIsHytale = config.games.find((g) => g.id === nextGame)?.id === "hytale"
-
-    if (!gameIsHytale) {
-      const locationConfig = config.locations.find((loc) => loc.id === nextLocation)
-      if (locationConfig && !locationConfig.availablePlanTypes.includes(nextPlan)) {
-        const fallbackLocation = config.locations.find((loc) =>
-          loc.availablePlanTypes.includes(nextPlan)
-        )
-        if (fallbackLocation) {
-          nextLocation = fallbackLocation.id
-        } else if (locationConfig.availablePlanTypes.length > 0) {
-          nextPlan = locationConfig.availablePlanTypes[0]
-        }
-      }
-
-      const resolvedLocation = config.locations.find((loc) => loc.id === nextLocation)
-      if (resolvedLocation && !resolvedLocation.availablePlanTypes.includes(nextPlan)) {
-        nextPlan = resolvedLocation.availablePlanTypes[0] ?? nextPlan
+  if (!gameIsHytale) {
+    const locationConfig = config.locations.find((loc) => loc.id === rawLocation)
+    if (locationConfig && !locationConfig.availablePlanTypes.includes(rawPlan)) {
+      if (locationConfig.availablePlanTypes.length > 0) {
+        selectedPlanType = locationConfig.availablePlanTypes[0]
       }
     }
-
-    setSelectedGame(nextGame)
-    setSelectedLocation(nextLocation)
-    setSelectedPlanType(nextPlan)
-  }, [searchParams])
-
-  useEffect(() => {
-    const params = new URLSearchParams()
-    params.set("game", selectedGame)
-    params.set("location", selectedLocation)
-    params.set("plan", selectedPlanType)
-    const newUrl = `/games?${params.toString()}`
-    const currentUrl = window.location.pathname + window.location.search
-    if (newUrl !== currentUrl) {
-      router.replace(newUrl)
-    }
-  }, [selectedGame, selectedLocation, selectedPlanType, router])
+  }
 
   const currentGame = config.games.find((g: Game) => g.id === selectedGame)
   const currentLocation = config.locations.find((loc) => loc.id === selectedLocation)
   const availablePlanTypes = currentLocation?.availablePlanTypes || []
   const isHytaleLayout = currentGame?.id === "hytale"
 
+  const updateRoute = (nextGame: string, nextLoc: string, nextPlan: string) => {
+    const params = new URLSearchParams()
+    params.set("game", nextGame)
+    params.set("location", nextLoc)
+    params.set("plan", nextPlan)
+    router.replace(`/games?${params.toString()}`, { scroll: false })
+  }
+
+  const handleGameSelection = (gameId: string) => {
+    updateRoute(gameId, selectedLocation, selectedPlanType)
+  }
+
   const handlePlanTypeSelection = (planType: string) => {
     if (!availablePlanTypes.includes(planType)) return
-    setSelectedPlanType(planType)
+    updateRoute(selectedGame, selectedLocation, planType)
   }
 
   const handleLocationSelection = (locationId: string) => {
     const newLocation = config.locations.find((loc) => loc.id === locationId)
     if (!newLocation) return
     if (!isHytaleLayout && !newLocation.availablePlanTypes.includes(selectedPlanType)) return
-    setSelectedLocation(locationId)
+    updateRoute(selectedGame, locationId, selectedPlanType)
   }
 
   if (!currentGame || !currentLocation) {
@@ -296,7 +303,7 @@ export default function GameServerList() {
                               ? { borderColor: brand.border }
                               : undefined
                         }
-                        className={`flex items-center gap-3 px-6 py-2.5 rounded-tl-xl rounded-br-xl font-medium transition-all duration-300 backdrop-blur-sm border shadow-md ${
+                        className={`flex items-center gap-3 px-6 py-2.5 rounded-lg font-medium transition-all duration-300 backdrop-blur-sm border shadow-sm ${
                           isSelected
                             ? "bg-white/80 dark:bg-gray-800/40"
                             : isAvailable
@@ -344,9 +351,9 @@ export default function GameServerList() {
                             }
                           : undefined
                       }
-                      className={`flex items-center gap-3 px-4 py-3 rounded-tl-xl rounded-br-xl font-medium transition-all duration-300 backdrop-blur-sm border ${
+                      className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-300 backdrop-blur-sm border ${
                         isSelected
-                          ? "shadow-lg"
+                          ? "shadow-sm"
                           : isAvailable
                             ? "bg-white/80 dark:bg-gray-800/40 border-gray-200 dark:border-gray-600/40 text-gray-700 dark:text-gray-300 hover:border-[var(--accent-border)]"
                             : "cursor-not-allowed border-gray-200/60 bg-gray-100/60 text-gray-400 opacity-40 dark:border-gray-700/40 dark:bg-gray-800/10 dark:text-gray-500"
@@ -365,7 +372,7 @@ export default function GameServerList() {
 
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-tl-xl rounded-br-xl border border-primary bg-white/20 px-4 py-3 text-sm text-gray-600 backdrop-blur-sm transition-all duration-300 hover:border-secondary hover:hover-gradient dark:bg-white/5 dark:text-gray-300"
+                  className="inline-flex items-center gap-2 rounded-lg border border-primary bg-white/20 px-4 py-3 text-sm text-gray-600 backdrop-blur-sm transition-all duration-300 hover:border-secondary hover:hover-gradient dark:bg-white/5 dark:text-gray-300"
                 >
                   <ArrowRight className="h-4 w-4 icon-primary" />
                   <span>
@@ -387,7 +394,7 @@ export default function GameServerList() {
           <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
             {isHytaleLayout ? t("gameServerList.step2GameNoCpu") : t("gameServerList.step3")}
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 relative">
             {config.games.map((game: Game, index: number) => {
               const firstFeaturedGame = config.games.find((g: Game) => g.featured)
               const showChristmas = uiConfig.christmasTheme.enabled && game.id === firstFeaturedGame?.id
@@ -395,7 +402,7 @@ export default function GameServerList() {
               return (
                 <div key={game.id} className="relative">
                   <button
-                    onClick={() => setSelectedGame(game.id)}
+                    onClick={() => handleGameSelection(game.id)}
                     style={
                       selectedGame === game.id
                         ? {
@@ -404,9 +411,9 @@ export default function GameServerList() {
                           }
                         : undefined
                     }
-                    className={`relative w-full group rounded-tl-xl rounded-br-xl transition-all duration-300 p-3 text-left backdrop-blur-sm border ${
+                    className={`relative w-full group rounded-xl transition-all duration-300 p-3 text-left backdrop-blur-sm border ${
                       selectedGame === game.id
-                        ? "text-white shadow-lg"
+                        ? "text-white shadow-sm"
                         : "bg-white/60 dark:bg-gray-800/30 border-gray-200 dark:border-gray-600/40 text-gray-700 dark:text-gray-300 hover:border-[var(--accent-border)]"
                     }`}
                   >
@@ -425,14 +432,19 @@ export default function GameServerList() {
                           <h4 className="font-bold text-sm truncate">{game.name}</h4>
                           {game.featured && (
                             <div
-                              className="px-2 py-0.5 text-xs rounded-tl-xl rounded-br-xl backdrop-blur-sm text-white"
+                              className="px-2 py-0.5 text-xs rounded-md backdrop-blur-sm text-white"
                               style={{ backgroundColor: activeCpuBrand.primary }}
                             >
                               {t('gameServerList.featured')}
                             </div>
                           )}
                         </div>
-                        <p className="text-xs opacity-80 line-clamp-2">{game.description}</p>
+                        <p
+                          className="text-xs opacity-80 line-clamp-2 mt-1 leading-snug"
+                          title={game.description}
+                        >
+                          {game.description}
+                        </p>
                       </div>
                     </div>
                   </button>
@@ -450,6 +462,7 @@ export default function GameServerList() {
             })}
           </div>
         </motion.div>
+
         <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
           {isHytaleLayout ? t("gameServerList.step3PlanNoCpu") : t("gameServerList.step4")}
         </h3>
@@ -459,7 +472,11 @@ export default function GameServerList() {
             const plansToRender =
               isHytaleLayout
                 ? currentGame.plans.intel || []
-                : currentGame.plans[selectedPlanType] || []
+                : currentGame.plans[selectedPlanType] ||
+                  currentGame.plans.intel ||
+                  currentGame.plans.amd ||
+                  Object.values(currentGame.plans)[0] ||
+                  []
 
             return plansToRender
           })().map((plan: GamePlan, index: number) => {
@@ -472,113 +489,100 @@ export default function GameServerList() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: index * 0.06 }}
-              className="group relative overflow-hidden rounded-tl-2xl rounded-br-2xl border border-white/10 bg-[#14161c]/95 shadow-[0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent-color)]/40 hover:shadow-[0_20px_48px_var(--accent-glow)]"
+              className={`group relative overflow-hidden rounded-xl border transition-all duration-300 flex flex-col justify-between backdrop-blur-sm ${
+                plan.featured
+                  ? "border-blue-500/50 hover:border-blue-400 bg-white/80 dark:bg-[#0e111a]/95 hover:shadow-lg hover:shadow-blue-500/10 hover:-translate-y-1"
+                  : "border-gray-200/80 dark:border-[#1e2333] hover:border-blue-500/40 bg-white/60 dark:bg-[#0d1017]/95 hover:shadow-lg hover:-translate-y-1"
+              }`}
             >
+              {/* Left Accent Strip */}
               <div
-                className="pointer-events-none absolute inset-y-0 left-0 w-1 opacity-80 transition-opacity group-hover:opacity-100"
-                style={{ backgroundColor: planBrand.primary }}
-              />
-              <div
-                className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full blur-3xl opacity-40"
+                className="pointer-events-none absolute inset-y-0 left-0 w-1 opacity-90 transition-opacity group-hover:opacity-100 z-10"
                 style={{ backgroundColor: planBrand.primary }}
               />
 
-              <div className="relative flex min-h-[220px] flex-col-reverse sm:min-h-[200px] sm:flex-row">
-                <div className="flex flex-1 flex-col p-5 sm:py-5 sm:pl-6 sm:pr-3">
-                  <div className="mb-4 flex items-start justify-between gap-2">
-                    <div className="min-w-0">
-                      <p
-                        className="mb-1 text-[10px] font-semibold uppercase tracking-[0.2em]"
-                        style={{ color: planBrand.primary }}
-                      >
-                        {plan.type === "amd" ? "AMD EPYC" : "Intel Xeon"}
-                      </p>
-                      <h3 className="orbitron-font text-2xl font-bold leading-none text-white">
-                        {plan.name}
-                      </h3>
-                      <div className="mt-2 flex items-center gap-1.5 text-sm text-gray-400">
-                        <CountryFlag
-                          code={currentLocation?.flag || config.locations[0].flag}
-                          alt={currentLocation?.name || "Location"}
-                          size="sm"
-                        />
-                        <span>{currentLocation?.name}</span>
-                      </div>
-                    </div>
-                    {plan.type === "amd" && (
-                      <span
-                        className="shrink-0 rounded-tl-lg rounded-br-lg px-2 py-1 text-[9px] font-bold uppercase tracking-wide text-white"
-                        style={{ backgroundColor: CPU_BRAND.amd.primary }}
-                      >
-                        {t("gameServerList.premium")}
-                      </span>
-                    )}
-                  </div>
+              {/* Top Right Tag for Popular Plan */}
+              {plan.featured && (
+                <div className="absolute top-4 right-4 z-20">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-bold font-mono uppercase tracking-wider bg-blue-500/15 text-blue-400 border border-blue-500/30 shadow-sm">
+                    <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+                    Popular
+                  </span>
+                </div>
+              )}
 
-                  <div className="mb-4 grid flex-1 grid-cols-2 gap-2.5">
-                    {[
-                      { icon: MemoryStick, label: "RAM", value: plan.ram },
-                      { icon: Cpu, label: "CPU", value: plan.cpu },
-                      { icon: HardDrive, label: "Storage", value: plan.storage },
-                      { icon: Shield, label: "DDoS", value: "Included", full: t("gameServerList.ddosProtection") },
-                    ].map(({ icon: Icon, label, value, full }) => (
-                      <div
-                        key={label}
-                        className="rounded-tl-lg rounded-br-lg border border-white/[0.08] bg-white/[0.05] px-3 py-2.5"
-                      >
-                        <div className="mb-1 flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-gray-400">
-                          <Icon className="h-3.5 w-3.5 shrink-0 text-[var(--accent-color)]" />
-                          {label}
-                        </div>
-                        <p
-                          className="text-sm font-semibold leading-tight text-gray-100"
-                          title={full}
-                        >
-                          {value}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="mt-auto flex items-end justify-between gap-3 border-t border-white/[0.08] pt-4">
-                    <div>
-                      <p className="text-xs uppercase tracking-wide text-gray-500">Starting at</p>
-                      <div className="flex items-baseline gap-1">
-                        <span
-                          className="text-[1.6rem] font-bold leading-none"
-                          style={{ color: planBrand.primary }}
-                        >
-                          {plan.prices
-                            ? formatFixedGamePrice(plan.prices, selectedCurrency)
-                            : convertPrice(`₹${plan.price}`)}
-                        </span>
-                        <span className="text-sm text-gray-500">/mo</span>
-                      </div>
-                    </div>
-                    <GamePlanOrderButton
-                      plan={plan}
-                      planBrand={planBrand}
-                      orderNowText={t("gameServerList.orderNow")}
+              <div className="p-5 sm:p-6 pl-6 flex flex-col flex-1">
+                {/* Header: CPU Type & Plan Name */}
+                <div className="mb-4">
+                  <span
+                    className="inline-block text-[10px] font-bold uppercase tracking-[0.2em] mb-1 font-mono"
+                    style={{ color: planBrand.primary }}
+                  >
+                    {plan.type === "amd" ? "AMD EPYC" : "Intel Xeon"}
+                  </span>
+                  <h3 className="orbitron-font text-2xl font-bold leading-none text-gray-900 dark:text-white tracking-wide">
+                    {plan.name}
+                  </h3>
+                  <div className="mt-2 flex items-center gap-2 text-xs text-gray-400">
+                    <CountryFlag
+                      code={currentLocation?.flag || config.locations[0].flag}
+                      alt={currentLocation?.name || "Location"}
+                      size="sm"
                     />
+                    <span className="text-gray-600 dark:text-gray-300 font-medium">{currentLocation?.name}</span>
                   </div>
                 </div>
 
-                <div className="relative flex h-44 shrink-0 items-center justify-center overflow-hidden sm:h-auto sm:w-[42%] sm:min-w-[130px]">
-                  <div
-                    className="pointer-events-none absolute inset-0"
-                    style={{
-                      background: `radial-gradient(circle at 50% 55%, ${planBrand.glow} 0%, transparent 65%)`,
-                    }}
-                  />
-                  <Image
-                    src={getPlanIcon(plan, currentGame)}
-                    alt={`${plan.name} plan`}
-                    width={200}
-                    height={200}
-                    unoptimized
-                    className="relative z-10 h-[150px] w-auto max-w-[92%] object-contain transition-transform duration-500 ease-out group-hover:scale-[1.06] sm:h-[165px] lg:h-[175px]"
-                  />
+                {/* Clean Specs Grid */}
+                <div className="grid grid-cols-2 gap-2.5 my-auto">
+                  {[
+                    { icon: MemoryStick, label: "RAM", value: plan.ram },
+                    { icon: Cpu, label: "CPU", value: plan.cpu },
+                    { icon: HardDrive, label: "Storage", value: plan.storage },
+                    plan.slots
+                      ? { icon: Users, label: "Slots", value: `${plan.slots} Slots` }
+                      : { icon: Shield, label: "DDoS", value: "Included", full: t("gameServerList.ddosProtection") },
+                  ].map(({ icon: Icon, label, value, full }) => (
+                    <div
+                      key={label}
+                      className="rounded-lg border border-gray-200/60 dark:border-white/[0.08] bg-gray-50/50 dark:bg-white/[0.03] px-3.5 py-3 transition-colors"
+                    >
+                      <div className="mb-1 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-gray-400">
+                        <Icon className="h-3.5 w-3.5 shrink-0" style={{ color: planBrand.primary }} />
+                        {label}
+                      </div>
+                      <p
+                        className="text-sm sm:text-base font-bold leading-tight text-gray-900 dark:text-white truncate"
+                        title={full}
+                      >
+                        {value}
+                      </p>
+                    </div>
+                  ))}
                 </div>
+              </div>
+
+              {/* Footer: Price + Button */}
+              <div className="border-t border-gray-200/80 dark:border-[#1c2233] bg-gray-50/70 dark:bg-[#07090f] p-5 pl-6 flex items-center justify-between gap-3">
+                <div>
+                  <p className="text-[10px] uppercase font-mono tracking-wider text-gray-400">Starting at</p>
+                  <div className="flex items-baseline gap-1">
+                    <span
+                      className="text-2xl sm:text-3xl font-extrabold orbitron-font"
+                      style={{ color: planBrand.primary }}
+                    >
+                      {plan.prices
+                        ? formatFixedGamePrice(plan.prices, selectedCurrency)
+                        : convertPrice(`₹${plan.price}`)}
+                    </span>
+                    <span className="text-xs text-gray-400 font-mono">/mo</span>
+                  </div>
+                </div>
+                <GamePlanOrderButton
+                  plan={plan}
+                  planBrand={planBrand}
+                  orderNowText={t("gameServerList.orderNow")}
+                />
               </div>
             </motion.article>
             )

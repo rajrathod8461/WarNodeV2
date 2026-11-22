@@ -4,6 +4,7 @@ import FeaturesSection from "../components/FeaturesSection"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar";
 import LocationsSection from '../components/LocationsSection';
+import DatabaseUpsellBanner from '../components/DatabaseUpsellBanner';
 
 export default function DiscordPage() {
   return (
@@ -11,6 +12,7 @@ export default function DiscordPage() {
       <Navbar />
       <DiscordPricingSection />
       <DiscordLanguagesStack />
+      <DatabaseUpsellBanner />
       <FeaturesSection />
       <LocationsSection />
       <Footer />

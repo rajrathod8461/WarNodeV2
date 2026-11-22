@@ -11,7 +11,17 @@ const config = discordConfig as DiscordConfig
 const WUMPUS_HI = encodeURI(config.wumpusHi ?? "/Wumpus Hi.svg")
 const WUMPUS_DANCE = encodeURI(config.wumpusDance ?? "/Wumpus series - wumpus dance.svg")
 
-export default function DiscordBanner() {
+interface DiscordBannerProps {
+  customTitle?: string
+  customSubtitle?: string
+  customDescription?: string
+}
+
+export default function DiscordBanner({
+  customTitle,
+  customSubtitle,
+  customDescription,
+}: DiscordBannerProps = {}) {
     const { t } = useLanguage();
     const discordUrl = warnodesConfig.links.discord;
 
@@ -72,17 +82,23 @@ export default function DiscordBanner() {
                                     rel="noopener noreferrer"
                                     className="flex items-center justify-center md:justify-start gap-3 "
                                 >
-                                    <h2 className="text-3xl md:text-4xl font-bold text-white orbitron-font">
-                                        {t('discordBanner.title').split(' ').slice(0, -1).join(' ')} <span className="text-blue-200 dark:text-blue-400">{t('discordBanner.title').split(' ').slice(-1)[0]}</span>
-                                    </h2>
+                                    {customTitle ? (
+                                        <h2 className="text-3xl md:text-4xl font-bold text-white orbitron-font">
+                                            {customTitle.split(' ').slice(0, -1).join(' ')} <span className="text-blue-200 dark:text-blue-400">{customTitle.split(' ').slice(-1)[0]}</span>
+                                        </h2>
+                                    ) : (
+                                        <h2 className="text-3xl md:text-4xl font-bold text-white orbitron-font">
+                                            {t('discordBanner.title').split(' ').slice(0, -1).join(' ')} <span className="text-blue-200 dark:text-blue-400">{t('discordBanner.title').split(' ').slice(-1)[0]}</span>
+                                        </h2>
+                                    )}
                                 </a>
 
                             </div>
                             <p className="text-xl text-white mb-2">
-                                {t('discordBanner.subtitle')}
+                                {customSubtitle || t('discordBanner.subtitle')}
                             </p>
                             <p className=" text-white">
-                                {t('discordBanner.description')}
+                                {customDescription || t('discordBanner.description')}
                             </p>
 
                         </div>

@@ -1,194 +1,467 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Check, ChevronRight } from "lucide-react"
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import {
+  Check,
+  ChevronRight,
+  Gamepad2,
+  Server,
+  ShieldCheck,
+  Zap,
+  HardDrive,
+  Headphones,
+  Globe,
+  ArrowRight,
+  type LucideIcon,
+} from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { CurrencySelector, useCurrency } from "./ui/CurrencySelector"
 import pricingConfig from "../config/sections/pricing.json"
-import type { PricingConfig } from "../types/pricing"
+import type { PricingConfig, PricingPlan } from "../types/pricing"
 import { useLanguage } from "../contexts/LanguageContext"
 import uiConfig from "../config/sections/ui.json"
 import warnodesConfig from "../config/sections/warnodes.json"
 
 const config = pricingConfig as PricingConfig
-const FEATURE_COUNT = 5
+const FEATURE_COUNT = 4
+
+interface ViewAllCard {
+  isViewAll: true
+  title: string
+  badge: string
+  image: string
+  description: string
+  priceLabel: string
+  priceValue: string
+  priceSuffix?: string
+  features: string[]
+  buttonText: string
+  link: string
+}
+
+type CardItem = PricingPlan | ViewAllCard
+
+interface CategoryConfig {
+  id: string
+  label: string
+  subtitle: string
+  icon: LucideIcon
+  cards: (number | ViewAllCard)[]
+}
+
+const CATEGORIES: CategoryConfig[] = [
+  {
+    id: "game-servers",
+    label: "Game Servers",
+    subtitle: "Minecraft, Palworld & More",
+    icon: Gamepad2,
+    cards: [
+      0, // Minecraft Hosting
+      11, // Palworld Hosting
+      {
+        isViewAll: true,
+        title: "All Game Servers",
+        badge: "6 Games",
+        image: "/Gaming_banner_design_request_f02fae14_2K.jpg",
+        description: "Browse our complete gaming library with instant setup & mod support",
+        priceLabel: "Available Titles",
+        priceValue: "6 Games",
+        priceSuffix: "supported",
+        features: [
+          "Minecraft, CS2, Palworld & more",
+          "Rust, FiveM & Hytale servers",
+          "WarShield DDoS protection included",
+          "Low-latency Indian & Asian nodes",
+        ],
+        buttonText: "View All 6 Games",
+        link: "/games",
+      },
+    ],
+  },
+  {
+    id: "vps-dedicated",
+    label: "VPS & Dedicated",
+    subtitle: "VPS, Dedicated & Database",
+    icon: Server,
+    cards: [
+      1, // VPS Hosting
+      8, // Dedicated Servers
+      4, // Database Hosting
+    ],
+  },
+  {
+    id: "web-email-bots",
+    label: "Web, Email & Bots",
+    subtitle: "Websites, Business Mail & Bots",
+    icon: Globe,
+    cards: [
+      2, // Web Hosting
+      9, // Email Hosting
+      3, // Discord Bot Hosting
+    ],
+  },
+]
+
+const TRUST_METRICS = [
+  {
+    icon: Zap,
+    title: "Instant Setup",
+    desc: "Online in < 60 seconds",
+  },
+  {
+    icon: ShieldCheck,
+    title: "WarShield Defense",
+    desc: "L4 / L7 traffic mitigation",
+  },
+  {
+    icon: HardDrive,
+    title: "Gen4 NVMe I/O",
+    desc: "High-speed enterprise storage",
+  },
+  {
+    icon: Headphones,
+    title: "24/7 Support",
+    desc: "Help via Discord & Tickets",
+  },
+]
 
 export default function PricingSection() {
   const { t } = useLanguage()
   const { selectedCurrency, setSelectedCurrency, convertPrice } = useCurrency()
+  const [activeCategoryId, setActiveCategoryId] = useState<string>("game-servers")
+
+  const activeCategory = CATEGORIES.find((c) => c.id === activeCategoryId) || CATEGORIES[0]
+
+  const resolvedCards: CardItem[] = activeCategory.cards
+    .map((item) => {
+      if (typeof item === "number") {
+        return config.section.plans[item]
+      }
+      return item
+    })
+    .filter(Boolean) as CardItem[]
 
   return (
-    <div className="bg-gray-50 dark:bg-[#0a0b0f] py-32 px-4 sm:px-6 lg:px-8 relative">
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
-        className="relative z-20 max-w-7xl mx-auto text-left mb-8"
-      >
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+    <section className="bg-gray-50 dark:bg-[#0a0b0f] py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden transition-colors duration-300">
+      <div className="relative z-10 max-w-7xl mx-auto">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-8 text-left"
+        >
           <div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-4 orbitron-font">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white orbitron-font">
               {t("pricingSection.title")}{" "}
-              <span className="icon-text-primary relative">
-                {t("pricingSection.titleHighlight")}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 1418 125"
-                  className="absolute left-0 w-full text-icon-text-primary"
-                >
-                  <path
-                    d="M1412.29 72.17c-11.04-5.78-20.07-14.33-85.46-25.24-22.37-3.63-44.69-7.56-67.07-11.04-167.11-22.06-181.65-21.24-304.94-30.56C888.78 1.39 822.57 1.1 756.44 0c-46.63-.11-93.27 1.56-139.89 2.5C365.5 13.55 452.86 7.68 277.94 23.15 202.57 33.32 127.38 45.01 52.07 55.69c-11.23 2.41-22.63 4.17-33.71 7.22C6.1 66.33 5.64 66.19 3.89 67.79c-7.99 5.78-2.98 20.14 8.72 17.5 33.99-9.47 32.28-8.57 178.06-29.66 4.26 4.48 7.29 3.38 18.42 3.11 13.19-.32 26.38-.53 39.56-1.12 53.51-3.81 106.88-9.62 160.36-13.95 18.41-1.3 36.8-3.12 55.21-4.7 23.21-1.16 46.43-2.29 69.65-3.4 120.28-2.16 85.46-3.13 234.65-1.52 23.42.99 1.57-.18 125.72 6.9 96.61 8.88 200.92 27.94 295.42 46.12 40.87 7.91 116.67 23.2 156.31 36.78 3.81 1.05 8.28-.27 10.51-3.58 3.17-3.72 2.66-9.7-.78-13.13-3.25-3.12-8.14-3.44-12.18-5.08-17.89-5.85-44.19-12.09-63.67-16.56l26.16 3.28c23.02 3.13 46.28 3.92 69.34 6.75 10.8.96 25.43 1.81 34.34-4.39 2.26-1.54 4.86-2.75 6.21-5.27 2.76-4.59 1.13-11.06-3.59-13.68ZM925.4 23.77c37.64 1.4 153.99 10.85 196.64 14.94 45.95 5.51 91.89 11.03 137.76 17.19 24.25 4.77 74.13 11.21 101.72 18.14-11.87-1.15-23.77-1.97-35.65-3.06-133.46-15.9-266.8-33.02-400.47-47.21Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </span>
+              <span className="icon-text-primary">{t("pricingSection.titleHighlight")}</span>
             </h2>
-            <p className="text-sm max-w-xl text-gray-600 dark:text-gray-300">
+            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 max-w-xl">
               {t("pricingSection.description")}
             </p>
           </div>
 
-          <CurrencySelector
-            selectedCurrency={selectedCurrency}
-            onCurrencyChange={setSelectedCurrency}
-            className="w-full sm:w-64"
-          />
-        </div>
-      </motion.div>
+          <div className="shrink-0 w-full sm:w-56">
+            <CurrencySelector
+              selectedCurrency={selectedCurrency}
+              onCurrencyChange={setSelectedCurrency}
+              className="w-full"
+            />
+          </div>
+        </motion.div>
 
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-          {config.section.plans.map((plan, index) => (
-            <motion.div
-              key={plan.titleKey}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`relative flex flex-col h-full backdrop-blur-sm border border-secondary rounded-md overflow-hidden hover:border-secondary dark:hover:border-secondary hover:hover-gradient dark:hover:hover-gradient transition-all duration-300 ${
-                plan.popular ? "hover-gradient dark:hover-gradient" : "dark:hover-gradient"
-              }`}
-            >
-              <div className="relative h-40 sm:h-44 shrink-0 overflow-hidden">
-                <Image
-                  src={plan.image || "/placeholder.svg"}
-                  alt={t(plan.titleKey)}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  quality={85}
-                  priority={plan.popular}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 dark:from-[#0a0b0f] via-gray-900/75 dark:via-[#0a0b0f]/75 to-gray-900/20" />
-                <div className="absolute inset-0 flex flex-col items-center justify-end p-4 text-center z-10">
-                  <h3 className="text-lg sm:text-xl font-bold text-white orbitron-font line-clamp-1">
-                    {t(plan.titleKey)}
-                  </h3>
-                  <p className="text-gray-200 dark:text-gray-300 text-xs sm:text-sm mt-1 line-clamp-2 max-w-[95%]">
-                    {t(plan.descriptionKey)}
+        {/* Interactive Category Selector Tabs (3 Categories) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mb-8"
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-1.5 rounded-xl bg-white/40 dark:bg-white/[0.03] border border-gray-200/80 dark:border-white/10 backdrop-blur-md">
+            {CATEGORIES.map((cat) => {
+              const Icon = cat.icon
+              const isActive = activeCategoryId === cat.id
+
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveCategoryId(cat.id)}
+                  type="button"
+                  className={`relative flex items-center gap-3 p-3.5 sm:p-4 rounded-lg transition-all duration-300 text-left outline-none cursor-pointer ${
+                    isActive
+                      ? "text-gray-900 dark:text-white"
+                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/[0.04]"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activePricingCategoryBg"
+                      className="absolute inset-0 rounded-lg bg-white dark:bg-white/10 border border-blue-500/30 dark:border-blue-400/30 shadow-md dark:shadow-[0_0_20px_rgba(59,130,246,0.15)]"
+                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                    />
+                  )}
+
+                  <div
+                    className={`relative z-10 p-2.5 rounded-lg transition-colors ${
+                      isActive
+                        ? "bg-blue-600 text-white shadow-sm"
+                        : "bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-300"
+                    }`}
+                  >
+                    <Icon className="w-5 h-5" />
+                  </div>
+
+                  <div className="relative z-10 min-w-0 flex-1">
+                    <div className="flex items-center gap-2">
+                      <span className="font-semibold text-sm sm:text-base orbitron-font truncate">
+                        {cat.label}
+                      </span>
+                    </div>
+                    <span className="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 block truncate mt-0.5">
+                      {cat.subtitle}
+                    </span>
+                  </div>
+                </button>
+              )
+            })}
+          </div>
+        </motion.div>
+
+        {/* 3-Card Grid with Website Hover Animation */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeCategoryId}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.25 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch"
+          >
+            {resolvedCards.map((card, index) => {
+              const isViewAll = "isViewAll" in card && card.isViewAll
+              const plan = !isViewAll ? (card as PricingPlan) : null
+              const viewAllCard = isViewAll ? (card as ViewAllCard) : null
+
+              let displayPrice = ""
+              let suffix = ""
+              let priceLabel = t("gameServerList.startingAt")
+
+              if (plan) {
+                const manualPrice = plan.displayPrices?.[selectedCurrency.code as "INR" | "USD" | "EUR"]
+                displayPrice = manualPrice ?? convertPrice(plan.basePrice.toString())
+                const isFree = displayPrice.toUpperCase() === "FREE"
+                suffix = isFree ? "" : (plan.priceSuffix ?? "/month")
+                if (plan.showStartingPrice === false) {
+                  priceLabel = "Pricing Tier"
+                }
+              } else if (viewAllCard) {
+                displayPrice = viewAllCard.priceValue
+                suffix = viewAllCard.priceSuffix ? ` ${viewAllCard.priceSuffix}` : ""
+                priceLabel = viewAllCard.priceLabel
+              }
+
+              const title = plan ? t(plan.titleKey) : viewAllCard?.title || ""
+              const description = plan ? t(plan.descriptionKey) : viewAllCard?.description || ""
+              const image = plan ? plan.image : viewAllCard?.image || "/placeholder.svg"
+              const link = plan ? plan.link : viewAllCard?.link || "/games"
+              const buttonText = plan ? t(plan.buttonTextKey) : viewAllCard?.buttonText || "View More"
+              const isPopular = plan?.popular ?? false
+              const badge = plan?.badge || viewAllCard?.badge
+
+              return (
+                <motion.div
+                  key={title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, delay: index * 0.08 }}
+                  className={`relative flex flex-col h-full rounded-xl overflow-hidden backdrop-blur-sm border transition-all duration-300 hover:border-secondary hover:hover-gradient group ${
+                    isPopular
+                      ? "border-blue-500/50 bg-white/80 dark:bg-white/[0.04]"
+                      : "border-secondary bg-white/50 dark:bg-white/[0.02]"
+                  }`}
+                >
+                  {/* Top Image Banner */}
+                  <div className="relative h-44 sm:h-48 w-full shrink-0 overflow-hidden bg-gray-900">
+                    <Image
+                      src={image}
+                      alt={title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      quality={85}
+                      priority={isPopular}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/45 to-transparent" />
+
+                    {/* Badges on Image */}
+                    <div className="absolute top-3 right-3 flex items-center gap-1.5 z-10">
+                      {isPopular && (
+                        <span className="px-2.5 py-1 rounded-md text-[11px] font-bold button-primary text-button-primary shadow-sm">
+                          Popular
+                        </span>
+                      )}
+                      {badge && (
+                        <span className="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-black/70 backdrop-blur-md text-gray-200 border border-white/15 shadow-sm">
+                          {badge}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Title over Image */}
+                    <div className="absolute bottom-3 left-4 right-4 z-10">
+                      <h3 className="text-xl sm:text-2xl font-bold text-white orbitron-font drop-shadow-sm">
+                        {title}
+                      </h3>
+                    </div>
+                  </div>
+
+                  {/* Body Content */}
+                  <div className="flex flex-col flex-1 p-4 sm:p-5">
+                    {/* Short 1-Line Description */}
+                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 line-clamp-1 leading-relaxed mb-4">
+                      {description}
+                    </p>
+
+                    {/* Price Block */}
+                    <div className="mb-4 pb-3.5 border-b border-secondary/50">
+                      <span className="text-[11px] font-mono uppercase tracking-wider text-gray-500 dark:text-gray-400 block mb-0.5">
+                        {priceLabel}
+                      </span>
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white orbitron-font">
+                          {displayPrice}
+                        </span>
+                        {suffix && (
+                          <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium">
+                            {suffix}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Features List */}
+                    <ul className="space-y-2.5 mb-6 flex-1 min-h-[7rem]">
+                      {plan &&
+                        plan.featuresKeys.slice(0, FEATURE_COUNT).map((featureKey, fIdx) => (
+                          <li key={fIdx} className="flex items-center gap-2.5 text-xs sm:text-sm">
+                            <div className="p-0.5 rounded-full bg-blue-500/10 text-blue-500 dark:text-blue-400 shrink-0">
+                              <Check className="w-3.5 h-3.5" />
+                            </div>
+                            <span className="text-gray-600 dark:text-gray-300 truncate">
+                              {t(featureKey)}
+                            </span>
+                          </li>
+                        ))}
+
+                      {viewAllCard &&
+                        viewAllCard.features.map((featureText, fIdx) => (
+                          <li key={fIdx} className="flex items-center gap-2.5 text-xs sm:text-sm">
+                            <div className="p-0.5 rounded-full bg-blue-500/10 text-blue-500 dark:text-blue-400 shrink-0">
+                              <Check className="w-3.5 h-3.5" />
+                            </div>
+                            <span className="text-gray-600 dark:text-gray-300 truncate">
+                              {featureText}
+                            </span>
+                          </li>
+                        ))}
+                    </ul>
+
+                    {/* Action CTA Button */}
+                    <div className="relative mt-auto">
+                      <Link
+                        href={link}
+                        className={`w-full py-3 px-4 rounded-lg font-semibold text-xs sm:text-sm transition-all duration-300 flex items-center justify-between group/btn ${
+                          isPopular || plan?.buttonStyle === "primary"
+                            ? "button-primary text-button-primary shadow-sm hover:shadow-md hover:shadow-blue-500/20"
+                            : "bg-white/10 dark:bg-white/5 border border-secondary text-gray-800 dark:text-gray-200 hover:border-secondary hover:hover-gradient hover:text-icon-text-primary"
+                        }`}
+                      >
+                        <span className="w-full orbitron-font text-center">{buttonText}</span>
+                        <ChevronRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                      </Link>
+
+                      {uiConfig.christmasTheme.enabled && (
+                        <>
+                          <Image
+                            src="/christmas/button-deco-up.png"
+                            alt=""
+                            width={24}
+                            height={24}
+                            className="absolute -top-2 -right-2 pointer-events-none"
+                          />
+                          <Image
+                            src="/christmas/button-deco-down.png"
+                            alt=""
+                            width={24}
+                            height={24}
+                            className="absolute -bottom-2 -left-2 pointer-events-none"
+                          />
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </motion.div>
+              )
+            })}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Minimal Trust Metrics Strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 p-3 rounded-xl bg-white/40 dark:bg-white/[0.02] border border-secondary backdrop-blur-sm"
+        >
+          {TRUST_METRICS.map((metric, i) => {
+            const Icon = metric.icon
+            return (
+              <div
+                key={i}
+                className="flex items-center gap-3 p-2 rounded-lg hover:hover-gradient hover:border-secondary transition-all duration-300"
+              >
+                <div className="p-2 rounded-lg bg-blue-500/10 text-blue-500 shrink-0">
+                  <Icon className="w-4 h-4" />
+                </div>
+                <div className="min-w-0">
+                  <h4 className="font-semibold text-xs sm:text-sm text-gray-900 dark:text-white truncate">
+                    {metric.title}
+                  </h4>
+                  <p className="text-[11px] text-gray-500 dark:text-gray-400 truncate">
+                    {metric.desc}
                   </p>
                 </div>
               </div>
+            )
+          })}
+        </motion.div>
 
-              <div className="flex flex-col flex-1 p-4 sm:p-5">
-                <div className="text-center mb-5 min-h-[5.25rem] flex flex-col items-center justify-center">
-                  {plan.showStartingPrice !== false ? (
-                    <>
-                      {(() => {
-                        const manualPrice = plan.displayPrices?.[selectedCurrency.code as "INR" | "USD" | "EUR"]
-                        const displayPrice = manualPrice ?? convertPrice(plan.basePrice.toString())
-                        const isFree = displayPrice.toUpperCase() === "FREE"
-                        const suffix = isFree ? "" : (plan.priceSuffix ?? "/month")
-
-                        return (
-                          <>
-                            <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-1">
-                              {t("gameServerList.startingAt")}
-                            </p>
-                            <div className="flex items-baseline justify-center gap-1">
-                              <span className="text-3xl sm:text-4xl orbitron-font font-bold text-gray-900 dark:text-white">
-                                {displayPrice}
-                              </span>
-                              {suffix && <span className="text-sm text-gray-500 dark:text-gray-400">{suffix}</span>}
-                            </div>
-                          </>
-                        )
-                      })()}
-                    </>
-                  ) : (
-                    <p className="text-sm text-gray-500 dark:text-gray-400 px-2">{t(plan.descriptionKey)}</p>
-                  )}
-                </div>
-
-                <ul className="space-y-2.5 sm:space-y-3 mb-6 flex-1 min-h-[11.5rem]">
-                  {plan.featuresKeys.slice(0, FEATURE_COUNT).map((featureKey, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 icon-text-primary bg-icon-text-primary/10 dark:bg-icon-text-primary/30 rounded-xl flex-shrink-0 p-1 mt-0.5" />
-                      <span className="text-gray-600 dark:text-gray-300 text-sm leading-snug">
-                        {t(featureKey)}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="relative mt-auto">
-                  <Link
-                    href={plan.link}
-                    className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-between group ${
-                      plan.buttonStyle === "primary"
-                        ? "button-primary text-button-primary border border-transparent hover:bg-[var(--hover-gradient)] hover:text-[var(--icon-text-primary)] hover:border-[var(--border-secondary)]"
-                        : "card-primary dark:bg-transparent border border-secondary dark:border-secondary hover:bg-[var(--hover-gradient)] hover:text-[var(--icon-text-primary)] hover:border-[var(--border-secondary)] text-icon-text-primary"
-                    }`}
-                  >
-                    <span className="w-full orbitron-font text-center">{t(plan.buttonTextKey)}</span>
-                    <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-                  </Link>
-                  {uiConfig.christmasTheme.enabled && (
-                    <>
-                      <Image
-                        src="/christmas/button-deco-up.png"
-                        alt=""
-                        width={32}
-                        height={32}
-                        className="absolute -top-2 -right-2 pointer-events-none"
-                      />
-                      <Image
-                        src="/christmas/button-deco-down.png"
-                        alt=""
-                        width={32}
-                        height={32}
-                        className="absolute -bottom-2 -left-2 pointer-events-none"
-                      />
-                    </>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
+        {/* Section Footer */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           className="text-center mt-8"
         >
-          <p className="orbitron-font text-gray-600 dark:text-gray-400">
+          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
             {t("pricingSection.footerText")}{" "}
             <a
               href={warnodesConfig.links.tickets}
               target="_blank"
               rel="noopener noreferrer"
-              className="icon-text-primary hover:text-icon-text-primary/80 underline-offset-2 hover:underline"
+              className="icon-text-primary hover:text-icon-text-primary/80 font-medium inline-flex items-center gap-1 hover:underline"
             >
               {t("pricingSection.footerLinkText")}
             </a>
           </p>
         </motion.div>
       </div>
-    </div>
+    </section>
   )
 }

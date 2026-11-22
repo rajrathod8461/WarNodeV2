@@ -173,7 +173,7 @@ export function useCurrency(): UseCurrencyReturn {
   const [selectedCurrency, setSelectedCurrency] = useState<Currency>(defaultCurrency);
 
   const convertPrice = useCallback((price: string): string => {
-    const numericPrice = parseFloat(price.replace(/[£$€¥₹C\$A\$]/g, ""));
+    const numericPrice = parseFloat(price.replace(/[£$€¥₹C\$A\$,]/g, ""));
 
     if (isNaN(numericPrice)) {
       return `${selectedCurrency.symbol}0.00`;

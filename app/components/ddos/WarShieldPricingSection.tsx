@@ -123,12 +123,12 @@ function ThemedSectionHeading({
       </div>
       <h3 className="orbitron-font mb-3 text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
         {leading ? `${leading} ` : ""}
-        <span className="icon-text-primary relative">
+        <span className="icon-text-primary relative inline-block">
           {lastWord}
           <motion.svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1418 125"
-            className="absolute left-0 w-full text-icon-text-primary"
+            className="absolute left-0 w-full text-icon-text-primary top-full -mt-1 pointer-events-none"
             initial={{ opacity: 0, pathLength: 0 }}
             whileInView={{ opacity: 1, pathLength: 1 }}
             viewport={{ once: true }}
@@ -476,12 +476,12 @@ export default function WarShieldPricingSection() {
               </div>
               <h2 className="orbitron-font mb-4 text-4xl font-bold text-gray-900 dark:text-white">
                 {t("ddos.title").split(" ").slice(0, -1).join(" ")}{" "}
-                <span className="icon-text-primary relative">
+                <span className="icon-text-primary relative inline-block">
                   {t("ddos.title").split(" ").slice(-1)[0]}
                   <motion.svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 1418 125"
-                    className="absolute left-0 w-full text-icon-text-primary"
+                    className="absolute left-0 w-full text-icon-text-primary top-full -mt-1 pointer-events-none"
                     initial={{ opacity: 0, pathLength: 0 }}
                     animate={{ opacity: 1, pathLength: 1 }}
                     transition={{ duration: 1, delay: 0.35 }}

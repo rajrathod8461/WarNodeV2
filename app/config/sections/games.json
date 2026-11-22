@@ -16,32 +16,42 @@
       "id": "mumbai",
       "name": "Mumbai",
       "flag": "in",
-      "availablePlanTypes": ["intel", "amd"]
+      "availablePlanTypes": [
+        "intel",
+        "amd"
+      ]
     },
     {
       "id": "hyderabad",
       "name": "Hyderabad",
       "flag": "in",
-      "availablePlanTypes": ["intel"]
+      "availablePlanTypes": [
+        "intel"
+      ]
     },
     {
       "id": "delhi",
       "name": "Delhi",
       "flag": "in",
-      "availablePlanTypes": ["amd"]
+      "availablePlanTypes": [
+        "amd"
+      ]
     },
     {
       "id": "singapore",
       "name": "Singapore",
       "flag": "sg",
-      "availablePlanTypes": ["intel", "amd"]
+      "availablePlanTypes": [
+        "intel",
+        "amd"
+      ]
     }
   ],
   "games": [
     {
       "id": "minecraft",
       "name": "Minecraft",
-      "description": "Intel Xeon and AMD EPYC Minecraft hosting with unlimited players, WarNodes panel, and instant setup",
+      "description": "Paper, Purpur & Forge with 1-click modpacks, plugins & unmetered slots",
       "icon": "/icons/minecraft-icon.webp",
       "banner": "/banners/minecraft-banners.webp",
       "featured": true,
@@ -57,7 +67,11 @@
             "cpu": "100% (1 vCPU)",
             "storage": "10 GB NVMe",
             "price": 59,
-            "prices": { "INR": 59, "USD": 0.99, "EUR": 0.99 },
+            "prices": {
+              "INR": 59,
+              "USD": 0.99,
+              "EUR": 0.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/intel-minecraft-hosting/cow"
           },
           {
@@ -68,7 +82,11 @@
             "cpu": "200% (2 vCPU)",
             "storage": "20 GB NVMe",
             "price": 119,
-            "prices": { "INR": 119, "USD": 1.99, "EUR": 1.99 },
+            "prices": {
+              "INR": 119,
+              "USD": 1.99,
+              "EUR": 1.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/intel-minecraft-hosting/pig"
           },
           {
@@ -79,7 +97,11 @@
             "cpu": "300% (3 vCPU)",
             "storage": "30 GB NVMe",
             "price": 179,
-            "prices": { "INR": 179, "USD": 2.99, "EUR": 2.99 },
+            "prices": {
+              "INR": 179,
+              "USD": 2.99,
+              "EUR": 2.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/intel-minecraft-hosting/sheep"
           },
           {
@@ -90,7 +112,11 @@
             "cpu": "400% (4 vCPU)",
             "storage": "40 GB NVMe",
             "price": 239,
-            "prices": { "INR": 239, "USD": 3.99, "EUR": 3.99 },
+            "prices": {
+              "INR": 239,
+              "USD": 3.99,
+              "EUR": 3.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/intel-minecraft-hosting/slime"
           },
           {
@@ -101,7 +127,11 @@
             "cpu": "600% (6 vCPU)",
             "storage": "60 GB NVMe",
             "price": 359,
-            "prices": { "INR": 359, "USD": 4.99, "EUR": 4.99 },
+            "prices": {
+              "INR": 359,
+              "USD": 4.99,
+              "EUR": 4.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/intel-minecraft-hosting/villager"
           },
           {
@@ -112,7 +142,11 @@
             "cpu": "800% (8 vCPU)",
             "storage": "80 GB NVMe",
             "price": 479,
-            "prices": { "INR": 479, "USD": 5.99, "EUR": 5.99 },
+            "prices": {
+              "INR": 479,
+              "USD": 5.99,
+              "EUR": 5.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/intel-minecraft-hosting/chicken"
           },
           {
@@ -123,7 +157,11 @@
             "cpu": "1000% (10 vCPU)",
             "storage": "100 GB NVMe",
             "price": 719,
-            "prices": { "INR": 719, "USD": 7.99, "EUR": 6.99 },
+            "prices": {
+              "INR": 719,
+              "USD": 7.99,
+              "EUR": 6.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/intel-minecraft-hosting/spider"
           },
           {
@@ -134,7 +172,11 @@
             "cpu": "1200% (12 vCPU)",
             "storage": "120 GB NVMe",
             "price": 959,
-            "prices": { "INR": 959, "USD": 10.99, "EUR": 8.99 },
+            "prices": {
+              "INR": 959,
+              "USD": 10.99,
+              "EUR": 8.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/intel-minecraft-hosting/pillager"
           },
           {
@@ -145,7 +187,11 @@
             "cpu": "1400% (14 vCPU)",
             "storage": "150 GB NVMe",
             "price": 1439,
-            "prices": { "INR": 1439, "USD": 15.99, "EUR": 13.99 },
+            "prices": {
+              "INR": 1439,
+              "USD": 15.99,
+              "EUR": 13.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/intel-minecraft-hosting/blaze"
           }
         ],
@@ -158,7 +204,11 @@
             "cpu": "100% (1 vCPU)",
             "storage": "10 GB NVMe",
             "price": 79,
-            "prices": { "INR": 79, "USD": 0.99, "EUR": 0.99 },
+            "prices": {
+              "INR": 79,
+              "USD": 0.99,
+              "EUR": 0.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/amd-minecraft-hosting/cow-amd"
           },
           {
@@ -169,7 +219,11 @@
             "cpu": "200% (2 vCPU)",
             "storage": "20 GB NVMe",
             "price": 159,
-            "prices": { "INR": 159, "USD": 1.99, "EUR": 1.99 },
+            "prices": {
+              "INR": 159,
+              "USD": 1.99,
+              "EUR": 1.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/amd-minecraft-hosting/pig-amd"
           },
           {
@@ -180,7 +234,11 @@
             "cpu": "300% (3 vCPU)",
             "storage": "30 GB NVMe",
             "price": 239,
-            "prices": { "INR": 239, "USD": 2.99, "EUR": 2.99 },
+            "prices": {
+              "INR": 239,
+              "USD": 2.99,
+              "EUR": 2.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/amd-minecraft-hosting/sheep-amd"
           },
           {
@@ -191,7 +249,11 @@
             "cpu": "400% (4 vCPU)",
             "storage": "40 GB NVMe",
             "price": 319,
-            "prices": { "INR": 319, "USD": 3.99, "EUR": 3.99 },
+            "prices": {
+              "INR": 319,
+              "USD": 3.99,
+              "EUR": 3.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/amd-minecraft-hosting/slime-amd"
           },
           {
@@ -202,7 +264,11 @@
             "cpu": "600% (6 vCPU)",
             "storage": "60 GB NVMe",
             "price": 479,
-            "prices": { "INR": 479, "USD": 5.99, "EUR": 4.99 },
+            "prices": {
+              "INR": 479,
+              "USD": 5.99,
+              "EUR": 4.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/amd-minecraft-hosting/villager-amd"
           },
           {
@@ -213,7 +279,11 @@
             "cpu": "800% (8 vCPU)",
             "storage": "80 GB NVMe",
             "price": 639,
-            "prices": { "INR": 639, "USD": 6.99, "EUR": 5.99 },
+            "prices": {
+              "INR": 639,
+              "USD": 6.99,
+              "EUR": 5.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/amd-minecraft-hosting/chicken-amd"
           },
           {
@@ -224,7 +294,11 @@
             "cpu": "1000% (10 vCPU)",
             "storage": "100 GB NVMe",
             "price": 959,
-            "prices": { "INR": 959, "USD": 10.99, "EUR": 8.99 },
+            "prices": {
+              "INR": 959,
+              "USD": 10.99,
+              "EUR": 8.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/amd-minecraft-hosting/spider-amd"
           },
           {
@@ -235,7 +309,11 @@
             "cpu": "1200% (12 vCPU)",
             "storage": "120 GB NVMe",
             "price": 1279,
-            "prices": { "INR": 1279, "USD": 13.99, "EUR": 11.99 },
+            "prices": {
+              "INR": 1279,
+              "USD": 13.99,
+              "EUR": 11.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/amd-minecraft-hosting/pillager-amd"
           },
           {
@@ -246,8 +324,222 @@
             "cpu": "1400% (14 vCPU)",
             "storage": "150 GB NVMe",
             "price": 1919,
-            "prices": { "INR": 1919, "USD": 20.99, "EUR": 17.99 },
+            "prices": {
+              "INR": 1919,
+              "USD": 20.99,
+              "EUR": 17.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/amd-minecraft-hosting/blaze-amd"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cs2",
+      "name": "Counter-Strike 2",
+      "description": "Sub-Tick & 128-tick optimized with SourceMod, low ping & instant setup",
+      "icon": "/icons/cs2-icon.webp",
+      "banner": "/banners/cs2-banner.webp",
+      "featured": false,
+      "startingAt": "₹179/mo",
+      "primaryColor": "#F59E0B",
+      "plans": {
+        "intel": [
+          {
+            "id": "wn-cs2-i1",
+            "name": "WN-CS2-I1",
+            "type": "intel",
+            "ram": "4 GB",
+            "cpu": "Intel · 2 vCPU",
+            "storage": "40 GB NVMe",
+            "slots": "10",
+            "price": 179,
+            "prices": {
+              "INR": 179,
+              "USD": 2.29,
+              "EUR": 2.29
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-cs2-hosting/wn-cs2-i1"
+          },
+          {
+            "id": "wn-cs2-i2",
+            "name": "WN-CS2-I2",
+            "type": "intel",
+            "ram": "6 GB",
+            "cpu": "Intel · 2 vCPU",
+            "storage": "50 GB NVMe",
+            "slots": "16",
+            "price": 269,
+            "prices": {
+              "INR": 269,
+              "USD": 3.39,
+              "EUR": 3.09
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-cs2-hosting/wn-cs2-i2"
+          },
+          {
+            "id": "wn-cs2-i3",
+            "name": "WN-CS2-I3",
+            "type": "intel",
+            "ram": "8 GB",
+            "cpu": "Intel · 3 vCPU",
+            "storage": "60 GB NVMe",
+            "slots": "24",
+            "featured": true,
+            "price": 369,
+            "prices": {
+              "INR": 369,
+              "USD": 4.69,
+              "EUR": 4.19
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-cs2-hosting/wn-cs2-i3"
+          },
+          {
+            "id": "wn-cs2-i4",
+            "name": "WN-CS2-I4",
+            "type": "intel",
+            "ram": "10 GB",
+            "cpu": "Intel · 4 vCPU",
+            "storage": "75 GB NVMe",
+            "slots": "32",
+            "price": 499,
+            "prices": {
+              "INR": 499,
+              "USD": 6.29,
+              "EUR": 5.69
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-cs2-hosting/wn-cs2-i4"
+          },
+          {
+            "id": "wn-cs2-i5",
+            "name": "WN-CS2-I5",
+            "type": "intel",
+            "ram": "12 GB",
+            "cpu": "Intel · 4 vCPU",
+            "storage": "90 GB NVMe",
+            "slots": "48",
+            "price": 649,
+            "prices": {
+              "INR": 649,
+              "USD": 8.19,
+              "EUR": 7.39
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-cs2-hosting/wn-cs2-i5"
+          },
+          {
+            "id": "wn-cs2-i6",
+            "name": "WN-CS2-I6",
+            "type": "intel",
+            "ram": "16 GB",
+            "cpu": "Intel · 6 vCPU",
+            "storage": "120 GB NVMe",
+            "slots": "64",
+            "price": 849,
+            "prices": {
+              "INR": 849,
+              "USD": 10.69,
+              "EUR": 9.59
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-cs2-hosting/wn-cs2-i6"
+          }
+        ],
+        "amd": [
+          {
+            "id": "wn-cs2-1",
+            "name": "WN-CS2-1",
+            "type": "amd",
+            "ram": "4 GB",
+            "cpu": "Ryzen · 2 vCPU",
+            "storage": "40 GB NVMe",
+            "slots": "10",
+            "price": 199,
+            "prices": {
+              "INR": 199,
+              "USD": 2.49,
+              "EUR": 2.49
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-cs2-hosting/wn-cs2-1"
+          },
+          {
+            "id": "wn-cs2-2",
+            "name": "WN-CS2-2",
+            "type": "amd",
+            "ram": "6 GB",
+            "cpu": "Ryzen · 2 vCPU",
+            "storage": "50 GB NVMe",
+            "slots": "16",
+            "price": 299,
+            "prices": {
+              "INR": 299,
+              "USD": 3.79,
+              "EUR": 3.49
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-cs2-hosting/wn-cs2-2"
+          },
+          {
+            "id": "wn-cs2-3",
+            "name": "WN-CS2-3",
+            "type": "amd",
+            "ram": "8 GB",
+            "cpu": "Ryzen · 3 vCPU",
+            "storage": "60 GB NVMe",
+            "slots": "24",
+            "featured": true,
+            "price": 399,
+            "prices": {
+              "INR": 399,
+              "USD": 4.99,
+              "EUR": 4.49
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-cs2-hosting/wn-cs2-3"
+          },
+          {
+            "id": "wn-cs2-4",
+            "name": "WN-CS2-4",
+            "type": "amd",
+            "ram": "10 GB",
+            "cpu": "Ryzen · 4 vCPU",
+            "storage": "75 GB NVMe",
+            "slots": "32",
+            "price": 549,
+            "prices": {
+              "INR": 549,
+              "USD": 6.89,
+              "EUR": 6.19
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-cs2-hosting/wn-cs2-4"
+          },
+          {
+            "id": "wn-cs2-5",
+            "name": "WN-CS2-5",
+            "type": "amd",
+            "ram": "12 GB",
+            "cpu": "Ryzen · 4 vCPU",
+            "storage": "90 GB NVMe",
+            "slots": "48",
+            "price": 699,
+            "prices": {
+              "INR": 699,
+              "USD": 8.79,
+              "EUR": 7.89
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-cs2-hosting/wn-cs2-5"
+          },
+          {
+            "id": "wn-cs2-6",
+            "name": "WN-CS2-6",
+            "type": "amd",
+            "ram": "16 GB",
+            "cpu": "Ryzen · 6 vCPU",
+            "storage": "120 GB NVMe",
+            "slots": "64",
+            "price": 899,
+            "prices": {
+              "INR": 899,
+              "USD": 11.29,
+              "EUR": 10.19
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-cs2-hosting/wn-cs2-6"
           }
         ]
       }
@@ -255,7 +547,7 @@
     {
       "id": "hytale",
       "name": "Hytale",
-      "description": "Dedicated Hytale server hosting with instant setup, WarNodes panel, and WarShield DDoS protection",
+      "description": "Dedicated adventure server hosting with instant setup & WarShield protection",
       "icon": "/hytale.webp",
       "banner": "/banners/hytale.webp",
       "featured": false,
@@ -271,7 +563,11 @@
             "cpu": "100% (1 vCPU)",
             "storage": "10 GB NVMe",
             "price": 160,
-            "prices": { "INR": 160, "USD": 1.99, "EUR": 1.99 },
+            "prices": {
+              "INR": 160,
+              "USD": 1.99,
+              "EUR": 1.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/hytale-server-hosting/hytale-starter"
           },
           {
@@ -282,7 +578,11 @@
             "cpu": "200% (2 vCPU)",
             "storage": "20 GB NVMe",
             "price": 240,
-            "prices": { "INR": 240, "USD": 2.99, "EUR": 2.99 },
+            "prices": {
+              "INR": 240,
+              "USD": 2.99,
+              "EUR": 2.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/hytale-server-hosting/hytale-adventurer"
           },
           {
@@ -293,7 +593,11 @@
             "cpu": "300% (3 vCPU)",
             "storage": "30 GB NVMe",
             "price": 320,
-            "prices": { "INR": 320, "USD": 3.99, "EUR": 3.99 },
+            "prices": {
+              "INR": 320,
+              "USD": 3.99,
+              "EUR": 3.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/hytale-server-hosting/hytale-explorer"
           },
           {
@@ -304,7 +608,11 @@
             "cpu": "400% (4 vCPU)",
             "storage": "40 GB NVMe",
             "price": 480,
-            "prices": { "INR": 480, "USD": 5.99, "EUR": 4.99 },
+            "prices": {
+              "INR": 480,
+              "USD": 5.99,
+              "EUR": 4.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/hytale-server-hosting/hytale-builder"
           },
           {
@@ -315,7 +623,11 @@
             "cpu": "600% (6 vCPU)",
             "storage": "60 GB NVMe",
             "price": 640,
-            "prices": { "INR": 640, "USD": 6.99, "EUR": 5.99 },
+            "prices": {
+              "INR": 640,
+              "USD": 6.99,
+              "EUR": 5.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/hytale-server-hosting/hytale-kingdom"
           },
           {
@@ -326,8 +638,642 @@
             "cpu": "800% (8 vCPU)",
             "storage": "80 GB NVMe",
             "price": 960,
-            "prices": { "INR": 960, "USD": 10.99, "EUR": 8.99 },
+            "prices": {
+              "INR": 960,
+              "USD": 10.99,
+              "EUR": 8.99
+            },
             "orderLink": "https://portal.warnode.cloud/products/hytale-server-hosting/hytale-empire"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rust",
+      "name": "Rust",
+      "description": "Automated wipe manager, Oxide/uMod mods, high tickrate & instant setup",
+      "icon": "/icons/rust-icon.webp",
+      "banner": "/banners/rust-banner-2.webp",
+      "featured": false,
+      "startingAt": "₹399/mo",
+      "primaryColor": "#E05338",
+      "plans": {
+        "intel": [
+          {
+            "id": "wn-rust-1",
+            "name": "WN-Rust 1",
+            "type": "intel",
+            "ram": "8 GB",
+            "cpu": "400%",
+            "storage": "50 GB NVMe",
+            "price": 399,
+            "prices": {
+              "INR": 399,
+              "USD": 4.99,
+              "EUR": 4.69
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-rust-hosting/wn-rust-1",
+            "image": "/pricing/rust/hatchet.png"
+          },
+          {
+            "id": "wn-rust-2",
+            "name": "WN-Rust 2",
+            "type": "intel",
+            "ram": "12 GB",
+            "cpu": "600%",
+            "storage": "70 GB NVMe",
+            "price": 549,
+            "prices": {
+              "INR": 549,
+              "USD": 6.89,
+              "EUR": 6.49
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-rust-hosting/wn-rust-2",
+            "image": "/pricing/rust/hazmat.png"
+          },
+          {
+            "id": "wn-rust-3",
+            "name": "WN-Rust 3",
+            "type": "intel",
+            "ram": "16 GB",
+            "cpu": "800%",
+            "storage": "90 GB NVMe",
+            "featured": true,
+            "price": 699,
+            "prices": {
+              "INR": 699,
+              "USD": 8.79,
+              "EUR": 8.19
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-rust-hosting/wn-rust-3",
+            "image": "/pricing/rust/mp5.png"
+          },
+          {
+            "id": "wn-rust-4",
+            "name": "WN-Rust 4",
+            "type": "intel",
+            "ram": "24 GB",
+            "cpu": "1000%",
+            "storage": "120 GB NVMe",
+            "price": 999,
+            "prices": {
+              "INR": 999,
+              "USD": 12.49,
+              "EUR": 11.69
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-rust-hosting/wn-rust-4",
+            "image": "/pricing/rust/ak47.png"
+          },
+          {
+            "id": "wn-rust-5",
+            "name": "WN-Rust 5",
+            "type": "intel",
+            "ram": "32 GB",
+            "cpu": "1200%",
+            "storage": "160 GB NVMe",
+            "price": 1299,
+            "prices": {
+              "INR": 1299,
+              "USD": 16.29,
+              "EUR": 15.19
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-rust-hosting/wn-rust-5",
+            "image": "/pricing/rust/facemask.png"
+          },
+          {
+            "id": "wn-rust-6",
+            "name": "WN-Rust 6",
+            "type": "intel",
+            "ram": "48 GB",
+            "cpu": "1400%",
+            "storage": "200 GB NVMe",
+            "price": 1899,
+            "prices": {
+              "INR": 1899,
+              "USD": 23.79,
+              "EUR": 22.19
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-rust-hosting/wn-rust-6",
+            "image": "/pricing/rust/launcher.png"
+          }
+        ],
+        "amd": [
+          {
+            "id": "wn-rust-amd-1",
+            "name": "WN-Rust 1",
+            "type": "amd",
+            "ram": "8 GB",
+            "cpu": "400%",
+            "storage": "50 GB NVMe",
+            "price": 459,
+            "prices": {
+              "INR": 459,
+              "USD": 5.75,
+              "EUR": 5.39
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-rust-hosting/wn-rust-amd-1",
+            "image": "/pricing/rust/hatchet.png"
+          },
+          {
+            "id": "wn-rust-amd-2",
+            "name": "WN-Rust 2",
+            "type": "amd",
+            "ram": "12 GB",
+            "cpu": "600%",
+            "storage": "70 GB NVMe",
+            "price": 629,
+            "prices": {
+              "INR": 629,
+              "USD": 7.89,
+              "EUR": 7.39
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-rust-hosting/wn-rust-amd-2",
+            "image": "/pricing/rust/hazmat.png"
+          },
+          {
+            "id": "wn-rust-amd-3",
+            "name": "WN-Rust 3",
+            "type": "amd",
+            "ram": "16 GB",
+            "cpu": "800%",
+            "storage": "90 GB NVMe",
+            "featured": true,
+            "price": 799,
+            "prices": {
+              "INR": 799,
+              "USD": 9.99,
+              "EUR": 9.39
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-rust-hosting/wn-rust-amd-3",
+            "image": "/pricing/rust/mp5.png"
+          },
+          {
+            "id": "wn-rust-amd-4",
+            "name": "WN-Rust 4",
+            "type": "amd",
+            "ram": "24 GB",
+            "cpu": "1000%",
+            "storage": "120 GB NVMe",
+            "price": 1149,
+            "prices": {
+              "INR": 1149,
+              "USD": 14.39,
+              "EUR": 13.49
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-rust-hosting/wn-rust-amd-4",
+            "image": "/pricing/rust/ak47.png"
+          },
+          {
+            "id": "wn-rust-amd-5",
+            "name": "WN-Rust 5",
+            "type": "amd",
+            "ram": "32 GB",
+            "cpu": "1200%",
+            "storage": "160 GB NVMe",
+            "price": 1499,
+            "prices": {
+              "INR": 1499,
+              "USD": 18.79,
+              "EUR": 17.59
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-rust-hosting/wn-rust-amd-5",
+            "image": "/pricing/rust/facemask.png"
+          },
+          {
+            "id": "wn-rust-amd-6",
+            "name": "WN-Rust 6",
+            "type": "amd",
+            "ram": "48 GB",
+            "cpu": "1400%",
+            "storage": "200 GB NVMe",
+            "price": 2199,
+            "prices": {
+              "INR": 2199,
+              "USD": 27.49,
+              "EUR": 25.79
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-rust-hosting/wn-rust-amd-6",
+            "image": "/pricing/rust/launcher.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "palworld",
+      "name": "Palworld",
+      "description": "Dedicated multiplayer with automated world saves, backup manager & fast NVMe",
+      "icon": "/icons/logo (2).png",
+      "banner": "/banners/palworld-banner.jpg",
+      "featured": false,
+      "startingAt": "₹299/mo",
+      "primaryColor": "#0EA5E9",
+      "plans": {
+        "intel": [
+          {
+            "id": "wn-palworld-1",
+            "name": "WN-Palworld 1",
+            "type": "intel",
+            "ram": "8 GB",
+            "cpu": "400%",
+            "storage": "50 GB NVMe",
+            "price": 299,
+            "prices": {
+              "INR": 299,
+              "USD": 3.79,
+              "EUR": 3.49
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-palworld-hosting/wn-palworld-1",
+            "image": "/pricing/palworld/sphere_basic.webp"
+          },
+          {
+            "id": "wn-palworld-2",
+            "name": "WN-Palworld 2",
+            "type": "intel",
+            "ram": "12 GB",
+            "cpu": "600%",
+            "storage": "70 GB NVMe",
+            "price": 449,
+            "prices": {
+              "INR": 449,
+              "USD": 5.69,
+              "EUR": 5.29
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-palworld-hosting/wn-palworld-2",
+            "image": "/pricing/palworld/sphere_mega.webp"
+          },
+          {
+            "id": "wn-palworld-3",
+            "name": "WN-Palworld 3",
+            "type": "intel",
+            "ram": "16 GB",
+            "cpu": "800%",
+            "storage": "100 GB NVMe",
+            "featured": true,
+            "price": 599,
+            "prices": {
+              "INR": 599,
+              "USD": 7.49,
+              "EUR": 6.99
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-palworld-hosting/wn-palworld-3",
+            "image": "/pricing/palworld/sphere_giga.webp"
+          },
+          {
+            "id": "wn-palworld-4",
+            "name": "WN-Palworld 4",
+            "type": "intel",
+            "ram": "24 GB",
+            "cpu": "1000%",
+            "storage": "140 GB NVMe",
+            "price": 899,
+            "prices": {
+              "INR": 899,
+              "USD": 11.29,
+              "EUR": 10.49
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-palworld-hosting/wn-palworld-4",
+            "image": "/pricing/palworld/sphere_tera.webp"
+          },
+          {
+            "id": "wn-palworld-5",
+            "name": "WN-Palworld 5",
+            "type": "intel",
+            "ram": "32 GB",
+            "cpu": "1200%",
+            "storage": "180 GB NVMe",
+            "price": 1199,
+            "prices": {
+              "INR": 1199,
+              "USD": 14.99,
+              "EUR": 13.99
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-palworld-hosting/wn-palworld-5",
+            "image": "/pricing/palworld/sphere_master.webp"
+          },
+          {
+            "id": "wn-palworld-6",
+            "name": "WN-Palworld 6",
+            "type": "intel",
+            "ram": "48 GB",
+            "cpu": "1400%",
+            "storage": "220 GB NVMe",
+            "price": 1799,
+            "prices": {
+              "INR": 1799,
+              "USD": 22.49,
+              "EUR": 20.99
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-palworld-hosting/wn-palworld-6",
+            "image": "/pricing/palworld/sphere_legend.webp"
+          }
+        ],
+        "amd": [
+          {
+            "id": "wn-palworld-amd-1",
+            "name": "WN-Palworld 1",
+            "type": "amd",
+            "ram": "8 GB",
+            "cpu": "400%",
+            "storage": "50 GB NVMe",
+            "price": 349,
+            "prices": {
+              "INR": 349,
+              "USD": 4.39,
+              "EUR": 4.09
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-palworld-hosting/wn-palworld-amd-1",
+            "image": "/pricing/palworld/sphere_basic.webp"
+          },
+          {
+            "id": "wn-palworld-amd-2",
+            "name": "WN-Palworld 2",
+            "type": "amd",
+            "ram": "12 GB",
+            "cpu": "600%",
+            "storage": "70 GB NVMe",
+            "price": 519,
+            "prices": {
+              "INR": 519,
+              "USD": 6.49,
+              "EUR": 6.09
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-palworld-hosting/wn-palworld-amd-2",
+            "image": "/pricing/palworld/sphere_mega.webp"
+          },
+          {
+            "id": "wn-palworld-amd-3",
+            "name": "WN-Palworld 3",
+            "type": "amd",
+            "ram": "16 GB",
+            "cpu": "800%",
+            "storage": "100 GB NVMe",
+            "featured": true,
+            "price": 689,
+            "prices": {
+              "INR": 689,
+              "USD": 8.69,
+              "EUR": 8.09
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-palworld-hosting/wn-palworld-amd-3",
+            "image": "/pricing/palworld/sphere_giga.webp"
+          },
+          {
+            "id": "wn-palworld-amd-4",
+            "name": "WN-Palworld 4",
+            "type": "amd",
+            "ram": "24 GB",
+            "cpu": "1000%",
+            "storage": "140 GB NVMe",
+            "price": 1029,
+            "prices": {
+              "INR": 1029,
+              "USD": 12.89,
+              "EUR": 12.09
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-palworld-hosting/wn-palworld-amd-4",
+            "image": "/pricing/palworld/sphere_tera.webp"
+          },
+          {
+            "id": "wn-palworld-amd-5",
+            "name": "WN-Palworld 5",
+            "type": "amd",
+            "ram": "32 GB",
+            "cpu": "1200%",
+            "storage": "180 GB NVMe",
+            "price": 1379,
+            "prices": {
+              "INR": 1379,
+              "USD": 17.29,
+              "EUR": 16.19
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-palworld-hosting/wn-palworld-amd-5",
+            "image": "/pricing/palworld/sphere_master.webp"
+          },
+          {
+            "id": "wn-palworld-amd-6",
+            "name": "WN-Palworld 6",
+            "type": "amd",
+            "ram": "48 GB",
+            "cpu": "1400%",
+            "storage": "220 GB NVMe",
+            "price": 2069,
+            "prices": {
+              "INR": 2069,
+              "USD": 25.89,
+              "EUR": 24.29
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-palworld-hosting/wn-palworld-amd-6",
+            "image": "/pricing/palworld/sphere_legend.webp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fivem",
+      "name": "FiveM",
+      "description": "txAdmin web panel, MySQL database, custom scripts & artifact updater",
+      "icon": "/icons/824336.jpg",
+      "banner": "/banners/fivem-banner.jpg",
+      "featured": false,
+      "startingAt": "₹149/mo",
+      "primaryColor": "#FF6F00",
+      "plans": {
+        "intel": [
+          {
+            "id": "wn-fivem-1",
+            "name": "WN-FiveM 1",
+            "type": "intel",
+            "ram": "4 GB",
+            "cpu": "200%",
+            "storage": "30 GB NVMe",
+            "price": 149,
+            "prices": {
+              "INR": 149,
+              "USD": 1.89,
+              "EUR": 1.75
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-fivem-hosting/wn-fivem-1",
+            "image": "/pricing/fivem/futo.webp"
+          },
+          {
+            "id": "wn-fivem-2",
+            "name": "WN-FiveM 2",
+            "type": "intel",
+            "ram": "6 GB",
+            "cpu": "300%",
+            "storage": "40 GB NVMe",
+            "price": 219,
+            "prices": {
+              "INR": 219,
+              "USD": 2.75,
+              "EUR": 2.55
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-fivem-hosting/wn-fivem-2",
+            "image": "/pricing/fivem/dominator.webp"
+          },
+          {
+            "id": "wn-fivem-3",
+            "name": "WN-FiveM 3",
+            "type": "intel",
+            "ram": "8 GB",
+            "cpu": "400%",
+            "storage": "60 GB NVMe",
+            "featured": true,
+            "price": 299,
+            "prices": {
+              "INR": 299,
+              "USD": 3.75,
+              "EUR": 3.49
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-fivem-hosting/wn-fivem-3",
+            "image": "/pricing/fivem/police.webp"
+          },
+          {
+            "id": "wn-fivem-4",
+            "name": "WN-FiveM 4",
+            "type": "intel",
+            "ram": "12 GB",
+            "cpu": "600%",
+            "storage": "80 GB NVMe",
+            "price": 449,
+            "prices": {
+              "INR": 449,
+              "USD": 5.69,
+              "EUR": 5.29
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-fivem-hosting/wn-fivem-4",
+            "image": "/pricing/fivem/zentorno.webp"
+          },
+          {
+            "id": "wn-fivem-5",
+            "name": "WN-FiveM 5",
+            "type": "intel",
+            "ram": "16 GB",
+            "cpu": "800%",
+            "storage": "120 GB NVMe",
+            "price": 599,
+            "prices": {
+              "INR": 599,
+              "USD": 7.49,
+              "EUR": 6.99
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-fivem-hosting/wn-fivem-5",
+            "image": "/pricing/fivem/adder.webp"
+          },
+          {
+            "id": "wn-fivem-6",
+            "name": "WN-FiveM 6",
+            "type": "intel",
+            "ram": "24 GB",
+            "cpu": "1000%",
+            "storage": "160 GB NVMe",
+            "price": 899,
+            "prices": {
+              "INR": 899,
+              "USD": 11.29,
+              "EUR": 10.49
+            },
+            "orderLink": "https://portal.warnode.cloud/products/intel-fivem-hosting/wn-fivem-6",
+            "image": "/pricing/fivem/buzzard.webp"
+          }
+        ],
+        "amd": [
+          {
+            "id": "wn-fivem-amd-1",
+            "name": "WN-FiveM 1",
+            "type": "amd",
+            "ram": "4 GB",
+            "cpu": "200%",
+            "storage": "30 GB NVMe",
+            "price": 179,
+            "prices": {
+              "INR": 179,
+              "USD": 2.29,
+              "EUR": 2.09
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-fivem-hosting/wn-fivem-amd-1",
+            "image": "/pricing/fivem/futo.webp"
+          },
+          {
+            "id": "wn-fivem-amd-2",
+            "name": "WN-FiveM 2",
+            "type": "amd",
+            "ram": "6 GB",
+            "cpu": "300%",
+            "storage": "40 GB NVMe",
+            "price": 249,
+            "prices": {
+              "INR": 249,
+              "USD": 3.15,
+              "EUR": 2.95
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-fivem-hosting/wn-fivem-amd-2",
+            "image": "/pricing/fivem/dominator.webp"
+          },
+          {
+            "id": "wn-fivem-amd-3",
+            "name": "WN-FiveM 3",
+            "type": "amd",
+            "ram": "8 GB",
+            "cpu": "400%",
+            "storage": "60 GB NVMe",
+            "featured": true,
+            "price": 349,
+            "prices": {
+              "INR": 349,
+              "USD": 4.39,
+              "EUR": 4.09
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-fivem-hosting/wn-fivem-amd-3",
+            "image": "/pricing/fivem/police.webp"
+          },
+          {
+            "id": "wn-fivem-amd-4",
+            "name": "WN-FiveM 4",
+            "type": "amd",
+            "ram": "12 GB",
+            "cpu": "600%",
+            "storage": "80 GB NVMe",
+            "price": 519,
+            "prices": {
+              "INR": 519,
+              "USD": 6.49,
+              "EUR": 6.09
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-fivem-hosting/wn-fivem-amd-4",
+            "image": "/pricing/fivem/zentorno.webp"
+          },
+          {
+            "id": "wn-fivem-amd-5",
+            "name": "WN-FiveM 5",
+            "type": "amd",
+            "ram": "16 GB",
+            "cpu": "800%",
+            "storage": "120 GB NVMe",
+            "price": 689,
+            "prices": {
+              "INR": 689,
+              "USD": 8.69,
+              "EUR": 8.09
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-fivem-hosting/wn-fivem-amd-5",
+            "image": "/pricing/fivem/adder.webp"
+          },
+          {
+            "id": "wn-fivem-amd-6",
+            "name": "WN-FiveM 6",
+            "type": "amd",
+            "ram": "24 GB",
+            "cpu": "1000%",
+            "storage": "160 GB NVMe",
+            "price": 1029,
+            "prices": {
+              "INR": 1029,
+              "USD": 12.89,
+              "EUR": 12.09
+            },
+            "orderLink": "https://portal.warnode.cloud/products/amd-fivem-hosting/wn-fivem-amd-6",
+            "image": "/pricing/fivem/buzzard.webp"
           }
         ]
       }

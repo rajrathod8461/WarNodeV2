@@ -47,8 +47,9 @@ export default function HeroSection() {
 
   useEffect(() => {
     preloadImage(0)
-    preloadImage(1)
-    const initialPreload = setTimeout(() => preloadImage(2), 500)
+    const lazyPreload = setTimeout(() => {
+      preloadImage(1)
+    }, 2000)
 
     const interval = setInterval(() => {
       setCurrentBannerIndex((prev) => {
@@ -60,7 +61,7 @@ export default function HeroSection() {
 
     return () => {
       clearInterval(interval)
-      clearTimeout(initialPreload)
+      clearTimeout(lazyPreload)
       if (preloadTimeoutRef.current) clearTimeout(preloadTimeoutRef.current)
     }
   }, [preloadImage, preloadNextImages])
@@ -328,18 +329,18 @@ export default function HeroSection() {
 
                 <motion.div
                   variants={itemVariants}
-                  className="flex flex-col sm:flex-row gap-4 items-start mb-8"
+                  className="flex flex-col sm:flex-row gap-4 items-start mb-6"
                 >
                   <motion.div
                     variants={buttonVariants}
                     initial="initial"
                     whileHover="hover"
                     whileTap="tap"
-                    className="relative"
+                    className="relative w-full sm:w-auto"
                   >
                     <a
                       href="/games"
-                      className="group button-primary text-button-primary px-4 py-3 rounded-md font-bold text-md transition-all duration-300 flex items-center gap-2 backdrop-blur-sm no-underline shadow-none hover:shadow-none relative"
+                      className="group button-primary text-button-primary px-6 py-3.5 rounded-lg font-bold text-sm sm:text-base transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm no-underline shadow-none hover:shadow-none relative w-full sm:w-auto"
                     >
                       <span className="orbitron-font">{t('hero.getStarted')}</span>
                       <motion.div
@@ -374,16 +375,37 @@ export default function HeroSection() {
                     initial="initial"
                     whileHover="hover"
                     whileTap="tap"
+                    className="w-full sm:w-auto"
                   >
                     <a
-                      href="#features"
-                      className="hidden sm:inline-flex text-gray-700 dark:text-white hover:bg-transparent hover:shadow-none px-8 py-3 rounded-lg orbitron-font text-md transition-all duration-300 items-center gap-2 no-underline"
+                      href="#pricing"
+                      className="inline-flex w-full sm:w-auto justify-center text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white border border-gray-300/80 dark:border-white/10 hover:border-secondary hover:hover-gradient px-6 py-3.5 rounded-lg orbitron-font text-sm sm:text-base transition-all duration-300 items-center gap-2 no-underline backdrop-blur-sm"
                     >
                       {t('hero.learnMore')}
                       <ArrowRight className="w-4 h-4" />
                     </a>
-
                   </motion.div>
+                </motion.div>
+
+                {/* Real Trust Indicators (24-Hour Guarantee, Instant Setup, DDoS Protection) */}
+                <motion.div
+                  variants={itemVariants}
+                  className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-8 text-xs text-gray-600 dark:text-gray-400"
+                >
+                  <div className="flex items-center gap-1.5">
+                    <Shield className="w-4 h-4 text-blue-500 shrink-0" />
+                    <span className="font-medium text-gray-800 dark:text-gray-300">24h Money-Back Guarantee</span>
+                  </div>
+                  <span className="text-gray-400 dark:text-gray-600 hidden sm:inline">•</span>
+                  <div className="flex items-center gap-1.5">
+                    <Clock className="w-4 h-4 text-blue-500 shrink-0" />
+                    <span className="font-medium text-gray-800 dark:text-gray-300">Instant Server Setup</span>
+                  </div>
+                  <span className="text-gray-400 dark:text-gray-600 hidden sm:inline">•</span>
+                  <div className="flex items-center gap-1.5">
+                    <Server className="w-4 h-4 text-blue-500 shrink-0" />
+                    <span className="font-medium text-gray-800 dark:text-gray-300">WarShield DDoS Included</span>
+                  </div>
                 </motion.div>
 
 

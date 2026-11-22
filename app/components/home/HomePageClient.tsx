@@ -4,6 +4,7 @@ import HeroSection from "../HeroSection"
 import FeaturesSection from "../FeaturesSection"
 import PanelShowcase from "../PanelShowcase"
 import LocationsSection from "../LocationsSection"
+import WallOfLove from "../WallOfLove"
 import FAQSection from "../FAQSection"
 import PricingSection from "../PricingSection"
 import Footer from "../Footer"
@@ -15,10 +16,11 @@ export default function HomePageClient() {
       <Navbar />
       <HeroSection />
       <FeaturesSection />
-      <LocationsSection />
       <PricingSection />
-      <FAQSection />
+      <LocationsSection />
       <PanelShowcase />
+      <WallOfLove />
+      <FAQSection />
       <Footer />
     </div>
   )

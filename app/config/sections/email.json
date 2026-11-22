@@ -1,0 +1,185 @@
+{
+  "hero": {
+    "badge": "Professional Email Hosting",
+    "title": "Business Email",
+    "titleHighlight": "Hosting",
+    "description": "Professional email hosting with custom domains, spam protection, webmail access, and full IMAP/SMTP/POP3 support. Perfect for businesses of all sizes.",
+    "panelName": "Web Email Panel",
+    "panelDescription": "Fully managed web-based control panel"
+  },
+  "features": [
+    {
+      "icon": "Shield",
+      "title": "Spam & Virus Protection",
+      "description": "Multi-layer spam filtering and real-time virus scanning powered by SpamAssassin and ClamAV"
+    },
+    {
+      "icon": "Globe",
+      "title": "Custom Domain Email",
+      "description": "Use your own domain (you@yourcompany.com) with full MX record control and DNS management"
+    },
+    {
+      "icon": "Monitor",
+      "title": "Web Control Panel",
+      "description": "Manage all mailboxes, aliases, forwarders, and auto-responders through our modern web-based control panel"
+    },
+    {
+      "icon": "Zap",
+      "title": "Roundcube Webmail",
+      "description": "Access your email anywhere with the built-in Roundcube webmail — no email client required"
+    },
+    {
+      "icon": "Lock",
+      "title": "SSL/TLS Encryption",
+      "description": "End-to-end encryption for all email traffic via SMTP, IMAP, and POP3 over TLS/SSL"
+    },
+    {
+      "icon": "RefreshCw",
+      "title": "IMAP / POP3 / SMTP",
+      "description": "Full protocol support for any email client — Outlook, Thunderbird, Apple Mail, and mobile apps"
+    },
+    {
+      "icon": "Users",
+      "title": "Email Aliases & Forwarders",
+      "description": "Create unlimited aliases and forwarders to route emails to any address or multiple recipients"
+    },
+    {
+      "icon": "BarChart2",
+      "title": "Email Usage Analytics",
+      "description": "Monitor storage usage, delivery stats, and mailbox activity through your email dashboard"
+    },
+    {
+      "icon": "Clock",
+      "title": "Auto-Responders",
+      "description": "Set up automatic replies for vacations, out-of-office, or custom business responses"
+    }
+  ],
+  "plans": [
+    {
+      "id": "WN-EMAIL-1",
+      "name": "WN-EMAIL-1",
+      "storage": "2 GiB",
+      "storageRaw": 2,
+      "traffic": "50 GiB",
+      "domains": 1,
+      "mailboxes": 1,
+      "emailAddresses": 5,
+      "emailForwardings": 5,
+      "price": 39,
+      "badge": null,
+      "orderLink": "https://portal.warnode.cloud/products/email-hosting/wn-email-1"
+    },
+    {
+      "id": "WN-EMAIL-2",
+      "name": "WN-EMAIL-2",
+      "storage": "5 GiB",
+      "storageRaw": 5,
+      "traffic": "100 GiB",
+      "domains": 1,
+      "mailboxes": 3,
+      "emailAddresses": 15,
+      "emailForwardings": 15,
+      "price": 69,
+      "badge": null,
+      "orderLink": "https://portal.warnode.cloud/products/email-hosting/wn-email-2"
+    },
+    {
+      "id": "WN-EMAIL-3",
+      "name": "WN-EMAIL-3",
+      "storage": "10 GiB",
+      "storageRaw": 10,
+      "traffic": "200 GiB",
+      "domains": 1,
+      "mailboxes": 5,
+      "emailAddresses": 25,
+      "emailForwardings": 25,
+      "price": 99,
+      "badge": null,
+      "orderLink": "https://portal.warnode.cloud/products/email-hosting/wn-email-3"
+    },
+    {
+      "id": "WN-EMAIL-4",
+      "name": "WN-EMAIL-4",
+      "storage": "15 GiB",
+      "storageRaw": 15,
+      "traffic": "300 GiB",
+      "domains": 2,
+      "mailboxes": 10,
+      "emailAddresses": 50,
+      "emailForwardings": 50,
+      "price": 149,
+      "badge": "⭐ Popular",
+      "orderLink": "https://portal.warnode.cloud/products/email-hosting/wn-email-4"
+    },
+    {
+      "id": "WN-EMAIL-5",
+      "name": "WN-EMAIL-5",
+      "storage": "25 GiB",
+      "storageRaw": 25,
+      "traffic": "500 GiB",
+      "domains": 3,
+      "mailboxes": 20,
+      "emailAddresses": 100,
+      "emailForwardings": 100,
+      "price": 199,
+      "badge": null,
+      "orderLink": "https://portal.warnode.cloud/products/email-hosting/wn-email-5"
+    },
+    {
+      "id": "WN-EMAIL-6",
+      "name": "WN-EMAIL-6",
+      "storage": "35 GiB",
+      "storageRaw": 35,
+      "traffic": "750 GiB",
+      "domains": 5,
+      "mailboxes": 30,
+      "emailAddresses": 150,
+      "emailForwardings": 150,
+      "price": 299,
+      "badge": null,
+      "orderLink": "https://portal.warnode.cloud/products/email-hosting/wn-email-6"
+    },
+    {
+      "id": "WN-EMAIL-7",
+      "name": "WN-EMAIL-7",
+      "storage": "50 GiB",
+      "storageRaw": 50,
+      "traffic": "1 TiB",
+      "domains": 10,
+      "mailboxes": 50,
+      "emailAddresses": 250,
+      "emailForwardings": 250,
+      "price": 399,
+      "badge": null,
+      "orderLink": "https://portal.warnode.cloud/products/email-hosting/wn-email-7"
+    },
+    {
+      "id": "WN-EMAIL-8",
+      "name": "WN-EMAIL-8",
+      "storage": "75 GiB",
+      "storageRaw": 75,
+      "traffic": "1.5 TiB",
+      "domains": 15,
+      "mailboxes": 75,
+      "emailAddresses": 375,
+      "emailForwardings": 375,
+      "price": 499,
+      "badge": null,
+      "orderLink": "https://portal.warnode.cloud/products/email-hosting/wn-email-8"
+    },
+    {
+      "id": "WN-EMAIL-9",
+      "name": "WN-EMAIL-9",
+      "storage": "100 GiB",
+      "storageRaw": 100,
+      "traffic": "2 TiB",
+      "domains": 20,
+      "mailboxes": 100,
+      "emailAddresses": 500,
+      "emailForwardings": 500,
+      "price": 599,
+      "badge": null,
+      "orderLink": "https://portal.warnode.cloud/products/email-hosting/wn-email-9"
+    }
+  ]
+}
