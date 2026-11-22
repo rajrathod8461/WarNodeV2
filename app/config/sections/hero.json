@@ -21,6 +21,15 @@
         "showInDropdown": true
       },
       {
+        "id": "cs2",
+        "name": "Counter-Strike 2",
+        "displayName": "CS2",
+        "banner": "/banners/cs2-banner.webp",
+        "color": "#F59E0B",
+        "showSuffix": true,
+        "showInDropdown": true
+      },
+      {
         "id": "hytale",
         "name": "Hytale",
         "displayName": "Hytale",

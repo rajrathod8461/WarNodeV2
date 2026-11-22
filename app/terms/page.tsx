@@ -1,238 +1,102 @@
 "use client"
 
-import { useState } from "react"
-import { motion } from "framer-motion"
+import { useState, useEffect, useMemo } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import {
+  FileText,
+  ShieldCheck,
   Zap,
-  CreditCard,
-  CheckCircle2,
-  Lock,
-  MessageCircle,
-  Shield,
-  AlertTriangle,
-  Clock,
-  ArrowRight,
-  X,
+  Search,
+  Printer,
   ChevronDown,
-  type LucideIcon,
+  MessageCircle,
+  AlertTriangle,
+  Scale,
+  ShieldAlert,
+  ArrowRight,
+  ExternalLink,
+  LifeBuoy,
 } from "lucide-react"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import { AccordionSection } from "../components/legal/AccordionSection"
-import legalConfig from "../config/sections/legal.json"
+import { LegalSectionRenderer } from "../components/legal/LegalSectionRenderer"
+import legalData from "../config/sections/legal.json"
 import warnodesConfig from "../config/sections/warnodes.json"
-import type { TermsOfServiceConfig, TermsSection } from "../types/legal"
+import type { LegalPoliciesConfig, PolicyPart, PolicySection } from "../types/legal"
 
-const terms = legalConfig.termsOfService as TermsOfServiceConfig
+const legal = legalData as unknown as LegalPoliciesConfig
 
-const iconMap: Record<string, LucideIcon> = {
-  Zap,
-  CreditCard,
-  CheckCircle2,
-  Lock,
-  MessageCircle,
-}
-
-function FaqItem({ question, answer }: { question: string; answer: string }) {
-  const [open, setOpen] = useState(false)
-
-  return (
-    <div className="rounded-lg border border-secondary bg-gray-50 dark:bg-white/5">
-      <button
-        type="button"
-        onClick={() => setOpen(!open)}
-        className="flex w-full items-center justify-between px-4 py-3 text-left text-sm font-medium text-gray-900 dark:text-white"
-      >
-        {question}
-        <ChevronDown
-          className={`h-4 w-4 shrink-0 icon-text-primary transition-transform ${open ? "rotate-180" : ""}`}
-        />
-      </button>
-      {open && (
-        <p className="border-t border-secondary/60 px-4 py-3 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-          {answer}
-        </p>
-      )}
-    </div>
-  )
-}
-
-function TermsSectionContent({ section }: { section: TermsSection }) {
-  return (
-    <>
-      <p className="mb-5 rounded-lg border border-secondary/50 bg-gray-50 px-4 py-3 text-sm leading-relaxed text-gray-600 dark:bg-white/5 dark:text-gray-300">
-        <span className="font-semibold text-gray-900 dark:text-white">TL;DR:</span> {section.tldr}
-      </p>
-
-      {section.stats && (
-        <div className="mb-6 grid grid-cols-3 gap-3">
-          {section.stats.map((stat) => (
-            <motion.div
-              key={stat.label}
-              className="rounded-lg border border-secondary bg-gray-50 px-3 py-4 text-center dark:bg-white/5"
-            >
-              <div className="orbitron-font text-lg font-bold icon-text-primary sm:text-xl">{stat.value}</div>
-              <div className="mt-1 text-xs text-gray-600 dark:text-gray-400">{stat.label}</div>
-            </motion.div>
-          ))}
-        </div>
-      )}
-
-      {section.listTitle && section.listItems && (
-        <div className="mb-6">
-          <h3 className="mb-3 text-sm font-semibold text-gray-900 dark:text-white">{section.listTitle}</h3>
-          <ul className="space-y-2">
-            {section.listItems.map((item) => (
-              <li key={item} className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300">
-                <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 icon-text-primary" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {section.subsections?.map((sub) => (
-        <div key={sub.title} className="mb-6">
-          <h3 className="mb-3 text-sm font-semibold text-gray-900 dark:text-white">{sub.title}</h3>
-          <ul className="space-y-2">
-            {sub.items.map((item) => (
-              <li key={item} className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 icon-text-primary" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-
-      {section.allowedItems && (
-        <div className="mb-6 grid gap-6 sm:grid-cols-2">
-          <div>
-            <h3 className="mb-3 text-sm font-semibold text-green-600 dark:text-green-400">
-              {section.allowedTitle ?? "Allowed"}
-            </h3>
-            <ul className="space-y-2">
-              {section.allowedItems.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          {section.prohibitedItems && (
-            <div>
-              <h3 className="mb-3 text-sm font-semibold text-red-600 dark:text-red-400">
-                {section.prohibitedTitle ?? "Prohibited"}
-              </h3>
-              <ul className="space-y-2">
-                {section.prohibitedItems.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300">
-                    <X className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
-      )}
-
-      {!section.allowedItems && section.listItems && !section.listTitle && (
-        <ul className="mb-6 space-y-2">
-          {section.listItems.map((item) => (
-            <li key={item} className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300">
-              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 icon-text-primary" />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {section.faqs && (
-        <div className="mb-6 space-y-2">
-          <h3 className="mb-3 text-sm font-semibold text-gray-900 dark:text-white">Common Questions</h3>
-          {section.faqs.map((faq) => (
-            <FaqItem key={faq.question} question={faq.question} answer={faq.answer} />
-          ))}
-        </div>
-      )}
-
-      {section.callout && (
-        <div className="mb-6 flex items-start gap-3 rounded-lg border border-amber-500/30 bg-amber-50 px-4 py-3 dark:bg-amber-950/20">
-          <Clock className="mt-0.5 h-5 w-5 shrink-0 text-amber-600 dark:text-amber-400" />
-          <div>
-            <p className="text-sm font-semibold text-amber-800 dark:text-amber-300">{section.callout.title}</p>
-            <p className="mt-1 text-sm leading-relaxed text-amber-700 dark:text-amber-400/90">
-              {section.callout.content}
-            </p>
-          </div>
-        </div>
-      )}
-
-      {section.highlight && (
-        <div
-          className={`flex items-start gap-3 rounded-lg border px-4 py-3 ${
-            section.id === "aup"
-              ? "border-red-500/30 bg-red-50 dark:bg-red-950/20"
-              : "border-secondary bg-gray-50 dark:bg-white/5"
-          }`}
-        >
-          {section.id === "aup" ? (
-            <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-red-500" />
-          ) : section.id === "sla" ? (
-            <Shield className="mt-0.5 h-5 w-5 shrink-0 icon-text-primary" />
-          ) : (
-            <Lock className="mt-0.5 h-5 w-5 shrink-0 icon-text-primary" />
-          )}
-          <div>
-            <p className="text-sm font-semibold text-gray-900 dark:text-white">{section.highlight.title}</p>
-            <p className="mt-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-              {section.highlight.content}
-            </p>
-          </div>
-        </div>
-      )}
-
-      {section.id === "support" && (
-        <div className="mt-6 flex flex-wrap gap-3">
-          <a
-            href={warnodesConfig.links.tickets}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg border border-secondary button-primary px-6 py-3 text-sm font-medium text-button-primary transition-colors hover:border-secondary hover:hover-gradient"
-          >
-            <MessageCircle className="h-4 w-4" />
-            Open a Ticket
-          </a>
-          <a
-            href={terms.discordUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg border border-secondary bg-white/70 px-6 py-3 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 dark:bg-white/5 dark:text-gray-200 dark:hover:bg-white/10"
-          >
-            <MessageCircle className="h-4 w-4" />
-            Join Discord
-          </a>
-        </div>
-      )}
-    </>
-  )
-}
+type PolicyTabKey = "tos" | "aup" | "sla"
 
 export default function TermsPage() {
-  const [openId, setOpenId] = useState<string | null>(null)
+  const [activeTab, setActiveTab] = useState<PolicyTabKey>("tos")
+  const [openSectionId, setOpenSectionId] = useState<string | null>(null)
+  const [searchQuery, setSearchQuery] = useState("")
+
+  // Handle URL hash navigation (#tos, #aup, #sla)
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash.toLowerCase().replace("#", "")
+      if (hash === "aup") {
+        setActiveTab("aup")
+      } else if (hash === "sla") {
+        setActiveTab("sla")
+      } else if (hash === "tos") {
+        setActiveTab("tos")
+      }
+    }
+
+    handleHash()
+    window.addEventListener("hashchange", handleHash)
+    return () => window.removeEventListener("hashchange", handleHash)
+  }, [])
+
+  // Active Policy Part data
+  const currentPolicy: PolicyPart = useMemo(() => {
+    switch (activeTab) {
+      case "aup":
+        return legal.acceptableUsePolicy
+      case "sla":
+        return legal.serviceLevelAgreement
+      case "tos":
+      default:
+        return legal.termsOfService
+    }
+  }, [activeTab])
+
+  // Reset open section when switching tabs
+  useEffect(() => {
+    if (currentPolicy.sections.length > 0) {
+      setOpenSectionId(currentPolicy.sections[0].id)
+    }
+  }, [activeTab, currentPolicy])
+
+  // Filter sections by search query
+  const filteredSections = useMemo(() => {
+    if (!searchQuery.trim()) return currentPolicy.sections
+    const q = searchQuery.toLowerCase()
+    return currentPolicy.sections.filter(
+      (sec) =>
+        sec.title.toLowerCase().includes(q) ||
+        sec.content.some((c) => c.toLowerCase().includes(q))
+    )
+  }, [currentPolicy, searchQuery])
 
   const toggleSection = (id: string) => {
-    setOpenId((current) => (current === id ? null : id))
+    setOpenSectionId((curr) => (curr === id ? null : id))
   }
 
-  const openAndScroll = (id: string) => {
-    setOpenId(id)
-    requestAnimationFrame(() => {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" })
-    })
+  const expandAll = () => {
+    setOpenSectionId("ALL")
+  }
+
+  const collapseAll = () => {
+    setOpenSectionId(null)
+  }
+
+  const handleDownloadPdf = () => {
+    window.print()
   }
 
   return (
@@ -240,77 +104,224 @@ export default function TermsPage() {
       <Navbar />
 
       <div className="relative overflow-hidden">
-        <motion.div className="absolute inset-0">
+        {/* Background gradient overlay */}
+        <div className="absolute inset-0 pointer-events-none">
           <div
-            className="absolute inset-0 bg-cover bg-center opacity-20"
+            className="absolute inset-0 bg-cover bg-center opacity-10 dark:opacity-20"
             style={{ backgroundImage: "url('/banners/vps.webp')" }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-gray-50/90 to-gray-50 dark:from-[#0a0b0f] dark:via-[#0a0b0f]/90 dark:to-[#0a0b0f]" />
-        </motion.div>
+        </div>
 
-        <div className="relative mx-auto max-w-4xl px-4 pb-16 pt-28 sm:px-6 lg:px-8">
+        <div className="relative mx-auto max-w-5xl px-4 pb-20 pt-28 sm:px-6 lg:px-8">
+          {/* Header */}
           <motion.header
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-8 text-center"
+            className="mb-10 text-center"
           >
-            <div className="mb-5 inline-flex items-center gap-2 rounded-tl-2xl rounded-br-2xl border border-secondary card-primary px-4 py-2">
-              <Zap className="h-4 w-4 icon-text-primary" />
-              <span className="text-sm font-medium icon-text-primary">{terms.badge}</span>
+            <div className="mb-4 inline-flex items-center gap-2 rounded-tl-2xl rounded-br-2xl border border-secondary card-primary px-4 py-2">
+              <Scale className="h-4 w-4 icon-text-primary" />
+              <span className="text-xs font-mono font-bold uppercase tracking-wider icon-text-primary">
+                WarNodes Legal Policies · Version {legal.version}
+              </span>
             </div>
 
-            <h1 className="orbitron-font mb-4 text-4xl font-bold text-gray-900 dark:text-white sm:text-5xl">
-              {terms.title}
+            <h1 className="orbitron-font mb-4 text-3xl font-extrabold text-gray-900 dark:text-white sm:text-5xl tracking-tight">
+              {currentPolicy.title}
             </h1>
-            <p className="mx-auto mb-6 max-w-2xl text-base text-gray-600 dark:text-gray-300 sm:text-lg">
-              {terms.intro}
+            <p className="mx-auto max-w-3xl text-sm sm:text-base leading-relaxed text-gray-600 dark:text-gray-300">
+              {currentPolicy.intro}
             </p>
-            <span className="inline-block rounded-lg border border-secondary bg-white/70 px-4 py-2 text-sm text-gray-600 dark:bg-white/5 dark:text-gray-300">
-              Last Updated: {terms.lastUpdated}
-            </span>
+
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-gray-500 dark:text-gray-400 font-mono">
+              <span className="px-3 py-1 rounded-full bg-white/70 dark:bg-white/5 border border-secondary">
+                Last Updated: {legal.lastUpdated}
+              </span>
+              <span className="px-3 py-1 rounded-full bg-white/70 dark:bg-white/5 border border-secondary">
+                Jurisdiction: {legal.address}
+              </span>
+              <button
+                type="button"
+                onClick={handleDownloadPdf}
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 hover:bg-blue-500/20 transition-colors"
+              >
+                <Printer className="h-3.5 w-3.5" />
+                <span>Print Document</span>
+              </button>
+            </div>
           </motion.header>
 
-          <div className="mb-6 flex flex-wrap justify-center gap-2">
-            {terms.sections.map((section) => {
-              const Icon = iconMap[section.icon] ?? Zap
-              const isOpen = openId === section.id
-              return (
-                <button
-                  key={section.id}
-                  type="button"
-                  onClick={() => openAndScroll(section.id)}
-                  className={`inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm transition-all duration-200 ${
-                    isOpen
-                      ? "border-secondary button-primary text-button-primary"
-                      : "border-secondary bg-white/70 text-gray-600 hover:bg-gray-100 dark:bg-white/5 dark:text-gray-300 dark:hover:bg-white/10"
-                  }`}
-                >
-                  <Icon className="h-4 w-4 shrink-0" />
-                  {section.title}
-                </button>
-              )
-            })}
+          {/* 3 Main Policy Navigation Tabs */}
+          <div className="mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 p-1.5 rounded-2xl border-2 border-secondary bg-white/80 dark:bg-[#0c0e17] shadow-lg backdrop-blur-xl">
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveTab("tos")
+                  window.location.hash = "tos"
+                }}
+                className={`flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 border ${
+                  activeTab === "tos"
+                    ? "border-blue-500/80 bg-blue-600 text-white shadow-sm"
+                    : "border-transparent text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/5"
+                }`}
+              >
+                <FileText className="h-4 w-4 shrink-0" />
+                <span>Terms of Service</span>
+                <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${activeTab === "tos" ? "bg-white/20 text-white" : "bg-white/10 text-gray-400"}`}>
+                  26 Sec
+                </span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveTab("aup")
+                  window.location.hash = "aup"
+                }}
+                className={`flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 border ${
+                  activeTab === "aup"
+                    ? "border-blue-500/80 bg-blue-600 text-white shadow-sm"
+                    : "border-transparent text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/5"
+                }`}
+              >
+                <ShieldAlert className="h-4 w-4 shrink-0" />
+                <span>Acceptable Use (AUP)</span>
+                <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${activeTab === "aup" ? "bg-white/20 text-white" : "bg-white/10 text-gray-400"}`}>
+                  Security
+                </span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveTab("sla")
+                  window.location.hash = "sla"
+                }}
+                className={`flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 border ${
+                  activeTab === "sla"
+                    ? "border-blue-500/80 bg-blue-600 text-white shadow-sm"
+                    : "border-transparent text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/5"
+                }`}
+              >
+                <Zap className="h-4 w-4 shrink-0" />
+                <span>SLA Guarantee</span>
+                <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${activeTab === "sla" ? "bg-white/20 text-white" : "bg-white/10 text-gray-400"}`}>
+                  99.9%
+                </span>
+              </button>
+            </div>
           </div>
 
-          <div className="space-y-3">
-            {terms.sections.map((section, index) => {
-              const Icon = iconMap[section.icon] ?? Zap
+          {/* Search bar & Expand / Collapse controls */}
+          <div className="mb-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div className="relative w-full sm:w-80">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <input
+                type="text"
+                placeholder={`Search in ${currentPolicy.title}...`}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-9 pr-4 py-2 text-xs sm:text-sm rounded-xl border border-secondary bg-white/90 dark:bg-[#0c0e17] text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 shadow-sm"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-400 hover:text-gray-200"
+                >
+                  Clear
+                </button>
+              )}
+            </div>
+
+            <div className="flex items-center gap-2 self-end sm:self-auto text-xs font-mono">
+              <button
+                type="button"
+                onClick={expandAll}
+                className="px-3 py-1.5 rounded-lg border border-secondary bg-white/70 dark:bg-white/5 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10"
+              >
+                Expand All
+              </button>
+              <button
+                type="button"
+                onClick={collapseAll}
+                className="px-3 py-1.5 rounded-lg border border-secondary bg-white/70 dark:bg-white/5 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10"
+              >
+                Collapse All
+              </button>
+            </div>
+          </div>
+
+          {/* Sections List */}
+          <div className="space-y-3.5">
+            {filteredSections.map((section, idx) => {
+              const isOpen = openSectionId === section.id || openSectionId === "ALL"
+
               return (
                 <AccordionSection
                   key={section.id}
                   id={section.id}
-                  title={section.title}
-                  icon={Icon}
-                  summary={section.tldr}
-                  open={openId === section.id}
+                  title={`${section.num}. ${section.title}`}
+                  open={isOpen}
                   onToggle={() => toggleSection(section.id)}
-                  delay={index * 0.04}
+                  delay={idx < 5 ? idx * 0.03 : 0}
                 >
-                  <TermsSectionContent section={section} />
+                  <LegalSectionRenderer section={section} searchQuery={searchQuery} />
                 </AccordionSection>
               )
             })}
+
+            {filteredSections.length === 0 && (
+              <div className="p-8 text-center rounded-2xl border border-secondary bg-white/50 dark:bg-white/5">
+                <AlertTriangle className="h-8 w-8 text-amber-500 mx-auto mb-2" />
+                <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">
+                  No matching clauses found for "{searchQuery}"
+                </p>
+                <p className="text-xs text-gray-500 mt-1">Try another search keyword or clear the filter.</p>
+              </div>
+            )}
+          </div>
+
+          {/* Bottom Direct Support Links */}
+          <div className="mt-12 p-6 sm:p-8 rounded-2xl border-2 border-secondary bg-white/90 dark:bg-[#0c0e17] shadow-xl">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div>
+                <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 dark:text-blue-400 uppercase mb-2">
+                  <LifeBuoy className="h-4 w-4" />
+                  <span>Legal & Compliance Support</span>
+                </div>
+                <h3 className="orbitron-font text-xl font-bold text-gray-900 dark:text-white">
+                  Have questions about our agreements or terms?
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 max-w-xl">
+                  Our engineering and support teams are available 24/7. Formal legal notices and inquiries can be submitted via client ticket or email.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href={warnodesConfig.links.tickets}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm button-primary text-button-primary shadow-sm hover:shadow-md transition-all hover:opacity-90 active:scale-95"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  <span>Open Ticket</span>
+                </a>
+                <a
+                  href={warnodesConfig.links.discord}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm border border-secondary bg-white dark:bg-white/5 text-gray-800 dark:text-white shadow-sm hover:shadow-md hover:bg-gray-100 dark:hover:bg-white/10 transition-all active:scale-95"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  <span>Discord Community</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

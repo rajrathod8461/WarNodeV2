@@ -11,6 +11,7 @@ export interface PricingPlan {
   popular: boolean;
   link: string;
   showStartingPrice?: boolean;
+  badge?: string;
 }
 
 export interface PricingSection {

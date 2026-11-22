@@ -1,304 +1,1059 @@
 {
+  "lastUpdated": "21 November 2026",
+  "version": "2.0",
+  "entity": "WarNodes Cloud Technologies",
+  "address": "Mumbai, Maharashtra, India",
+  "contacts": {
+    "support": "support@warnode.in",
+    "legal": "legal@warnode.cloud",
+    "billing": "billing@warnode.cloud",
+    "privacy": "privacy@warnode.cloud",
+    "abuse": "abuse@warnode.cloud",
+    "security": "security@warnode.cloud"
+  },
   "termsOfService": {
-    "badge": "WarNodes Legal",
+    "id": "tos",
+    "badge": "Binding Legal Contract",
     "title": "Terms of Service",
-    "intro": "Read through our regulations, agreements, and standard SLA guarantees below.",
-    "lastUpdated": "Dec 11, 2024",
-    "contactEmail": "legal@warnode.cloud",
-    "discordUrl": "https://dcd.gg/warnode",
-    "navGroups": [
-      {
-        "label": "Policies",
-        "items": [
-          { "id": "sla", "label": "SLA Guarantee", "icon": "Zap" },
-          { "id": "billing", "label": "Billing & Payments", "icon": "CreditCard" }
-        ]
-      },
-      {
-        "label": "Rules & Guidelines",
-        "items": [
-          { "id": "aup", "label": "Acceptable Use", "icon": "CheckCircle2" },
-          { "id": "data", "label": "Data & Backups", "icon": "Lock" }
-        ]
-      },
-      {
-        "label": "Help",
-        "items": [
-          { "id": "support", "label": "Get Support", "icon": "MessageCircle" }
-        ]
-      }
-    ],
+    "intro": "These Terms of Service govern your access to and use of all WarNodes infrastructure, control panels, hosting services, and Discord integrations. Please read them carefully.",
     "sections": [
       {
-        "id": "sla",
-        "icon": "Zap",
-        "title": "SLA Guarantee",
-        "tldr": "99.9% uptime guaranteed. If we're down 36+ hours straight, you get 1 free month automatically.",
-        "stats": [
-          { "value": "99.9%", "label": "Uptime Guarantee" },
-          { "value": "36h", "label": "Downtime Threshold" },
-          { "value": "1 Month", "label": "Free Compensation" }
-        ],
-        "listTitle": "What's included",
-        "listItems": [
-          "2Gbps network uplink per node",
-          "Enterprise Layer 4 DDoS protection",
-          "Automatic failover mechanisms",
-          "24/7 infrastructure monitoring"
-        ],
-        "highlight": {
-          "title": "Data Loss Protection",
-          "content": "If you lose data due to our hardware failure, you get a full refund immediately."
-        }
+        "id": "tos-1",
+        "num": 1,
+        "title": "The Agreement",
+        "content": [
+          "1.1 These Terms of Service (\"Terms\") are a binding agreement between you (\"Customer\", \"you\") and WarNodes, operated by WarNodes Cloud Technologies, Mumbai, Maharashtra, India, India (\"WarNodes\", \"we\", \"us\").",
+          "1.2 They apply to every service we provide through warnode.cloud, portal.warnode.cloud, our panels (main, VPS, web hosting, reseller) and our Discord server, including game server hosting (Minecraft, Hytale and others), VPS hosting, Discord bot hosting, web hosting (including free plans), WarShield DDoS proxy, reseller services and setup or development work (together, the \"Services\").",
+          "1.3 The agreement consists of these Terms, the Acceptable Use Policy (Part B), the SLA (Part C), the Refund & Cancellation Policy (Part D), the Privacy Policy (Part E), and the plan page or order confirmation for your purchase. If they conflict, the order-specific terms apply first, then Parts B, C and D for their own subject matter, then these Terms.",
+          "1.4 You accept this agreement when you create an account, place an order, make a payment or use any Service, whichever happens first. Electronic acceptance is valid and binding under the Information Technology Act, 2000. If you do not agree, do not use the Services.",
+          "1.5 If you accept on behalf of a company or other entity, you confirm you have authority to bind it, and \"you\" includes that entity."
+        ]
       },
       {
-        "id": "billing",
-        "icon": "CreditCard",
-        "title": "Billing & Payments",
-        "tldr": "WarNodes accepts UPI, cards, and PayPal. Services activated within 2 hours. Auto-renewal with 7-day reminder. Cancel anytime, service remains active till period ends.",
-        "subsections": [
-          {
-            "title": "Service Activation",
-            "items": [
-              "Instant activation for most Minecraft & Bot hosting plans",
-              "Within 2 hours for VPS and Web Hosting plans",
-              "Email confirmation sent immediately after activation"
+        "id": "tos-2",
+        "num": 2,
+        "title": "Eligibility",
+        "content": [
+          "2.1 You must be at least 18 years old and legally able to enter a contract under the law that applies to you.",
+          "2.2 A person under 18 may use the Services only through an account opened and controlled by a parent or legal guardian, who accepts these Terms, is responsible for all use and payments, and consents to the processing of the minor's data. We may ask for proof. If we learn that a minor has an account without this, we may close it and delete the data.",
+          "2.3 You must not be barred from receiving the Services under any applicable law or sanctions, and must not have been previously terminated by us for abuse, fraud or chargebacks."
+        ]
+      },
+      {
+        "id": "tos-3",
+        "num": 3,
+        "title": "Your Account",
+        "content": [
+          "3.1 One account per person. Each person or entity may hold one account. Extra accounts created to dodge a ban, to claim another refund, trial or free plan, or to hide linked activity may be closed without refund.",
+          "3.2 Accurate details. You must give true and current name, email, phone number and billing address, and keep them updated. We may ask for identity, payment-instrument or address verification (KYC) for fraud prevention, VPS orders, high-value orders, or orders our systems flag. If you do not complete verification in the time we give, we may cancel the order. An order cancelled before activation is refunded in full.",
+          "3.3 Security. You are responsible for your passwords, API keys, panel logins and any 2FA devices, and for everything done through your account. Enable two-factor authentication where offered. Tell us immediately if you suspect misuse. WarNodes staff will never ask for your password or OTP.",
+          "3.4 No transfer or sharing. You may not sell, transfer, rent or share your account or access to it without our written approval. Ownership changes are made by a ticket from the registered email of the current account holder.",
+          "3.5 Ownership disputes. We treat the person registered on the account (and who controls its registered email) as its owner. We are not obliged to settle disputes between co-owners, friends, staff members of your community or anyone you gave access to, and may freeze the account until the dispute is resolved.",
+          "3.6 Email is our main channel. Keep your registered email working. We are not responsible for notices missed because of spam filters, full inboxes or outdated details."
+        ]
+      },
+      {
+        "id": "tos-4",
+        "num": 4,
+        "title": "The Services",
+        "content": [
+          "4.1 Each Service is described on its plan page at the time you order (resources, location, hardware family, features). Resources are as stated on that page.",
+          "4.2 Activation. Most Services are provisioned automatically within minutes of confirmed payment. Some may take up to 2 hours (for example during fraud checks, manual verification, high demand or maintenance). The \"activation date\" is the moment we first make the Service or its login details available to you. We record times in Indian Standard Time (IST).",
+          "4.3 Locations. You choose a location at order. Moving a Service to another location is subject to availability. We may relocate a Service for maintenance or capacity reasons with equal or better specifications and reasonable notice.",
+          "4.4 Hardware. We may substitute CPU models, drives or hosts with equivalent or better ones. Latency and speed figures on our website (for example \"under 20 ms\") are typical values, not guarantees (see section 18).",
+          "4.5 Changes to Services. We may improve, modify or retire features. If we discontinue an entire paid Service, we will give at least 30 days' notice where practical and refund prepaid, unused fees pro rata.",
+          "4.6 Free and beta Services. Free plans and beta features are provided as is, with no SLA and no guarantee of availability. We may limit, change or remove them at any time, and may delete free services that are inactive for more than 30 days.",
+          "4.7 Development and setup work. Custom work (configuration, builds, development, migrations beyond standard support) is agreed by ticket, with a written scope and price. Refunds for such work follow Part D, section 6.",
+          "4.8 Panels. Control panels (for example Pterodactyl, KeyHelp, Hestia) are third-party software. They are provided with no warranty of their own, and features may change when the software changes."
+        ]
+      },
+      {
+        "id": "tos-5",
+        "num": 5,
+        "title": "Pricing, Payment and Taxes",
+        "content": [
+          "5.1 Prices are shown in INR (or the currency shown at checkout). GST and other taxes are shown as applicable at checkout. You are responsible for all taxes on your purchase. A GST invoice with your GSTIN is available on request before or at the time of order.",
+          "5.2 Payment methods. We accept the methods shown at checkout, which may include UPI, credit and debit cards, net banking, digital wallets, PayPal and selected cryptocurrencies. Availability can change. Payments are handled by third-party payment processors, and their separate terms apply. Processor, currency-conversion and network fees shown at checkout are borne by you.",
+          "5.3 Order acceptance. An order is accepted only when payment is confirmed and any fraud or verification checks are passed. We may refuse or cancel any order. Orders cancelled by us before activation are refunded in full.",
+          "5.4 Cryptocurrency payments. Send the exact amount, in the asset and on the network shown. Underpayments, wrong-network transfers and late transfers may not be credited automatically, and blockchain fees are yours. Crypto payments cannot be reversed, and refunds follow Part D, section 9.",
+          "5.5 Account credit and wallet balance. Credit added to your account can be used only for WarNodes Services. It is not transferable, cannot be withdrawn as cash, earns no interest, and is not refundable except as Part D states or the law requires.",
+          "5.6 Price changes. A price change applies from your next renewal, after at least 14 days' notice by email. Your current paid term is not affected. Promotional, discounted or coupon prices apply only to the term stated, and renewals are charged at the then-current standard price unless we say otherwise in writing.",
+          "5.7 Invoices. Invoices are available in the client area. Check them when issued. Failed or declined payments do not cancel your obligation to pay.",
+          "5.8 Fraud. If we reasonably suspect a stolen card, stolen account, or other fraudulent payment, we may suspend the Services immediately, cancel the order, and report to the payment processor and the authorities."
+        ]
+      },
+      {
+        "id": "tos-6",
+        "num": 6,
+        "title": "Renewal, Due Dates and Non-Payment",
+        "content": [
+          "6.1 Prepaid billing. Services are billed in advance for the billing cycle you chose (monthly, quarterly, etc.).",
+          "6.2 Invoices and reminders. We generate the renewal invoice and email a reminder at least 7 days before the due date. Where your payment method supports automatic debit (for example a card or e-mandate you authorised), the renewal is charged automatically on or before the due date. Where it does not (for example one-time UPI, wallets, or crypto), the renewal is by invoice and you must pay manually by the due date.",
+          "6.3 Non-payment. If an invoice is unpaid after its due date, we may suspend the Service from 1 day after the due date. A suspended Service may be terminated and its data permanently deleted 7 days after the due date, with no obligation to keep or restore it.",
+          "6.4 Reactivation. Paying the overdue invoice within the retention period restores the Service. The billing period continues from the original due date, and time spent suspended for non-payment is not credited.",
+          "6.5 Cancel before renewal. To avoid a renewal charge you must cancel before the due date (section 7). Not receiving a reminder email that we did send, or forgetting a renewal date, does not entitle you to a refund. A renewal charge you did not receive notice for because we failed to send it is handled under Part D, section 5."
+        ]
+      },
+      {
+        "id": "tos-7",
+        "num": 7,
+        "title": "Cancellation by You",
+        "content": [
+          "7.1 You can cancel any Service at any time from the client area or by ticket. Cancellation takes effect at the end of the paid period, and the Service stays active until then, unless you ask for immediate termination. Immediate termination does not create a refund of unused time (except under the 24-hour guarantee in Part D).",
+          "7.2 Deleting is not cancelling. Deleting a server, bot, website or VPS inside a panel, uninstalling it, or ignoring it does not cancel billing. Only a cancellation request does. Deleted data cannot be recovered by us.",
+          "7.3 Amounts already due remain payable after cancellation. Back up your data before cancelling because it is deleted after the Service ends (section 10)."
+        ]
+      },
+      {
+        "id": "tos-8",
+        "num": 8,
+        "title": "Suspension and Termination by WarNodes",
+        "content": [
+          "8.1 Immediate action. We may suspend or terminate any Service or account, with or without notice, if we reasonably believe that: (a) you broke the AUP or these Terms; (b) your use is illegal, or required by law or a court or authority order; (c) your Service threatens the security, stability or other customers of our network (including by attracting an attack that forces us to null-route); (d) there is fraud, stolen payment instruments, or a chargeback or payment dispute; (e) you abused our staff; (f) you are evading a previous ban; or (g) you did not pay.",
+          "8.2 Curable issues. For minor or first-time issues we will usually give notice and 24 to 72 hours to fix, but we are not required to.",
+          "8.3 Without cause. We may end a Service without cause on at least 14 days' written notice, with a pro rata refund of prepaid, unused fees.",
+          "8.4 Effect. On termination your access ends, amounts due become payable immediately, and data is deleted under section 10. If we terminate for your breach, fraud or chargeback, no refund is due, whatever refund rule would otherwise have applied.",
+          "8.5 Review. You can ask for a review by ticket within 7 days. We will reconsider in good faith, but we are not required to reinstate.",
+          "8.6 Ban evasion. New accounts opened to get around a suspension or ban may be closed without refund."
+        ]
+      },
+      {
+        "id": "tos-9",
+        "num": 9,
+        "title": "Fair Use and Resource Limits",
+        "content": [
+          "9.1 Resource limits are those shown on your plan page or panel. \"Unlimited\" or \"unmetered\" means fair use, not literally unlimited. Your use must not materially degrade the performance of the host or other customers.",
+          "9.2 Where no numeric limit is stated, a reasonable limit is what a typical legitimate user of that plan would consume. This covers CPU time, memory, disk space, disk I/O, inodes and file counts, database size, processes, network bandwidth and packets per second.",
+          "9.3 What we may do. We may throttle or limit usage, stop processes, ask you to upgrade or reduce usage, or suspend the Service for repeated or severe overuse. We will try to notify you first, but may act immediately where the host or other customers are affected.",
+          "9.4 Prohibited resource patterns (see AUP): cryptocurrency mining of any kind, sustained benchmarking, load or stress testing without written approval, using a hosting plan as pure file storage or a CDN, proxy, VPN or relay, and running services unrelated to the plan's stated purpose.",
+          "9.5 Shared resources. On shared plans, \"burst\" resources are not guaranteed and may be reduced under contention."
+        ]
+      },
+      {
+        "id": "tos-10",
+        "num": 10,
+        "title": "Data, Backups and Content",
+        "content": [
+          "10.1 Your content. You own your content. You give us a limited licence to host, copy, transmit and back it up only as needed to provide the Services.",
+          "10.2 Your responsibility. You are solely responsible for your content and for having all rights and licences for it, including mods, plugins, maps, resource packs, scripts and bot code.",
+          "10.3 You must keep your own backups. Keep independent backups outside our platform. Panel backup tools and any \"backup included\" feature are conveniences, provided on a best-effort basis. They are subject to quotas, may sit on infrastructure in the same location as your Service, may fail, and are not a guarantee that data can be restored. Backups are deleted when the Service is terminated.",
+          "10.4 Data loss. We are not responsible for data loss caused by your actions, panel deletions, plugins or mods, malware, corrupt files, compromised credentials or third-party software. Our liability in any other case is limited by section 19.",
+          "10.5 Deletion. After termination or cancellation, data is deleted from active systems and may be overwritten. Deletion is permanent and we cannot recover it.",
+          "10.6 Our access. We do not access your content except to provide support you asked for, keep the platform secure, investigate abuse or errors, or comply with law. By opening a ticket you authorise us to access the relevant Service to resolve it.",
+          "10.7 Legal requests. We may preserve and disclose information to authorities when required by valid legal process or Indian law (including the IT Act, 2000 and CERT-In directions), or to protect rights, safety and the platform.",
+          "10.8 Takedown. We may remove or disable content that is or appears illegal or infringing. Report content to abuse@warnode.cloud.",
+          "10.9 Your end users. If you collect personal data from your own players, users or customers, you are responsible for lawful collection and notices. We process that data only as your service provider. A data processing addendum is available on request."
+        ]
+      },
+      {
+        "id": "tos-11",
+        "num": 11,
+        "title": "Security, DDoS Protection and WarShield",
+        "content": [
+          "11.1 Best effort. DDoS protection included with Services is mitigation on a best-effort basis. It does not guarantee protection from every attack, and very large or sophisticated attacks can exceed capacity.",
+          "11.2 WarShield. WarShield is a DDoS proxy for Minecraft, as described on its product page. It protects only traffic sent through the WarShield proxy address. To be protected you must keep your origin IP private and restrict your origin to accept traffic only from WarShield. If your origin IP is leaked or exposed, protection is not guaranteed. WarShield does not cover other services or ports unless its product page says so. Correct configuration is your responsibility.",
+          "11.3 Null-routing. If an attack threatens our network or other customers, we may null-route, rate-limit or suspend the targeted IP for as long as needed. Repeated attacks may require you to move to a protected plan, or lead to termination. Null-routing is not a breach of this agreement or the SLA.",
+          "11.4 Your security. You are responsible for securing your own software and credentials: strong passwords, SSH keys, patched software, trusted plugins and mods, firewall rules and access controls. We are not liable for compromises caused by your configuration, software, credentials, or third-party code.",
+          "11.5 Testing and disclosure. Do not scan, probe or test our systems without our written permission. Report vulnerabilities responsibly to security@warnode.cloud.",
+          "11.6 Incidents. If a security incident on our systems affects your personal data, we will notify you by email as required by law."
+        ]
+      },
+      {
+        "id": "tos-12",
+        "num": 12,
+        "title": "Third-Party Software, Games and Trademarks",
+        "content": [
+          "12.1 Third-party components (panels, operating-system images, web servers, game server software and similar) are subject to their own licences. We give no warranty for them.",
+          "12.2 Minecraft and Hytale. You must comply with the Minecraft EULA and Mojang/Microsoft's commercial usage guidelines for any monetisation, and with the applicable terms of Hytale's publisher. You are responsible for your server's compliance. WarNodes is not affiliated with, or endorsed by, Mojang, Microsoft, or the developers or publishers of Hytale. All trademarks belong to their owners.",
+          "12.3 Discord. Bots must comply with Discord's Terms of Service and Developer Policy. WarNodes is not affiliated with Discord.",
+          "12.4 Third-party actions. Bans, suspensions, API changes, token revocations or rule changes by game publishers, Discord or any other third party are outside our control. They do not entitle you to a refund or credit.",
+          "12.5 Mods, plugins and modpacks. Installed at your own risk. We do not guarantee compatibility, and may remove anything that contains malware or breaks the AUP.",
+          "12.6 Software licences. You must hold valid licences for any software you install beyond what we bundle. No pirated or cracked software."
+        ]
+      },
+      {
+        "id": "tos-13",
+        "num": 13,
+        "title": "Support",
+        "content": [
+          "13.1 Channels. Support is through tickets in the client area and our Discord server and email (support@warnode.in). Discord is the fastest route for general help. Tickets are best for complex issues.",
+          "13.2 Binding requests. Refund requests, cancellations, ownership changes, data access or deletion requests, and SLA credit claims are valid only when made by ticket from the registered email or from the logged-in client area. Messages on Discord or private chats are not valid requests, though staff may point you to the ticket form.",
+          "13.3 Response times. We aim to reply quickly and monitor 24/7, but response and resolution times are targets, not guarantees.",
+          "13.4 Scope. Support covers the platform, panels, setup, standard configuration help and platform-side issues. It does not cover custom development, plugin or mod configuration, debugging your code, game design, third-party plugin support, or management of an unmanaged VPS beyond making it reachable. Out-of-scope work may be quoted as paid work.",
+          "13.5 Cooperation and conduct. You must give the information we ask for. Abuse, threats or harassment of staff may lead to account termination without refund."
+        ]
+      },
+      {
+        "id": "tos-14",
+        "num": 14,
+        "title": "Service Level Agreement",
+        "content": [
+          "Our uptime commitment and service credits are in Part C. Service credits are your sole remedy for downtime and unavailability."
+        ]
+      },
+      {
+        "id": "tos-15",
+        "num": 15,
+        "title": "Resellers",
+        "content": [
+          "15.1 A reseller (for example a customer using the reseller panel) must follow these Terms and is responsible for all its sub-accounts and customers. Their acts are treated as the reseller's acts.",
+          "15.2 Resellers must give their own customers their own terms, privacy notice and support. They must not make promises on WarNodes's behalf, and must not claim our infrastructure or brand as their own.",
+          "15.3 We have no contract with a reseller's customers. Refunds to those customers are the reseller's responsibility. Non-payment or breach by the reseller may suspend all of its sub-accounts.",
+          "15.4 Reseller pricing, limits and minimums follow the reseller plan or written agreement."
+        ]
+      },
+      {
+        "id": "tos-16",
+        "num": 16,
+        "title": "Chargebacks and Payment Disputes",
+        "content": [
+          "16.1 Talk to us first. If you think a charge is wrong, open a ticket first. Filing a chargeback or payment dispute for a valid charge without first contacting us is a breach of these Terms.",
+          "16.2 Effect. On a chargeback or dispute we may immediately suspend all Services on the account and linked accounts, and delete data after 7 days. If the dispute is lost or withdrawn, we may reinstate only on payment of the outstanding fees plus a chargeback handling fee of the monthly amount paid or our actual processor penalty, whichever is higher, or permanently terminate the account.",
+          "16.3 Costs. We may recover chargeback fees, processor penalties, collection costs and reasonable legal costs from you.",
+          "16.4 Evidence. We may give payment processors and banks our records (logs, IP addresses, acceptance of these Terms, usage and delivery records) to contest a dispute, and may share details of confirmed fraud with processors and fraud-prevention networks.",
+          "16.5 Double recovery. Getting a refund from us and also charging back the same payment is fraud and will be treated as such."
+        ]
+      },
+      {
+        "id": "tos-17",
+        "num": 17,
+        "title": "Intellectual Property",
+        "content": [
+          "17.1 The WarNodes name, logo, WarShield, the portal and panel customisations, website content and documentation belong to us or our licensors. You get a limited, non-transferable right to use the Services for their intended purpose.",
+          "17.2 You may not scrape, copy, reverse engineer, resell or white-label our platform, brand or content without written permission.",
+          "17.3 If you send us feedback or suggestions, we may use them freely without obligation to you."
+        ]
+      },
+      {
+        "id": "tos-18",
+        "num": 18,
+        "title": "Disclaimers",
+        "content": [
+          "18.1 To the fullest extent permitted by law, the Services are provided \"as is\" and \"as available\", without warranties of any kind, including merchantability, fitness for a particular purpose, non-infringement, and uninterrupted or error-free operation.",
+          "18.2 Figures such as \"99.9% uptime\", \"under 20 ms latency\", \"5 to 20 ms in Mumbai\", \"instant\" or \"under 30 seconds\" setup, and \"Tbps\" mitigation describe targets or typical results on our network. They are not promises about your application's performance. Latency depends on your ISP, routing and distance. The only uptime remedy is the SLA.",
+          "18.3 Do not use the Services for anything where failure could cause injury, death or serious harm."
+        ]
+      },
+      {
+        "id": "tos-19",
+        "num": 19,
+        "title": "Limitation of Liability",
+        "content": [
+          "19.1 Cap. To the fullest extent permitted by law, our total liability for all claims arising out of or relating to the Services or this agreement is limited to the amount you actually paid us for the specific Service that caused the claim during the 3 months before the event that gave rise to the claim (or ₹the amount paid if the Service was free).",
+          "19.2 Excluded losses. We are not liable for indirect, incidental, special, consequential or punitive damages, or for loss of profit, revenue, players, community, reputation, goodwill, data, in-game items, currency, ranks, donations or business interruption, even if we were told they were possible.",
+          "19.3 We are also not liable for losses caused by attacks, third-party acts or services, force majeure, or your breach of this agreement.",
+          "19.4 What this does not exclude. Nothing in these Terms excludes or limits liability that cannot be excluded or limited by law (such as fraud, wilful misconduct, or death or personal injury caused by negligence), or any right you have as a consumer under mandatory law.",
+          "19.5 Prompt notice. Tell us about any problem or claim promptly and in any case within 30 days of discovering it. Logs and records are kept for limited periods, so late notice may limit what we can investigate."
+        ]
+      },
+      {
+        "id": "tos-20",
+        "num": 20,
+        "title": "Indemnity",
+        "content": [
+          "You will defend and indemnify WarNodes, its owners, staff and partners against third-party claims, fines, losses and reasonable legal costs arising from your content, your use of the Services, your or your users' breach of these Terms or the AUP or any law, and any infringement or harm caused by what you host or do. We will tell you promptly of any claim, and you will cooperate. We may control the defence of claims against us."
+        ]
+      },
+      {
+        "id": "tos-21",
+        "num": 21,
+        "title": "Force Majeure",
+        "content": [
+          "21.1 We are not liable for failure or delay caused by events beyond our reasonable control. These include natural disasters, fire, power, telecom or transit failures, failures of upstream providers (data centres, transit and mitigation providers), government or court orders, blocking of IPs or ports, regulatory changes, war, terrorism, epidemics, strikes, large-scale cyberattacks or DDoS attacks, and outages of payment gateways.",
+          "21.2 Our affected obligations are suspended for the duration of the event. If an event stops a Service for more than 30 consecutive days, either of us may terminate that Service and you will receive a pro rata refund of prepaid, unused fees."
+        ]
+      },
+      {
+        "id": "tos-22",
+        "num": 22,
+        "title": "Governing Law and Disputes",
+        "content": [
+          "22.1 These Terms are governed by the laws of India.",
+          "22.2 Informal resolution first. Raise the issue by ticket or with our Grievance Officer (section 24). We will try to resolve it within 30 days.",
+          "22.3 Arbitration. A dispute not resolved informally is referred to arbitration under the Arbitration and Conciliation Act, 1996, before a sole arbitrator appointed by mutual consent (or as the Act provides). The seat is Mumbai, Maharashtra, the language is English, and the award is final and binding.",
+          "22.4 Courts. Subject to section 22.3, the courts at Mumbai, Maharashtra have exclusive jurisdiction. Either party may seek urgent interim relief from a competent court.",
+          "22.5 Consumer rights unaffected. Nothing in this section stops you from approaching a Consumer Commission or other authority where you are a consumer under the Consumer Protection Act, 2019, or any other statutory forum you are entitled to use."
+        ]
+      },
+      {
+        "id": "tos-23",
+        "num": 23,
+        "title": "Changes to These Terms",
+        "content": [
+          "23.1 We may update these documents. Each version carries a date, and earlier versions are available on request.",
+          "23.2 For material changes we will give at least 14 days' notice by email and a notice in the client area or on our Discord announcements, unless a legal or security reason requires faster action.",
+          "23.3 If you do not accept a material change that is adverse to you, you may cancel the affected Service before the change takes effect and receive a pro rata refund of prepaid, unused fees. Continuing to use the Services after the effective date is acceptance.",
+          "23.4 The price and specifications you ordered apply for your current paid term."
+        ]
+      },
+      {
+        "id": "tos-24",
+        "num": 24,
+        "title": "Notices and Grievance Officer",
+        "content": [
+          "24.1 We give notice by email to your registered address, in the client area, or on the status page. An email notice is treated as received 24 hours after sending.",
+          "24.2 You may give operational notice by ticket. Legal notices go to legal@warnode.cloud and Mumbai, Maharashtra, India. Discord is not a valid channel for formal notices.",
+          "24.3 Grievance Officer. Name: Grievance Officer, WarNodes · Email: privacy@warnode.cloud · Address: Mumbai, Maharashtra, India · Hours: Monday to Friday, 10:00 AM – 6:00 PM IST. We will acknowledge complaints within 48 hours and aim to resolve them within 30 days, or sooner if the law requires."
+        ]
+      },
+      {
+        "id": "tos-25",
+        "num": 25,
+        "title": "General",
+        "content": [
+          "25.1 Entire agreement. This agreement is the whole agreement between us on its subject and replaces earlier understandings.",
+          "25.2 Severability. If a clause is found unenforceable, it is replaced by the closest enforceable clause and the rest stays in force.",
+          "25.3 No waiver. Not enforcing a right is not a waiver of it.",
+          "25.4 Assignment. You may not assign this agreement without our written consent. We may assign it to an affiliate or successor.",
+          "25.5 No partnership; no third-party rights. Nothing creates a partnership, agency or employment. No one else may enforce these Terms.",
+          "25.6 Survival. Sections that by nature continue (payment, data, liability, indemnity, disputes, chargebacks) survive termination.",
+          "25.7 Interpretation. Headings are for convenience. \"Including\" means \"including without limitation\". If translations differ, the English version prevails. Times are IST.",
+          "25.8 Electronic records. Our electronic records, including logs, order and payment records, are valid evidence of our dealings, absent manifest error.",
+          "25.9 Sanctions and export. You will not use the Services in breach of applicable sanctions or export laws."
+        ]
+      },
+      {
+        "id": "tos-26",
+        "num": 26,
+        "title": "Contact",
+        "content": [
+          "Support: ticket at portal.warnode.cloud or Discord (dcd.gg/warnode). Legal: legal@warnode.cloud. Abuse: abuse@warnode.cloud. Security: security@warnode.cloud. Privacy: privacy@warnode.cloud."
+        ]
+      }
+    ]
+  },
+  "acceptableUsePolicy": {
+    "id": "aup",
+    "badge": "Zero-Tolerance Security & Platform Safety",
+    "title": "Acceptable Use Policy (AUP)",
+    "intro": "Our Acceptable Use Policy defines prohibited activities across all WarNodes game servers, VPS environments, web hosting, and bots to ensure high performance and community security.",
+    "sections": [
+      {
+        "id": "aup-1",
+        "num": 1,
+        "title": "Purpose and Scope",
+        "content": [
+          "1.1 This policy applies to you and to everyone who uses your Service, including your staff, players, customers, sub-users and anyone you give access to. You are responsible for their conduct.",
+          "1.2 It is part of your agreement with us. Breaking it can lead to suspension or termination without refund (Terms, section 8, and Part D)."
+        ]
+      },
+      {
+        "id": "aup-2",
+        "num": 2,
+        "title": "Prohibited Content and Activity",
+        "content": [
+          "You must not use the Services to host, store, distribute, link to or carry out any of the following.",
+          "2.1 Illegal content and activity. Anything unlawful in India or in the country where the Service is located, including content that infringes copyright, trademarks or other rights; fraud, scams, phishing, counterfeit goods, and money laundering.",
+          "2.2 Child sexual abuse material. Zero tolerance. We will remove it, terminate the account immediately, preserve evidence and report to the authorities.",
+          "2.3 Malware and attacks. Viruses, trojans, ransomware, botnets, command-and-control servers, exploit kits, keyloggers, credential-stealing tools, spyware, or phishing and spoof sites.",
+          "2.4 Attack tools. DDoS tools, booters or stressers, packet floods, amplification or reflection services, port or vulnerability scanning, brute-forcing, hacking tools used against others, and any traffic that attacks or tests systems you do not own or have no written permission to test.",
+          "2.5 Cryptocurrency mining. Mining, staking, plotting, or any proof-of-work or proof-of-space activity, including hidden miners and miners inside mods, plugins or bots. This is banned on all Services.",
+          "2.6 Proxies and relays. Open proxies, VPN or Tor exit or relay services, residential proxy networks, traffic relays, and tunnelling services, other than the WarShield service we provide.",
+          "2.7 Spam and abuse of email. Unsolicited bulk messages, open mail relays, mass or unauthorised outbound SMTP, and spamvertised sites.",
+          "2.8 IP and network misuse. IP or MAC spoofing, hijacking, unauthorised use of IP space, evading our abuse controls, and interfering with our routing or other customers' services.",
+          "2.9 Piracy. Pirated software, cracked or leaked game assets, torrent trackers, warez and any service whose main purpose is sharing copyrighted material without permission.",
+          "2.10 Harmful content. Content that promotes terrorism, violence, hate, human trafficking, self-harm, or that harasses, doxxes or threatens people; non-consensual intimate imagery; and sexually explicit content where the law or the Service's rules forbid it.",
+          "2.11 Gambling and regulated activity. Real-money gambling, betting, lotteries, and other regulated services without the licences required by law.",
+          "2.12 Impersonation. Pretending to be WarNodes, our staff, or another person or brand."
+        ]
+      },
+      {
+        "id": "aup-3",
+        "num": 3,
+        "title": "Game Server Rules",
+        "content": [
+          "3.1 You must follow the Minecraft EULA and commercial usage guidelines, and the rules of any other game you host. Servers that sell gameplay advantages in ways the publisher bans may be removed.",
+          "3.2 Cheat, hack-client or exploit distribution, and servers whose main purpose is to harm other servers or players, are not allowed.",
+          "3.3 Servers must not be used to run bot farms, account generators, or login-credential harvesting."
+        ]
+      },
+      {
+        "id": "aup-4",
+        "num": 4,
+        "title": "Discord Bot Rules",
+        "content": [
+          "4.1 Bots must follow Discord's Terms of Service and Developer Policy.",
+          "4.2 No self-bots, user-token automation, raid or nuke bots, mass-DM bots, scraping of user data, token loggers, or bots made to spam or harass.",
+          "4.3 One hosted bot plan runs the bots and resources stated on its page. Reselling hosting capacity to others on a bot plan is not allowed unless you are on a reseller plan."
+        ]
+      },
+      {
+        "id": "aup-5",
+        "num": 5,
+        "title": "Web and VPS Rules",
+        "content": [
+          "5.1 Websites must follow the above, plus run only software that matches the plan's purpose. You must keep CMS, plugins and scripts updated.",
+          "5.2 On a VPS you have root access and so full responsibility for security and for everything running on it. No IRC bouncers, public file lockers, or traffic-exchange or click-farm services."
+        ]
+      },
+      {
+        "id": "aup-6",
+        "num": 6,
+        "title": "Resource Abuse",
+        "content": [
+          "See Terms, section 9. Abuse includes sustained excessive CPU, memory, disk I/O or bandwidth that harms other customers; fork bombs; storage-only use; load or stress testing without written approval."
+        ]
+      },
+      {
+        "id": "aup-7",
+        "num": 7,
+        "title": "Reporting Abuse",
+        "content": [
+          "Send reports to abuse@warnode.cloud with the IP address or URL, date and time (with time zone), and evidence (logs or screenshots). We review reports and act as we see fit but are not required to tell the reporter the outcome."
+        ]
+      },
+      {
+        "id": "aup-8",
+        "num": 8,
+        "title": "Enforcement",
+        "content": [
+          "8.1 We choose the action based on how serious the breach is, whether it is repeated, and the risk to others.",
+          "8.2 Actions include: a warning and time to fix; removal of content; throttling or stopping processes; suspension of the Service; null-routing; permanent termination of the Service and account; reporting to authorities and rights holders.",
+          "8.3 Severe breaches (sections 2.2 to 2.5, attacks, fraud, or anything that puts the network at risk) lead to immediate termination without warning and without refund.",
+          "8.4 Repeat offenders, and customers who create new accounts to evade enforcement, are permanently banned."
+        ]
+      },
+      {
+        "id": "aup-9",
+        "num": 9,
+        "title": "Law Enforcement and Cooperation",
+        "content": [
+          "We cooperate with valid legal requests from authorities, and keep and share logs and account information as the law requires (including under the IT Act, 2000 and CERT-In directions). We are not required to monitor customer content, but we may investigate and act on any reasonable suspicion of a breach."
+        ]
+      }
+    ]
+  },
+  "serviceLevelAgreement": {
+    "id": "sla",
+    "badge": "99.9% Uptime Commitment",
+    "title": "Service Level Agreement (SLA)",
+    "intro": "We guarantee 99.9% monthly uptime across our host and network infrastructure. Discover our uptime commitments, exclusions, and automatic service credit calculations.",
+    "sections": [
+      {
+        "id": "sla-1",
+        "num": 1,
+        "title": "Uptime Commitment",
+        "content": [
+          "1.1 We target 99.9% Monthly Uptime for the network and host infrastructure serving your Service, including the WarShield proxy for WarShield customers.",
+          "1.2 Monthly Uptime = (total minutes in the calendar month, minus Downtime minutes) ÷ total minutes in the calendar month. In a 30-day month, 99.9% allows about 43 minutes of Downtime.",
+          "1.3 Downtime means minutes during which your Service was completely unreachable because of a failure of our network or host infrastructure, and which we confirm through our monitoring (status.warnode.cloud and internal systems), or which you show us with reasonable evidence. Measured from the time the issue is logged or detected, whichever is earlier, to the time it is resolved."
+        ]
+      },
+      {
+        "id": "sla-2",
+        "num": 2,
+        "title": "What Is Not Downtime",
+        "content": [
+          "The following do not count as Downtime and do not qualify for credits:",
+          "Scheduled maintenance, announced at least 48 hours ahead on the status page, Discord or email, up to 4 hours per month in total.",
+          "Emergency maintenance needed to protect security or stability of the network, up to 2 hours per month.",
+          "Problems caused by you: your software, plugins, mods, scripts, bot code, configuration, overload, exceeded resource limits, expired payment, or breach of the AUP.",
+          "Software inside your Service crashing, freezing or running slowly, while the host stays reachable. Game server crashes and bot errors are generally yours to fix.",
+          "Attacks that exceed mitigation capacity, attacks reaching an unprotected or leaked origin IP, and null-routing under Terms section 11.3.",
+          "Force majeure (Terms section 21), including failures of upstream providers and carriers, government blocking, and issues on the public internet outside our network.",
+          "Your internet connection, ISP, routing or devices, and third-party services (payment gateways, game authentication servers, Discord and Mojang services).",
+          "Free plans, beta features, trial services, and Services that are suspended, past due or under investigation.",
+          "Panel or portal unavailability when the Service itself is still running.",
+          "Time it takes you to respond to our requests for information."
+        ]
+      },
+      {
+        "id": "sla-3",
+        "num": 3,
+        "title": "Service Credits",
+        "content": [
+          "3.1 If Monthly Uptime for your Service falls below 99.9%, you may claim a credit as a percentage of the monthly fee of the affected Service:",
+          "3.2 For Services billed for longer than one month, the credit is based on the monthly equivalent of the fee.",
+          "3.3 Claims. Open a ticket from your registered email within 14 days after the end of the month in which the Downtime happened. Say which Service, the dates and times (with time zone) and any evidence. Claims after that period are not eligible. We may also apply credits on our own.",
+          "3.4 Form of credit. Credits are applied as account balance towards future invoices of that Service. They have no cash value and are not paid out, except when the Service ends and the law requires otherwise.",
+          "3.5 Cap. The total credit in any month cannot exceed 100% of that month's fee for the affected Service.",
+          "3.6 Sole remedy. Service credits are your only remedy for downtime, unavailability or SLA failures. They are not a penalty. The rights of cancellation under Part D, section 8 stay in place.",
+          "3.7 An SLA claim must not be made while you owe overdue amounts, and credits do not apply to periods in which the Service was suspended."
+        ],
+        "table": {
+          "headers": [
+            "Monthly Uptime Range",
+            "Service Credit Claimable"
+          ],
+          "rows": [
+            [
+              "Below 99.9% but at least 99.0%",
+              "10% of monthly fee"
+            ],
+            [
+              "Below 99.0% but at least 97.0%",
+              "25% of monthly fee"
+            ],
+            [
+              "Below 97.0%",
+              "50% of monthly fee"
+            ],
+            [
+              "Single continuous outage > 36 hours",
+              "100% of that month's fee (replaces above)"
             ]
-          },
-          {
-            "title": "Payment Methods",
-            "items": [
-              "UPI (GPay, PhonePe, Paytm)",
-              "Credit & Debit Cards",
-              "PayPal (where available)"
-            ]
-          },
-          {
-            "title": "Cancellation Policy",
-            "items": [
-              "Cancel anytime from portal.warnode.cloud",
-              "Service remains active until current billing period ends",
-              "No partial refunds for unused time after first 24 hours",
-              "Data retained for 7 days after expiry for reactivation"
-            ]
-          }
-        ],
-        "faqs": [
-          {
-            "question": "When will I be charged?",
-            "answer": "You're charged immediately on purchase. Renewals happen automatically on your billing date. We send reminders 7 days and 1 day before."
-          },
-          {
-            "question": "How do I cancel?",
-            "answer": "Log into portal.warnode.cloud → Select your service → Click \"Cancel Service\". Your service stays active until current period ends. Cancellation is effective immediately and no further charges will be made."
-          },
-          {
-            "question": "What if payment fails?",
-            "answer": "Payment failed → 24h retry → Suspended after 1 day → 7 days to reactivate → Deleted after 7 days. Reactivate by updating payment within 14 days. After 14 days, data may be deleted."
-          }
-        ],
-        "callout": {
-          "title": "Service Suspension Timeline",
-          "content": "If a payment fails, you get a 24-hour grace period to complete it. After that, your service will be suspended temporarily. You can reactivate your service within 7 days by completing the payment. If not reactivated within this period, the service will be permanently terminated and all data will be deleted. Timeline: Failed payment → 24h grace → Suspended → 7 days recovery → Deleted"
+          ]
         }
       },
       {
-        "id": "aup",
-        "icon": "CheckCircle2",
-        "title": "Acceptable Use Policy",
-        "tldr": "Use for legitimate purposes. No crypto mining, hacking, or illegal content. Be fair with resources.",
-        "allowedTitle": "Allowed",
-        "allowedItems": [
-          "Minecraft servers (vanilla, modded, networks)",
-          "Discord bots and web applications",
-          "Development and testing environments",
-          "Game servers and legitimate services"
-        ],
-        "prohibitedTitle": "Prohibited",
-        "prohibitedItems": [
-          "Cryptocurrency mining",
-          "DDoS attacks, botnets",
-          "Illegal or malicious content",
-          "IP spoofing, network scanning",
-          "Resource abuse affecting others"
-        ],
-        "highlight": {
-          "title": "Violations",
-          "content": "Violations = immediate termination without refund. Illegal activities reported to authorities."
-        }
+        "id": "sla-4",
+        "num": 4,
+        "title": "Support Response Targets",
+        "content": [
+          "We aim to respond to critical issues (Service down) quickly and to other tickets within 2–4 hours. These are targets, not guarantees, and missing them does not create SLA credits."
+        ]
       },
       {
-        "id": "data",
-        "icon": "Lock",
-        "title": "Data & Backups",
-        "tldr": "Your data is yours. We don't look at it without permission. Make your own backups — we provide tools but responsibility is yours.",
-        "listItems": [
-          "Private content — We never access your files without permission",
-          "Secure servers — Enterprise-grade security on all infrastructure",
-          "Backup tools — Use our panel to create and download backups",
-          "Account deletion — Deleting account removes all your data"
-        ],
-        "highlight": {
-          "title": "Important",
-          "content": "While we provide backup tools, you should maintain your own backups for critical data. Download regularly from your control panel."
-        }
-      },
-      {
-        "id": "support",
-        "icon": "MessageCircle",
-        "title": "Get Support",
-        "tldr": "Discord = fastest response. Tickets for complex issues. We're here to help!",
-        "stats": [
-          { "value": "Instant", "label": "Discord" },
-          { "value": "24h", "label": "Support Tickets" },
-          { "value": "1-2d", "label": "Email" }
-        ],
-        "highlight": {
-          "title": "Need help with these terms?",
-          "content": "Our team is ready to answer any questions."
-        }
+        "id": "sla-5",
+        "num": 5,
+        "title": "Status and Notices",
+        "content": [
+          "We publish incidents and scheduled maintenance at status.warnode.cloud and on Discord. The status page shows our own record of uptime and is treated as accurate unless you show clear evidence to the contrary."
+        ]
       }
     ]
   },
   "refundPolicy": {
-    "badge": "Fair & Transparent Policy",
-    "title": "Refund Policy",
-    "intro": "Our commitment to providing a high-quality hosting experience. We believe in transparency and fairness when it comes to your investment.",
-    "guarantee": {
-      "badge": "Instant Guarantee",
-      "title": "24-Hour Full Refund Guarantee",
-      "description": "Not satisfied with the performance or interface? No problem. We offer a \"no-questions-asked\" full refund policy for the first 24 hours of your service activation.",
-      "ctaLabel": "Request Now",
-      "ctaLink": "https://portal.warnode.cloud"
-    },
-    "serviceTermsTitle": "Service-Specific Terms",
-    "serviceTerms": [
+    "id": "refund",
+    "badge": "24-Hour Guarantee & Transparent Payouts",
+    "title": "Refund & Cancellation Policy",
+    "intro": "We offer a 24-hour money-back guarantee for first-time orders and clear, transparent refund criteria across all cloud hosting, server, and development services.",
+    "sections": [
       {
-        "icon": "Gamepad2",
-        "title": "Minecraft Hosting",
-        "period": "7-Day Issue-Based",
-        "description": "Coverage for persistent TPS drops, node-side lag, or recurring server crashes."
+        "id": "refund-1",
+        "num": 1,
+        "title": "Scope",
+        "content": [
+          "1.1 This policy explains when you can get money back for WarNodes Services and how to ask. It is part of the Terms of Service. Please read it before you buy.",
+          "1.2 In this policy: \"Activation Date\" means the moment the Service or its login details were first made available to you (recorded in IST). \"Paid Term\" means the billing period you paid for. \"Business days\" are Monday to Friday excluding Indian public holidays.",
+          "1.3 Refunds are given only as this policy says, or where the law requires. A refund is not a right just because a Service was cancelled, unused or no longer needed."
+        ]
       },
       {
-        "icon": "Terminal",
-        "title": "VPS Hosting",
-        "period": "48-Hour Technical",
-        "description": "Refunds granted for hardware faults or networking issues originating from our DC."
+        "id": "refund-2",
+        "num": 2,
+        "title": "The 24-Hour Money-Back Guarantee",
+        "content": [
+          "2.1 If you are not satisfied with a new, first-time purchase of a paid Service, you can ask for a full refund of the amount you paid for it within 24 hours of the Activation Date.",
+          "2.2 Conditions. To qualify:",
+          "you submit the request by ticket (section 10) within the 24 hours; the clock stops when your valid request is received, not when we process it;",
+          "the Service is eligible under section 3;",
+          "you have not broken the Terms or the AUP, and the Service has not been flagged for abuse, attack traffic or excessive resource use;",
+          "you have not used up the Service's resources in a way that cannot be reversed (for example, exhausted a bandwidth allowance or used one-time items);",
+          "it is not a renewal (see section 5), an upgrade, an add-on or a top-up (see section 4);",
+          "you have not already used a 24-hour refund for the same type of Service, and you have used no more than 2 such refunds in total on the account (and linked accounts).",
+          "2.3 Why we ask. The guarantee is there for real buyers who find the Service is not right for them. It is not meant for buying, using and returning Services repeatedly.",
+          "2.4 A refund under this section is a full refund of what you paid for that Service, including GST. For Services you ordered and cancelled before activation, see Terms section 5.3."
+        ]
       },
       {
-        "icon": "Bot",
-        "title": "Bot Hosting",
-        "period": "3-Day Guarantee",
-        "description": "Eligibility covers API connectivity issues or severe resource throttling."
+        "id": "refund-3",
+        "num": 3,
+        "title": "Service-by-Service Rules",
+        "content": [
+          "Yes",
+          "No refund; you may cancel for the next term",
+          "Yes, if no abuse, attack, mining or spam flags",
+          "No refund; you may cancel for the next term",
+          "Yes",
+          "No refund; you may cancel for the next term",
+          "Yes",
+          "No refund; you may cancel for the next term",
+          "Yes",
+          "No refund; you may cancel for the next term",
+          "Yes, if no sub-accounts or customers were created",
+          "No refund",
+          "Not applicable (no payment)",
+          "Not applicable",
+          "No",
+          "No (these are passed on to a third party)",
+          "No",
+          "No (section 4)",
+          "No",
+          "Section 6",
+          "Section 6"
+        ],
+        "table": {
+          "headers": [
+            "Service Category",
+            "24-Hour Money-Back",
+            "After 24 Hours / Renewal"
+          ],
+          "rows": [
+            [
+              "Game server hosting (Minecraft, Hytale, CS2, Rust, etc.)",
+              "Yes — full refund",
+              "No refund; cancels at term end"
+            ],
+            [
+              "VPS Hosting (KVM / Ryzen / Intel Xeon)",
+              "Yes (if no abuse, attack, mining, or spam flags)",
+              "No refund; cancels at term end"
+            ],
+            [
+              "Discord Bot Hosting",
+              "Yes — full refund",
+              "No refund; cancels at term end"
+            ],
+            [
+              "Web Hosting (Paid plans)",
+              "Yes — full refund",
+              "No refund; cancels at term end"
+            ],
+            [
+              "WarShield DDoS Proxy",
+              "Yes — full refund",
+              "No refund; cancels at term end"
+            ],
+            [
+              "Reseller Hosting Plans",
+              "Yes (if no sub-accounts or clients were created)",
+              "No refund; cancels at term end"
+            ],
+            [
+              "Free Plans",
+              "Not applicable (₹0 / free)",
+              "Not applicable"
+            ],
+            [
+              "Domains, SSL Certificates, Licenses, Extra IPs",
+              "No (passed directly to registry/licensors)",
+              "No refund"
+            ],
+            [
+              "Upgrades, Add-ons, Extra Resources",
+              "Only when requested with base service within 24h",
+              "No refund"
+            ],
+            [
+              "Account Credit & Wallet Top-ups",
+              "Non-refundable (used for services only)",
+              "Non-refundable"
+            ],
+            [
+              "Development, Setup, Custom Configurations",
+              "Covered by Section 6 (pre-delivery: 50–100%, delivered: none)",
+              "No refund after acceptance"
+            ]
+          ]
+        }
       },
       {
-        "icon": "Globe",
-        "title": "Website Hosting",
-        "period": "3-Day Satisfaction",
-        "description": "Our standard commitment to 99.9% uptime and panel accessibility."
+        "id": "refund-4",
+        "num": 4,
+        "title": "Non-Refundable Items",
+        "content": [
+          "The following are not refundable, except where the law requires or where we state otherwise in writing:",
+          "any request made after the 24-hour window;",
+          "unused days or months of a Paid Term when you cancel or delete a Service (cancellation stops the next renewal only);",
+          "renewals (section 5, with the exceptions there);",
+          "domains, SSL certificates, third-party software or panel licences, extra IPs and anything we buy from third parties for you;",
+          "upgrades, add-ons, extra RAM, storage, ports, backups slots and similar additions, once activated;",
+          "account credit, wallet balance, top-ups, promotional credit, bonus credit and SLA credits;",
+          "Services suspended or terminated for breaking the Terms or the AUP;",
+          "Services affected by your own actions: deleted data, mistaken deletion of a server, forgotten renewal, wrong plan or wrong location chosen, change of mind after the window;",
+          "problems caused by third parties: game bans, Discord bans, API changes, publisher rules, plugin or mod problems, or your internet connection;",
+          "discounted, promotional or coupon purchases, beyond the 24-hour guarantee where it applies, unless the offer says otherwise;",
+          "payment processor, currency conversion and blockchain network fees we cannot recover."
+        ]
+      },
+      {
+        "id": "refund-5",
+        "num": 5,
+        "title": "Renewals",
+        "content": [
+          "5.1 A renewal charge is non-refundable once made. To avoid it, cancel before the due date (Terms section 7). We email an invoice or reminder at least 7 days before the due date.",
+          "5.2 Exceptions. We will refund a renewal if:",
+          "you cancelled in the client area, or by ticket, before the due date and we charged you anyway;",
+          "the charge was a duplicate or an error;",
+          "we failed to send you the renewal invoice or reminder, you ask within 48 hours of the charge, and the renewed Service has not been used since the charge (for example, no server start, no logins and no resource use).",
+          "5.3 A reminder that went to your registered email but was missed, lost in spam or ignored counts as notice. Cancelling a bank mandate or UPI autopay with your bank does not cancel the Service. You must cancel with us."
+        ]
+      },
+      {
+        "id": "refund-6",
+        "num": 6,
+        "title": "Development, Setup and Custom Work",
+        "content": [
+          "6.1 Work billed as a project (builds, configuration, development, design, migrations beyond standard support) is refundable as follows:",
+          "Before work starts: full refund.",
+          "After work has started but before delivery: 50% of the fee, to cover time and effort already spent. If work already done is more than 50% of the scope, we may keep the portion matching the work done, and we will explain it in writing.",
+          "After delivery or acceptance: no refund. Delivery means we shared the work with you or made it available, and acceptance is deemed if you did not report a defect within 3 days.",
+          "6.2 Work that does not match the agreed written scope will be corrected first, and refunded only if we cannot correct it within a reasonable time. Change requests outside the scope may be charged separately.",
+          "6.3 Third-party costs paid on your behalf (licences, assets, domains) are not refundable."
+        ]
+      },
+      {
+        "id": "refund-7",
+        "num": 7,
+        "title": "Violations, Chargebacks and Abuse",
+        "content": [
+          "7.1 If a Service or account is suspended or terminated for breach of the Terms or the AUP, no refund is given, even within the first 24 hours and whatever other rule would apply.",
+          "7.2 If you file a chargeback or payment dispute for a payment we have not refused to refund, we treat it as a breach (Terms section 16). Fees, penalties and costs may be recovered from you. If we have already refunded the same payment, section 16.5 of the Terms applies.",
+          "7.3 We may deny a refund where we find signs of abuse of this policy, including multiple or linked accounts, repeated buy-and-refund cycles, false statements, use of stolen payment instruments, or activity that breaks the AUP."
+        ]
+      },
+      {
+        "id": "refund-8",
+        "num": 8,
+        "title": "Downtime, SLA and Failure to Deliver",
+        "content": [
+          "8.1 Downtime. Downtime is remedied by service credits under the SLA (Part C), not by cash refunds.",
+          "8.2 Chronic failure. If your Service's Monthly Uptime is below 95% in any calendar month, or you earn SLA credits in 3 consecutive months, you may cancel that Service and receive a pro rata refund of the prepaid, unused part of the Paid Term, counted from the date you ask. Make the request by ticket within 30 days of the end of the affected month.",
+          "8.3 Failure to deliver. If we cannot provide the Service you ordered (for example, the location or hardware is not available, or we cannot activate it within 48 hours of confirmed payment), you may choose a full refund or an alternative of equal or better value.",
+          "8.4 Discontinued Services. If we shut down a Service, you get a pro rata refund of prepaid, unused fees (Terms section 4.5)."
+        ]
+      },
+      {
+        "id": "refund-9",
+        "num": 9,
+        "title": "How Refunds Are Paid",
+        "content": [
+          "9.1 Method. Approved refunds go back to the original payment method (UPI, card, net banking, wallet or PayPal). If that method is closed or cannot receive money, we may ask for other details after verifying you, or give account credit instead.",
+          "9.2 Cryptocurrency. Crypto payments are refunded to the sending wallet, in the same asset or in an equivalent amount of another asset at our option. The refund amount is the INR value you paid, converted at the rate at the time of the refund, less network fees. Payments sent in error, on the wrong network, or to the wrong address are handled case by case and may not be recoverable.",
+          "9.3 Timeline. We approve or decline a valid request within 2 business days and start approved refunds within 7 business days of approval. Your bank, card issuer or wallet may take a further [5 to 10] business days to show the money. We are not responsible for delays on their side.",
+          "9.4 Taxes and fees. Refunds include the GST paid, and we will issue a credit note where required. We do not refund payment processor, currency conversion or blockchain fees that we cannot recover, except for the full refund of an order we cancel or fail to deliver. [Decide and keep this line consistent with section 4.]",
+          "9.5 Currency. Refunds are made in the currency you paid in. Exchange-rate differences are not compensated."
+        ]
+      },
+      {
+        "id": "refund-10",
+        "num": 10,
+        "title": "How to Request a Refund",
+        "content": [
+          "10.1 Open a ticket in the client area (category: Billing or Refund) from your registered email or while logged in. Include your account email, the order or invoice number, which Service, the date of purchase, and the reason.",
+          "10.2 Requests on Discord, in private messages, by social media, or in reviews are not valid requests. Staff can direct you to the ticket form. For the 24-hour guarantee the request must reach us by ticket within the 24 hours, so please do not wait.",
+          "10.3 We may ask for evidence (screenshots, logs) or for identity verification before refunding. A refund request does not pause the Service or its billing. Please cancel separately if you do not want to renew."
+        ]
+      },
+      {
+        "id": "refund-11",
+        "num": 11,
+        "title": "Our Decision and Review",
+        "content": [
+          "11.1 We decide refund requests in good faith, based on this policy, our logs and records, and the facts of the case.",
+          "11.2 If we decline, we will tell you the reason. You can ask for a review by replying to the ticket within 7 days, or through our Grievance Officer (Terms section 24.3).",
+          "11.3 A goodwill refund or credit we give in one case does not create a right to the same in another case."
+        ]
+      },
+      {
+        "id": "refund-12",
+        "num": 12,
+        "title": "Free Plans, Promotions and Credits",
+        "content": [
+          "Free plans carry no payment and cannot be refunded. For purchases made with a coupon, discount or credit, only the amount you actually paid in money is eligible for refund, and bonus credit or promotional value is forfeited with the refunded Service."
+        ]
+      },
+      {
+        "id": "refund-13",
+        "num": 13,
+        "title": "Your Legal Rights and Changes",
+        "content": [
+          "13.1 Nothing in this policy limits your rights as a consumer under the Consumer Protection Act, 2019, the Consumer Protection (E-Commerce) Rules, 2020, or other mandatory law, including any right to a remedy if a Service is materially not as described.",
+          "13.2 We may change this policy under Terms section 23. A purchase is governed by the version in force on the date you bought it.",
+          "13.3 Questions: open a ticket, or write to billing@warnode.cloud."
+        ]
       }
-    ],
-    "development": {
-      "title": "Development & Setup",
-      "note": "50% Partial Refund — Deduction applies for time and creative effort already expended on the project.",
-      "items": [
-        "Custom Web Development",
-        "Server Development (MC SMP, Network, etc.)",
-        "Panel Installation & Node Setup"
-      ]
-    },
-    "nonRefundableTitle": "Non-Refundable Scenarios",
-    "nonRefundable": [
-      "Illegal Activity — Any service suspended for DDoS, phishing, or copyrighted content hosting.",
-      "Chargebacks — Initiating a dispute through your bank will void any refund eligibility and lead to account termination.",
-      "TOS Violations — Resource abuse, mining scripts, or bypassing system limitations."
-    ],
-    "processing": {
-      "title": "Fast & Secure Payouts",
-      "description": "Once approved, refunds are processed within 7-10 business days. Funds will be returned to the original payment method used during checkout."
-    },
-    "support": {
-      "title": "Still need help?",
-      "description": "Our support team is available 24/7 to discuss your specific case.",
-      "discordLabel": "Contact Support",
-      "discordUrl": "https://dcd.gg/warnode",
-      "ticketLabel": "Open a Ticket",
-      "ticketUrl": "https://portal.warnode.cloud/tickets/create"
-    }
+    ]
   },
   "privacyPolicy": {
-    "title": "Privacy Policy",
-    "badge": "Security First",
-    "intro": "At WarNodes, we value your privacy and are committed to being transparent about how we handle your information.",
-    "lastUpdated": "Dec 11, 2024",
-    "companyName": "WarNodes",
-    "websiteUrl": "https://warnode.cloud",
-    "contactEmail": "privacy@warnode.cloud",
-    "quickSummary": [
+    "id": "privacy",
+    "badge": "Data Protection & Privacy Rights",
+    "title": "Privacy Policy (DPDP Act 2023)",
+    "intro": "Our Privacy Policy details how WarNodes collects, processes, and protects your personal data under the Digital Personal Data Protection Act, 2023 and the Information Technology Act, 2000.",
+    "sections": [
       {
-        "icon": "Ban",
-        "title": "No Data Selling",
-        "description": "We never sell your personal information to third parties for advertising."
+        "id": "privacy-1",
+        "num": 1,
+        "title": "Who We Are and Scope",
+        "content": [
+          "1.1 This policy explains how WarNodes, operated by WarNodes Cloud Technologies, Mumbai, Maharashtra, India, India (\"WarNodes\", \"we\"), collects, uses, shares and protects personal data when you visit warnode.cloud, use the client area, panels, Discord support, or any of our Services. For the personal data you give us, we act as the Data Fiduciary under the Digital Personal Data Protection Act, 2023 (\"DPDP Act\") and other applicable Indian law.",
+          "1.2 By creating an account or using the Services you agree to this policy. Where the law needs separate consent, we ask for it separately."
+        ]
       },
       {
-        "icon": "CreditCard",
-        "title": "Card Security",
-        "description": "Payment details are processed securely; we never store your full card info."
+        "id": "privacy-2",
+        "num": 2,
+        "title": "Data We Collect",
+        "content": [
+          "Account identification, billing, invoices",
+          "Yes",
+          "Login, notices, invoices, support, security alerts",
+          "Yes",
+          "Two-factor authentication, fraud prevention, urgent service alerts",
+          "Yes (used for 2FA and emergency server alerts)",
+          "Tax invoices, tax compliance, fraud checks",
+          "Yes",
+          "Processed by our payment processors. We store only a reference, status, amount, date, method type, and for cards the last four digits and brand. We do not store full card numbers, CVV, UPI PIN or net-banking passwords.",
+          "When you pay",
+          "Security logging, fraud prevention, abuse handling, legal compliance, dashboard performance",
+          "Yes",
+          "Running, securing and billing the Services, abuse detection, capacity planning",
+          "Yes",
+          "Handling your requests and keeping a record",
+          "When you contact us",
+          "Fraud checks and KYC, only when we ask",
+          "When requested",
+          "Support, role verification in our community",
+          "When you use Discord with us",
+          "See section 5",
+          "Essential: yes",
+          "2.2 Your hosted content. The files, worlds, databases, bot code and websites you host are your content. We store them to provide the Service. We treat them as your data, and do not use them for our own purposes (Terms section 10.6)."
+        ],
+        "table": {
+          "headers": [
+            "Personal Data Category",
+            "Purpose & Why We Need It",
+            "Mandatory?"
+          ],
+          "rows": [
+            [
+              "Full Name",
+              "Account identification, billing, GST invoices",
+              "Yes"
+            ],
+            [
+              "Email Address",
+              "Login credentials, notices, billing invoices, security alerts",
+              "Yes"
+            ],
+            [
+              "Phone Number",
+              "Two-factor authentication, fraud prevention, urgent server alerts",
+              "Yes"
+            ],
+            [
+              "Billing Address & GSTIN",
+              "Tax invoices, legal compliance under Indian GST laws",
+              "Yes (GSTIN optional)"
+            ],
+            [
+              "Payment Transaction Details",
+              "Processed by gateways. We store reference ID, date, amount, method, masked card info.",
+              "When you pay"
+            ],
+            [
+              "IP Address, Device & Browser Info",
+              "Security logging, fraud detection, abuse prevention, CERT-In compliance",
+              "Yes"
+            ],
+            [
+              "Service Usage & Activity Logs",
+              "Resource metrics, bandwidth, console logs, abuse defense, capacity planning",
+              "Yes"
+            ],
+            [
+              "Support Records & Tickets",
+              "Handling inquiries, Discord staff communications, problem resolution",
+              "When you contact us"
+            ],
+            [
+              "KYC Verification Documents",
+              "High-risk order fraud checks (only requested when flagged)",
+              "When requested"
+            ],
+            [
+              "Discord User ID & Tag",
+              "Community verification, linked support role assignment",
+              "When linked"
+            ],
+            [
+              "Session Cookies",
+              "Essential authentication and preference persistence",
+              "Essential: Yes"
+            ]
+          ]
+        }
       },
       {
-        "icon": "Trash2",
-        "title": "Full Control",
-        "description": "You have the right to request the deletion of your account and data at any time."
+        "id": "privacy-3",
+        "num": 3,
+        "title": "How We Use Your Data",
+        "content": [
+          "We use personal data only for these purposes:",
+          "to create and manage your account, provide, bill and support the Services;",
+          "to process payments, send invoices and prevent fraud and chargebacks;",
+          "to keep the platform secure, detect and stop abuse and attacks, and enforce the Terms and AUP;",
+          "to send service messages (renewals, outages, maintenance, security notices, changes to our terms);",
+          "to meet legal, tax, accounting and regulatory duties, including requests from authorities;",
+          "to improve and troubleshoot our platform using usage and analytics data;",
+          "to send product news or offers, only where you agreed. You can opt out at any time and still get service messages.",
+          "We do not sell your personal data, and we do not use it for third-party advertising."
+        ]
+      },
+      {
+        "id": "privacy-4",
+        "num": 4,
+        "title": "Consent and Withdrawing It",
+        "content": [
+          "4.1 We process your data on the basis of your consent given at signup or checkout, and for the other lawful uses the law allows (such as performing our contract with you, complying with a legal duty, preventing fraud, and responding to emergencies).",
+          "4.2 You can withdraw consent at any time by writing to privacy@warnode.cloud. Withdrawal does not affect processing already done. It may mean we can no longer provide some or all Services, and data we must keep by law will be retained."
+        ]
+      },
+      {
+        "id": "privacy-5",
+        "num": 5,
+        "title": "Cookies",
+        "content": [
+          "5.1 Essential cookies keep you logged in, protect against fraud and remember basic settings. They cannot be switched off if you want to use the client area.",
+          "5.2 Analytical cookies help us see how the website and dashboard are used so we can improve them. Where required, we ask for your choice, and you can change it in your browser or any cookie settings we provide.",
+          "5.3 We do not use cookies for behavioural advertising."
+        ]
+      },
+      {
+        "id": "privacy-6",
+        "num": 6,
+        "title": "Who We Share Data With",
+        "content": [
+          "We share personal data only as needed with:",
+          "Payment processors and banks, to take payments, refunds and handle disputes;",
+          "Data-centre, network and infrastructure providers that host our servers OVHcloud, Hetzner, Datalix, Path Network, and upstream tier-1 transit carriers;",
+          "Email, messaging and support tools, including Discord for community support;",
+          "Fraud-prevention and security providers, and our professional advisers (lawyers, accountants, auditors);",
+          "Authorities, courts and regulators, where we are legally required or where we reasonably need to protect rights, safety or the platform;",
+          "A buyer or successor, if our business is sold or restructured, who must honour this policy.",
+          "These providers act on our instructions, or under their own legal duties, and we ask them to protect the data. We do not sell data."
+        ]
+      },
+      {
+        "id": "privacy-7",
+        "num": 7,
+        "title": "Where Data Is Stored and Transferred",
+        "content": [
+          "Our servers and providers may be in India, Singapore, UAE, Germany, the United States or other places where we operate. Your data may be transferred and processed outside India, as the DPDP Act allows, with appropriate safeguards. Content you host is stored in the location you choose."
+        ]
+      },
+      {
+        "id": "privacy-8",
+        "num": 8,
+        "title": "How Long We Keep Data",
+        "content": [
+          "While your account is active, and until 30 days after you ask to close it, unless we must keep it longer",
+          "As long as tax, accounting and company law require (generally up to 8 years)",
+          "At least as long as the law requires, which includes the CERT-In directions (currently 180 days), and longer where needed for an investigation",
+          "As long as the CERT-In directions require (currently [5 years])",
+          "3 years after closure, to handle disputes and repeat issues",
+          "Deleted after termination as set out in Terms sections 6 and 10",
+          "As long as needed to prevent repeat abuse and to defend legal claims",
+          "When the retention need ends we delete or anonymise the data."
+        ],
+        "table": {
+          "headers": [
+            "Data Category",
+            "Retention Period",
+            "Legal / Operational Basis"
+          ],
+          "rows": [
+            [
+              "Account & Profile Data",
+              "Duration of active account + 30 days after closure request",
+              "Account operation & graceful re-activation"
+            ],
+            [
+              "Invoices & Financial Records",
+              "Up to 8 years",
+              "Indian Income Tax & Companies Act requirements"
+            ],
+            [
+              "Security & Network Access Logs",
+              "Minimum 180 days (or longer if under investigation)",
+              "CERT-In Cybersecurity Directions 2022"
+            ],
+            [
+              "Customer Cloud & VPS Registration Details",
+              "5 years after termination",
+              "CERT-In Cloud Provider Directives"
+            ],
+            [
+              "Support Tickets & Communications",
+              "3 years after ticket resolution",
+              "Dispute resolution & service auditing"
+            ],
+            [
+              "Hosted Game/VPS Server Content",
+              "Deleted upon service cancellation / termination",
+              "Zero residual storage of customer data"
+            ],
+            [
+              "Fraud & Chargeback Blacklist Records",
+              "Indefinite / As needed to defend claims",
+              "Platform security & financial loss prevention"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "privacy-9",
+        "num": 9,
+        "title": "Security",
+        "content": [
+          "We use safeguards that are reasonable for the risk, including HTTPS encryption, hashed passwords, access controls and least-privilege access for staff, two-factor authentication, logging and monitoring, and secure data centres. No system is perfectly secure. If a personal-data breach affects you, we will notify you and the authorities as the law requires. Keep your own credentials safe (Terms section 3.3)."
+        ]
+      },
+      {
+        "id": "privacy-10",
+        "num": 10,
+        "title": "Your Rights",
+        "content": [
+          "Under the DPDP Act and other applicable law, you can ask us to:",
+          "give you a summary of the personal data we process about you and the third parties we have shared it with;",
+          "correct, complete or update your data;",
+          "erase your data, unless we must keep it for a legal reason or a lawful purpose;",
+          "withdraw consent (section 4);",
+          "resolve a grievance (section 15);",
+          "nominate another person to exercise your rights if you die or become incapacitated.",
+          "Most details can also be seen and changed in the client area. To make a request, write to privacy@warnode.cloud from your registered email. We may verify your identity first. We will reply within 30 days, or sooner if the law requires. Closing your account to have your data erased also ends your Services (Terms section 7), and does not entitle you to a refund beyond Part D."
+        ]
+      },
+      {
+        "id": "privacy-11",
+        "num": 11,
+        "title": "Children",
+        "content": [
+          "The Services are for adults. A person under 18 can use them only through a parent or guardian's account (Terms section 2.2). We do not knowingly collect a child's personal data without verifiable parental or guardian consent. We do not track or monitor children's behaviour or show them targeted advertising. A parent or guardian can contact us to access, correct or delete a child's data."
+        ]
+      },
+      {
+        "id": "privacy-12",
+        "num": 12,
+        "title": "Data of Your Own Users",
+        "content": [
+          "If you collect data from players, users or customers on a Service you host with us, you decide why and how it is used and are responsible for lawful collection and your own privacy notice. We process that data for you only to provide the hosting Service. A data processing addendum is available on request."
+        ]
+      },
+      {
+        "id": "privacy-13",
+        "num": 13,
+        "title": "Fraud Screening and Automated Checks",
+        "content": [
+          "We use automated checks (for example IP, device and payment risk signals) to detect fraud and abuse. If an order is flagged we may ask you to verify, and you can ask for a person to review the decision by ticket."
+        ]
+      },
+      {
+        "id": "privacy-14",
+        "num": 14,
+        "title": "Links and Third Parties",
+        "content": [
+          "Our website and Discord server may link to other sites and services (such as Discord, payment pages, game sites). Their privacy practices are their own, and we encourage you to read them."
+        ]
+      },
+      {
+        "id": "privacy-15",
+        "num": 15,
+        "title": "Grievance Officer and Contact",
+        "content": [
+          "Name: Grievance Officer, WarNodes · Email: privacy@warnode.cloud · Address: Mumbai, Maharashtra, India. We acknowledge complaints within 48 hours and aim to resolve them within 30 days, or sooner if the law requires. If you are not satisfied, you may approach the Data Protection Board of India or other authority as the law provides."
+        ]
+      },
+      {
+        "id": "privacy-16",
+        "num": 16,
+        "title": "Changes to This Policy",
+        "content": [
+          "We may update this policy. We will post the new version with its date, and tell you by email or in the client area about material changes before they take effect (Terms section 23). Where the law requires fresh consent, we will ask for it.",
+          "End of document. Remember to fill every [bracketed] item, set the effective date, and have the final text reviewed by a lawyer before publishing."
+        ]
       }
-    ],
-    "whatWeCollect": {
-      "tldr": "We collect your name, email, and payment information to provide our services. Technical information like IP address helps maintain security and performance.",
-      "rows": [
-        { "dataType": "Name", "purpose": "Account identification and billing", "required": "Yes" },
-        { "dataType": "Email", "purpose": "Login, notifications, and support", "required": "Yes" },
-        { "dataType": "Phone", "purpose": "2FA security and urgent alerts", "required": "Yes" },
-        { "dataType": "Billing Address", "purpose": "Tax compliance and fraud prevention", "required": "Yes" },
-        { "dataType": "IP Address", "purpose": "Security logging and geofencing", "required": "Yes" },
-        { "dataType": "Device Info", "purpose": "Optimizing dashboard performance", "required": "Yes" }
-      ]
-    },
-    "howWeUse": {
-      "tldr": "Your information is used only to operate services, process payments, provide support, and keep the platform secure.",
-      "items": [
-        "Fulfilling service requests and orders",
-        "Preventing fraudulent transactions",
-        "Communicating critical system updates",
-        "Improving network infrastructure latency"
-      ]
-    },
-    "security": {
-      "tldr": "We use industry-standard security practices like HTTPS, encrypted passwords, and secure data centers.",
-      "items": [
-        "AES-256 Data Encryption",
-        "SSL/TLS Protected Traffic",
-        "Strict Internal Access Control"
-      ]
-    },
-    "dataSharing": {
-      "tldr": "Your data is only shared with essential service providers like Payment Processors and Data Centers.",
-      "providers": [
-        { "icon": "CreditCard", "name": "Razorpay (Payments)" },
-        { "icon": "Cloud", "name": "OVH (Hosting)" },
-        { "icon": "Mail", "name": "Warnode Mail Network (Email)" },
-        { "icon": "Shield", "name": "Cloudflare + OVH (Security)" }
-      ]
-    },
-    "cookies": {
-      "tldr": "Cookies help maintain login sessions and improve user experience. We use \"essential\" cookies for core functionality and \"analytical\" cookies to understand usage.",
-      "description": "You can control cookie preferences through your browser settings. Essential cookies are required for account login and checkout."
-    },
-    "yourRights": {
-      "rights": [
-        { "icon": "Eye", "label": "Access" },
-        { "icon": "Edit", "label": "Correct" },
-        { "icon": "Download", "label": "Download" },
-        { "icon": "Trash2", "label": "Delete" }
-      ]
-    }
+    ]
   }
 }

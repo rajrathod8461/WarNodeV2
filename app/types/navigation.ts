@@ -3,6 +3,7 @@ export interface DropdownItem {
   href: string;
   description?: string;
   icon?: string;
+  color?: string;
 }
 
 export interface NavigationItem {
@@ -10,7 +11,8 @@ export interface NavigationItem {
   href: string;
   icon?: string;
   hasDropdown?: boolean;
-  dropdownType?: 'games' | 'legal' | 'custom';
+  dropdownType?: 'games' | 'legal' | 'custom' | 'more';
+  dropdownLabel?: string;
   dropdownItems?: DropdownItem[];
 }
 

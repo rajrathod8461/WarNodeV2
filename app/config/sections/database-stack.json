@@ -1,0 +1,17 @@
+{
+  "technologies": [
+    { "name": "MariaDB", "icon": "/icons/databases/mariadb.svg" },
+    { "name": "Postgres 13", "icon": "/icons/databases/postgresql.svg" },
+    { "name": "Postgres 14", "icon": "/icons/databases/postgresql.svg" },
+    { "name": "Postgres 15", "icon": "/icons/databases/postgresql.svg" },
+    { "name": "Postgres 16", "icon": "/icons/databases/postgresql.svg" },
+    { "name": "Postgres 17", "icon": "/icons/databases/postgresql.svg" },
+    { "name": "MongoDB", "icon": "/icons/databases/mongodb.svg" },
+    { "name": "MongoDB 8", "icon": "/icons/databases/mongodb.svg" },
+    { "name": "Redis 5", "icon": "/icons/databases/redis.svg" },
+    { "name": "Redis 6", "icon": "/icons/databases/redis.svg" },
+    { "name": "Redis 7", "icon": "/icons/databases/redis.svg" },
+    { "name": "Elasticsearch", "icon": "/icons/databases/elasticsearch.svg" },
+    { "name": "RabbitMQ", "icon": "/icons/databases/rabbitmq.svg" }
+  ]
+}

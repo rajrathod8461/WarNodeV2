@@ -90,12 +90,12 @@ export default function WebHostingPricingSection() {
               </div>
               <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 orbitron-font">
                 {t('webHostingPricing.title').split(" ").slice(0, -1).join(" ")}{" "}
-                <span className="icon-text-primary relative">
+                <span className="icon-text-primary relative inline-block">
                   {t('webHostingPricing.title').split(" ").slice(-1)[0]}
                   <motion.svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 1418 125"
-                    className="absolute left-0 w-full text-icon-text-primary"
+                    className="absolute left-0 w-full text-icon-text-primary top-full -mt-1 pointer-events-none"
                     initial={{ opacity: 0, pathLength: 0 }}
                     animate={{ opacity: 1, pathLength: 1 }}
                     transition={{ duration: 1, delay: 0.5 }}
@@ -163,7 +163,7 @@ export default function WebHostingPricingSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                className="relative bg-white dark:bg-gray-950/20 backdrop-blur-xl rounded-md overflow-hidden border border-secondary hover:border-secondary dark:hover:border-secondary transition-all duration-300"
+                className="relative bg-white dark:bg-gray-950/20 backdrop-blur-xl rounded-tl-2xl rounded-br-2xl overflow-hidden border border-secondary hover:border-secondary dark:hover:border-secondary hover:hover-gradient transition-all duration-300"
               >
                 {plan.badge && (
                   <div className="absolute top-4 right-4">

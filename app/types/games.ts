@@ -13,6 +13,13 @@ export interface GamePlan {
   }
   orderLink: string
   image?: string
+  rarity?: string
+  weaponCategory?: string
+  weaponSubtitle?: string
+  tag?: string
+  slots?: string
+  tickrate?: string
+  featured?: boolean
 }
 
 export interface Game {

@@ -8,7 +8,7 @@ function isAllowedUrl(raw: string): URL | null {
     const url = new URL(raw)
     if (url.protocol !== "https:") return null
     if (url.username || url.password) return null
-    if (url.hostname !== "portal.warnode.cloud") return null
+    if (url.hostname !== "portal.warnode.cloud" && url.hostname !== "datalix.eu") return null
     return url
   } catch {
     return null
@@ -45,14 +45,11 @@ export async function GET(req: Request) {
     return NextResponse.json(cached.body)
   }
 
-  const controller = new AbortController()
-  const timeout = setTimeout(() => controller.abort(), 6500)
-
   try {
     const res = await fetch(url.toString(), {
       method: "GET",
       redirect: "follow",
-      signal: controller.signal,
+      signal: AbortSignal.timeout(6500),
       headers: {
         "user-agent": "warnodes-site-stock-check/1.0",
         accept: "text/html,*/*",
@@ -79,7 +76,5 @@ export async function GET(req: Request) {
     const body = { inStock: true, confidence: "unknown" }
     stockCache.set(cacheKey, { body, at: Date.now() })
     return NextResponse.json(body)
-  } finally {
-    clearTimeout(timeout)
   }
 }

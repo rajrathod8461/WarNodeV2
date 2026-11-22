@@ -12,7 +12,11 @@
         "image": "/banners/minecraft-banners.webp",
         "descriptionKey": "pricingPlans.gameServers.description",
         "basePrice": 59,
-        "displayPrices": { "INR": "₹59", "USD": "$0.99", "EUR": "€0.99" },
+        "displayPrices": {
+          "INR": "₹59",
+          "USD": "$0.99",
+          "EUR": "€0.99"
+        },
         "priceSuffix": "/month",
         "featuresKeys": [
           "pricingPlans.gameServers.features.instantDeployment",
@@ -31,7 +35,11 @@
         "image": "/banners/vps.webp",
         "descriptionKey": "pricingPlans.vpsHosting.description",
         "basePrice": 90,
-        "displayPrices": { "INR": "₹90", "USD": "$1.99", "EUR": "€0.99" },
+        "displayPrices": {
+          "INR": "₹90",
+          "USD": "$1.99",
+          "EUR": "€0.99"
+        },
         "priceSuffix": "/GB RAM",
         "featuresKeys": [
           "pricingPlans.vpsHosting.features.fullRootAccess",
@@ -50,7 +58,11 @@
         "image": "/banners/webhost.webp",
         "descriptionKey": "pricingPlans.webHosting.description",
         "basePrice": 0,
-        "displayPrices": { "INR": "FREE", "USD": "FREE", "EUR": "FREE" },
+        "displayPrices": {
+          "INR": "FREE",
+          "USD": "FREE",
+          "EUR": "FREE"
+        },
         "priceSuffix": "",
         "featuresKeys": [
           "pricingPlans.webHosting.features.ssdStorage",
@@ -69,7 +81,11 @@
         "image": "/banners/discord.webp",
         "descriptionKey": "pricingPlans.discordBot.description",
         "basePrice": 15,
-        "displayPrices": { "INR": "₹15", "USD": "$0.99", "EUR": "€0.99" },
+        "displayPrices": {
+          "INR": "₹15",
+          "USD": "$0.99",
+          "EUR": "€0.99"
+        },
         "priceSuffix": "/month",
         "featuresKeys": [
           "pricingPlans.discordBot.features.multiLanguage",
@@ -84,11 +100,38 @@
         "link": "/discord-bot"
       },
       {
+        "titleKey": "pricingPlans.databaseHosting.title",
+        "image": "/Create_email_hosting_banner_5a19e5a7_2K.jpg",
+        "descriptionKey": "pricingPlans.databaseHosting.description",
+        "basePrice": 39,
+        "displayPrices": {
+          "INR": "₹39",
+          "USD": "$0.69",
+          "EUR": "€0.65"
+        },
+        "priceSuffix": "/month",
+        "featuresKeys": [
+          "pricingPlans.databaseHosting.features.nvmeSpeed",
+          "pricingPlans.databaseHosting.features.instantDeployment",
+          "pricingPlans.databaseHosting.features.automatedBackups",
+          "pricingPlans.databaseHosting.features.ddosProtection",
+          "pricingPlans.databaseHosting.features.uptime"
+        ],
+        "buttonTextKey": "pricingPlans.databaseHosting.buttonText",
+        "buttonStyle": "secondary",
+        "popular": false,
+        "link": "/database-hosting"
+      },
+      {
         "titleKey": "pricingPlans.warShield.title",
         "image": "/banners/warshield.webp",
         "descriptionKey": "pricingPlans.warShield.description",
         "basePrice": 299,
-        "displayPrices": { "INR": "₹299", "USD": "$3.99", "EUR": "€2.99" },
+        "displayPrices": {
+          "INR": "₹299",
+          "USD": "$3.99",
+          "EUR": "€2.99"
+        },
         "priceSuffix": "/month",
         "featuresKeys": [
           "pricingPlans.warShield.features.tbProtection",
@@ -107,7 +150,11 @@
         "image": "/banners/hytale.webp",
         "descriptionKey": "pricingPlans.otherGameHosting.description",
         "basePrice": 160,
-        "displayPrices": { "INR": "₹160", "USD": "$1.99", "EUR": "€1.99" },
+        "displayPrices": {
+          "INR": "₹160",
+          "USD": "$1.99",
+          "EUR": "€1.99"
+        },
         "priceSuffix": "/month",
         "featuresKeys": [
           "pricingPlans.otherGameHosting.features.lowPing",
@@ -120,6 +167,144 @@
         "buttonStyle": "secondary",
         "popular": false,
         "link": "/games?game=hytale"
+      },
+      {
+        "titleKey": "pricingPlans.cs2Hosting.title",
+        "image": "/banners/cs2-banner.webp",
+        "descriptionKey": "pricingPlans.cs2Hosting.description",
+        "basePrice": 199,
+        "displayPrices": {
+          "INR": "₹199",
+          "USD": "$2.49",
+          "EUR": "€2.49"
+        },
+        "priceSuffix": "/month",
+        "featuresKeys": [
+          "pricingPlans.cs2Hosting.features.highTickrate",
+          "pricingPlans.cs2Hosting.features.lowPing",
+          "pricingPlans.gameServers.features.instantDeployment",
+          "pricingPlans.gameServers.features.ddosProtection",
+          "pricingPlans.cs2Hosting.features.modPlugins"
+        ],
+        "buttonTextKey": "pricingPlans.cs2Hosting.buttonText",
+        "buttonStyle": "secondary",
+        "popular": false,
+        "link": "/games?game=cs2"
+      },
+      {
+        "titleKey": "pricingPlans.dedicatedServers.title",
+        "image": "/dedicated.webp",
+        "descriptionKey": "pricingPlans.dedicatedServers.description",
+        "basePrice": 6699,
+        "displayPrices": {
+          "INR": "₹6,699",
+          "USD": "$79.99",
+          "EUR": "€74.99"
+        },
+        "priceSuffix": "/month",
+        "featuresKeys": [
+          "pricingPlans.dedicatedServers.features.bareMetalPerformance",
+          "pricingPlans.dedicatedServers.features.customHardware",
+          "pricingPlans.dedicatedServers.features.enterpriseSupport",
+          "pricingPlans.dedicatedServers.features.advancedSecurity",
+          "pricingPlans.dedicatedServers.features.managedServices"
+        ],
+        "buttonTextKey": "pricingPlans.dedicatedServers.buttonText",
+        "buttonStyle": "primary",
+        "popular": true,
+        "link": "/dedicated"
+      },
+      {
+        "titleKey": "pricingPlans.emailHosting.title",
+        "image": "/Creating_email_hosting_banner_4671e6b5_2K.jpg",
+        "descriptionKey": "pricingPlans.emailHosting.description",
+        "basePrice": 39,
+        "displayPrices": {
+          "INR": "₹39",
+          "USD": "$0.59",
+          "EUR": "€0.55"
+        },
+        "priceSuffix": "/month",
+        "featuresKeys": [
+          "pricingPlans.emailHosting.features.customDomain",
+          "pricingPlans.emailHosting.features.webmail",
+          "pricingPlans.emailHosting.features.spamFilter",
+          "pricingPlans.emailHosting.features.imapSmtp",
+          "pricingPlans.emailHosting.features.uptime"
+        ],
+        "buttonTextKey": "pricingPlans.emailHosting.buttonText",
+        "buttonStyle": "secondary",
+        "popular": false,
+        "link": "/email-hosting"
+      },
+      {
+        "titleKey": "pricingPlans.rustHosting.title",
+        "image": "/banners/rust-banner-2.webp",
+        "descriptionKey": "pricingPlans.rustHosting.description",
+        "basePrice": 399,
+        "displayPrices": {
+          "INR": "₹399",
+          "USD": "$4.99",
+          "EUR": "€4.49"
+        },
+        "priceSuffix": "/month",
+        "featuresKeys": [
+          "pricingPlans.rustHosting.features.instantWipe",
+          "pricingPlans.rustHosting.features.oxideSupport",
+          "pricingPlans.rustHosting.features.highTickrate",
+          "pricingPlans.gameServers.features.instantDeployment",
+          "pricingPlans.gameServers.features.ddosProtection"
+        ],
+        "buttonTextKey": "pricingPlans.rustHosting.buttonText",
+        "buttonStyle": "secondary",
+        "popular": false,
+        "link": "/games?game=rust"
+      },
+      {
+        "titleKey": "pricingPlans.palworldHosting.title",
+        "image": "/banners/palworld-banner.jpg",
+        "descriptionKey": "pricingPlans.palworldHosting.description",
+        "basePrice": 299,
+        "displayPrices": {
+          "INR": "₹299",
+          "USD": "$3.99",
+          "EUR": "€3.49"
+        },
+        "priceSuffix": "/month",
+        "featuresKeys": [
+          "pricingPlans.palworldHosting.features.autoSaves",
+          "pricingPlans.palworldHosting.features.palBackups",
+          "pricingPlans.palworldHosting.features.lowPing",
+          "pricingPlans.gameServers.features.instantDeployment",
+          "pricingPlans.gameServers.features.ddosProtection"
+        ],
+        "buttonTextKey": "pricingPlans.palworldHosting.buttonText",
+        "buttonStyle": "secondary",
+        "popular": false,
+        "link": "/games?game=palworld"
+      },
+      {
+        "titleKey": "pricingPlans.fivemHosting.title",
+        "image": "/banners/fivem-banner.jpg",
+        "descriptionKey": "pricingPlans.fivemHosting.description",
+        "basePrice": 149,
+        "displayPrices": {
+          "INR": "₹149",
+          "USD": "$1.99",
+          "EUR": "€1.79"
+        },
+        "priceSuffix": "/month",
+        "featuresKeys": [
+          "pricingPlans.fivemHosting.features.txAdmin",
+          "pricingPlans.fivemHosting.features.oneClickArtifacts",
+          "pricingPlans.fivemHosting.features.customResources",
+          "pricingPlans.gameServers.features.instantDeployment",
+          "pricingPlans.gameServers.features.ddosProtection"
+        ],
+        "buttonTextKey": "pricingPlans.fivemHosting.buttonText",
+        "buttonStyle": "secondary",
+        "popular": false,
+        "link": "/games?game=fivem"
       }
     ],
     "footer": {

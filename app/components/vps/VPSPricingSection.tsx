@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Server, Cpu, MemoryStick, HardDrive, ChevronLeft, ChevronRight } from "lucide-react"
+import { Server, Cpu, MemoryStick, HardDrive } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import type { CSSProperties } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
@@ -97,9 +97,7 @@ export default function VPSPricingSection() {
   const searchParams = useSearchParams()
   const [selectedLocation, setSelectedLocation] = useState(config.locations[0].id)
   const [selectedCPU, setSelectedCPU] = useState(config.planTypes[0].id)
-  const [currentPage, setCurrentPage] = useState(1)
   const initializedFromUrlRef = useRef(false)
-  const plansPerPage = 3
   const currentLocation = config.locations.find(loc => loc.id === selectedLocation)
   const availableCPUs = currentLocation?.availableCpus || []
   const currentPlans = config.plans[selectedCPU] || config.plans[config.planTypes[0].id]
@@ -116,30 +114,12 @@ export default function VPSPricingSection() {
   const handleCPUSelection = (cpuId: string) => {
     if (!availableCPUs.includes(cpuId)) return
     setSelectedCPU(cpuId)
-    setCurrentPage(1)
   }
 
   const handleLocationSelection = (locationId: string) => {
     const newLocation = config.locations.find((loc) => loc.id === locationId)
     if (!newLocation || !newLocation.availableCpus.includes(selectedCPU)) return
     setSelectedLocation(locationId)
-    setCurrentPage(1)
-  }
-  const totalPages = Math.ceil(currentPlans.length / plansPerPage)
-  const startIndex = (currentPage - 1) * plansPerPage
-  const endIndex = startIndex + plansPerPage
-  const currentPagePlans = currentPlans.slice(startIndex, endIndex)
-
-  const goToPage = (page: number) => {
-    setCurrentPage(page)
-  }
-
-  const goToPrevPage = () => {
-    setCurrentPage((prev) => Math.max(prev - 1, 1))
-  }
-
-  const goToNextPage = () => {
-    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
   }
 
   useEffect(() => {
@@ -167,7 +147,6 @@ export default function VPSPricingSection() {
 
     setSelectedCPU(nextCPU)
     setSelectedLocation(nextLocation)
-    setCurrentPage(1)
   }, [searchParams])
 
   useEffect(() => {
@@ -210,12 +189,12 @@ export default function VPSPricingSection() {
               </div>
               <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 orbitron-font">
                 {t('vps.title').split(" ").slice(0, -1).join(" ")}{" "}
-                <span className="icon-text-primary relative">
+                <span className="icon-text-primary relative inline-block">
                   {t('vps.title').split(" ").slice(-1)[0]}
                   <motion.svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 1418 125"
-                    className="absolute left-0 w-full text-icon-text-primary"
+                    className="absolute left-0 w-full text-icon-text-primary top-full -mt-1 pointer-events-none"
                     initial={{ opacity: 0, pathLength: 0 }}
                     animate={{ opacity: 1, pathLength: 1 }}
                     transition={{ duration: 1, delay: 0.5 }}
@@ -329,23 +308,18 @@ export default function VPSPricingSection() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="space-y-4"
         >
-          {currentPagePlans.map((plan, index) => (
+          {currentPlans.map((plan, index) => (
             <motion.div
               key={plan.id}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-              className="bg-white dark:bg-gray-950/20 backdrop-blur-xl border border-secondary hover:border-secondary dark:hover:border-secondary rounded-lg p-4 hover:hover-gradient dark:hover:hover-gradient transition-all duration-300"
+              className="bg-white dark:bg-[#0b0e17] border-2 border-gray-200 dark:border-[#1e2333] hover:border-blue-500 dark:hover:border-blue-500/80 rounded-xl p-4 sm:p-5 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.8)] hover:shadow-[5px_5px_0px_0px_rgba(59,130,246,0.4)] transition-all duration-200"
             >
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 sm:gap-6">
                 <div className="flex items-center gap-4">
-                  <div className="relative w-12 h-12 rounded-md">
-                    <Image
-                      src={plan.image || "/placeholder.svg"}
-                      alt="CPU"
-                      fill
-                      className="rounded-xl object-contain "
-                    />
+                  <div className="w-12 h-12 rounded-lg bg-blue-500/10 border-2 border-blue-500/30 flex items-center justify-center text-blue-500 dark:text-blue-400 shrink-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.6)]">
+                    <Server className="w-6 h-6 stroke-[2]" />
                   </div>
                   <div className="flex items-center gap-3">
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">{plan.name}</h3>
@@ -394,45 +368,6 @@ export default function VPSPricingSection() {
             </motion.div>
           ))}
         </motion.div>
-
-        {totalPages > 1 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="flex items-center justify-center gap-2 mt-8"
-          >
-            <button
-              onClick={goToPrevPage}
-              disabled={currentPage === 1}
-              className="p-2 rounded-lg border border-secondary bg-white dark:bg-gray-900/20 icon-text-primary hover:bg-gray-50 dark:hover:bg-gray-800/30 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-              <button
-                key={page}
-                onClick={() => goToPage(page)}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
-                  currentPage === page
-                    ? "button-primary text-button-primary"
-                    : "border border-secondary bg-white dark:bg-gray-900/20 icon-text-primary hover:bg-gray-50 dark:hover:bg-gray-800/30"
-                }`}
-              >
-                {page}
-              </button>
-            ))}
-
-            <button
-              onClick={goToNextPage}
-              disabled={currentPage === totalPages}
-              className="p-2 rounded-lg border border-secondary bg-white dark:bg-gray-900/20 icon-text-primary hover:bg-gray-50 dark:hover:bg-gray-800/30 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </motion.div>
-        )}
       </div>
     </div>
   )

@@ -31,8 +31,8 @@ export const pageSeo = {
   games: {
     title: "Game Server Hosting – Instant Setup",
     description:
-      "Reliable game servers with premium hardware, WarShield DDoS protection and instant setup for popular games including Minecraft and Hytale.",
-    body: "Order Minecraft or Hytale servers with instant deployment, modpack support, plugin installers, live console access, and low-latency routes across India.",
+      "Reliable game servers with premium hardware, WarShield DDoS protection and instant setup for popular games including Minecraft, Rust, Palworld, FiveM, CS2, and Hytale.",
+    body: "Order Minecraft, Rust, Palworld, FiveM, CS2 or Hytale servers with instant deployment, modpack support, plugin installers, live console access, and low-latency routes across India.",
     path: "/games",
   },
   minecraft: {
@@ -48,6 +48,13 @@ export const pageSeo = {
     body: "Run Node.js, Python, Java, Go, Rust and other bot stacks with always-on uptime, DDoS protection, and easy deployment through the WarNodes panel.",
     path: "/discord-bot",
   },
+  databaseHosting: {
+    title: "Database Hosting – High-Performance NVMe Databases",
+    description:
+      "Deploy managed and standalone databases with Gen4 NVMe storage, ultra-low latency, automated backups, and 24/7 uptime across India.",
+    body: "Host MariaDB, MySQL, PostgreSQL, MongoDB, Redis, Valkey, SQLite, Memcached, CouchDB, Cassandra, ClickHouse, Elasticsearch, InfluxDB, Neo4j, RabbitMQ, and KeyDB with instant deployment and DDoS protection.",
+    path: "/database-hosting",
+  },
   warShield: {
     title: "WarShield DDoS Protection",
     description:
@@ -61,6 +68,13 @@ export const pageSeo = {
       "Get assistance from the WarNodes team for sales, technical support, custom solutions and enterprise hosting requirements.",
     body: "Reach WarNodes through tickets, email, or Discord for billing questions, migrations, custom hardware, and enterprise hosting plans.",
     path: "/contact",
+  },
+  about: {
+    title: "About WarNodes – Our Mission & Infrastructure",
+    description:
+      "Learn how WarNodes builds premium game, VPS and web hosting across India and beyond — guaranteed resources, no overselling, and WarShield DDoS protection on every plan.",
+    body: "WarNodes runs Gen4 NVMe hardware and high-frequency compute across Indian and global edge locations, backed by a 99.9% uptime guarantee, multi-terabit WarShield DDoS mitigation, and 24/7 human support from real engineers.",
+    path: "/about",
   },
   team: {
     title: "Our Team",
@@ -127,8 +141,13 @@ export const homeFaqs = [
 export const internalServiceLinks = [
   { href: "/vps", label: "VPS Hosting" },
   { href: "/web-hosting", label: "Web Hosting" },
+  { href: "/database-hosting", label: "Database Hosting" },
   { href: "/games", label: "Game Server Hosting" },
   { href: "/games?game=minecraft", label: "Minecraft Hosting" },
+  { href: "/games?game=rust", label: "Rust Hosting" },
+  { href: "/games?game=palworld", label: "Palworld Hosting" },
+  { href: "/games?game=fivem", label: "FiveM Hosting" },
+  { href: "/games?game=cs2", label: "Counter-Strike 2 Hosting" },
   { href: "/games?game=hytale", label: "Hytale Hosting" },
   { href: "/discord-bot", label: "Discord Bot Hosting" },
   { href: "/ddos", label: "WarShield DDoS Protection" },
@@ -178,6 +197,7 @@ export function buildPageMetadata(page: PageSeo): Metadata {
 export const serviceListSchema = [
   { name: "VPS Hosting", url: `${siteMetadata.url}/vps` },
   { name: "Web Hosting", url: `${siteMetadata.url}/web-hosting` },
+  { name: "Database Hosting", url: `${siteMetadata.url}/database-hosting` },
   { name: "Game Server Hosting", url: `${siteMetadata.url}/games` },
   { name: "Minecraft Hosting", url: `${siteMetadata.url}/games?game=minecraft` },
   { name: "Discord Bot Hosting", url: `${siteMetadata.url}/discord-bot` },

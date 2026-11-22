@@ -1,176 +1,466 @@
 "use client"
 
-import { Check, ArrowUpRight } from "lucide-react"
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import {
+  Check,
+  ChevronRight,
+  Gamepad2,
+  Server,
+  ShieldCheck,
+  Zap,
+  HardDrive,
+  Headphones,
+  Globe,
+  ArrowRight,
+  type LucideIcon,
+} from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion"
 import { CurrencySelector, useCurrency } from "./ui/CurrencySelector"
-import type { Currency } from "../types/ui"
 import pricingConfig from "../config/sections/pricing.json"
-import type { PricingConfig } from "../types/pricing"
+import type { PricingConfig, PricingPlan } from "../types/pricing"
 import { useLanguage } from "../contexts/LanguageContext"
+import uiConfig from "../config/sections/ui.json"
 import warnodesConfig from "../config/sections/warnodes.json"
-import { SectionHeader } from "./premium/ui/SectionHeader"
-import { ScrollReveal } from "./premium/ui/ScrollReveal"
-import { TiltCard } from "./premium/ui/TiltCard"
-import { cn } from "@/lib/utils"
 
 const config = pricingConfig as PricingConfig
-const FEATURE_COUNT = 5
+const FEATURE_COUNT = 4
 
-function PricingCard({
-  plan,
-  index,
-  selectedCurrency,
-  convertPrice,
-  t,
-}: {
-  plan: PricingConfig["section"]["plans"][number]
-  index: number
-  selectedCurrency: Currency
-  convertPrice: (price: string) => string
-  t: (key: string) => string
-}) {
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-  const glow = useMotionTemplate`radial-gradient(500px at ${mouseX}px ${mouseY}px, rgba(19,127,236,0.18), transparent 50%)`
-
-  const currencyCode = selectedCurrency.code as "INR" | "USD" | "EUR"
-  const priceLabel =
-    plan.displayPrices?.[currencyCode] ||
-    convertPrice(String(plan.basePrice))
-
-  return (
-    <ScrollReveal delay={index * 0.07} className="h-full">
-      <TiltCard
-        popular={plan.popular}
-        intensity={7}
-        className={cn(
-          "flex h-full flex-col bg-[#080b14]/90 backdrop-blur-xl",
-          plan.popular && "md:-translate-y-2"
-        )}
-      >
-        <div
-          className="relative flex h-full flex-col"
-          onMouseMove={(e) => {
-            const rect = e.currentTarget.getBoundingClientRect()
-            mouseX.set(e.clientX - rect.left)
-            mouseY.set(e.clientY - rect.top)
-          }}
-        >
-          <motion.div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: glow }} />
-
-          {plan.popular && (
-            <div className="absolute left-1/2 top-0 z-20 -translate-x-1/2 rounded-b-xl border border-t-0 border-[#137fec]/40 bg-[#137fec]/20 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-blue-100 backdrop-blur-md">
-              Best value
-            </div>
-          )}
-
-          <div className="relative h-36 shrink-0 overflow-hidden sm:h-40">
-            <Image
-              src={plan.image || "/placeholder.svg"}
-              alt={t(plan.titleKey)}
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-              sizes="(max-width: 768px) 100vw, 33vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#080b14] via-[#080b14]/40 to-transparent" />
-          </div>
-
-          <div className="relative flex flex-1 flex-col p-6">
-            <h3 className="text-lg font-semibold tracking-tight text-white">{t(plan.titleKey)}</h3>
-            <p className="mt-2 min-h-[40px] text-sm leading-relaxed text-white/45">
-              {t(plan.descriptionKey)}
-            </p>
-
-            <div className="mt-5 flex items-baseline gap-1">
-              <span className="text-3xl font-semibold tracking-tight text-white">{priceLabel}</span>
-              {plan.priceSuffix && (
-                <span className="text-sm text-white/40">{plan.priceSuffix}</span>
-              )}
-            </div>
-
-            <ul className="mt-6 flex-1 space-y-3">
-              {plan.featuresKeys.slice(0, FEATURE_COUNT).map((key) => (
-                <li key={key} className="flex items-start gap-2.5 text-sm text-white/65">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#137fec]/15">
-                    <Check className="h-3 w-3 text-[#137fec]" strokeWidth={3} />
-                  </span>
-                  {t(key)}
-                </li>
-              ))}
-            </ul>
-
-            <Link
-              href={plan.link}
-              className={cn(
-                "mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3.5 text-sm font-semibold transition-all duration-300",
-                plan.popular
-                  ? "bg-white text-[#05060a] hover:bg-blue-50"
-                  : "border border-white/12 bg-white/[0.04] text-white hover:border-white/25 hover:bg-white/[0.08]"
-              )}
-            >
-              {t(plan.buttonTextKey)}
-              <ArrowUpRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-      </TiltCard>
-    </ScrollReveal>
-  )
+interface ViewAllCard {
+  isViewAll: true
+  title: string
+  badge: string
+  image: string
+  description: string
+  priceLabel: string
+  priceValue: string
+  priceSuffix?: string
+  features: string[]
+  buttonText: string
+  link: string
 }
+
+type CardItem = PricingPlan | ViewAllCard
+
+interface CategoryConfig {
+  id: string
+  label: string
+  subtitle: string
+  icon: LucideIcon
+  cards: (number | ViewAllCard)[]
+}
+
+const CATEGORIES: CategoryConfig[] = [
+  {
+    id: "game-servers",
+    label: "Game Servers",
+    subtitle: "Minecraft, Palworld & More",
+    icon: Gamepad2,
+    cards: [
+      0, // Minecraft Hosting
+      11, // Palworld Hosting
+      {
+        isViewAll: true,
+        title: "All Game Servers",
+        badge: "6 Games",
+        image: "/Gaming_banner_design_request_f02fae14_2K.jpg",
+        description: "Browse our complete gaming library with instant setup & mod support",
+        priceLabel: "Available Titles",
+        priceValue: "6 Games",
+        priceSuffix: "supported",
+        features: [
+          "Minecraft, CS2, Palworld & more",
+          "Rust, FiveM & Hytale servers",
+          "WarShield DDoS protection included",
+          "Low-latency Indian & Asian nodes",
+        ],
+        buttonText: "View All 6 Games",
+        link: "/games",
+      },
+    ],
+  },
+  {
+    id: "vps-dedicated",
+    label: "VPS & Dedicated",
+    subtitle: "VPS, Dedicated & Database",
+    icon: Server,
+    cards: [
+      1, // VPS Hosting
+      8, // Dedicated Servers
+      4, // Database Hosting
+    ],
+  },
+  {
+    id: "web-email-bots",
+    label: "Web, Email & Bots",
+    subtitle: "Websites, Business Mail & Bots",
+    icon: Globe,
+    cards: [
+      2, // Web Hosting
+      9, // Email Hosting
+      3, // Discord Bot Hosting
+    ],
+  },
+]
+
+const TRUST_METRICS = [
+  {
+    icon: Zap,
+    title: "Instant Setup",
+    desc: "Online in < 60 seconds",
+  },
+  {
+    icon: ShieldCheck,
+    title: "WarShield Defense",
+    desc: "L4 / L7 traffic mitigation",
+  },
+  {
+    icon: HardDrive,
+    title: "Gen4 NVMe I/O",
+    desc: "High-speed enterprise storage",
+  },
+  {
+    icon: Headphones,
+    title: "24/7 Support",
+    desc: "Help via Discord & Tickets",
+  },
+]
 
 export default function PricingSection() {
   const { t } = useLanguage()
   const { selectedCurrency, setSelectedCurrency, convertPrice } = useCurrency()
+  const [activeCategoryId, setActiveCategoryId] = useState<string>("game-servers")
+
+  const activeCategory = CATEGORIES.find((c) => c.id === activeCategoryId) || CATEGORIES[0]
+
+  const resolvedCards: CardItem[] = activeCategory.cards
+    .map((item) => {
+      if (typeof item === "number") {
+        return config.section.plans[item]
+      }
+      return item
+    })
+    .filter(Boolean) as CardItem[]
 
   return (
-    <section className="relative overflow-hidden py-24 md:py-32">
-      <div className="pointer-events-none absolute left-1/2 top-1/3 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-[#137fec]/10 blur-[120px]" />
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          title={
-            <>
+    <section className="bg-gray-50 dark:bg-[#0a0b0f] py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden transition-colors duration-300">
+      <div className="relative z-10 max-w-7xl mx-auto">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-8 text-left"
+        >
+          <div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white orbitron-font">
               {t("pricingSection.title")}{" "}
-              <span className="text-[#137fec]">{t("pricingSection.titleHighlight")}</span>
-            </>
-          }
-          description={t("pricingSection.description")}
-          actions={
+              <span className="icon-text-primary">{t("pricingSection.titleHighlight")}</span>
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 max-w-xl">
+              {t("pricingSection.description")}
+            </p>
+          </div>
+
+          <div className="shrink-0 w-full sm:w-56">
             <CurrencySelector
               selectedCurrency={selectedCurrency}
               onCurrencyChange={setSelectedCurrency}
-              className="w-full sm:w-56"
+              className="w-full"
             />
-          }
-        />
+          </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {config.section.plans.map((plan, index) => (
-            <PricingCard
-              key={plan.titleKey}
-              plan={plan}
-              index={index}
-              selectedCurrency={selectedCurrency}
-              convertPrice={convertPrice}
-              t={t}
-            />
-          ))}
-        </div>
+        {/* Interactive Category Selector Tabs (3 Categories) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mb-8"
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-1.5 rounded-xl bg-white/40 dark:bg-white/[0.03] border border-gray-200/80 dark:border-white/10 backdrop-blur-md">
+            {CATEGORIES.map((cat) => {
+              const Icon = cat.icon
+              const isActive = activeCategoryId === cat.id
 
-        <ScrollReveal className="mt-12 text-center">
-          <p className="text-sm text-white/45">
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveCategoryId(cat.id)}
+                  type="button"
+                  className={`relative flex items-center gap-3 p-3.5 sm:p-4 rounded-lg transition-all duration-300 text-left outline-none cursor-pointer ${
+                    isActive
+                      ? "text-gray-900 dark:text-white"
+                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/[0.04]"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activePricingCategoryBg"
+                      className="absolute inset-0 rounded-lg bg-white dark:bg-white/10 border border-blue-500/30 dark:border-blue-400/30 shadow-md dark:shadow-[0_0_20px_rgba(59,130,246,0.15)]"
+                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                    />
+                  )}
+
+                  <div
+                    className={`relative z-10 p-2.5 rounded-lg transition-colors ${
+                      isActive
+                        ? "bg-blue-600 text-white shadow-sm"
+                        : "bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-300"
+                    }`}
+                  >
+                    <Icon className="w-5 h-5" />
+                  </div>
+
+                  <div className="relative z-10 min-w-0 flex-1">
+                    <div className="flex items-center gap-2">
+                      <span className="font-semibold text-sm sm:text-base orbitron-font truncate">
+                        {cat.label}
+                      </span>
+                    </div>
+                    <span className="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 block truncate mt-0.5">
+                      {cat.subtitle}
+                    </span>
+                  </div>
+                </button>
+              )
+            })}
+          </div>
+        </motion.div>
+
+        {/* 3-Card Grid with Website Hover Animation */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeCategoryId}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.25 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch"
+          >
+            {resolvedCards.map((card, index) => {
+              const isViewAll = "isViewAll" in card && card.isViewAll
+              const plan = !isViewAll ? (card as PricingPlan) : null
+              const viewAllCard = isViewAll ? (card as ViewAllCard) : null
+
+              let displayPrice = ""
+              let suffix = ""
+              let priceLabel = t("gameServerList.startingAt")
+
+              if (plan) {
+                const manualPrice = plan.displayPrices?.[selectedCurrency.code as "INR" | "USD" | "EUR"]
+                displayPrice = manualPrice ?? convertPrice(plan.basePrice.toString())
+                const isFree = displayPrice.toUpperCase() === "FREE"
+                suffix = isFree ? "" : (plan.priceSuffix ?? "/month")
+                if (plan.showStartingPrice === false) {
+                  priceLabel = "Pricing Tier"
+                }
+              } else if (viewAllCard) {
+                displayPrice = viewAllCard.priceValue
+                suffix = viewAllCard.priceSuffix ? ` ${viewAllCard.priceSuffix}` : ""
+                priceLabel = viewAllCard.priceLabel
+              }
+
+              const title = plan ? t(plan.titleKey) : viewAllCard?.title || ""
+              const description = plan ? t(plan.descriptionKey) : viewAllCard?.description || ""
+              const image = plan ? plan.image : viewAllCard?.image || "/placeholder.svg"
+              const link = plan ? plan.link : viewAllCard?.link || "/games"
+              const buttonText = plan ? t(plan.buttonTextKey) : viewAllCard?.buttonText || "View More"
+              const isPopular = plan?.popular ?? false
+              const badge = plan?.badge || viewAllCard?.badge
+
+              return (
+                <motion.div
+                  key={title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, delay: index * 0.08 }}
+                  className={`relative flex flex-col h-full rounded-xl overflow-hidden backdrop-blur-sm border transition-all duration-300 hover:border-secondary hover:hover-gradient group ${
+                    isPopular
+                      ? "border-blue-500/50 bg-white/80 dark:bg-white/[0.04]"
+                      : "border-secondary bg-white/50 dark:bg-white/[0.02]"
+                  }`}
+                >
+                  {/* Top Image Banner */}
+                  <div className="relative h-44 sm:h-48 w-full shrink-0 overflow-hidden bg-gray-900">
+                    <Image
+                      src={image}
+                      alt={title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      quality={85}
+                      priority={isPopular}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/45 to-transparent" />
+
+                    {/* Badges on Image */}
+                    <div className="absolute top-3 right-3 flex items-center gap-1.5 z-10">
+                      {isPopular && (
+                        <span className="px-2.5 py-1 rounded-md text-[11px] font-bold button-primary text-button-primary shadow-sm">
+                          Popular
+                        </span>
+                      )}
+                      {badge && (
+                        <span className="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-black/70 backdrop-blur-md text-gray-200 border border-white/15 shadow-sm">
+                          {badge}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Title over Image */}
+                    <div className="absolute bottom-3 left-4 right-4 z-10">
+                      <h3 className="text-xl sm:text-2xl font-bold text-white orbitron-font drop-shadow-sm">
+                        {title}
+                      </h3>
+                    </div>
+                  </div>
+
+                  {/* Body Content */}
+                  <div className="flex flex-col flex-1 p-4 sm:p-5">
+                    {/* Short 1-Line Description */}
+                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 line-clamp-1 leading-relaxed mb-4">
+                      {description}
+                    </p>
+
+                    {/* Price Block */}
+                    <div className="mb-4 pb-3.5 border-b border-secondary/50">
+                      <span className="text-[11px] font-mono uppercase tracking-wider text-gray-500 dark:text-gray-400 block mb-0.5">
+                        {priceLabel}
+                      </span>
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white orbitron-font">
+                          {displayPrice}
+                        </span>
+                        {suffix && (
+                          <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium">
+                            {suffix}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Features List */}
+                    <ul className="space-y-2.5 mb-6 flex-1 min-h-[7rem]">
+                      {plan &&
+                        plan.featuresKeys.slice(0, FEATURE_COUNT).map((featureKey, fIdx) => (
+                          <li key={fIdx} className="flex items-center gap-2.5 text-xs sm:text-sm">
+                            <div className="p-0.5 rounded-full bg-blue-500/10 text-blue-500 dark:text-blue-400 shrink-0">
+                              <Check className="w-3.5 h-3.5" />
+                            </div>
+                            <span className="text-gray-600 dark:text-gray-300 truncate">
+                              {t(featureKey)}
+                            </span>
+                          </li>
+                        ))}
+
+                      {viewAllCard &&
+                        viewAllCard.features.map((featureText, fIdx) => (
+                          <li key={fIdx} className="flex items-center gap-2.5 text-xs sm:text-sm">
+                            <div className="p-0.5 rounded-full bg-blue-500/10 text-blue-500 dark:text-blue-400 shrink-0">
+                              <Check className="w-3.5 h-3.5" />
+                            </div>
+                            <span className="text-gray-600 dark:text-gray-300 truncate">
+                              {featureText}
+                            </span>
+                          </li>
+                        ))}
+                    </ul>
+
+                    {/* Action CTA Button */}
+                    <div className="relative mt-auto">
+                      <Link
+                        href={link}
+                        className={`w-full py-3 px-4 rounded-lg font-semibold text-xs sm:text-sm transition-all duration-300 flex items-center justify-between group/btn ${
+                          isPopular || plan?.buttonStyle === "primary"
+                            ? "button-primary text-button-primary shadow-sm hover:shadow-md hover:shadow-blue-500/20"
+                            : "bg-white/10 dark:bg-white/5 border border-secondary text-gray-800 dark:text-gray-200 hover:border-secondary hover:hover-gradient hover:text-icon-text-primary"
+                        }`}
+                      >
+                        <span className="w-full orbitron-font text-center">{buttonText}</span>
+                        <ChevronRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                      </Link>
+
+                      {uiConfig.christmasTheme.enabled && (
+                        <>
+                          <Image
+                            src="/christmas/button-deco-up.png"
+                            alt=""
+                            width={24}
+                            height={24}
+                            className="absolute -top-2 -right-2 pointer-events-none"
+                          />
+                          <Image
+                            src="/christmas/button-deco-down.png"
+                            alt=""
+                            width={24}
+                            height={24}
+                            className="absolute -bottom-2 -left-2 pointer-events-none"
+                          />
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </motion.div>
+              )
+            })}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Minimal Trust Metrics Strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 p-3 rounded-xl bg-white/40 dark:bg-white/[0.02] border border-secondary backdrop-blur-sm"
+        >
+          {TRUST_METRICS.map((metric, i) => {
+            const Icon = metric.icon
+            return (
+              <div
+                key={i}
+                className="flex items-center gap-3 p-2 rounded-lg hover:hover-gradient hover:border-secondary transition-all duration-300"
+              >
+                <div className="p-2 rounded-lg bg-blue-500/10 text-blue-500 shrink-0">
+                  <Icon className="w-4 h-4" />
+                </div>
+                <div className="min-w-0">
+                  <h4 className="font-semibold text-xs sm:text-sm text-gray-900 dark:text-white truncate">
+                    {metric.title}
+                  </h4>
+                  <p className="text-[11px] text-gray-500 dark:text-gray-400 truncate">
+                    {metric.desc}
+                  </p>
+                </div>
+              </div>
+            )
+          })}
+        </motion.div>
+
+        {/* Section Footer */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-center mt-8"
+        >
+          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
             {t("pricingSection.footerText")}{" "}
             <a
-              href={warnodesConfig.links.discord}
+              href={warnodesConfig.links.tickets}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-[#137fec] transition-colors hover:text-blue-300"
+              className="icon-text-primary hover:text-icon-text-primary/80 font-medium inline-flex items-center gap-1 hover:underline"
             >
               {t("pricingSection.footerLinkText")}
             </a>
           </p>
-        </ScrollReveal>
+        </motion.div>
       </div>
     </section>
   )
