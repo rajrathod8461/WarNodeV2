@@ -2,13 +2,10 @@
 
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import type { ThemeProviderProps } from 'next-themes';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  const [mounted, setMounted] = useState(false);
-
   useEffect(() => {
-    setMounted(true);
     const originalSetItem = localStorage.setItem;
     const originalGetItem = localStorage.getItem;
     const originalRemoveItem = localStorage.removeItem;
@@ -64,13 +61,5 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
     };
   }, []);
 
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
-  return (
-    <NextThemesProvider {...props}>
-      {children}
-    </NextThemesProvider>
-  );
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
 }
