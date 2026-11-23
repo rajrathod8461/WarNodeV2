@@ -134,7 +134,7 @@ export const homeFaqs = [
   {
     question: "Do you offer DDoS protection?",
     answer:
-      "Yes! All servers include advanced WarShield DDoS Protection to help keep your services secure, stable, and online against malicious attacks and unwanted traffic.",
+      "Yes! Selected plans include WarShield DDoS Protection, designed to help safeguard your services against malicious attacks and unwanted traffic, ensuring better stability and uptime.",
   },
 ] as const
 
