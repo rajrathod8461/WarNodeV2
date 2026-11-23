@@ -278,57 +278,61 @@ export default function PricingSection() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35, delay: index * 0.08 }}
-                  className={`relative flex flex-col h-full rounded-xl overflow-hidden backdrop-blur-sm border transition-all duration-300 hover:border-secondary hover:hover-gradient group ${
+                  className={`relative flex flex-col h-full rounded-2xl overflow-hidden backdrop-blur-xl border transition-all duration-300 hover:-translate-y-1 group ${
                     isPopular
-                      ? "border-blue-500/50 bg-white/80 dark:bg-white/[0.04]"
-                      : "border-secondary bg-white/50 dark:bg-white/[0.02]"
+                      ? "border-blue-500/40 bg-white/80 dark:bg-[#0b0e17] shadow-lg shadow-blue-500/10 hover:shadow-blue-500/20 hover:border-blue-500/60"
+                      : "border-gray-200/80 dark:border-white/[0.08] bg-white/60 dark:bg-[#0b0e17] shadow-sm hover:shadow-xl hover:shadow-black/20 hover:border-blue-500/30"
                   }`}
                 >
-                  {/* Top Image Banner */}
-                  <div className="relative h-44 sm:h-48 w-full shrink-0 overflow-hidden bg-gray-900">
+                  {/* Top Image Banner with Seamless Multi-Layer Gradient Dissolve */}
+                  <div className="relative h-48 sm:h-52 w-full shrink-0 overflow-hidden bg-[#0b0e17]">
                     <Image
                       src={image}
                       alt={title}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      quality={85}
+                      quality={90}
                       priority={isPopular}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/45 to-transparent" />
+
+                    {/* Smooth Ambient and Bottom Fades - Eliminates Sharp Lines */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-[#0b0e17] via-white/85 dark:via-[#0b0e17]/80 via-35% to-transparent pointer-events-none" />
+                    <div className="absolute -bottom-px inset-x-0 h-10 bg-gradient-to-t from-white dark:from-[#0b0e17] to-transparent pointer-events-none" />
 
                     {/* Badges on Image */}
-                    <div className="absolute top-3 right-3 flex items-center gap-1.5 z-10">
+                    <div className="absolute top-3.5 right-3.5 flex items-center gap-1.5 z-10">
                       {isPopular && (
-                        <span className="px-2.5 py-1 rounded-md text-[11px] font-bold button-primary text-button-primary shadow-sm">
+                        <span className="px-2.5 py-1 rounded-full text-[11px] font-bold button-primary text-button-primary shadow-md">
                           Popular
                         </span>
                       )}
                       {badge && (
-                        <span className="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-black/70 backdrop-blur-md text-gray-200 border border-white/15 shadow-sm">
+                        <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-black/60 backdrop-blur-md text-gray-200 border border-white/15 shadow-md">
                           {badge}
                         </span>
                       )}
                     </div>
 
                     {/* Title over Image */}
-                    <div className="absolute bottom-3 left-4 right-4 z-10">
-                      <h3 className="text-xl sm:text-2xl font-bold text-white orbitron-font drop-shadow-sm">
+                    <div className="absolute bottom-3.5 left-5 right-5 z-10">
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white orbitron-font tracking-wide drop-shadow-sm">
                         {title}
                       </h3>
                     </div>
                   </div>
 
                   {/* Body Content */}
-                  <div className="flex flex-col flex-1 p-4 sm:p-5">
+                  <div className="flex flex-col flex-1 p-5 sm:p-6">
                     {/* Short 1-Line Description */}
                     <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 line-clamp-1 leading-relaxed mb-4">
                       {description}
                     </p>
 
                     {/* Price Block */}
-                    <div className="mb-4 pb-3.5 border-b border-secondary/50">
-                      <span className="text-[11px] font-mono uppercase tracking-wider text-gray-500 dark:text-gray-400 block mb-0.5">
+                    <div className="mb-4">
+                      <span className="text-[11px] font-mono uppercase tracking-wider text-gray-500 dark:text-gray-400 block mb-1">
                         {priceLabel}
                       </span>
                       <div className="flex items-baseline gap-1.5">
@@ -341,6 +345,11 @@ export default function PricingSection() {
                           </span>
                         )}
                       </div>
+                    </div>
+
+                    {/* Smooth Gradient Divider (Replaces harsh sharp solid line) */}
+                    <div className="relative mb-5">
+                      <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-300 dark:via-white/10 to-transparent" />
                     </div>
 
                     {/* Features List */}
@@ -374,10 +383,10 @@ export default function PricingSection() {
                     <div className="relative mt-auto">
                       <Link
                         href={link}
-                        className={`w-full py-3 px-4 rounded-lg font-semibold text-xs sm:text-sm transition-all duration-300 flex items-center justify-between group/btn ${
+                        className={`w-full py-3 px-4 rounded-xl font-semibold text-xs sm:text-sm transition-all duration-300 flex items-center justify-between group/btn ${
                           isPopular || plan?.buttonStyle === "primary"
                             ? "button-primary text-button-primary shadow-sm hover:shadow-md hover:shadow-blue-500/20"
-                            : "bg-white/10 dark:bg-white/5 border border-secondary text-gray-800 dark:text-gray-200 hover:border-secondary hover:hover-gradient hover:text-icon-text-primary"
+                            : "bg-white/10 dark:bg-white/[0.04] border border-gray-200/80 dark:border-white/10 text-gray-800 dark:text-gray-200 hover:border-blue-500/40 hover:bg-blue-500/10 dark:hover:bg-blue-500/10 hover:text-blue-500 dark:hover:text-blue-400"
                         }`}
                       >
                         <span className="w-full orbitron-font text-center">{buttonText}</span>
