@@ -63,3 +63,8 @@ public/test-*.jpg
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Cloudflare / OpenNext
+.open-next/
+.wrangler/
+
