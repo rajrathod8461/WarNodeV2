@@ -72,8 +72,6 @@ function WarShieldPlanOrderButton({
   return (
     <a
       href={plan.orderLink}
-      target="_blank"
-      rel="noopener noreferrer"
       className={`orbitron-font flex w-full items-center justify-center gap-2 border border-transparent px-6 py-3 font-medium button-primary text-button-primary no-underline transition-colors duration-300 hover:border-[var(--border-secondary)] hover:bg-[var(--hover-gradient)] hover:text-[var(--icon-text-primary)] ${WARSHIELD_CORNER}`}
     >
       {orderNowText}

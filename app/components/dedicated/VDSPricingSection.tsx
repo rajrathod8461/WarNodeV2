@@ -496,8 +496,6 @@ export default function VDSPricingSection() {
                         ) : (
                           <a
                             href={plan.orderLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
                             className="w-full bg-[#1c64f2] hover:bg-[#1554cb] text-white font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 transition-all duration-200 transform hover:scale-[1.01] active:scale-[0.99] text-sm"
                           >
                             <span>Order Now</span>

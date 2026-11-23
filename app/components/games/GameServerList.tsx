@@ -125,8 +125,6 @@ function GamePlanOrderButton({
   return (
     <a
       href={plan.orderLink}
-      target="_blank"
-      rel="noopener noreferrer"
       className="orbitron-font shrink-0 rounded-lg border px-5 py-2.5 text-xs sm:text-sm font-bold text-white no-underline transition-all duration-200 hover:opacity-90 shadow-sm hover:shadow-md active:scale-95"
       style={{
         borderColor: planBrand.primary,

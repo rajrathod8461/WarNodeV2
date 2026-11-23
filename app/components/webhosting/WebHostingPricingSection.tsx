@@ -37,8 +37,6 @@ function WebHostingPlanOrderButton({
   return (
     <a
       href={plan.orderLink}
-      target="_blank"
-      rel="noopener noreferrer"
       className="orbitron-font button-primary text-button-primary flex w-full items-center justify-center gap-2 rounded-lg border border-transparent px-6 py-3 font-medium no-underline transition-colors duration-300 hover:border-[var(--border-secondary)] hover:bg-[var(--hover-gradient)] hover:text-[var(--icon-text-primary)]"
     >
       {orderNowText}
