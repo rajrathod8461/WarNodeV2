@@ -102,26 +102,26 @@ function EmailPlanCard({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.3 + index * 0.05 }}
-      className={`relative overflow-hidden rounded-md border backdrop-blur-xl transition-all duration-300 hover:hover-gradient dark:hover:hover-gradient ${
+      className={`group relative overflow-hidden rounded-tl-2xl rounded-br-2xl border backdrop-blur-xl transition-all duration-300 hover:hover-gradient dark:hover:hover-gradient hover:-translate-y-1 shadow-sm hover:shadow-xl hover:shadow-black/20 ${
         isPopular
-          ? "border-primary shadow-lg shadow-primary/10 bg-white dark:bg-gray-950/40 ring-1 ring-primary/40"
+          ? "border-primary shadow-lg shadow-primary/10 bg-white dark:bg-gray-950/40 ring-1 ring-primary/40 hover:border-primary"
           : "border-secondary bg-white dark:bg-gray-950/20 hover:border-secondary"
       }`}
     >
       {/* Badge */}
       {plan.badge && (
-        <motion.div className="absolute top-4 right-4 z-10">
+        <div className="absolute top-4 right-4 z-10">
           <span className="button-primary rounded-tl-2xl rounded-br-2xl px-3 py-1 text-xs font-semibold text-white shadow-sm">
             {plan.badge}
           </span>
-        </motion.div>
+        </div>
       )}
 
       <div className="p-6">
         {/* Header Icon + Name */}
         <div className="mb-6 flex items-center gap-4">
-          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg card-primary border border-secondary p-2.5">
-            <Mail className="h-8 w-8 icon-text-primary" />
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-tl-2xl rounded-br-2xl card-primary border border-secondary p-2.5">
+            <Mail className="h-7 w-7 icon-text-primary" />
           </div>
           <div>
             <h3 className="orbitron-font text-xl font-bold text-gray-900 dark:text-white">
@@ -131,55 +131,55 @@ function EmailPlanCard({
           </div>
         </div>
 
-        {/* Specs Grid */}
-        <div className="mb-6 grid grid-cols-2 gap-3 text-sm">
+        {/* Specs Grid - Clean authentic WebHosting style without blocky boxed widgets */}
+        <div className="mb-6 grid grid-cols-2 gap-4">
           {/* Storage */}
-          <div className="flex flex-col gap-1 p-2.5 rounded-lg bg-gray-50 dark:bg-white/[0.03] border border-gray-100 dark:border-white/5">
-            <div className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400">
-              <HardDrive className="icon-primary h-3.5 w-3.5" />
-              <span>Disk Space</span>
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center gap-2">
+              <HardDrive className="icon-primary h-4 w-4" />
+              <span className="text-sm text-gray-600 dark:text-gray-400">Disk Space</span>
             </div>
-            <span className="text-base font-semibold text-gray-900 dark:text-white">
+            <span className="text-lg font-medium text-gray-900 dark:text-white">
               {plan.storage}
             </span>
           </div>
 
           {/* Traffic */}
-          <div className="flex flex-col gap-1 p-2.5 rounded-lg bg-gray-50 dark:bg-white/[0.03] border border-gray-100 dark:border-white/5">
-            <div className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400">
-              <Zap className="icon-primary h-3.5 w-3.5" />
-              <span>Traffic</span>
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center gap-2">
+              <Zap className="icon-primary h-4 w-4" />
+              <span className="text-sm text-gray-600 dark:text-gray-400">Traffic</span>
             </div>
-            <span className="text-base font-semibold text-gray-900 dark:text-white">
+            <span className="text-lg font-medium text-gray-900 dark:text-white">
               {plan.traffic || "Unlimited"}
             </span>
           </div>
 
           {/* Domains */}
-          <div className="flex flex-col gap-1 p-2.5 rounded-lg bg-gray-50 dark:bg-white/[0.03] border border-gray-100 dark:border-white/5">
-            <div className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400">
-              <Globe className="icon-primary h-3.5 w-3.5" />
-              <span>Domains</span>
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center gap-2">
+              <Globe className="icon-primary h-4 w-4" />
+              <span className="text-sm text-gray-600 dark:text-gray-400">Domains</span>
             </div>
-            <span className="text-base font-semibold text-gray-900 dark:text-white">
+            <span className="text-lg font-medium text-gray-900 dark:text-white">
               {plan.domains ?? 1} {plan.domains === 1 ? "Domain" : "Domains"}
             </span>
           </div>
 
           {/* Email Accounts */}
-          <div className="flex flex-col gap-1 p-2.5 rounded-lg bg-gray-50 dark:bg-white/[0.03] border border-gray-100 dark:border-white/5">
-            <div className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400">
-              <Inbox className="icon-primary h-3.5 w-3.5" />
-              <span>Email Accounts</span>
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center gap-2">
+              <Inbox className="icon-primary h-4 w-4" />
+              <span className="text-sm text-gray-600 dark:text-gray-400">Email Accounts</span>
             </div>
-            <span className="text-base font-semibold text-gray-900 dark:text-white">
+            <span className="text-lg font-medium text-gray-900 dark:text-white">
               {plan.mailboxes} {plan.mailboxes === 1 ? "Account" : "Accounts"}
             </span>
           </div>
         </div>
 
-        {/* Addresses & Forwardings specs bar */}
-        <div className="mb-5 flex items-center justify-between px-3 py-2 rounded-lg bg-blue-500/5 border border-blue-500/10 text-xs">
+        {/* Addresses & Forwardings specs bar with 2 smooth 2 sharp corners */}
+        <div className="mb-6 flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-tl-xl rounded-br-xl bg-gray-100/70 dark:bg-white/[0.04] border border-secondary text-xs">
           <span className="text-gray-600 dark:text-gray-300">
             Addresses: <strong className="text-gray-900 dark:text-white">{plan.emailAddresses ?? plan.mailboxes * 5}</strong>
           </span>
@@ -188,7 +188,9 @@ function EmailPlanCard({
             Forwardings: <strong className="text-gray-900 dark:text-white">{plan.emailForwardings ?? plan.mailboxes * 5}</strong>
           </span>
           <span className="text-gray-400">•</span>
-          <span className="text-emerald-500 font-medium">Free SSL</span>
+          <span className="text-emerald-500 font-semibold flex items-center gap-1">
+            <Shield className="w-3.5 h-3.5" /> Free SSL
+          </span>
         </div>
 
         {/* Pricing + Action Button */}
@@ -202,10 +204,10 @@ function EmailPlanCard({
 
           <a
             href={plan.orderLink}
-            className="orbitron-font button-primary text-button-primary flex w-full items-center justify-center gap-2 rounded-lg border border-transparent px-6 py-3 font-medium no-underline transition-colors duration-300 hover:border-[var(--border-secondary)] hover:bg-[var(--hover-gradient)] hover:text-[var(--icon-text-primary)]"
+            className="orbitron-font button-primary text-button-primary flex w-full items-center justify-center gap-2 rounded-tl-xl rounded-br-xl px-6 py-3.5 font-semibold text-sm no-underline transition-all duration-300 hover:border-[var(--border-secondary)] hover:bg-[var(--hover-gradient)] hover:text-[var(--icon-text-primary)] shadow-sm hover:shadow-md hover:shadow-blue-500/20"
           >
             Order Now
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </a>
@@ -337,13 +339,13 @@ export default function EmailPricingSection() {
                 transition={{ duration: 0.5, delay: index * 0.05 }}
                 onHoverStart={() => setActiveFeature(index)}
                 onHoverEnd={() => setActiveFeature(null)}
-                className={`relative p-6 rounded-md border backdrop-blur-xl transition-all duration-300 hover:hover-gradient ${
+                className={`relative p-6 rounded-tl-2xl rounded-br-2xl border backdrop-blur-xl transition-all duration-300 hover:hover-gradient ${
                   isActive
                     ? "border-primary card-primary shadow-lg shadow-primary/10"
                     : "border-secondary bg-white dark:bg-gray-950/20 hover:border-secondary"
                 }`}
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg card-primary border border-secondary mb-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-tl-xl rounded-br-xl card-primary border border-secondary mb-4">
                   <IconComponent className="h-6 w-6 icon-text-primary" />
                 </div>
                 <h3 className="font-bold text-gray-900 dark:text-white mb-2 text-base">
@@ -363,7 +365,7 @@ export default function EmailPricingSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="p-8 rounded-md border border-secondary bg-white/80 dark:bg-gray-950/30 backdrop-blur-xl"
+          className="p-8 rounded-tl-2xl rounded-br-2xl border border-secondary bg-white/80 dark:bg-gray-950/30 backdrop-blur-xl"
         >
           <h3 className="text-xl font-bold orbitron-font text-gray-900 dark:text-white mb-6">
             All plans include standard features:
