@@ -48,7 +48,7 @@ export async function GET(req: Request) {
   try {
     const res = await fetch(url.toString(), {
       method: "GET",
-      redirect: "follow",
+      redirect: "error",
       signal: AbortSignal.timeout(6500),
       headers: {
         "user-agent": "warnodes-site-stock-check/1.0",
