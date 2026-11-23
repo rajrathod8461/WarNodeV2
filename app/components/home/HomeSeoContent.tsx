@@ -18,9 +18,11 @@ export default function HomeSeoContent() {
 
       <h2>Hosting services</h2>
       <p>
-        Choose VPS hosting with full root access, fast web hosting on LiteSpeed, game server hosting
-        for Minecraft and Hytale, always-on Discord bot hosting, and standalone WarShield proxy
-        protection for critical workloads.
+        Choose high-performance VPS hosting with full root access, dedicated bare-metal &amp; VDS servers,
+        fast web hosting on LiteSpeed, enterprise database hosting for MySQL, PostgreSQL, MongoDB and Redis,
+        business email hosting with custom domain branding, ultra-low latency game server hosting for Minecraft,
+        Rust, Palworld, FiveM, CS2 and Hytale, always-on Discord bot hosting, and standalone WarShield DDoS
+        protection for mission-critical infrastructure.
       </p>
 
       <nav aria-label="WarNodes services">

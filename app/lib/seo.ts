@@ -29,10 +29,10 @@ export const pageSeo = {
     path: "/web-hosting",
   },
   games: {
-    title: "Game Server Hosting – Instant Setup",
+    title: "Game Server Hosting India – Minecraft, Rust, FiveM, CS2, Palworld",
     description:
-      "Reliable game servers with premium hardware, WarShield DDoS protection and instant setup for popular games including Minecraft, Rust, Palworld, FiveM, CS2, and Hytale.",
-    body: "Order Minecraft, Rust, Palworld, FiveM, CS2 or Hytale servers with instant deployment, modpack support, plugin installers, live console access, and low-latency routes across India.",
+      "Ultra-low latency game server hosting in India with instant setup, Pterodactyl panel, modpack installers, NVMe SSDs, and WarShield DDoS protection for Minecraft, Rust, Palworld, FiveM, Counter-Strike 2, and Hytale.",
+    body: "Order Minecraft, Rust, Palworld, FiveM, CS2 or Hytale servers with instant deployment, modpack support, plugin installers, live console access, and sub-15ms low-latency routes across India.",
     path: "/games",
   },
   minecraft: {
@@ -49,11 +49,18 @@ export const pageSeo = {
     path: "/discord-bot",
   },
   databaseHosting: {
-    title: "Database Hosting – High-Performance NVMe Databases",
+    title: "Database Hosting India – Managed MySQL, PostgreSQL, MongoDB, Redis",
     description:
       "Deploy managed and standalone databases with Gen4 NVMe storage, ultra-low latency, automated backups, and 24/7 uptime across India.",
     body: "Host MariaDB, MySQL, PostgreSQL, MongoDB, Redis, Valkey, SQLite, Memcached, CouchDB, Cassandra, ClickHouse, Elasticsearch, InfluxDB, Neo4j, RabbitMQ, and KeyDB with instant deployment and DDoS protection.",
     path: "/database-hosting",
+  },
+  emailHosting: {
+    title: "Business Email Hosting India – Custom Domain & Webmail",
+    description:
+      "Professional business email hosting with custom domain branding, Webmail, spam filtering, SSL/TLS encryption, and 99.9% uptime starting at ₹39/mo.",
+    body: "Create secure business email addresses with custom domain branding. Unlimited email forwarders, responsive webmail access, DKIM/SPF/DMARC authentication, and seamless compatibility with Outlook, Apple Mail, and mobile devices.",
+    path: "/email-hosting",
   },
   warShield: {
     title: "WarShield DDoS Protection",
@@ -83,10 +90,10 @@ export const pageSeo = {
     path: "/team",
   },
   dedicated: {
-    title: "Dedicated Servers",
+    title: "Dedicated & VDS Servers India – AMD EPYC & Intel Xeon",
     description:
-      "Enterprise bare-metal dedicated servers for maximum performance, custom hardware and managed infrastructure.",
-    body: "Get dedicated bare-metal resources for high-traffic game networks, SaaS platforms, and workloads that need predictable performance.",
+      "Enterprise bare-metal dedicated servers and high-frequency Virtual Dedicated Servers (VDS) in India & Singapore with unmetered bandwidth and 10Gbps uplinks.",
+    body: "Deploy enterprise bare-metal and VDS instances powered by AMD EPYC and Intel Xeon processors. Full root access, IPMI/KVM management, customizable RAM/storage arrays, and dedicated 10Gbps ports optimized for game networks, SaaS workloads, and high-concurrency applications.",
     path: "/dedicated",
   },
   terms: {
@@ -140,8 +147,10 @@ export const homeFaqs = [
 
 export const internalServiceLinks = [
   { href: "/vps", label: "VPS Hosting" },
-  { href: "/web-hosting", label: "Web Hosting" },
+  { href: "/dedicated", label: "Dedicated & VDS Servers" },
   { href: "/database-hosting", label: "Database Hosting" },
+  { href: "/email-hosting", label: "Business Email Hosting" },
+  { href: "/web-hosting", label: "Web Hosting" },
   { href: "/games", label: "Game Server Hosting" },
   { href: "/games?game=minecraft", label: "Minecraft Hosting" },
   { href: "/games?game=rust", label: "Rust Hosting" },
@@ -151,8 +160,8 @@ export const internalServiceLinks = [
   { href: "/games?game=hytale", label: "Hytale Hosting" },
   { href: "/discord-bot", label: "Discord Bot Hosting" },
   { href: "/ddos", label: "WarShield DDoS Protection" },
-  { href: "/dedicated", label: "Dedicated Servers" },
-  { href: "/contact", label: "Contact" },
+  { href: "/about", label: "About WarNodes" },
+  { href: "/contact", label: "Contact Us" },
 ] as const
 
 export function buildFaqPageSchema(faqs: readonly { question: string; answer: string }[]) {
@@ -196,10 +205,16 @@ export function buildPageMetadata(page: PageSeo): Metadata {
 
 export const serviceListSchema = [
   { name: "VPS Hosting", url: `${siteMetadata.url}/vps` },
-  { name: "Web Hosting", url: `${siteMetadata.url}/web-hosting` },
+  { name: "Dedicated & VDS Servers", url: `${siteMetadata.url}/dedicated` },
   { name: "Database Hosting", url: `${siteMetadata.url}/database-hosting` },
+  { name: "Business Email Hosting", url: `${siteMetadata.url}/email-hosting` },
+  { name: "Web Hosting", url: `${siteMetadata.url}/web-hosting` },
   { name: "Game Server Hosting", url: `${siteMetadata.url}/games` },
   { name: "Minecraft Hosting", url: `${siteMetadata.url}/games?game=minecraft` },
+  { name: "Rust Hosting", url: `${siteMetadata.url}/games?game=rust` },
+  { name: "Palworld Hosting", url: `${siteMetadata.url}/games?game=palworld` },
+  { name: "FiveM Hosting", url: `${siteMetadata.url}/games?game=fivem` },
+  { name: "Counter-Strike 2 Hosting", url: `${siteMetadata.url}/games?game=cs2` },
   { name: "Discord Bot Hosting", url: `${siteMetadata.url}/discord-bot` },
   { name: "WarShield DDoS Protection", url: `${siteMetadata.url}/ddos` },
   { name: "Contact Us", url: `${siteMetadata.url}/contact` },
