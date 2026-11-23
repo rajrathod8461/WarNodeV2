@@ -142,7 +142,7 @@ export default function Footer() {
 
   // 2. Solutions column (5 links)
   const solutionsLinks: FooterLink[] = [
-    { name: "Minecraft Hosting", href: "/games?game=minecraft" },
+    { name: "Minecraft Hosting", href: "/minecraft-hosting" },
     { name: "Game Server Hosting", href: "/games" },
     { name: "Counter-Strike 2", href: "/games?game=cs2" },
     { name: "Discord Bot Hosting", href: "/discord-bot" },

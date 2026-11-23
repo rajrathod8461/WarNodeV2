@@ -2,7 +2,7 @@ import Link from "next/link"
 import { internalServiceLinks, pageSeo, type PageSeoKey } from "../../lib/seo"
 
 type Props = {
-  pageKey: Exclude<PageSeoKey, "home" | "minecraft">
+  pageKey: Exclude<PageSeoKey, "home">
   /**
    * Heading level for the hidden summary. Defaults to "h1" for backwards
    * compatibility, but routes that already render their own visible <h1>

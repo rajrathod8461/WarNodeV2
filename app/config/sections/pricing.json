@@ -28,7 +28,7 @@
         "buttonTextKey": "pricingPlans.gameServers.buttonText",
         "buttonStyle": "secondary",
         "popular": false,
-        "link": "/games"
+        "link": "/minecraft-hosting"
       },
       {
         "titleKey": "pricingPlans.vpsHosting.title",

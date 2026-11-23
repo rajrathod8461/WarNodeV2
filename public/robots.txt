@@ -1,4 +1,39 @@
+# WarNodes Robots.txt
+# https://warnode.cloud
+
+# ── General Crawlers ──
 User-agent: *
 Allow: /
+Disallow: /api/
 
+# ── AI Answer & Search Engines (Explicitly Allowed for GEO) ──
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# ── Block Training-Only Scrapers ──
+User-agent: CCBot
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+# ── Sitemap ──
 Sitemap: https://warnode.cloud/sitemap.xml

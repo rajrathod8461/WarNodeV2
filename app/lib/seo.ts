@@ -36,10 +36,11 @@ export const pageSeo = {
     path: "/games",
   },
   minecraft: {
-    title: "Minecraft Server Hosting India",
+    title: "Best Minecraft Server Hosting India – Intel & AMD EPYC from ₹35/GB",
     description:
-      "Low-latency Minecraft hosting with instant deployment, modpack support, Pterodactyl panel and powerful AMD EPYC and Intel Xeon hardware.",
-    path: "/games?game=minecraft",
+      "High-performance Minecraft server hosting in India (Mumbai & Delhi) from ₹35/GB (₹59/mo). Free WarShield DDoS protection, Pterodactyl panel, 1-click modpacks, instant setup & 99.9% uptime.",
+    body: "Deploy high-performance Minecraft Java and Bedrock servers powered by AMD EPYC and Intel Xeon processors with Gen4 NVMe storage. Full support for Paper, Purpur, Spigot, Forge, Fabric, and Geyser crossplay with sub-15ms latency across India.",
+    path: "/minecraft-hosting",
   },
   discordBot: {
     title: "Discord Bot Hosting – 24/7 Uptime",
@@ -152,7 +153,7 @@ export const internalServiceLinks = [
   { href: "/email-hosting", label: "Business Email Hosting" },
   { href: "/web-hosting", label: "Web Hosting" },
   { href: "/games", label: "Game Server Hosting" },
-  { href: "/games?game=minecraft", label: "Minecraft Hosting" },
+  { href: "/minecraft-hosting", label: "Minecraft Hosting" },
   { href: "/games?game=rust", label: "Rust Hosting" },
   { href: "/games?game=palworld", label: "Palworld Hosting" },
   { href: "/games?game=fivem", label: "FiveM Hosting" },
@@ -210,7 +211,7 @@ export const serviceListSchema = [
   { name: "Business Email Hosting", url: `${siteMetadata.url}/email-hosting` },
   { name: "Web Hosting", url: `${siteMetadata.url}/web-hosting` },
   { name: "Game Server Hosting", url: `${siteMetadata.url}/games` },
-  { name: "Minecraft Hosting", url: `${siteMetadata.url}/games?game=minecraft` },
+  { name: "Minecraft Hosting", url: `${siteMetadata.url}/minecraft-hosting` },
   { name: "Rust Hosting", url: `${siteMetadata.url}/games?game=rust` },
   { name: "Palworld Hosting", url: `${siteMetadata.url}/games?game=palworld` },
   { name: "FiveM Hosting", url: `${siteMetadata.url}/games?game=fivem` },
@@ -219,3 +220,172 @@ export const serviceListSchema = [
   { name: "WarShield DDoS Protection", url: `${siteMetadata.url}/ddos` },
   { name: "Contact Us", url: `${siteMetadata.url}/contact` },
 ]
+
+export const minecraftFaqs = [
+  {
+    question: "What makes WarNodes the best Minecraft server hosting in India?",
+    answer:
+      "WarNodes delivers ultra-low ping (5–20ms across India) through Tier-3 Mumbai and Delhi datacenters, powered by high-frequency Intel Xeon and AMD EPYC CPUs, Gen4 NVMe storage, free WarShield DDoS protection, and the lowest prices starting at just ₹35/GB (₹59/mo).",
+  },
+  {
+    question: "How much does Minecraft server hosting cost in India?",
+    answer:
+      "WarNodes plans start at only ₹59/month for 2GB RAM on Intel Xeon (approx ₹35/GB for higher tiers) and ₹79/month on AMD EPYC (approx ₹39/GB). This makes WarNodes significantly more affordable than competitors like LordCloud (₹90/mo) and Shockbyte.",
+  },
+  {
+    question: "How much RAM do I need for my Minecraft server?",
+    answer:
+      "For Vanilla Minecraft with 1–5 friends, 2GB RAM (COW plan) is ideal. For Paper/Purpur with 10–25 plugins, 4GB to 6GB RAM (PIG or SHEEP) is recommended. For heavy modpacks (Forge, Fabric, All the Mods, RL茫Craft), choose 8GB to 16GB RAM (SLIME or CHICKEN).",
+  },
+  {
+    question: "Can both Java and Bedrock (mobile/console) players join my server?",
+    answer:
+      "Yes! Our Pterodactyl panel features pre-configured GeyserMC and Floodgate crossplay plugins. You can enable crossplay with one click so players on PC (Java), Android, iOS, Xbox, PlayStation, and Switch can all play together.",
+  },
+  {
+    question: "Which Minecraft versions and mod loaders are supported?",
+    answer:
+      "We support every Minecraft release from 1.8 to 1.21+, including Paper, Purpur, Spigot, Vanilla, Forge, Fabric, NeoForge, Mohist, BungeeCord, Velocity, and Bedrock Dedicated Server.",
+  },
+  {
+    question: "Do you offer DDoS protection for Minecraft servers?",
+    answer:
+      "Yes! Every Minecraft server includes free enterprise WarShield DDoS protection with L3/L4/L7 intelligent traffic scrubbing, blocking Minecraft protocol attacks, bot floods, and SYN floods without lag spikes.",
+  },
+  {
+    question: "How do I install mods and plugins on my server?",
+    answer:
+      "Our customized Pterodactyl panel includes a built-in 1-click modpack installer (CurseForge, Modrinth) and plugin manager. You can also drag and drop JAR files directly through the web File Manager or high-speed SFTP.",
+  },
+  {
+    question: "Where are your Minecraft servers located in India?",
+    answer:
+      "Our game nodes are located in carrier-neutral Tier-3 datacenters in Mumbai and Delhi with direct peering to Jio, Airtel, ACT, and Tata, ensuring 5–20ms latency anywhere in India.",
+  },
+  {
+    question: "Is deployment instant after payment?",
+    answer:
+      "Yes, your Minecraft server is automatically provisioned and ready within 60 seconds after your payment is confirmed.",
+  },
+  {
+    question: "Can I upload my existing Minecraft world or custom JAR file?",
+    answer:
+      "Absolutely. You have full root access to your server directory via SFTP and web File Manager. You can upload custom server JARs, existing world saves, datapacks, and configurations.",
+  },
+  {
+    question: "Do you provide a free subdomain for my Minecraft server?",
+    answer:
+      "Yes! Every server comes with a free custom subdomain (e.g., yourname.warnode.cloud) so your players can join without typing complex port numbers.",
+  },
+  {
+    question: "Do I get a free MySQL database for plugins?",
+    answer:
+      "Yes, 1 free managed MySQL database is included with every plan for plugins like LuckPerms, CoreProtect, Vault, and economy systems.",
+  },
+  {
+    question: "Can I upgrade or downgrade my Minecraft server plan later?",
+    answer:
+      "Yes, you can upgrade your CPU, RAM, or storage at any time through our portal with 1 click. All your files, worlds, and settings remain completely intact.",
+  },
+  {
+    question: "Do you offer automated backups?",
+    answer:
+      "Yes, automated backups with off-site replication and 1-click restoration are built directly into our panel.",
+  },
+  {
+    question: "What payment methods are supported?",
+    answer:
+      "We accept all major Indian and international payment options: UPI (Google Pay, PhonePe, Paytm, BHIM), Debit/Credit Cards, NetBanking, and Crypto.",
+  },
+] as const
+
+export function buildMinecraftProductSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: "Minecraft Server Hosting India",
+    image: `${siteMetadata.url}/banners/minecraft-banners.webp`,
+    description:
+      "High-performance Minecraft server hosting in India with low latency, NVMe Gen4 SSD storage, WarShield DDoS protection, and 24/7 support. Powered by Intel Xeon and AMD EPYC processors starting from ₹35/GB (₹59/month).",
+    brand: {
+      "@type": "Brand",
+      name: "WarNodes",
+    },
+    offers: {
+      "@type": "AggregateOffer",
+      url: `${siteMetadata.url}/minecraft-hosting`,
+      priceCurrency: "INR",
+      lowPrice: "59",
+      highPrice: "959",
+      priceValidUntil: "2026-12-31",
+      availability: "https://schema.org/InStock",
+      seller: {
+        "@type": "Organization",
+        name: "WarNodes",
+        url: siteMetadata.url,
+      },
+    },
+  }
+}
+
+export function buildMinecraftFaqSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${siteMetadata.url}/minecraft-hosting#faq`,
+    mainEntity: minecraftFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  }
+}
+
+export function buildMinecraftBreadcrumbSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteMetadata.url,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Minecraft Hosting",
+        item: `${siteMetadata.url}/minecraft-hosting`,
+      },
+    ],
+  }
+}
+
+export function buildMinecraftLocalBusinessSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "WarNodes Cloud Services",
+    url: siteMetadata.url,
+    logo: siteMetadata.logoUrl,
+    image: `${siteMetadata.url}/banners/minecraft-banners.webp`,
+    telephone: "+91-8461000000",
+    email: "support@warnode.cloud",
+    priceRange: "₹₹",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Mumbai",
+      addressRegion: "Maharashtra",
+      addressCountry: "IN",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 19.076,
+      longitude: 72.8777,
+    },
+  }
+}

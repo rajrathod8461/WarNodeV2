@@ -10,7 +10,7 @@
       "dropdownItems": [
         {
           "name": "Minecraft Hosting",
-          "href": "/games?game=minecraft",
+          "href": "/minecraft-hosting",
           "description": "Paper, Forge & Purpur with 1-click modpacks",
           "icon": "Gamepad2"
         },
