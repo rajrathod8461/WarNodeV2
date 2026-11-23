@@ -255,7 +255,7 @@ export default function GameServerList() {
                 {t('gameServerList.title').split(' ').slice(0, -2).join(' ')}{' '}
                 <span className="text-[var(--accent-color)]">{t('gameServerList.title').split(' ').slice(-2).join(' ')}</span>
               </h2>
-              <p className="text-md text-gray-600 max-w-3xl dark:text-gray-300">
+              <p className="hidden sm:block text-md text-gray-600 max-w-3xl dark:text-gray-300">
                 {t('gameServerList.description')}
               </p>
             </div>
@@ -325,9 +325,18 @@ export default function GameServerList() {
             )}
 
             <div className="flex flex-col items-left">
-              <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3.5">
-                {isHytaleLayout ? t("gameServerList.step1LocationNoCpu") : t("gameServerList.step2")}
-              </h3>
+              <div className="flex items-center justify-between mb-3.5 gap-2">
+                <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  {isHytaleLayout ? t("gameServerList.step1LocationNoCpu") : t("gameServerList.step2")}
+                </h3>
+                <Link
+                  href="/contact"
+                  className="sm:hidden text-xs text-gray-500 dark:text-gray-400 hover:text-primary flex items-center gap-1 font-normal shrink-0"
+                >
+                  <span>{t("gameServerList.moreLocations")}</span>
+                  <span className="font-medium icon-text-primary underline">{t("gameServerList.contactUs")}</span>
+                </Link>
+              </div>
               <div className="flex flex-wrap items-center gap-2">
                 {config.locations.map((location: GameLocation) => {
                   const isSelected = selectedLocation === location.id
@@ -370,7 +379,7 @@ export default function GameServerList() {
 
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-lg border border-primary bg-white/20 px-4 py-3 text-sm text-gray-600 backdrop-blur-sm transition-all duration-300 hover:border-secondary hover:hover-gradient dark:bg-white/5 dark:text-gray-300"
+                  className="hidden sm:inline-flex items-center gap-2 rounded-lg border border-primary bg-white/20 px-4 py-3 text-sm text-gray-600 backdrop-blur-sm transition-all duration-300 hover:border-secondary hover:hover-gradient dark:bg-white/5 dark:text-gray-300"
                 >
                   <ArrowRight className="h-4 w-4 icon-primary" />
                   <span>
@@ -397,7 +406,7 @@ export default function GameServerList() {
               Swipe &rarr;
             </span>
           </div>
-          <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3.5 overflow-x-auto sm:overflow-visible pb-3 pt-1 -mx-4 px-4 sm:mx-0 sm:px-0 snap-x snap-mandatory no-scrollbar relative">
+          <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3.5 overflow-x-auto sm:overflow-visible pb-3 sm:pb-0 pt-1 sm:pt-0 -mx-4 px-4 sm:mx-0 sm:px-0 snap-x snap-mandatory no-scrollbar relative">
             {config.games.map((game: Game, index: number) => {
               const firstFeaturedGame = config.games.find((g: Game) => g.featured)
               const showChristmas = uiConfig.christmasTheme.enabled && game.id === firstFeaturedGame?.id
@@ -411,7 +420,6 @@ export default function GameServerList() {
                         ? {
                             backgroundColor: `${activeCpuBrand.primary}30`,
                             borderColor: activeCpuBrand.border,
-                            boxShadow: `0 0 12px ${activeCpuBrand.glow}`,
                           }
                         : undefined
                     }
