@@ -30,7 +30,7 @@
       "id": "germany",
       "name": "Germany",
       "flag": "de",
-      "displayName": "Frankfurt, DE",
+      "displayName": "Frankfurt, Germany",
       "cpu": "Intel Xeon",
       "availableCpus": [
         "xeon-e5-2630v4",

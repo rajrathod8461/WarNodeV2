@@ -109,9 +109,16 @@ export default function VDSPricingSection() {
         <div className="mb-8">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
             <div className="flex-1">
-              {/* Category Badge */}
-              <div className="inline-flex items-center bg-[#1c64f2] text-white px-3.5 py-1.5 rounded-lg mb-4 shadow-lg shadow-blue-600/30">
-                <span className="text-xs font-bold tracking-wide">Dedicated Servers</span>
+              {/* Category Badge & Dedicated Frankfurt Location Pill */}
+              <div className="flex flex-wrap items-center gap-2.5 mb-4">
+                <div className="inline-flex items-center bg-[#1c64f2] text-white px-3.5 py-1.5 rounded-lg shadow-lg shadow-blue-600/30">
+                  <span className="text-xs font-bold tracking-wide">Dedicated Servers</span>
+                </div>
+                <div className="inline-flex items-center gap-2 bg-[#121622] border border-[#1f2638] text-gray-200 px-3 py-1.5 rounded-lg text-xs font-semibold shadow-sm">
+                  <CountryFlag code="de" alt="Germany flag" size="sm" />
+                  <span>Frankfurt, Germany</span>
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse ml-0.5" />
+                </div>
               </div>
               
               {/* Title with Doodle Underline */}
@@ -132,7 +139,7 @@ export default function VDSPricingSection() {
               
               {/* Subtitle */}
               <p className="text-sm text-gray-400 max-w-2xl leading-relaxed">
-                Bare metal dedicated servers with enterprise-grade hardware, full control, and maximum performance for demanding applications.
+                Enterprise bare-metal dedicated servers hosted exclusively in Frankfurt, Germany. Equipped with high-frequency Intel Xeon hardware, 1 Gbit unmetered uplinks, full root IPMI/KVM access, and 99.9% uptime.
               </p>
             </div>
 

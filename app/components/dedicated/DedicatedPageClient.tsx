@@ -6,7 +6,6 @@ import VDSPricingSection from "./VDSPricingSection"
 
 const OSSelectionSection = lazy(() => import("../vps/OSSelectionSection"))
 const FeaturesSection = lazy(() => import("../FeaturesSection"))
-const LocationsSection = lazy(() => import("../LocationsSection"))
 const FAQSection = lazy(() => import("../FAQSection"))
 const PanelShowcase = lazy(() => import("../PanelShowcase"))
 const Footer = lazy(() => import("../Footer"))
@@ -25,9 +24,6 @@ export default function DedicatedPageClient() {
         <FeaturesSection />
       </Suspense>
 
-      <Suspense fallback={null}>
-        <LocationsSection />
-      </Suspense>
 
       <Suspense fallback={null}>
         <FAQSection />

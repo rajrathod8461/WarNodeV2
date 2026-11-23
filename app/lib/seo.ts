@@ -90,10 +90,10 @@ export const pageSeo = {
     path: "/team",
   },
   dedicated: {
-    title: "Dedicated & VDS Servers India – AMD EPYC & Intel Xeon",
+    title: "Dedicated Servers Frankfurt, Germany – Intel Xeon Bare Metal",
     description:
-      "Enterprise bare-metal dedicated servers and high-frequency Virtual Dedicated Servers (VDS) in India & Singapore with unmetered bandwidth and 10Gbps uplinks.",
-    body: "Deploy enterprise bare-metal and VDS instances powered by AMD EPYC and Intel Xeon processors. Full root access, IPMI/KVM management, customizable RAM/storage arrays, and dedicated 10Gbps ports optimized for game networks, SaaS workloads, and high-concurrency applications.",
+      "Enterprise bare-metal dedicated servers hosted in Frankfurt, Germany. Intel Xeon E5 & Gold processors, DDR4 RAM, 1Gbit unmetered bandwidth, IPMI root access, and enterprise DDoS protection.",
+    body: "Deploy high-performance dedicated servers located in Frankfurt, Germany (Tier-3 Datacenter). Powered by Intel Xeon processors with up to 64GB DDR4 RAM, unmetered 1Gbit connectivity, IPMI/KVM access, and WarShield protection for maximum European & global reach.",
     path: "/dedicated",
   },
   terms: {
@@ -147,7 +147,7 @@ export const homeFaqs = [
 
 export const internalServiceLinks = [
   { href: "/vps", label: "VPS Hosting" },
-  { href: "/dedicated", label: "Dedicated & VDS Servers" },
+  { href: "/dedicated", label: "Dedicated Servers (Frankfurt)" },
   { href: "/database-hosting", label: "Database Hosting" },
   { href: "/email-hosting", label: "Business Email Hosting" },
   { href: "/web-hosting", label: "Web Hosting" },
@@ -205,7 +205,7 @@ export function buildPageMetadata(page: PageSeo): Metadata {
 
 export const serviceListSchema = [
   { name: "VPS Hosting", url: `${siteMetadata.url}/vps` },
-  { name: "Dedicated & VDS Servers", url: `${siteMetadata.url}/dedicated` },
+  { name: "Dedicated Servers (Frankfurt)", url: `${siteMetadata.url}/dedicated` },
   { name: "Database Hosting", url: `${siteMetadata.url}/database-hosting` },
   { name: "Business Email Hosting", url: `${siteMetadata.url}/email-hosting` },
   { name: "Web Hosting", url: `${siteMetadata.url}/web-hosting` },
