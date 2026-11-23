@@ -278,53 +278,54 @@ export default function PricingSection() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35, delay: index * 0.08 }}
-                  className={`relative flex flex-col h-full rounded-2xl overflow-hidden backdrop-blur-xl border transition-all duration-300 hover:-translate-y-1 group ${
+                  className={`relative flex flex-col h-full rounded-tl-2xl rounded-br-2xl overflow-hidden backdrop-blur-xl border transition-all duration-300 hover:-translate-y-1 group ${
                     isPopular
                       ? "border-blue-500/40 bg-white/80 dark:bg-[#0b0e17] shadow-lg shadow-blue-500/10 hover:shadow-blue-500/20 hover:border-blue-500/60"
                       : "border-gray-200/80 dark:border-white/[0.08] bg-white/60 dark:bg-[#0b0e17] shadow-sm hover:shadow-xl hover:shadow-black/20 hover:border-blue-500/30"
                   }`}
                 >
                   {/* Top Image Banner with Seamless Multi-Layer Gradient Dissolve */}
-                  <div className="relative h-48 sm:h-52 w-full shrink-0 overflow-hidden bg-[#0b0e17]">
+                  <div className="relative h-48 sm:h-52 w-full shrink-0 overflow-hidden bg-[#0b0e17] rounded-tl-2xl">
                     <Image
                       src={image}
                       alt={title}
                       fill
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 will-change-transform"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       quality={90}
                       priority={isPopular}
                     />
 
-                    {/* Smooth Ambient and Bottom Fades - Eliminates Sharp Lines */}
+                    {/* Smooth Ambient and Bottom Fades - Zero Pixel Bleed on Hover */}
                     <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent pointer-events-none" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-[#0b0e17] via-white/85 dark:via-[#0b0e17]/80 via-35% to-transparent pointer-events-none" />
-                    <div className="absolute -bottom-px inset-x-0 h-10 bg-gradient-to-t from-white dark:from-[#0b0e17] to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-[#0b0e17] via-white/95 dark:via-[#0b0e17]/95 via-30% to-transparent pointer-events-none" />
+                    {/* Solid bottom strip ensures no subpixel scaling artifacts leak through */}
+                    <div className="absolute inset-x-0 bottom-0 h-6 bg-white dark:bg-[#0b0e17] pointer-events-none" />
 
-                    {/* Badges on Image */}
+                    {/* Badges on Image (Web Hosting signature 2-side smooth & 2-side sharp) */}
                     <div className="absolute top-3.5 right-3.5 flex items-center gap-1.5 z-10">
                       {isPopular && (
-                        <span className="px-2.5 py-1 rounded-full text-[11px] font-bold button-primary text-button-primary shadow-md">
+                        <span className="px-3 py-1 rounded-tl-xl rounded-br-xl text-[11px] font-bold button-primary text-button-primary shadow-md">
                           Popular
                         </span>
                       )}
                       {badge && (
-                        <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-black/60 backdrop-blur-md text-gray-200 border border-white/15 shadow-md">
+                        <span className="px-3 py-1 rounded-tl-xl rounded-br-xl text-[11px] font-semibold bg-black/70 backdrop-blur-md text-gray-200 border border-white/15 shadow-md">
                           {badge}
                         </span>
                       )}
                     </div>
 
                     {/* Title over Image */}
-                    <div className="absolute bottom-3.5 left-5 right-5 z-10">
+                    <div className="absolute bottom-3 left-5 right-5 z-10">
                       <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white orbitron-font tracking-wide drop-shadow-sm">
                         {title}
                       </h3>
                     </div>
                   </div>
 
-                  {/* Body Content */}
-                  <div className="flex flex-col flex-1 p-5 sm:p-6">
+                  {/* Body Content (overlaps banner by 2px with matching background to kill any seam) */}
+                  <div className="flex flex-col flex-1 p-5 sm:p-6 -mt-1.5 relative z-10 bg-white dark:bg-[#0b0e17]">
                     {/* Short 1-Line Description */}
                     <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 line-clamp-1 leading-relaxed mb-4">
                       {description}
@@ -379,11 +380,11 @@ export default function PricingSection() {
                         ))}
                     </ul>
 
-                    {/* Action CTA Button */}
+                    {/* Action CTA Button (Web Hosting signature 2-side smooth & 2-side sharp) */}
                     <div className="relative mt-auto">
                       <Link
                         href={link}
-                        className={`w-full py-3 px-4 rounded-xl font-semibold text-xs sm:text-sm transition-all duration-300 flex items-center justify-between group/btn ${
+                        className={`w-full py-3 px-4 rounded-tl-xl rounded-br-xl font-semibold text-xs sm:text-sm transition-all duration-300 flex items-center justify-between group/btn ${
                           isPopular || plan?.buttonStyle === "primary"
                             ? "button-primary text-button-primary shadow-sm hover:shadow-md hover:shadow-blue-500/20"
                             : "bg-white/10 dark:bg-white/[0.04] border border-gray-200/80 dark:border-white/10 text-gray-800 dark:text-gray-200 hover:border-blue-500/40 hover:bg-blue-500/10 dark:hover:bg-blue-500/10 hover:text-blue-500 dark:hover:text-blue-400"
