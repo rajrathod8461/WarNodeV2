@@ -262,6 +262,15 @@
     opacity: 0.8;
   }
 
+  /* Utility to hide scrollbars for horizontal carousels/chips */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
   /* CSS Classes for easy usage */
   .icon-primary {
     color: var(--icon-primary);

@@ -389,16 +389,21 @@ export default function GameServerList() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mb-4"
         >
-          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
-            {isHytaleLayout ? t("gameServerList.step2GameNoCpu") : t("gameServerList.step3")}
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 relative">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              {isHytaleLayout ? t("gameServerList.step2GameNoCpu") : t("gameServerList.step3")}
+            </h3>
+            <span className="text-xs text-gray-400 dark:text-gray-500 font-normal sm:hidden flex items-center gap-1 select-none">
+              Swipe &rarr;
+            </span>
+          </div>
+          <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3.5 overflow-x-auto sm:overflow-visible pb-3 pt-1 -mx-4 px-4 sm:mx-0 sm:px-0 snap-x snap-mandatory no-scrollbar relative">
             {config.games.map((game: Game, index: number) => {
               const firstFeaturedGame = config.games.find((g: Game) => g.featured)
               const showChristmas = uiConfig.christmasTheme.enabled && game.id === firstFeaturedGame?.id
 
               return (
-                <div key={game.id} className="relative">
+                <div key={game.id} className="relative shrink-0 snap-start w-[160px] sm:w-full">
                   <button
                     onClick={() => handleGameSelection(game.id)}
                     style={
@@ -406,17 +411,18 @@ export default function GameServerList() {
                         ? {
                             backgroundColor: `${activeCpuBrand.primary}30`,
                             borderColor: activeCpuBrand.border,
+                            boxShadow: `0 0 12px ${activeCpuBrand.glow}`,
                           }
                         : undefined
                     }
-                    className={`relative w-full group rounded-xl transition-all duration-300 p-3 text-left backdrop-blur-sm border ${
+                    className={`relative w-full group rounded-xl transition-all duration-300 p-2.5 sm:p-3 text-left backdrop-blur-sm border ${
                       selectedGame === game.id
-                        ? "text-white shadow-sm"
+                        ? "text-white shadow-sm ring-1 ring-[var(--accent-color)] sm:ring-0"
                         : "bg-white/60 dark:bg-gray-800/30 border-gray-200 dark:border-gray-600/40 text-gray-700 dark:text-gray-300 hover:border-[var(--accent-border)]"
                     }`}
                   >
-                    <div className="flex items-start gap-3">
-                      <div className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-white/10 bg-white/90 p-1 dark:bg-black/30">
+                    <div className="flex items-center sm:items-start gap-2.5 sm:gap-3">
+                      <div className="relative flex h-9 w-9 sm:h-11 sm:w-11 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-white/10 bg-white/90 p-1 dark:bg-black/30">
                         <Image
                           src={game.icon || "/placeholder.svg"}
                           alt={game.name}
@@ -426,11 +432,11 @@ export default function GameServerList() {
                         />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 ">
-                          <h4 className="font-bold text-sm truncate">{game.name}</h4>
+                        <div className="flex items-center gap-1.5 sm:gap-2">
+                          <h4 className="font-bold text-xs sm:text-sm truncate">{game.name}</h4>
                           {game.featured && (
                             <div
-                              className="px-2 py-0.5 text-xs rounded-md backdrop-blur-sm text-white"
+                              className="px-1.5 py-0.5 text-[10px] sm:text-xs rounded-md backdrop-blur-sm text-white shrink-0"
                               style={{ backgroundColor: activeCpuBrand.primary }}
                             >
                               {t('gameServerList.featured')}
@@ -438,7 +444,7 @@ export default function GameServerList() {
                           )}
                         </div>
                         <p
-                          className="text-xs opacity-80 line-clamp-2 mt-1 leading-snug"
+                          className="hidden sm:block text-xs opacity-80 line-clamp-2 mt-1 leading-snug"
                           title={game.description}
                         >
                           {game.description}
@@ -452,7 +458,7 @@ export default function GameServerList() {
                       alt="Christmas decoration"
                       width={60}
                       height={60}
-                      className="absolute z-[9999] -bottom-16 right-4 pointer-events-none"
+                      className="absolute z-[9999] -bottom-16 right-4 pointer-events-none hidden sm:block"
                     />
                   )}
                 </div>
