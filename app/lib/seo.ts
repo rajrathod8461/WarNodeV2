@@ -77,13 +77,6 @@ export const pageSeo = {
     body: "Reach WarNodes through tickets, email, or Discord for billing questions, migrations, custom hardware, and enterprise hosting plans.",
     path: "/contact",
   },
-  about: {
-    title: "About WarNodes – Our Mission & Infrastructure",
-    description:
-      "Learn how WarNodes builds premium game, VPS and web hosting across India and beyond — guaranteed resources, no overselling, and WarShield DDoS protection on every plan.",
-    body: "WarNodes runs Gen4 NVMe hardware and high-frequency compute across Indian and global edge locations, backed by a 99.9% uptime guarantee, multi-terabit WarShield DDoS mitigation, and 24/7 human support from real engineers.",
-    path: "/about",
-  },
   team: {
     title: "Our Team",
     description:
@@ -161,7 +154,6 @@ export const internalServiceLinks = [
   { href: "/games?game=hytale", label: "Hytale Hosting" },
   { href: "/discord-bot", label: "Discord Bot Hosting" },
   { href: "/ddos", label: "WarShield DDoS Protection" },
-  { href: "/about", label: "About WarNodes" },
   { href: "/contact", label: "Contact Us" },
 ] as const
 

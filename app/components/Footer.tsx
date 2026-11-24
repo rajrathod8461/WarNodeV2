@@ -154,12 +154,10 @@ export default function Footer() {
     { name: "Server Locations", href: "/locations" },
     { name: "WarShield", href: "/ddos" },
     { name: "Network Status", href: links.status, external: true, badgeVariant: "pulse", badge: "live" },
-    { name: "Backup Status", href: "/backup-status" },
   ]
 
   // 4. Company column (5 links)
   const companyLinks: FooterLink[] = [
-    { name: "About Us", href: "/about" },
     { name: "Our Team", href: "/team" },
     { name: "Careers", href: "/careers", badge: "Hiring", badgeVariant: "green" },
     { name: "Announcements", href: links.updates, external: true },
