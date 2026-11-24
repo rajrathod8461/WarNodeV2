@@ -9,14 +9,14 @@ type StockState =
 const STOCK_IDLE: StockState = { status: "idle" }
 const STOCK_LOADING: StockState = { status: "loading" }
 
-const CACHE_TTL_MS = 5 * 60 * 1000
-const QUEUE_DELAY_MS = 100
+const CACHE_TTL_MS = 10 * 60 * 1000
+const MAX_CONCURRENT = 4
 
 const cache = new Map<string, { state: StockState; at: number }>()
 const inflight = new Map<string, Promise<StockState>>()
 const listeners = new Set<() => void>()
 const pendingQueue: string[] = []
-let queueRunning = false
+let activeWorkers = 0
 
 function notify() {
   listeners.forEach((l) => l())
@@ -38,7 +38,6 @@ function getCached(orderLink: string): StockState | null {
     cache.delete(orderLink)
     return null
   }
-  if (entry.state.status === "loading" || entry.state.status === "idle") return null
   return entry.state
 }
 
@@ -69,20 +68,18 @@ async function fetchStock(orderLink: string): Promise<StockState> {
   return promise
 }
 
-async function drainQueue() {
-  if (queueRunning) return
-  queueRunning = true
-
-  while (pendingQueue.length > 0) {
-    const orderLink = pendingQueue.shift()!
+function pumpQueue() {
+  while (pendingQueue.length > 0 && activeWorkers < MAX_CONCURRENT) {
+    const orderLink = pendingQueue.shift()
+    if (!orderLink) break
     if (getCached(orderLink) || inflight.has(orderLink)) continue
-    await fetchStock(orderLink)
-    if (pendingQueue.length > 0) {
-      await new Promise((resolve) => setTimeout(resolve, QUEUE_DELAY_MS))
-    }
-  }
 
-  queueRunning = false
+    activeWorkers++
+    fetchStock(orderLink).finally(() => {
+      activeWorkers--
+      pumpQueue()
+    })
+  }
 }
 
 function scheduleStockFetch(orderLink: string) {
@@ -90,7 +87,7 @@ function scheduleStockFetch(orderLink: string) {
     return
   }
   pendingQueue.push(orderLink)
-  void drainQueue()
+  pumpQueue()
 }
 
 function subscribe(listener: () => void) {
@@ -102,7 +99,7 @@ function getSnapshot(orderLink: string, eligible: boolean): StockState {
   if (!eligible) return STOCK_IDLE
   const cached = getCached(orderLink)
   if (cached) return cached
-  return STOCK_LOADING
+  return STOCK_IDLE
 }
 
 export function useProductStock(orderLink?: string) {

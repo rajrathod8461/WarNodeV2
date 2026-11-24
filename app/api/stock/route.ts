@@ -48,11 +48,12 @@ export async function GET(req: Request) {
   try {
     const res = await fetch(url.toString(), {
       method: "GET",
-      redirect: "error",
+      redirect: "follow",
       signal: AbortSignal.timeout(6500),
       headers: {
-        "user-agent": "warnodes-site-stock-check/1.0",
-        accept: "text/html,*/*",
+        "user-agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
       },
       cache: "no-store",
     })

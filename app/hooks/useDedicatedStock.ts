@@ -51,9 +51,8 @@ export function useDedicatedStock() {
   return {
     stocks,
     isLoading,
-    isChecking: isLoading,
+    isChecking: false,
     isOutOfStock: (planId: string) => {
-      if (isLoading) return false
       return stocks[planId] === false
     },
   }
