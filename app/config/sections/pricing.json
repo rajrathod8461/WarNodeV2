@@ -28,7 +28,7 @@
         "buttonTextKey": "pricingPlans.gameServers.buttonText",
         "buttonStyle": "secondary",
         "popular": false,
-        "link": "/minecraft-hosting"
+        "link": "/games?game=minecraft&location=mumbai&plan=intel"
       },
       {
         "titleKey": "pricingPlans.vpsHosting.title",

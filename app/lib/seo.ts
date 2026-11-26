@@ -40,7 +40,7 @@ export const pageSeo = {
     description:
       "High-performance Minecraft server hosting in India (Mumbai & Delhi) from ₹35/GB (₹59/mo). Free WarShield DDoS protection, Pterodactyl panel, 1-click modpacks, instant setup & 99.9% uptime.",
     body: "Deploy high-performance Minecraft Java and Bedrock servers powered by AMD EPYC and Intel Xeon processors with Gen4 NVMe storage. Full support for Paper, Purpur, Spigot, Forge, Fabric, and Geyser crossplay with sub-15ms latency across India.",
-    path: "/minecraft-hosting",
+    path: "/games?game=minecraft&location=mumbai&plan=intel",
   },
   discordBot: {
     title: "Discord Bot Hosting – 24/7 Uptime",
@@ -146,7 +146,7 @@ export const internalServiceLinks = [
   { href: "/email-hosting", label: "Business Email Hosting" },
   { href: "/web-hosting", label: "Web Hosting" },
   { href: "/games", label: "Game Server Hosting" },
-  { href: "/minecraft-hosting", label: "Minecraft Hosting" },
+  { href: "/games?game=minecraft&location=mumbai&plan=intel", label: "Minecraft Hosting" },
   { href: "/games?game=rust", label: "Rust Hosting" },
   { href: "/games?game=palworld", label: "Palworld Hosting" },
   { href: "/games?game=fivem", label: "FiveM Hosting" },
@@ -203,7 +203,7 @@ export const serviceListSchema = [
   { name: "Business Email Hosting", url: `${siteMetadata.url}/email-hosting` },
   { name: "Web Hosting", url: `${siteMetadata.url}/web-hosting` },
   { name: "Game Server Hosting", url: `${siteMetadata.url}/games` },
-  { name: "Minecraft Hosting", url: `${siteMetadata.url}/minecraft-hosting` },
+  { name: "Minecraft Hosting", url: `${siteMetadata.url}/games?game=minecraft&location=mumbai&plan=intel` },
   { name: "Rust Hosting", url: `${siteMetadata.url}/games?game=rust` },
   { name: "Palworld Hosting", url: `${siteMetadata.url}/games?game=palworld` },
   { name: "FiveM Hosting", url: `${siteMetadata.url}/games?game=fivem` },

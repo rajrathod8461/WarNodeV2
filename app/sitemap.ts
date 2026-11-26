@@ -3,7 +3,6 @@ import { siteMetadata } from "./lib/site-metadata"
 
 const routes: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
   { path: "/", priority: 1.0, changeFrequency: "weekly" },
-  { path: "/minecraft-hosting", priority: 1.0, changeFrequency: "daily" },
   { path: "/vps", priority: 0.9, changeFrequency: "weekly" },
   { path: "/dedicated", priority: 0.9, changeFrequency: "weekly" },
   { path: "/database-hosting", priority: 0.9, changeFrequency: "weekly" },

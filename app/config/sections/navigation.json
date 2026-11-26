@@ -10,7 +10,7 @@
       "dropdownItems": [
         {
           "name": "Minecraft Hosting",
-          "href": "/minecraft-hosting",
+          "href": "/games?game=minecraft&location=mumbai&plan=intel",
           "description": "Paper, Forge & Purpur with 1-click modpacks",
           "icon": "Gamepad2"
         },
